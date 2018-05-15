@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        //Test
-        ?>
-    </body>
-</html>
+<?php 
+    $aktion = isset($_GET['aktion']) ? $_GET['aktion'] : 'home';
+    $controller = new Controller();
+
+    if (method_exists($controller, $aktion)) {
+
+        $controller->run($aktion);
+    }
+?>
