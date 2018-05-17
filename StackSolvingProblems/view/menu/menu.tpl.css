@@ -1,11 +1,12 @@
 body {
-    background-color: white;
+    background: linear-gradient(to right, rgb(4, 55, 143), rgb(42, 42, 43));
     font-size: 100%;
+
 }
 
 .headerMenu {
     background-color: #034B59;
-    height: 3rem;
+    height: 4rem;
 }
 .usLayout{
     background-color: #034B59;
@@ -17,5 +18,31 @@ body {
     float: right;
     margin-left: 0.1rem;
     border: none;
+}
+.search{
+    border-radius: 1rem;
+    color: black;
+    width: 10rem;
+    height: 1.5rem;
+    float: right;
+    margin-top: 0.8rem;
+}
+
+.searchButton{
+    background-color: white;
+    border: none;
+    color: black;
+    width: 3.5rem;
+    height: 1.5rem;
+    float: right;
+    border-radius: 1rem;
+    margin-top: 0.8rem;
+    padding-right: 1rem;
+}
+
+.logo{
+    width: 4rem;
+    transform: scale(1);
+    float: left;
 }
 
