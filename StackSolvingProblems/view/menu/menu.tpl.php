@@ -5,9 +5,16 @@
     <link rel="stylesheet" type="text/css" href="menu.tpl.css">
 </head>
 <body>
-    <header class=headerMenu>
-    <a href="" class=usLayou> login </a>
-    <a href="" class=usLayou> register </a>
+    <div>
+    
+        <header class=headerMenu>
+            <form action="" >
+                <input class="usLayout" type="submit" value="Login/Register" />
+            </form>
+            <form action="" >
+                  <input class="usLayout" type="submit" value="Ideea/Forum" />
+                </form>
+    </div>
     
     </header>
 </body>
