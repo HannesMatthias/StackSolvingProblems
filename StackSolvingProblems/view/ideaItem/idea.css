@@ -1,0 +1,55 @@
+
+body{
+    font-size: 100%;
+}
+.scollView{
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    background-color: #FAFAFA;
+}
+.ideaLabel{
+    background-color: white;
+    color: black;
+    height: 3.6rem;
+    width: 50%;
+    margin: 0 auto;
+    border-style: outset;
+}
+.username{
+    border-right: black;
+    border-right-style: solid;
+    border-width: 0.1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 12.5em;
+    padding-right: 12.5em;
+}
+.profile{
+    border-right: black;
+    border-right-style: solid;
+    border-width: 0.1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+     
+}
+.status{
+    border-right: black;
+    border-right-style: solid;
+    border-width: 0.1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+.likesAndDislikes{
+    border-width: 0.1rem;
+}
+
+.buttonUp{
+    background:transparent;
+}
+
+.buttonDown{
+    background:transparent;
+}
