@@ -3,7 +3,7 @@
     <head>
         <title>ProjectManagement</title>
 
-        <link rel="stylesheet" href="login.css" />
+        <link rel="stylesheet" href="styles/login.css" />
 
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +32,7 @@
             <br />
             <br />
             <br />
-            <a href="index.php">Zurück zur Startseite</a>
+            <a href="../index.php">Zurück zur Startseite</a>
         </div>
 
 

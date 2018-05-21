@@ -2,13 +2,13 @@
 <html>
 <head>
     <title>PIM</title>
-    <link rel="stylesheet" type="text/css" href="menu.tpl.css">
+    <link rel="stylesheet" type="text/css" href="styles/menu.tpl.css">
 </head>
 <body>
     
         <header class=headerMenu>
         <div>  
-            <a href="index.php"><img class="logo" src="../images/logo.png" /></a>
+            <a href="../index.php"><img class="logo" src="images/logo.png" /></a>
         </div>
         <div> 
             <form action="" >

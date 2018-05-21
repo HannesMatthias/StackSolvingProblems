@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="idea.css">
+    <link rel="stylesheet" type="text/css" href="styles/idea.css">
 </head>
 <body>
 
