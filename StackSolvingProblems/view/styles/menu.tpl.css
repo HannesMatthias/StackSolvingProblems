@@ -1,0 +1,62 @@
+body {
+    font-size: 100%;
+
+}
+
+.headerMenu {
+    background-color: #034B59;
+    height: 4rem;
+}
+.usLayout{
+    background-color: #034B59;
+    color: white;
+    font-weight: bold;
+    width: 7rem;
+    height: 3rem;
+    background-color: #034B59;
+    float: right;
+    margin-left: 0.1rem;
+    border: none;
+}
+.logAndReg{
+    margin-right: 1rem;
+}
+.searchContainer{
+    width: 90rem;
+    background-color: springgreen;
+     align-items: center;
+}
+.search{
+    color: black;
+    width: 60rem;
+    height: 3.2rem;
+    float: right;
+    margin-top: 0.4rem;
+    opacity: 0.5;
+    font-size: 2.5rem;
+    border:none;
+    border-top-left-radius: 0.1rem;
+    border-bottom-left-radius: 0.1rem;
+}
+
+.searchButton{
+    background-color: white;
+    color: black;
+    width: 3.5rem;
+    height: 3.2rem;
+    float: right;
+    margin-top: 0.4rem;
+    padding-right: 1.5rem;
+    margin-right: 5rem;
+    opacity: 0.5;
+    border: none;
+    border-top-right-radius: 0.1rem;
+    border-bottom-right-radius: 0.1rem;
+}
+
+.logo{
+    width: 4rem;
+    transform: scale(1);
+    float: left;
+}
+
