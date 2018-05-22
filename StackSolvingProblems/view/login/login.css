@@ -1,5 +1,5 @@
 body {
-	background: linear-gradient(to right, rgb(4, 55, 143), rgb(42, 42, 43));
+	background: linear-/* MANIPULATED-WORK */gradient(to right, rgb(4, 55, 143), rgb(42, 42, 43));
 	font-family: 'Roboto', sans-serif;
 }
 #titleform {
@@ -29,7 +29,7 @@ form {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+	vertical-align: baseline; 
 }
 
 .frameform input, .frameform textarea {
