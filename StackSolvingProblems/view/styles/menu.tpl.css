@@ -22,13 +22,13 @@ body {
     margin-right: 1rem;
 }
 .searchContainer{
-    width: 90rem;
+    width: 90%;
     background-color: springgreen;
      align-items: center;
 }
 .search{
     color: black;
-    width: 60rem;
+    width: 50%;
     height: 3.2rem;
     float: right;
     margin-top: 0.4rem;
