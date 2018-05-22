@@ -6,5 +6,9 @@
         
         <base href="view/" />
     </head>
-    <body></body>
+    <body>
+       
+    
+    
+    </body>
 </html>

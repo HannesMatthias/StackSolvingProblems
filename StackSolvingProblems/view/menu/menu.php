@@ -1,6 +1,6 @@
 <nav id="menu">
     <ul>
-        <li><a href="index.php"><img id="logo" src="../images/logo.png" /></a></li>
+        <li><a href="index.php"><img id="logo" src="logo.png" /></a></li>
         <li>
             <form>
                 <input type="search" id="searchbar" placeholder="Suche nach Fragen" />

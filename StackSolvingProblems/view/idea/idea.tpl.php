@@ -8,10 +8,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="styles/idea.css">
+    <link rel="stylesheet" type="text/css" href="view/idea/idea.css">
+    <link rel="stylesheet" type="text/css" href="view/menu/menu.css">
 </head>
 <body>
-
+<?php include_once "view/menu/menu.php" ?>
 <div class="scollView">
 <?php for ($i = 1; $i <= 10; $i++){ ?>
     <div class="ideaLabel">

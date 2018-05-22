@@ -9,7 +9,18 @@ class Controller {
         $this->generatePage($aktion);
     }
 
-    public function menu() {}
+    public function idea() {
+
+        $this->addContext("template", "idea/idea");
+
+    }
+
+     
+    private function addContext($key, $value){
+        $this->context[$key] = $value;
+    }
+
+
     private function generatePage($template) {
         extract($this->context);
         require_once 'view/' . $template . ".tpl.php";

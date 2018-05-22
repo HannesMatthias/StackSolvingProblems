@@ -3,7 +3,7 @@
     <head>
         <title>ProjectManagement</title>
 
-        <link rel="stylesheet" href="styles/login.css" />
+        <link rel="stylesheet" href="view/login/login.css" />
 
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
