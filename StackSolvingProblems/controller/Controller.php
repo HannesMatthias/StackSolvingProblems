@@ -15,6 +15,12 @@ class Controller {
 
     }
 
+    public function login() {
+
+        $this->addContext("template", "login/login");
+
+    }
+
      
     private function addContext($key, $value){
         $this->context[$key] = $value;
