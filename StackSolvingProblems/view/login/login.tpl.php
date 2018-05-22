@@ -29,7 +29,8 @@
                     </div>
                 <?php }?>     
 
-                <label>E-Mail</label> <input type="text" name="email" value="<?php echo $user->getEmail(); ?>"> 
+                <label>E-Mail</label> 
+                <input type="text" name="email" value="<?php echo $user->getEmail(); ?>"> 
                 <br />
                 <br /> 
                 <br /> 

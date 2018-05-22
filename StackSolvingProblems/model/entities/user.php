@@ -7,13 +7,7 @@
         private $email = '';
         private $passwort = '';
         private $statusid = 0;
-/*
-
-<TestUser:>
-        chef@gmail.com
-        Test
-
-</TestUser:>*/ 
+ 
 
         public function __construct($daten = array())
         {
@@ -185,8 +179,7 @@
                 $abfrage = DB::getDB()->prepare($sql);
                 $abfrage->execute(array($email,$pass));
                 $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
-                $user = $abfrage->fetch();
-                return $user;
+                return $abfrage->fetch();
             }catch (PDOException $e){
                 return null;
             }

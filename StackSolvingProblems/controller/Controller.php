@@ -20,7 +20,7 @@ class Controller {
         $errorList = array(
             "no_pw" => "Bitte geben Sie ein Passwort ein!",
             "no_email" => "Bitte geben Sie eine E-Mail ein!",
-            "no_right" => "Username oder Passwort falsch!"
+            "no_right" => "E-Mail oder Passwort falsch!"
         );
         $user = new User();
         if($_POST) {
@@ -33,7 +33,7 @@ class Controller {
                     $_SESSION["user"] = $user;
                     header("Location: index.php");
                 }
-                
+
             }else {
                 if (empty($_POST['email'])) {
                     $errors[] = $errorList["no_email"];
@@ -49,7 +49,7 @@ class Controller {
         }
         $this->addContext("errors", $errors);
         $this->addContext("user", $user);
-       
+        echo "user " . $user->getEmail(); 
         $this->addContext("template", "login/login");
 
     }
