@@ -174,16 +174,14 @@
         }
         public static function findByEmail($email,$pass)
         {
-            try{
-                $sql = 'SELECT * FROM user WHERE email=? AND password=?';
-                $abfrage = DB::getDB()->prepare($sql);
-                $abfrage->execute(array($email,$pass));
-                $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
-                return $abfrage->fetch();
-            }catch (PDOException $e){
-                return null;
-            }
-            return null;
+        
+            $sql = 'SELECT * FROM user WHERE email= ? AND password= ?';
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute(array($email,$pass));
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
+
+            return $abfrage->fetch();
+            
         }
         
        

@@ -27,7 +27,7 @@ class Controller {
             if(isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["password"]) && !empty($_POST["password"]) ) {             
                 $user = User::findByEmail($_POST["email"], $_POST["password"]); 
                 if ($user == null) {
-                    $user = new User();
+                    $user = new User($_POST);
                     $errors[] = $errorList["no_right"];
                 }else if($user != null) {
                     $_SESSION["user"] = $user;
@@ -49,7 +49,7 @@ class Controller {
         }
         $this->addContext("errors", $errors);
         $this->addContext("user", $user);
-        echo "user " . $user->getEmail(); 
+       
         $this->addContext("template", "login/login");
 
     }
