@@ -19,8 +19,18 @@
             <div id="titleform">Community-Projekte &amp; Forum </div>
 
             <form class="frameform" method="post"> 
-                
-                <label>Username</label> <input type="text" name="username"> 
+            <?php if(count($errors)) {?>
+                    <div id="errorBox">
+                        <?php
+                        foreach ($errors as $error) {
+                            echo $error . "<br />";
+                        }
+                        ?> 
+                    </div>
+                <?php }?>     
+
+                <label>E-Mail</label> 
+                <input type="text" name="email" value="<?php echo $user->getEmail(); ?>"> 
                 <br />
                 <br /> 
                 <br /> 
