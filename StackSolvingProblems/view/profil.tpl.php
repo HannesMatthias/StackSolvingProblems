@@ -2,29 +2,42 @@
 <html lang="de">
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        
-        <base href="view/" />
-        <link rel="stylesheet" type="text/css" href="view/styles/profil.css">
+        <link rel="stylesheet" type="text/css" href="styles/profil.css">
     </head>
     <body>
-        <div id="website">
-
+        <div id="Profil">
             <h1>Profil</h1>
-            <div id="form">
+            <div id="left">
+                <!-- Profilbild
+                Der Pfad des Bildes muss noch Variabel durch das Backend-Team implementiert werden -->
                 <img src="view/images/background.png" alt="Ihre Fresse">
+                <p>
+                    <font class="value">Benutername</font>
+                </p>
+                <hr/>
+                <p>
+                    <font class="value">Status</font>
+                </p>
+                <hr/>
+            </div>
+            <div id="right">
                 <div id="userdata">
                     <p>
-                        Vorname: 
-                        Nachname:
-                        Status:
-                        Email:
-                        Passwort:
+                        Vorname: <font class="value"></font>
+                    </p>
+                    <p>
+                        Nachname: <font class="value"></font>
+                    </p>
+                    <p>
+                        Status: <font class="value"></font>
+                    </p>
+                    <p>
+                        Email: <font class="value"></font>
                     </p>
                 </div>
                 <div if="projects">
                     <!-- PHP Typen sollen do foreachen mit die Projekte fa die User!!!!!!! Not a FrontEnd Problem :P 
-                        <div class="project"> Do kemmen nor die Projekte eini dormi mir sie formatieren kennen </div>
+                        <div class="project"> Do kemmen nor die Projekte eini dormit mir sie formatieren kennen </div>
                     -->
                 </div>
             </div>
