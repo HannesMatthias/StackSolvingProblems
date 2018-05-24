@@ -88,16 +88,23 @@ html, body {
     top: 78px;
     border-radius: 5px;
     border: 1px solid black;
-    display: none;
+    display: block;
 
 }
 
 #loginBox input{
     background-color: rgb(243, 243, 243); 
+    border-radius: 5px;
+    padding: 5px;
 
 }
 #loginBox label {
     margin-top: 25px;
     margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     display: block;
+    
+    
 }
