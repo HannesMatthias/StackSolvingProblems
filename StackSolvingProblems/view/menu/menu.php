@@ -10,7 +10,7 @@
         </li>
         <li><a href="#">Frage stellen</a></li>
         <li><a href="#">Probleme lösen</a> </li>        
-        <li><a href="#">An Projekten teilnehmen</a></li>
+     
         <li id="einloggen"><a href="#">Einloggen</a>
             <form id="loginBox" method="post">
                 <label>E-Mail</label>
