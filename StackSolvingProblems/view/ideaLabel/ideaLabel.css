@@ -10,10 +10,11 @@ body{
 .ideaLabel{
     color: black;
     height: 3.6rem;
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
     border-style: outset;
     background-color: white;
+    margin-top: 2px;
 }
 .username{
     border-right: black;

@@ -20,7 +20,7 @@
 <div class="infoboxes">
     <?php include_once "view/infoboxes/infoboxes.php";?>
 </div>
-<div>
+<div class="ideaLabels">
     <?php include_once "view/ideaLabel/ideaLabel.php";?>
 </div>
 </body>
