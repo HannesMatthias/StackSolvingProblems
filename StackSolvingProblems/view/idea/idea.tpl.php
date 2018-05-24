@@ -25,8 +25,8 @@ include_once "view/infoboxes/infoboxes.php"; ?>
             <th class="status"><label>status</label></th>
             <th class="likesAndDislikes">
                 <table>
-                    <tr><th><button type="button" class="buttonUp"><img src="images/up.png" width="15"></button></th></tr>
-                    <tr><th><button type="button" class="buttonDown"><img src="images/down.png" width="15"></button></th></tr>
+                    <tr><th><button type="button" class="buttonUp"><img src="view/images/up.png" width="15"></button></th></tr>
+                    <tr><th><button type="button" class="buttonDown"><img src="view/images/down.png" width="15"></button></th></tr>
                 </table>
             </th>
             <th class="likesAndDislikesText" align="center"><label>like</label></th>
