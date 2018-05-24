@@ -9,16 +9,10 @@
         private $points = 0;
         private $rangid = 0;
         private $email = '';
-<<<<<<< HEAD
         private $password = '';
         private $username = '';
         
     
-=======
-        private $username = '';
-        private $passwort = '';
-        private $statusid = 0;
->>>>>>> 1ff17fdcdf68b94f4d1cc5bddb56cc8bd397c1a8
  
 
         public function __construct($daten = array())
@@ -68,15 +62,9 @@
             return $this->lastname;
         }
 
-<<<<<<< HEAD
         public function setAge($age)
         {
             $this->age = $age;
-=======
-        public function setLastname($lastname)
-        {
-            $this->lastname = $lastname;
->>>>>>> 1ff17fdcdf68b94f4d1cc5bddb56cc8bd397c1a8
         }
 
         public function getAge()
@@ -108,22 +96,7 @@
             $this->email = $email;
         }
 
-<<<<<<< HEAD
         public function getEmail()
-=======
-        public function getUsername()
-        {
-            return $this->username;
-        }
-
-        public function setUsername($username)
-        {
-            $this->email = $username;
-        }
-
-        
-        public function getPasswort()
->>>>>>> 1ff17fdcdf68b94f4d1cc5bddb56cc8bd397c1a8
         {
             return $this->email;
         }
@@ -189,13 +162,8 @@
 
         private function _insert()
         {
-<<<<<<< HEAD
             $sql = 'INSERT INTO users (name, surname, age, sex, rang_id, points, email, password, username) '
                  . 'VALUES (:name, :surname, :age, :sex, :rangid, :points, :email, :password, :username)';
-=======
-            $sql = 'INSERT INTO user (first_name, last_name, username, email, passwort, status_id) '
-                 . 'VALUES (:firstname, :lastname, :username, :email, :passwort, :statusid)';
->>>>>>> 1ff17fdcdf68b94f4d1cc5bddb56cc8bd397c1a8
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -205,13 +173,8 @@
 
         private function _update()
         {
-<<<<<<< HEAD
             $sql = 'UPDATE users SET name=:name, surname=:surname, age=:age, sex =:sex, rang_id = :rangid,'
             .'points = :points, email=:email, password =:password, username = :username'
-=======
-            $sql = 'UPDATE user SET first_name=:firstname, last_name=:lastname, username=:username, email=:email, '
-                 . 'passwort=:passwort, status_id=:statusid '
->>>>>>> 1ff17fdcdf68b94f4d1cc5bddb56cc8bd397c1a8
                  . 'WHERE id=:id';
             $abfrage = self::$db->prepare($sql);
             $abfrage->execute($this->toArray());
