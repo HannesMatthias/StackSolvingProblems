@@ -2,21 +2,10 @@
 <html lang="de">
     <head>
         <meta charset="UTF-8">
-<<<<<<< HEAD
-        <link rel="stylesheet" type="text/css" href="styles/profil.css">
-    </head>
-    <body>
-        <div id="website">
-=======
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        
-        <base href="view/" />
         <link rel="stylesheet" type="text/css" href="styles/profil.css">
     </head>
     <body>
         <div id="Profil">
-
->>>>>>> 15079f6cc54ad5c71197674c03adbf21640018ab
             <h1>Profil</h1>
             <div id="left">
                 <!-- Profilbild
