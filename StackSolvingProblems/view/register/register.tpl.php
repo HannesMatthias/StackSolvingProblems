@@ -3,7 +3,7 @@
     <head>
         <title>ProjectManagement</title>
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="view/login/login.css" />
+        <link rel="stylesheet" href="view/register/register.css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
         <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0">
     </head>
@@ -26,17 +26,36 @@
                         }
                         ?> 
                     </div>
-                    
                 <?php }?>     
 
+                <label>Vorname</label> 
+                <input type="text" name="firstname" value="<?php echo $user->getFirstname(); ?>"> 
+                <br />
+                <br /> 
+                <br />
+                <label>Nachname</label> 
+                <input type="text" name="name" value="<?php echo $user->getLastname(); ?>"> 
+                <br />
+                <br /> 
+                <br />
                 <label>E-Mail</label> 
                 <input type="email" name="email" value="<?php echo $user->getEmail(); ?>"> 
                 <br />
                 <br /> 
+                <br />
+                <label>Benutzername</label> 
+                <input type="text" name="username" value="<?php echo $user->getUsername(); ?>"> 
+                <br />
                 <br /> 
+                <br />
                 <label>Passwort</label>
-                <input type="password" name="password"> <br> <br>
+                <input type="password" name="password">
+                <br />
                 <br /> 
+                <br />
+                <label>Passwort wiederholen</label>
+                <input type="password" name="re_password"> <br> <br>
+                <br />
                 <input type="submit" name="send" value="Abschicken">
             </form>
             <br />
