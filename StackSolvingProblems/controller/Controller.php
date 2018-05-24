@@ -4,9 +4,9 @@ class Controller {
 
     private $context = array();
 
-    public function run($aktion) {
-        $this->$aktion();
-        $this->generatePage($aktion);
+    public function run($action) {
+        $this->$action();
+        $this->generatePage($action);
     }
 
     public function idea() {
