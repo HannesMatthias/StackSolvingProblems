@@ -5,10 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         
         <base href="view/" />
-        <link rel="stylesheet" type="text/css" href="view/styles/profil.css">
+        <link rel="stylesheet" type="text/css" href="styles/profil.css">
     </head>
     <body>
-        <div id="Dein Profil">
+        <div id="Profil">
 
             <h1>Profil</h1>
             <div id="form">

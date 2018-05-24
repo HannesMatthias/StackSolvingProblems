@@ -1,3 +1,21 @@
-h1{
+body {
+        background: linear-gradient(to right, rgb(4, 55, 143), rgb(42, 42, 43));
+        font-family: 'Roboto', sans-serif;
+        background-image: url("background.png");
+     }
+
+
+h1 {
     color:red;
 }
+
+#left{
+color:blue;
+}
+
+#right{
+color:yellow;
+}
+
+
+
