@@ -76,6 +76,8 @@ class Controller {
                 } else {
                     array_pop($daten);
                     $user->save();
+                    header("Location: index.php");
+                    exit();
                 }
             }
         }

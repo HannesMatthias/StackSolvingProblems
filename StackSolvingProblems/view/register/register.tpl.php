@@ -53,6 +53,7 @@
                 <br />
                 <br /> 
                 <br />
+                <!-- TODO für Frontendler: Design für die Radiobuttons im CSS anpassen -->
                 <label>Geschlecht</label> 
                 <label for="sex_m">Männlich</label>
                 <input type="radio" id="sex_m" name="sex" value="male" <?php echo ($user->getSex() == "male") ? 'checked="checked"' : ""; ?>>
