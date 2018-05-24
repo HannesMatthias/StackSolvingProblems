@@ -2,32 +2,26 @@
 <html lang="de">
     <head>
         <meta charset="UTF-8">
-<<<<<<< HEAD
-        <link rel="stylesheet" type="text/css" href="styles/profil.css">
-    </head>
-    <body>
-        <div id="website">
-=======
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        
-        <base href="view/" />
         <link rel="stylesheet" type="text/css" href="styles/profil.css">
     </head>
     <body>
         <div id="Profil">
-
->>>>>>> 15079f6cc54ad5c71197674c03adbf21640018ab
             <h1>Profil</h1>
             <div id="left">
                 <!-- Profilbild
                 Der Pfad des Bildes muss noch Variabel durch das Backend-Team implementiert werden -->
-                <img src="view/images/background.png" alt="Ihre Fresse">
+                <img src="/images/background.png" alt="Ihre Fresse">
                 <p>
-                    <font class="value"><!--Benutzername--></font>
+                    <font class="username"><!--Benutzername--></font>
                 </p>
                 <hr/>
                 <p>
-                    <font class="value"><!--Status--></font>
+                    <font class="status"><!--Status--></font>
+                </p>
+                <hr/>
+                <p>
+                    Projekt
+                    <font class="project"><!--Projekt--></font>
                 </p>
                 <hr/>
             </div>
@@ -38,9 +32,6 @@
                     </p>
                     <p>
                         Nachname: <font class="value"></font>
-                    </p>
-                    <p>
-                        Status: <font class="value"></font>
                     </p>
                     <p>
                         Email: <font class="value"></font>

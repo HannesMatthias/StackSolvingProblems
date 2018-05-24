@@ -1,9 +1,14 @@
+html {
+    background-image: url("background.png");
+    background-size: cover;  
+}
+
 body {
-        background: linear-gradient(to right, rgb(4, 55, 143), rgb(42, 42, 43));
-        font-family: 'Roboto', sans-serif;
-        background-image: url("background.png");
+    /*background: linear-gradient(to right, rgb(4, 55, 143), rgb(42, 42, 43));*/
+    font-family: 'Roboto', sans-serif;
+    font-size: 100%;
         
-     }
+}
 
 
 h1 {
@@ -11,23 +16,19 @@ h1 {
 }
 
 #left{
-    
     border-right: black;
     border-right-style: solid;
     border-width: 0.1rem;
     float: left;
 }
 
-#right{
-    float: right;
-}
-
 #userdata{
-    
     border-right: black;
     border-right-style: solid;
     border-width: 0.1rem;
 }
+
+
 
 
 
