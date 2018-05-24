@@ -27,7 +27,7 @@ html, body {
 
 #menu ul li {
     list-style-type: none;
-    margin-right: 50px;
+    margin-right: 5%;
     border-top: 2px solid transparent;
     border-bottom: 2px solid transparent;
     box-sizing: border-box;
@@ -48,7 +48,8 @@ html, body {
 
 #menu ul li:first-of-type  {
     margin-right: auto;
-    margin-left: 10%;
+    margin-left: 5%;
+
 }
 #logo {
     width: 120px;
@@ -73,7 +74,10 @@ html, body {
 }
 #einloggen {
     display: inline-block;
-
+    position: relative;
+}
+#einloggen:active #loginBox{
+    display: block;
 }
 #loginBox {
     color: black;;
@@ -81,10 +85,10 @@ html, body {
     position: absolute;
     padding: 15px;
     right: -10px;
-    top: 100%;
- 
+    top: 78px;
     border-radius: 5px;
     border: 1px solid black;
+    display: none;
 
 }
 

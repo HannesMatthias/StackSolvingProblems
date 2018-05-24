@@ -1,17 +1,17 @@
-<?//MANIPULATED*/php
+<?php
 
 class Controller {
 
-    priv/*MANIPULATED*/ate $context = array();
+    private $context = array();
 
     public function run($action) {
         $this->$action();
         $this->generatePage($action);
     }
 
-    public function idea() {
+    public function main() {
 
-        $this->addContext("template", "idea/idea");
+        $this->addContext("template", "main/main");
 
     }
 
@@ -54,6 +54,43 @@ class Controller {
 
     }
 
+    public function register() {
+        $daten = array();
+        $errors = array();
+        $errorList = array(
+            "not_filled" => "Bitte füllen Sie alle Felder aus!",
+            "no_pwd_match" => "Die Passwörter stimmen nicht überein!"
+        );
+        $entries = array("email", "username", "firstname", "lastname", "passwort", "re_passwort");
+        $user = new User();
+        if($_POST) {
+            $i = 0;
+            foreach($entries as $e) {
+                if(!isset($_POST[$e]) || empty($_POST[$e])) {
+                    $errors[] = $errorList["not_filled"];
+                    break;
+                } else {
+                    $daten[$e] = $_POST[$e];
+                }
+                $i++;
+            }
+            if(empty($errors)) {
+                $user = new User($daten);
+                User::save(); 
+                if ($user == null) {
+                    $user = new User($_POST);
+                    
+                }/*else if($user != null) {
+                    $_SESSION["user"] = $user;
+                    header("Location: index.php");
+                }*/
+
+            }
+        }
+        $this->addContext("errors", $errors);
+        $this->addContext("user", $user);
+        $this->addContext("template", "register/register");
+    }
      
     private function addContext($key, $value){
         $this->context[$key] = $value;
