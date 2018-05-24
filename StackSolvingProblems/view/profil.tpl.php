@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="view/styles/profil.css">
     </head>
     <body>
-        <div id="website">
+        <div id="Dein Profil">
 
             <h1>Profil</h1>
             <div id="form">
