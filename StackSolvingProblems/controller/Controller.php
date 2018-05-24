@@ -1,8 +1,8 @@
-<?//MANIPULATED*/php
+<?php
 
 class Controller {
 
-    priv/*MANIPULATED*/ate $context = array();
+    private $context = array();
 
     public function run($action) {
         $this->$action();
