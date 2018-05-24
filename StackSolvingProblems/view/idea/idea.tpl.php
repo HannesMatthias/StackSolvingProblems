@@ -13,8 +13,12 @@
     <link rel="stylesheet" type="text/css" href="view/infoboxes/infoboxes.css">
 </head>
 <body>
-<?php include_once "view/menu/menu.php";
-include_once "view/infoboxes/infoboxes.php"; ?>
+<div class="menu">
+    <?php include_once "view/menu/menu.php"; ?>
+</div>
+<div class="infoboxes">
+    <?php include_once "view/infoboxes/infoboxes.php"; ?>
+</div>
 <div class="scollView">
 <?php for ($i = 1; $i <= 10; $i++){ ?>
     <div class="ideaLabel">
