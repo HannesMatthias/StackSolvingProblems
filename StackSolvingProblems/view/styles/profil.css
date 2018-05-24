@@ -1,7 +1,7 @@
 body {
         background: linear-gradient(to right, rgb(4, 55, 143), rgb(42, 42, 43));
         font-family: 'Roboto', sans-serif;
-        background-image: url("background.png");
+        background-image: url("/view/images/background.png");
      }
 
 
@@ -10,11 +10,11 @@ h1 {
 }
 
 #left{
-color:blue;
+    color:blue;
 }
 
 #right{
-color:yellow;
+    color:yellow;
 }
 
 
