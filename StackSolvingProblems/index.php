@@ -1,14 +1,14 @@
 <?php
 
-
+require_once 'model/entities/user.php';
 require_once 'model/entities/DB.php';
 require_once 'controller/Controller.php';
 
-$aktion = isset($_GET['aktion']) ? $_GET['aktion'] : 'menu';
+$action = isset($_GET['action']) ? $_GET['action'] : 'idea';
 $controller = new Controller();
 
-if (method_exists($controller, $aktion)) {
+if (method_exists($controller, $action)) {
 
-    $controller->run($aktion);
+    $controller->run($action);
 }
 ?>
