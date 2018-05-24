@@ -7,13 +7,10 @@
         private $age = 0;   
         private $sex = '';
         private $points = 0;
-        private $rangid = 0;
+        private $rangid = 1;
         private $email = '';
         private $password = '';
         private $username = '';
-        
-    
- 
 
         public function __construct($daten = array())
         {
@@ -28,11 +25,12 @@
                     }
                 }
             }
+            $this->setEncoding();
         }
 
         public function  __toString()
         {
-            return $this->getFirstname() . ' ' . $this->getLastname();
+            return $this->getName() . ' ' . $this->getSurname();
         }
 
         /* *** Getter und Setter *** */
@@ -59,7 +57,7 @@
 
         public function getSurname()
         {
-            return $this->lastname;
+            return $this->surname;
         }
 
         public function setAge($age)
@@ -121,6 +119,12 @@
             return $this->username;
         }
 
+        public function setEncoding() {
+            $sql = "SET NAMES 'utf8'";
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute();
+        }
+
         public function toArray($mitId = true)
         {
             $attribute = get_object_vars($this);
@@ -144,7 +148,8 @@
                     $this->_insert();
                 }
             } catch (PDOException $e){
-                 return FALSE;
+                echo $e->getMessage();
+                return FALSE;
             }
             return TRUE;
         }
@@ -162,7 +167,7 @@
 
         private function _insert()
         {
-            $sql = 'INSERT INTO users (name, surname, age, sex, rang_id, points, email, password, username) '
+            $sql = 'INSERT INTO users (name, surname, age, sex, rang_id, points, email, password_hash, username) '
                  . 'VALUES (:name, :surname, :age, :sex, :rangid, :points, :email, :password, :username)';
 
             $abfrage = DB::getDB()->prepare($sql);
@@ -178,6 +183,7 @@
                  . 'WHERE id=:id';
             $abfrage = self::$db->prepare($sql);
             $abfrage->execute($this->toArray());
+            
         }
 
         /* ***** Statische Methoden ***** */
@@ -222,8 +228,6 @@
         public function findTags(){
             return Tag::findeByUserId($this->getId());
         }
-        
-       
         
     }
 ?>

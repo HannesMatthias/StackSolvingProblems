@@ -2,6 +2,16 @@ body {
 	background: linear-gradient(to right, rgb(4, 55, 143), rgb(42, 42, 43));
 	font-family: 'Roboto', sans-serif;
 }
+
+.no-spinners {
+	-moz-appearance:textfield;
+}
+.no-spinners::-webkit-outer-spin-button,
+.no-spinners::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
 #titleform {
 	margin-top: 20px;
 	margin-bottom: 50px;
@@ -47,9 +57,6 @@ form {
 	
 }
 
-
-
-
 .frameform label {
 	font-size: 0.95em;
 	color: #fff;
@@ -83,7 +90,6 @@ form {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-o-border-radius: 3px;
-	
 }
 
 

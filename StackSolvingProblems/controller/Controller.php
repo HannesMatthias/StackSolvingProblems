@@ -61,30 +61,24 @@ class Controller {
             "not_filled" => "Bitte füllen Sie alle Felder aus!",
             "no_pwd_match" => "Die Passwörter stimmen nicht überein!"
         );
-        $entries = array("email", "username", "firstname", "lastname", "passwort", "re_passwort");
+        $entries = array("name", "surname", "age", "sex", "email", "password", "username", "re_password");
         $user = new User();
         if($_POST) {
-            $i = 0;
             foreach($entries as $e) {
                 if(!isset($_POST[$e]) || empty($_POST[$e])) {
-                    $errors[] = $errorList["not_filled"];
-                    break;
+                    $errors[0] = $errorList["not_filled"];
                 } else {
                     $daten[$e] = $_POST[$e];
                 }
-                $i++;
             }
+            $user = new User($daten);
             if(empty($errors)) {
-                $user = new User($daten);
-                User::save(); 
-                if ($user == null) {
-                    $user = new User($_POST);
-                    
-                }/*else if($user != null) {
-                    $_SESSION["user"] = $user;
-                    header("Location: index.php");
-                }*/
-
+                if($daten["password"] != $daten["re_password"]) {
+                    $errors[] = $errorList["no_pwd_match"];
+                } else {
+                    array_pop($daten);
+                    $user->save();
+                }
             }
         }
         $this->addContext("errors", $errors);
