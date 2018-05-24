@@ -10,9 +10,7 @@ class Controller {
     }
 
     public function main() {
-
         $this->addContext("template", "main/main");
-
     }
 
     public function login() {    
