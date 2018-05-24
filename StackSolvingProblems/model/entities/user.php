@@ -7,7 +7,7 @@
         private $age = 0;   
         private $sex = '';
         private $points = 0;
-        private $rangid = 0;
+        private $rangid = 1;
         private $email = '';
         private $password = '';
         private $username = '';
@@ -32,13 +32,13 @@
 
         public function  __toString()
         {
-            return $this->getFirstname() . ' ' . $this->getLastname();
+            return $this->getName() . ' ' . $this->getSurname();
         }
 
         /* *** Getter und Setter *** */
 
         public function getId()
-        {
+        { 
             return $this->id;
         }
 
@@ -59,7 +59,7 @@
 
         public function getSurname()
         {
-            return $this->lastname;
+            return $this->surname;
         }
 
         public function setAge($age)
@@ -79,6 +79,16 @@
         public function getSex()
         {
             return $this->sex;
+        }
+
+        public function setPoints($points)
+        {
+            $this->points = $points;
+        }
+
+        public function getPoints()
+        {
+            return $this->points;
         }
 
         public function setRangid($rangid)
@@ -144,6 +154,7 @@
                     $this->_insert();
                 }
             } catch (PDOException $e){
+                echo $e;
                  return FALSE;
             }
             return TRUE;
@@ -151,7 +162,7 @@
 
         public function delete()
         {
-            $sql = 'DELETE FROM user WHERE id=?';
+            $sql = 'DELETE FROM users WHERE id=?';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute( array($this->getId()) );
             // Objekt existiert nicht mehr in der DB, also muss die ID zurückgesetzt werden
@@ -162,19 +173,20 @@
 
         private function _insert()
         {
-            $sql = 'INSERT INTO users (name, surname, age, sex, rang_id, points, email, password, username) '
+            $sql = 'INSERT INTO users (name, surname, age, sex, rang_id, points, email, password_hash, username) '
                  . 'VALUES (:name, :surname, :age, :sex, :rangid, :points, :email, :password, :username)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
             // setze die ID auf den von der DB generierten Wert
             $this->id = DB::getDB()->lastInsertId();
+            echo "ID ".$this->id;
         }
 
         private function _update()
         {
             $sql = 'UPDATE users SET name=:name, surname=:surname, age=:age, sex =:sex, rang_id = :rangid,'
-            .'points = :points, email=:email, password =:password, username = :username'
+            .'points = :points, email=:email, password_hash =:password, username = :username'
                  . 'WHERE id=:id';
             $abfrage = self::$db->prepare($sql);
             $abfrage->execute($this->toArray());
@@ -207,7 +219,7 @@
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
             return $abfrage->fetchAll();
         }
-        public static function findByEmail($email,$pass)
+        public static function findByEmailAndPassword($email,$pass)
         {
         
             $sql = 'SELECT * FROM users WHERE email= ? AND password= ?';
@@ -219,7 +231,19 @@
             
         }
 
-        public function findTags(){
+        public static function findByEmail($email)
+        {
+        
+            $sql = 'SELECT * FROM users WHERE email= ?';
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute(array($email));
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
+
+            return $abfrage->fetch();
+            
+        }
+
+        public function findUserTags(){
             return Tag::findeByUserId($this->getId());
         }
         

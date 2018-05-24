@@ -25,7 +25,7 @@ class Controller {
         $user = new User();
         if($_POST) {
             if(isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["password"]) && !empty($_POST["password"]) ) {             
-                $user = User::findByEmail($_POST["email"], $_POST["password"]); 
+                $user = User::findByEmailAndPassword($_POST["email"], $_POST["password"]); 
                 if ($user == null) {
                     $user = new User($_POST);
                     $errors[] = $errorList["no_right"];
@@ -59,24 +59,32 @@ class Controller {
         $errors = array();
         $errorList = array(
             "not_filled" => "Bitte füllen Sie alle Felder aus!",
-            "no_pwd_match" => "Die Passwörter stimmen nicht überein!"
+            "no_pwd_match" => "Die Passwörter stimmen nicht überein!",
+            "email_exists" => "Email schon Registerirt!"
         );
-        $entries = array("email", "username", "firstname", "lastname", "passwort", "re_passwort");
+        $entries = array("email", "name", "surname", "username", "password");
         $user = new User();
         if($_POST) {
-            $i = 0;
             foreach($entries as $e) {
                 if(!isset($_POST[$e]) || empty($_POST[$e])) {
                     $errors[] = $errorList["not_filled"];
                     break;
                 } else {
                     $daten[$e] = $_POST[$e];
+                    if($e == "email"){
+                        if($user->findByEmail($daten[$e]) != NULL){
+                            $errors[] = $errorList["email_exists"];
+                        }
+                    } else if($e == "password"){
+                        if ($daten[$e] != $_POST["re_password"]){
+                            $errors[] = $errorList["no_pwd_match"];
+                        }
+                    }
                 }
-                $i++;
             }
             if(empty($errors)) {
                 $user = new User($daten);
-                User::save(); 
+                $user->save(); 
                 if ($user == null) {
                     $user = new User($_POST);
                     
@@ -85,6 +93,9 @@ class Controller {
                     header("Location: index.php");
                 }*/
 
+            }
+            else {
+                $user = new User($_POST);
             }
         }
         $this->addContext("errors", $errors);
