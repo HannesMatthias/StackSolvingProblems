@@ -2,10 +2,11 @@
 <html>
     <head>
         <title>ProjectManagement</title>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
         <link rel="stylesheet" href="view/login/login.css" />
+
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
-        <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
 
@@ -30,7 +31,7 @@
                 <?php }?>     
 
                 <label>E-Mail</label> 
-                <input type="email" name="email" value="<?php echo $user->getEmail(); ?>"> 
+                <input type="text" name="email" value="<?php echo $user->getEmail(); ?>"> 
                 <br />
                 <br /> 
                 <br /> 
@@ -42,7 +43,7 @@
             <br />
             <br />
             <br />
-            <a href="index.php">Zurück zur Startseite</a>
+            <a href="../index.php">Zurück zur Startseite</a>
         </div>
 
 

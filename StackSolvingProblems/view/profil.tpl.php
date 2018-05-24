@@ -12,11 +12,16 @@
                 Der Pfad des Bildes muss noch Variabel durch das Backend-Team implementiert werden -->
                 <img src="view/images/background.png" alt="Ihre Fresse">
                 <p>
-                    <font class="value"><!--Benutzername--></font>
+                    <font class="username"><!--Benutzername--></font>
                 </p>
                 <hr/>
                 <p>
-                    <font class="value"><!--Status--></font>
+                    <font class="status"><!--Status--></font>
+                </p>
+                <hr/>
+                <p>
+                    Projekt
+                    <font class="project"><!--Projekt--></font>
                 </p>
                 <hr/>
             </div>
