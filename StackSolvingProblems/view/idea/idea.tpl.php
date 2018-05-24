@@ -10,6 +10,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="view/idea/idea.css">
     <link rel="stylesheet" type="text/css" href="view/menu/menu.css">
+    <script src="plugins/js/jquery.min.js"> </script>
     <link rel="stylesheet" type="text/css" href="view/infoboxes/infoboxes.css">
 </head>
 <body>
