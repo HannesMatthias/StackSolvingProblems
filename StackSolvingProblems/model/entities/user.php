@@ -5,6 +5,7 @@
         private $firstname = '';
         private $lastname = '';
         private $email = '';
+        private $username = '';
         private $passwort = '';
         private $statusid = 0;
  
@@ -48,12 +49,12 @@
 
         public function getLastname()
         {
-            return $this->name;
+            return $this->lastname;
         }
 
-        public function setLastname($name)
+        public function setLastname($lastname)
         {
-            $this->name = $name;
+            $this->lastname = $lastname;
         }
 
         public function getEmail()
@@ -66,6 +67,17 @@
             $this->email = $email;
         }
 
+        public function getUsername()
+        {
+            return $this->username;
+        }
+
+        public function setUsername($username)
+        {
+            $this->email = $username;
+        }
+
+        
         public function getPasswort()
         {
             return $this->passwort;
@@ -127,8 +139,8 @@
 
         private function _insert()
         {
-            $sql = 'INSERT INTO user (first_name, last_name, email, passwort, status_id) '
-                 . 'VALUES (:firstname, :lastname, :email, :passwort, :statusid)';
+            $sql = 'INSERT INTO user (first_name, last_name, username, email, passwort, status_id) '
+                 . 'VALUES (:firstname, :lastname, :username, :email, :passwort, :statusid)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -138,7 +150,7 @@
 
         private function _update()
         {
-            $sql = 'UPDATE user SET first_name=:firstname, last_name=:lastname, email=:email, '
+            $sql = 'UPDATE user SET first_name=:firstname, last_name=:lastname, username=:username, email=:email, '
                  . 'passwort=:passwort, status_id=:statusid '
                  . 'WHERE id=:id';
             $abfrage = self::$db->prepare($sql);

@@ -1,3 +1,28 @@
+<<<<<<< HEAD:StackSolvingProblems/view/ideaLabel/ideaLabel.php
+=======
+<?php 
+    $username;
+    $status;
+    $likes;
+    $dislikes;
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="view/idea/idea.css">
+    <link rel="stylesheet" type="text/css" href="view/menu/menu.css">
+    <script src="plugins/js/jquery.min.js"> </script>
+    <link rel="stylesheet" type="text/css" href="view/infoboxes/infoboxes.css">
+</head>
+<body>
+<div class="menu">
+    <?php include_once "view/menu/menu.php"; ?>
+</div>
+<div class="infoboxes">
+    <?php include_once "view/infoboxes/infoboxes.php"; ?>
+</div>
+>>>>>>> 2cea75e2ec3e6cffdff2d79b4171d8b3cefdf52f:StackSolvingProblems/view/idea/idea.tpl.php
 <div class="scollView">
 <?php for ($i = 1; $i <= 10; $i++){ ?>
     <div class="ideaLabel">
