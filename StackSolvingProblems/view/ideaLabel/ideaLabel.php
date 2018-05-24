@@ -1,3 +1,5 @@
+<<<<<<< HEAD:StackSolvingProblems/view/ideaLabel/ideaLabel.php
+=======
 <?php 
     $username;
     $status;
@@ -20,6 +22,7 @@
 <div class="infoboxes">
     <?php include_once "view/infoboxes/infoboxes.php"; ?>
 </div>
+>>>>>>> 2cea75e2ec3e6cffdff2d79b4171d8b3cefdf52f:StackSolvingProblems/view/idea/idea.tpl.php
 <div class="scollView">
 <?php for ($i = 1; $i <= 10; $i++){ ?>
     <div class="ideaLabel">
@@ -40,6 +43,3 @@
     </div> 
     <?php } ?>
 </div>   
-
-</body>
-</html>

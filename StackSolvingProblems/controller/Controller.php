@@ -9,9 +9,9 @@ class Controller {
         $this->generatePage($action);
     }
 
-    public function idea() {
+    public function main() {
 
-        $this->addContext("template", "idea/idea");
+        $this->addContext("template", "main/main");
 
     }
 
