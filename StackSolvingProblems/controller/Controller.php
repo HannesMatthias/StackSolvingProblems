@@ -1,17 +1,17 @@
-<?//MANIPULATED*/php
+<?php
 
 class Controller {
 
-    priv/*MANIPULATED*/ate $context = array();
+    private $context = array();
 
     public function run($action) {
         $this->$action();
         $this->generatePage($action);
     }
 
-    public function idea() {
+    public function main() {
 
-        $this->addContext("template", "idea/idea");
+        $this->addContext("template", "main/main");
 
     }
 
