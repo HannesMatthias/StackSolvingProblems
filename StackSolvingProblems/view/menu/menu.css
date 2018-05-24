@@ -1,11 +1,21 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/*Obere danach löschen*/
 #menu {
-    background-color: rgb(42, 42, 43);
-    font-family: 'Roboto', sans-serif;
-    padding: 5px 0;
-    position: absolute;
+   /* background-color: rgb(42, 42, 43); */
+    background-color: #49a0cc;
+    font-family: 'Open Sans', sans-serif;
+    padding: 10px 0;
+    position: relative;
     top:0;
     left: 0;
     right: 0;
+    padding-right: 10%;
+    border-bottom: 1px solid black;
 }
 
 #menu ul {
@@ -17,7 +27,7 @@
 
 #menu ul li {
     list-style-type: none;
-    margin-right: 2%;
+    margin-right: 5%;
     border-top: 2px solid transparent;
     border-bottom: 2px solid transparent;
     box-sizing: border-box;
@@ -26,22 +36,20 @@
 }
 
 
-#menu ul li a {
-    color: #fff;
+#menu ul li a { 
+    color: white;
     margin: 0px;
     text-decoration: none;
 }
-#menu ul li :not(:first-of-type):after {
-    content: "|";
-    padding-left: 20px;
-}
+
 #menu ul li a:hover  {
     text-decoration: underline;
 }
 
 #menu ul li:first-of-type  {
     margin-right: auto;
-    margin-left: 10%;
+    margin-left: 5%;
+
 }
 #logo {
     width: 120px;
@@ -60,7 +68,36 @@
 #searchButton {
     background-color: white;;
     border: none;
-    color: black;
+    color: color;
     padding: 4px;
     border-radius: 10px;
+}
+#einloggen {
+    display: inline-block;
+    position: relative;
+}
+#einloggen:active #loginBox{
+    display: block;
+}
+#loginBox {
+    color: black;;
+    background-color: white;
+    position: absolute;
+    padding: 15px;
+    right: -10px;
+    top: 78px;
+    border-radius: 5px;
+    border: 1px solid black;
+    display: none;
+
+}
+
+#loginBox input{
+    background-color: rgb(243, 243, 243); 
+
+}
+#loginBox label {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: block;
 }
