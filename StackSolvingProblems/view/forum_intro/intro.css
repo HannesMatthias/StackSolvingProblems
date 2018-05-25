@@ -1,0 +1,54 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    background-color: #0597b8;
+    color: white;
+}
+
+#title {
+    text-align: center;
+    margin-bottom: 11%;
+    font-size: 3.5rem;
+    letter-spacing: 5px;
+}
+
+#box {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+form {   
+    width:  100%;
+}
+form #question {
+    width: 85%;
+    height: 50px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: none;
+    font-size: 1.4em;
+    font-style: italic;
+   /* background: url(search.png) no-repeat;
+    background-position: 97%;
+    background-size: 30px 30px;*/
+    background-color: white;
+    float: left;
+    padding-left: 10px;
+}
+form button {
+    border: none;
+    background: none;
+    height: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+form button img {
+    height: 100%;
+}

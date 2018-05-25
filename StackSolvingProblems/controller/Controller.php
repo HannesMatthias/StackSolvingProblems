@@ -90,7 +90,7 @@ class Controller {
                 }
             }
         }
-        
+
         $this->addContext("errors", $errors);
         $this->addContext("user", $user);
         $this->addContext("template", "register/register");
@@ -98,6 +98,9 @@ class Controller {
 
 
     public function logout() {}
+    public function forum_intro() {
+        $this->addContext("template", "forum_intro/intro");
+    }
     private function addContext($key, $value){
         $this->context[$key] = $value;
     }
