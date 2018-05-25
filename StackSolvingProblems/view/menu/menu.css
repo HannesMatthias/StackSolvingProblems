@@ -10,12 +10,12 @@ html, body {
     background-color: #49a0cc;
     font-family: 'Open Sans', sans-serif;
     padding: 10px 0;
-    position: relative;
     top:0;
     left: 0;
     right: 0;
     padding-right: 10%;
     border-bottom: 1px solid black;
+
 }
 
 #menu ul {
@@ -23,6 +23,8 @@ html, body {
     padding: 0;
     display:flex;
     align-items: center;
+    position: relative;
+ 
 }
 
 #menu ul li {
@@ -30,9 +32,8 @@ html, body {
     margin-right: 5%;
     border-top: 2px solid transparent;
     border-bottom: 2px solid transparent;
-    box-sizing: border-box;
-    
-    display:block;
+
+
 }
 
 
@@ -40,6 +41,7 @@ html, body {
     color: white;
     margin: 0px;
     text-decoration: none;
+    position: relative;
 }
 
 #menu ul li a:hover  {
@@ -72,32 +74,89 @@ html, body {
     padding: 4px;
     border-radius: 10px;
 }
-#einloggen {
+#einloggen, #profile {
     display: inline-block;
     position: relative;
+    float: right;
+    margin-top: 0.5em !important;
+    margin-left: 0.5em !important;
 }
-#einloggen:active #loginBox{
-    display: block;
+
+.profile_img {
+    float:left;
 }
+
 #loginBox {
-    color: black;;
+    color: black;
     background-color: white;
     position: absolute;
     padding: 15px;
     right: -10px;
-    top: 78px;
+    top: 100%;
     border-radius: 5px;
     border: 1px solid black;
     display: none;
 
 }
 
+.active {
+    display: block !important;
+}
+
 #loginBox input{
     background-color: rgb(243, 243, 243); 
+    padding: 5px;
+    border-radius: 5px;
 
 }
-#loginBox label {
+#loginBox label{
     margin-top: 25px;
     margin-bottom: 25px;
     display: block;
+    text-align: center;
+    font-weight: bold;
+    
+
+}
+#loginBox #login {
+    display: block;
+    margin: 20px auto 0 auto;
+    background-color: #49a0cc;
+    padding:10px;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+#loginBox a {
+    color: black !important;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px !important;
+}
+#usermenu {
+    position: absolute;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    min-width: 130px;
+    width: 8%;
+    border-radius: 5px;
+    display: none;
+
+}
+
+#usermenu a{
+    display: block;
+}
+
+.profileIcon {
+    float:left;
+}
+.profileText {
+    display: block;
+    font-size: 1.2rem;
+    color: black !important;
+    margin: 1.2em 0 1.2em 0 !important;
+    padding-top: .3em;
+    padding-left: 2.5em;
 }
