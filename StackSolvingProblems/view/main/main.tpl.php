@@ -16,13 +16,13 @@
     <link rel="stylesheet" type="text/css" href="view/infoboxes/infoboxes.css">
 </head>
 <body>
-<?php include_once "view/menu/menu.php";?>
+<?php include_once "view/menu/menu.php"; ?>
 
 <div class="infoboxes">
-    <?php include_once "view/infoboxes/infoboxes.php";?>
+    <?php include_once "view/infoboxes/infoboxes.php"; ?>
 </div>
 <div class="ideaLabels">
-    <?php include_once "view/ideaLabel/ideaLabel.php";?>
+    <?php include_once "view/ideaLabel/ideaLabel.php"; ?>
 </div>
 </body>
 </html>

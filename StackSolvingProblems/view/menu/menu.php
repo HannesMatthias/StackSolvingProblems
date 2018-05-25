@@ -12,15 +12,28 @@
         <li><a href="#">Frage stellen</a></li>
         <li><a href="#">Probleme lösen</a> </li>        
      
-        <li><a id="einloggen" href="#">Einloggen</a>
-            <form id="loginBox" method="post">
-                <label>E-Mail</label>
-                <input type="text" name="email" value="mh14270@gmail.com"/> 
+        <li>
+        <?php 
+            $session = Session::getInstance();
+            if($session->getSession("user") == null ) { ?>
+                <a id="einloggen" href="#">Einloggen</a>
+                
+                <form id="loginBox" action="index.php?action=login" method="post">
+                <label>E-Mail oder Benutzername</label>
+                <input type="text" name="name" placeholder="Benutzername"/> 
                 <label>Passwort</label>
-                <input type="password" name="password" value="" /> 
-                <input id="login" type="submit" name="password" value="Einloggen" />
+                <input type="password" name="password" /> 
+                <input id="login" type="submit" name="login" value="Einloggen" />
                 <a href="index.php?action=register">Jetzt registrieren</a>
             </form>
+        <?php   exit;
+            }else { 
+                $user = $session->getSession("user"); ?>
+                <img src="view/menu/tmpUser.png" alt="ProfilePhoto"/>
+                <a id="einloggen" href="#"><?php echo $user->getUsername(); ?> </a>
+    <?php   } ?>
+       
+           
         </li>
     </ul>
 </nav>

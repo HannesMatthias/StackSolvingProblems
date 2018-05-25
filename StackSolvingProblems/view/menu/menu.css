@@ -77,6 +77,13 @@ html, body {
 #einloggen {
     display: inline-block;
     position: relative;
+    float: right;
+    margin-top: 0.5em !important;
+    margin-left: 0.5em !important;
+}
+
+.profile_img {
+    float:left;
 }
 
 #loginBox {

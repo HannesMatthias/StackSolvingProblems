@@ -14,26 +14,35 @@ class Controller {
     }
 
     public function login() {    
+        $session = Session::getInstance();
+        if($session->getSession("user") != null ) { //Hier eigentlich sinnlos.
+            header("Location: index.php");
+            exit;
+        }
+
+
         $errors = array();
         $errorList = array(
             "no_pw" => "Bitte geben Sie ein Passwort ein!",
             "no_email" => "Bitte geben Sie eine E-Mail ein!",
             "no_right" => "E-Mail oder Passwort falsch!"
         );
+
         $user = new User();
         if($_POST) {
-            if(isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["password"]) && !empty($_POST["password"]) ) {             
-                $user = User::findByEmail($_POST["email"], $_POST["password"]); 
+            if(isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["password"]) && !empty($_POST["password"]) ) {             
+                $user = User::einloggen($_POST["name"], $_POST["password"]); 
                 if ($user == null) {
                     $user = new User($_POST);
                     $errors[] = $errorList["no_right"];
                 }else if($user != null) {
-                    $_SESSION["user"] = $user;
-                    header("Location: index.php");
+                    $session->setSession("user", $user);
+                    header("Location: index.php?hahah");
                 }
 
+
             }else {
-                if (empty($_POST['email'])) {
+                if (empty($_POST['name'])) {
                     $errors[] = $errorList["no_email"];
                 } 
 
@@ -47,8 +56,8 @@ class Controller {
         }
         $this->addContext("errors", $errors);
         $this->addContext("user", $user);
-       
-        $this->addContext("template", "login/login");
+
+       $this->addContext("template", "main/main");
 
     }
 
@@ -59,7 +68,7 @@ class Controller {
             "not_filled" => "Bitte füllen Sie alle Felder aus!",
             "no_pwd_match" => "Die Passwörter stimmen nicht überein!"
         );
-        $entries = array("name", "surname", "age", "sex", "email", "password", "username", "re_password");
+        $entries = array("name", "surname",  "email", "password", "username", "re_password");
         $user = new User();
         if($_POST) {
             foreach($entries as $e) {
