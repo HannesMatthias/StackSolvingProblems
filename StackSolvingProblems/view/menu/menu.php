@@ -30,7 +30,25 @@
             }else { 
                 $user = $session->getSession("user"); ?>
                 <img src="view/menu/tmpUser.png" alt="ProfilePhoto"/>
-                <a id="einloggen" href="#"><?php echo $user->getUsername(); ?> </a>
+                <a id="profile" href="#"><?php echo $user->getUsername(); ?> </a>
+                <div id="usermenu">
+                    <a href="#">
+                        <div class="profileIcon"><img src="view/menu/profile.png"/></div>
+                        <div class="profileText">Profil</div>
+                    </a>
+                    <a href="#">
+                        <div class="profileIcon"><img src="view/menu/message.png"/></div>
+                        <div class="profileText">Beiträge</div>
+                    </a>
+                    <a href="index.php?action=logout">
+                        <div class="profileIcon"><img src="view/menu/logout.png"/></div>
+                        <div class="profileText">Logout</div>
+                    </a>
+                   
+
+                </div>
+                
+
     <?php   } ?>
        
            

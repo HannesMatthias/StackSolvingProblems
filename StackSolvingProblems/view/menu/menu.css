@@ -74,7 +74,7 @@ html, body {
     padding: 4px;
     border-radius: 10px;
 }
-#einloggen {
+#einloggen, #profile {
     display: inline-block;
     position: relative;
     float: right;
@@ -132,4 +132,31 @@ html, body {
     text-align: center;
     font-size: 14px;
     margin-top: 20px !important;
+}
+#usermenu {
+    position: absolute;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    min-width: 130px;
+    width: 8%;
+    border-radius: 5px;
+    display: none;
+
+}
+
+#usermenu a{
+    display: block;
+}
+
+.profileIcon {
+    float:left;
+}
+.profileText {
+    display: block;
+    font-size: 1.2rem;
+    color: black !important;
+    margin: 1.2em 0 1.2em 0 !important;
+    padding-top: .3em;
+    padding-left: 2.5em;
 }

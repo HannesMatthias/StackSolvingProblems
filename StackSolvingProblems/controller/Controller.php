@@ -94,11 +94,13 @@ class Controller {
         $this->addContext("user", $user);
         $this->addContext("template", "register/register");
     }
-     
+
+
+    public function logout() {}
     private function addContext($key, $value){
         $this->context[$key] = $value;
     }
-
+    
 
     private function generatePage($template) {
         extract($this->context);
