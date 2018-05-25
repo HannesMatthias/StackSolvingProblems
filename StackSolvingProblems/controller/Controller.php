@@ -90,6 +90,7 @@ class Controller {
                 }
             }
         }
+        
         $this->addContext("errors", $errors);
         $this->addContext("user", $user);
         $this->addContext("template", "register/register");
