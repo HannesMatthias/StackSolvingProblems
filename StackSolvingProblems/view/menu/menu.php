@@ -1,5 +1,7 @@
-
+<header>
+<img id="mobile_logo" src="view/images/logo.png" alt="Logo" /> 
 <nav id="menu">
+    
     <ul>
         <li><a href="index.php"><img id="logo" src="view/menu/logo.png" /></a></li>
         <li>
@@ -55,3 +57,6 @@
         </li>
     </ul>
 </nav>
+
+
+</header>
