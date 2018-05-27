@@ -15,6 +15,18 @@
     <body>
         <?php include_once "view/menu/menu.php" ?>
 
+        <div class="box_extern">
+            <div class="autor">
+                Hannes
+            </div>
+            <div class="title">
+                Problem bei Schleife    
+            </div> 
+            <div class="question">
+                Wie kann man eine for schleife machen, die 10x durchläuft
+            </div>   
+
+        </div>
     </body>
 
 
