@@ -129,11 +129,13 @@ html, body {
     background-color: white;
     color: black;
     padding: 10px;
-    min-width: 130px;
+    min-width: 170px;
     width: 8%;
     border-radius: 5px;
     display: none;
-
+    top: 100%;
+    box-sizing:  border-box;
+    border-radius: 0px 0px 5px 5px;
 }
 
 #usermenu a{
@@ -195,6 +197,7 @@ header {
         border-radius: 10px;
         min-width: 130px;
         width: 8%;
+        border-radius: 5px 5px 0 0;
     }
 
     #menu ul li form {
@@ -216,4 +219,17 @@ header {
         left: 2%;
         height: 124px;
     }
+    #usermenu {
+        left: 0;
+    }
+    body #profile {
+        width: 64px;
+        margin: 0 auto !important;
+        display: block;
+        float: none;
+    }
+
+
+
+
 }

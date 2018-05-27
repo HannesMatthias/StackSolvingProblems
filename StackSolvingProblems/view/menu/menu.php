@@ -31,8 +31,9 @@
         <?php   exit;
             }else { 
                 $user = $session->getSession("user"); ?>
-                <img src="view/menu/tmpUser.png" alt="ProfilePhoto"/>
-                <a id="profile" href="#"><?php echo $user->getUsername(); ?> </a>
+                <a id="profile" href="#">
+                    <img src="view/menu/tmpUser.png" alt="ProfilePhoto"/>
+                <?php echo $user->getUsername(); ?> </a>
                 <div id="usermenu">
                     <a href="#">
                         <div class="profileIcon"><img src="view/menu/profile.png"/></div>
