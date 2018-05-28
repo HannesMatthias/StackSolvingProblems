@@ -34,11 +34,7 @@
                 <br /> 
                 <br />
                 <label>Nachname</label> 
-<<<<<<< HEAD
-                <input type="text" name="surname" value="<?php echo $user->getSurname(); ?>"> 
-=======
                 <input type="text" name="surname" value="<?php echo $user->getSurname() ?>"> 
->>>>>>> 7f72337b7e8f9bf5c09c537c272d350c97bda865
                 <br />
                 <br /> 
                 <br />

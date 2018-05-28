@@ -30,13 +30,8 @@ class Controller {
 
         $user = new User();
         if($_POST) {
-<<<<<<< HEAD
-            if(isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["password"]) && !empty($_POST["password"]) ) {             
-                $user = User::findByEmailAndPassword($_POST["email"], $_POST["password"]); 
-=======
             if(isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["password"]) && !empty($_POST["password"]) ) {             
                 $user = User::einloggen($_POST["name"], $_POST["password"]); 
->>>>>>> 7f72337b7e8f9bf5c09c537c272d350c97bda865
                 if ($user == null) {
                     $user = new User($_POST);
                     $errors[] = $errorList["no_right"];
@@ -74,11 +69,7 @@ class Controller {
             "no_pwd_match" => "Die Passwörter stimmen nicht überein!",
             "email_exists" => "Email schon Registerirt!"
         );
-<<<<<<< HEAD
-        $entries = array("email", "name", "surname", "username", "password");
-=======
         $entries = array("name", "surname",  "email", "password", "username", "re_password");
->>>>>>> 7f72337b7e8f9bf5c09c537c272d350c97bda865
         $user = new User();
         if($_POST) {
             foreach($entries as $e) {
@@ -99,21 +90,11 @@ class Controller {
             }
             $user = new User($daten);
             if(empty($errors)) {
-<<<<<<< HEAD
-                $user = new User($daten);
-                $user->save(); 
-                if ($user == null) {
-                    $user = new User($_POST);
-                    
-                }/*else if($user != null) {
-                    $_SESSION["user"] = $user;
-=======
                 if($daten["password"] != $daten["re_password"]) {
                     $errors[] = $errorList["no_pwd_match"];
                 } else {
                     array_pop($daten);
                     $user->save();
->>>>>>> 7f72337b7e8f9bf5c09c537c272d350c97bda865
                     header("Location: index.php");
                     exit();
                 }

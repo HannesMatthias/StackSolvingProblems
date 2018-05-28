@@ -4,7 +4,7 @@
         private $id = 0;
         private $name = '';
         private $surname = '';
-        private $age = 0;   
+        private $birthdate = '';   
         private $sex = '';
         private $points = 0;
         private $rangid = 1;
@@ -60,14 +60,14 @@
             return $this->surname;
         }
 
-        public function setAge($age)
+        public function setBirthdate($birthdate)
         {
-            $this->age = $age;
+            $this->birthdate = $birthdate;
         }
 
-        public function getAge()
+        public function getBirthdate()
         {
-            return $this->age;
+            return $this->birthdate;
         }
 
         public function setSex($sex)
@@ -158,13 +158,8 @@
                     $this->_insert();
                 }
             } catch (PDOException $e){
-<<<<<<< HEAD
                 echo $e;
-                 return FALSE;
-=======
-                echo $e->getMessage();
                 return FALSE;
->>>>>>> 7f72337b7e8f9bf5c09c537c272d350c97bda865
             }
             return TRUE;
         }
@@ -204,7 +199,7 @@
 
         /* ***** Statische Methoden ***** */
 
-        public static function search($id)
+        public static function find($id)
         {
             $sql = 'SELECT * FROM users WHERE id=?';
             $abfrage = DB::getDB()->prepare($sql);
@@ -213,7 +208,7 @@
             return $abfrage->fetch();
         }
 
-        public static function searchAll()
+        public static function findAll()
         {
             $sql = 'SELECT * FROM users';
             $abfrage = DB::getDB()->query($sql);
@@ -241,14 +236,6 @@
             
         }
 
-<<<<<<< HEAD
-        public static function findByEmail($email)
-        {
-        
-            $sql = 'SELECT * FROM users WHERE email= ?';
-            $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($email));
-=======
 
         public static function einloggen($email,$pass)
         {
@@ -258,18 +245,13 @@
             $abfrage->execute(array(":email"=> $email,
                                     ":password"=> $pass
             ));
->>>>>>> 7f72337b7e8f9bf5c09c537c272d350c97bda865
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
 
             return $abfrage->fetch();
             
         }
 
-<<<<<<< HEAD
         public function findUserTags(){
-=======
-        public function findTags(){
->>>>>>> 7f72337b7e8f9bf5c09c537c272d350c97bda865
             return Tag::findeByUserId($this->getId());
         }
         
