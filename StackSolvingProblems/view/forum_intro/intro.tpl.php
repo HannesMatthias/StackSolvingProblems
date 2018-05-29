@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
     </head>
     <body>
-    <?php include_once "view/menu/menu.php"; ?>
+    <?php include_once "view/menu/menu.php"; ?><?php include_once "view/menu/menu.php"; ?>
         <div id="box">
             <h1 id="title">Frag die Community!</h1>
             <form method="post">

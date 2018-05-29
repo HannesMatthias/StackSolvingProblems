@@ -144,7 +144,9 @@ class Controller {
         $this->addContext("template", "register/register");
     }
 
-
+    public function questions() {
+        $this->addContext("template", "forum_questions/question");
+    }
     public function logout() {}
     public function forum_intro() {
         $this->addContext("template", "forum_intro/intro");
