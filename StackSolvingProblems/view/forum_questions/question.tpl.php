@@ -13,7 +13,7 @@
 
             <div class="box">
                 <div class="outer">
-                    <div class="box_title">Wie geht programmieren in Java?</div>
+                    <div class="box_title">$question</div>
                     <div class="box_solved">No</div>
                     <div class="box_answers">Answers <br />12</div>
                 </div>  
