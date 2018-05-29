@@ -10,12 +10,12 @@ html, body {
     background-color: #49a0cc;
     font-family: 'Open Sans', sans-serif;
     padding: 10px 0;
-    position: relative;
     top:0;
     left: 0;
     right: 0;
     padding-right: 10%;
     border-bottom: 1px solid black;
+
 }
 
 #menu ul {
@@ -23,6 +23,8 @@ html, body {
     padding: 0;
     display:flex;
     align-items: center;
+    position: relative;
+ 
 }
 
 #menu ul li {
@@ -30,9 +32,8 @@ html, body {
     margin-right: 5%;
     border-top: 2px solid transparent;
     border-bottom: 2px solid transparent;
-    box-sizing: border-box;
-    
-    display:block;
+
+
 }
 
 
@@ -40,6 +41,7 @@ html, body {
     color: white;
     margin: 0px;
     text-decoration: none;
+    position: relative;
 }
 
 #menu ul li a:hover  {
@@ -76,35 +78,65 @@ html, body {
     display: inline-block;
     position: relative;
 }
-#einloggen:active #loginBox{
-    display: block;
-}
+
 #loginBox {
-    color: black;;
+    color: black;
     background-color: white;
     position: absolute;
     padding: 15px;
     right: -10px;
-    top: 78px;
+    top: 100%;
     border-radius: 5px;
     border: 1px solid black;
     display: block;
 
 }
 
+.active {
+    display: block !important;
+}
+
 #loginBox input{
     background-color: rgb(243, 243, 243); 
+<<<<<<< HEAD
     border-radius: 5px;
     padding: 5px;
+=======
+    padding: 5px;
+    border-radius: 5px;
+>>>>>>> b1563cda3f4408b85651de357c1555c5e3c2407b
 
 }
-#loginBox label {
+#loginBox label{
     margin-top: 25px;
     margin-bottom: 25px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     display: block;
+<<<<<<< HEAD
     
     
 }
+=======
+    text-align: center;
+    font-weight: bold;
+    
+
+}
+#loginBox #login {
+    display: block;
+    margin: 20px auto 0 auto;
+    background-color: #49a0cc;
+    padding:10px;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+#loginBox a {
+    color: black !important;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px !important;
+}
+>>>>>>> b1563cda3f4408b85651de357c1555c5e3c2407b

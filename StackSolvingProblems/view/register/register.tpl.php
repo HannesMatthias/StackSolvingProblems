@@ -29,12 +29,12 @@
                 <?php }?>     
 
                 <label>Vorname</label> 
-                <input type="text" name="firstname" value="<?php echo $user->getFirstname(); ?>"> 
+                <input type="text" name="name" value="<?php echo $user->getName(); ?>"> 
                 <br />
                 <br /> 
                 <br />
                 <label>Nachname</label> 
-                <input type="text" name="name" value="<?php echo $user->getLastname(); ?>"> 
+                <input type="text" name="surname" value="<?php echo $user->getSurname() ?>"> 
                 <br />
                 <br /> 
                 <br />
@@ -45,6 +45,20 @@
                 <br />
                 <label>Benutzername</label> 
                 <input type="text" name="username" value="<?php echo $user->getUsername(); ?>"> 
+                <br />
+                <br /> 
+                <br />
+                <label>Alter</label> 
+                <input type="number" name="age" class="no-spinners" value="<?php echo (!empty($user->getAge())) ? $user->getAge() : "";  ?>">
+                <br />
+                <br /> 
+                <br />
+                <!-- TODO für Frontendler: Design für die Radiobuttons im CSS anpassen -->
+                <label>Geschlecht</label> 
+                <label for="sex_m">Männlich</label>
+                <input type="radio" id="sex_m" name="sex" value="male" <?php echo ($user->getSex() == "male") ? 'checked="checked"' : ""; ?>>
+                <label for="sex_f">Weiblich</label>
+                <input type="radio" id="sex_f" name="sex" value="female" <?php echo ($user->getSex() == "female") ? 'checked="checked"' : ""; ?>>
                 <br />
                 <br /> 
                 <br />
