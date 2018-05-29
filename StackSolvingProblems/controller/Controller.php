@@ -12,28 +12,85 @@ class Controller {
     public function main() {
         $this->addContext("template", "main/main");
     }
+    public function addQuestion() {   
+       
+        $session = Session::getInstance();
+        if($session->getSession("user") == null ) {
+            header("Location: index.php");
+            exit;
+        }
+        
+        $user = $session->getSession("user");
 
+        $this->addContext("template", "forum_addQuestion/addQuestion");
+        $this->addContext("id", "0");
+        $this->addContext("preview", "");
+        $this->addContext("title", "");
+
+      
+        if(isset($_POST["question"]) && !empty($_POST["question"])) {
+        //    $frage = new Question($_POST);
+            $frage->setSender_id($user->getId());
+           
+            if(isset($_POST["save"]) && $_POST["save"] != null) {
+                if($frage->speichere() ) {
+                    echo "Erfolgreich!";
+                   
+                }else {
+                    echo "Fehler!!";
+                }
+            }
+
+           $this->addContext("title", $_POST["title"]);
+           $this->addContext("preview", $_POST["question"]);
+            if($_POST["id"] != 0) {
+                $this->addContext("id", $_POST["id"]);
+            }
+
+        }else if(isset($_GET["id"]) && $_GET["id"]) {
+          
+         //   $frage = Question::findQuestionWithID($_GET["id"]);
+           
+            if($frage != null) {
+                $this->addContext("id", $frage->getId());
+                $this->addContext("title", $frage->getTitle());
+                $this->addContext("preview", $frage->getQuestion());
+            }
+            
+            
+        }
+
+    }
     public function login() {    
+        $session = Session::getInstance();
+        if($session->getSession("user") != null ) { //Hier eigentlich sinnlos.
+            header("Location: index.php");
+            exit;
+        }
+
+
         $errors = array();
         $errorList = array(
             "no_pw" => "Bitte geben Sie ein Passwort ein!",
             "no_email" => "Bitte geben Sie eine E-Mail ein!",
             "no_right" => "E-Mail oder Passwort falsch!"
         );
+
         $user = new User();
         if($_POST) {
-            if(isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["password"]) && !empty($_POST["password"]) ) {             
-                $user = User::findByEmail($_POST["email"], $_POST["password"]); 
+            if(isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["password"]) && !empty($_POST["password"]) ) {             
+                $user = User::einloggen($_POST["name"], $_POST["password"]); 
                 if ($user == null) {
                     $user = new User($_POST);
                     $errors[] = $errorList["no_right"];
                 }else if($user != null) {
-                    $_SESSION["user"] = $user;
-                    header("Location: index.php");
+                    $session->setSession("user", $user);
+                    header("Location: index.php?hahah");
                 }
 
+
             }else {
-                if (empty($_POST['email'])) {
+                if (empty($_POST['name'])) {
                     $errors[] = $errorList["no_email"];
                 } 
 
@@ -47,8 +104,8 @@ class Controller {
         }
         $this->addContext("errors", $errors);
         $this->addContext("user", $user);
-       
-        $this->addContext("template", "login/login");
+
+       $this->addContext("template", "main/main");
 
     }
 
@@ -59,7 +116,7 @@ class Controller {
             "not_filled" => "Bitte füllen Sie alle Felder aus!",
             "no_pwd_match" => "Die Passwörter stimmen nicht überein!"
         );
-        $entries = array("name", "surname", "age", "sex", "email", "password", "username", "re_password");
+        $entries = array("name", "surname",  "email", "password", "username", "re_password");
         $user = new User();
         if($_POST) {
             foreach($entries as $e) {
@@ -81,15 +138,21 @@ class Controller {
                 }
             }
         }
+
         $this->addContext("errors", $errors);
         $this->addContext("user", $user);
         $this->addContext("template", "register/register");
     }
-     
+
+
+    public function logout() {}
+    public function forum_intro() {
+        $this->addContext("template", "forum_intro/intro");
+    }
     private function addContext($key, $value){
         $this->context[$key] = $value;
     }
-
+    
 
     private function generatePage($template) {
         extract($this->context);
