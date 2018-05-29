@@ -24,19 +24,6 @@
                 </div>
                 
             </div>
-            <div class="box">
-                <div class="outer">
-                    <div class="box_title">Wie geht programmieren in Java?</div>
-                    <div class="box_solved">No</div>
-                    <div class="box_answers">Answers <br />12</div>
-                </div>  
-                <div class="box_kategorie">
-                    <div class="tags">Programmieren</div>
-                    <div class="tags">Java</div>
-                    <div class="tags">Problem</div>
-                </div>
-                
-            </div>
         </div>
 
         
