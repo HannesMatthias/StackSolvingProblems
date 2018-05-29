@@ -29,12 +29,12 @@
                 <?php }?>     
 
                 <label>Vorname</label> 
-                <input type="text" name="firstname" value="<?php echo $user->getFirstname(); ?>"> 
+                <input type="text" name="name" value="<?php echo $user->getName(); ?>"> 
                 <br />
                 <br /> 
                 <br />
                 <label>Nachname</label> 
-                <input type="text" name="name" value="<?php echo $user->getLastname(); ?>"> 
+                <input type="text" name="surname" value="<?php echo $user->getSurname() ?>"> 
                 <br />
                 <br /> 
                 <br />

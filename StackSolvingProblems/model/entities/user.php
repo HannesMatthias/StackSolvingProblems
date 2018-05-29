@@ -1,14 +1,16 @@
 <?php
-    class User
-    {
+    class User {
+
         private $id = 0;
-        private $firstname = '';
-        private $lastname = '';
+        private $name = '';
+        private $surname = '';
+        private $age = 0;   
+        private $sex = '';
+        private $points = 0;
+        private $rangid = 1;
         private $email = '';
+        private $password = '';
         private $username = '';
-        private $passwort = '';
-        private $statusid = 0;
- 
 
         public function __construct($daten = array())
         {
@@ -23,11 +25,12 @@
                     }
                 }
             }
+            $this->setEncoding();
         }
 
         public function  __toString()
         {
-            return $this->getFirstname() . ' ' . $this->getLastname();
+            return $this->getName() . ' ' . $this->getSurname();
         }
 
         /* *** Getter und Setter *** */
@@ -37,29 +40,53 @@
             return $this->id;
         }
 
-        public function getFirstname()
+        public function setName($name)
         {
-            return $this->firstname;
+            $this->name = $name;
         }
 
-        public function setFirstname($firstname)
+        public function getName()
         {
-            $this->firstname = $firstname;
+            return $this->name;
         }
 
-        public function getLastname()
+        public function setSurname($surname)
         {
-            return $this->lastname;
+            $this->surname = $surname;
         }
 
-        public function setLastname($lastname)
+        public function getSurname()
         {
-            $this->lastname = $lastname;
+            return $this->surname;
         }
 
-        public function getEmail()
+        public function setAge($age)
         {
-            return $this->email;
+            $this->age = $age;
+        }
+
+        public function getAge()
+        {
+            return $this->age;
+        }
+
+        public function setSex($sex)
+        {
+            $this->sex = $sex;
+        }
+        public function getSex()
+        {
+            return $this->sex;
+        }
+
+        public function setRangid($rangid)
+        {
+            $this->rangid = $rangid;
+        }
+
+        public function getRangid()
+        {
+            return $this->rangid;
         }
 
         public function setEmail($email)
@@ -67,35 +94,35 @@
             $this->email = $email;
         }
 
+        public function getEmail()
+        {
+            return $this->email;
+        }
+
+        public function setPassword($password)
+        {
+            $this->password = $password;
+        }
+
+        public function getPassword()
+        {
+            return $this->password;
+        }
+
+        public function setUsername($username)
+        {
+            $this->username = $username;
+        }
+
         public function getUsername()
         {
             return $this->username;
         }
 
-        public function setUsername($username)
-        {
-            $this->email = $username;
-        }
-
-        
-        public function getPasswort()
-        {
-            return $this->passwort;
-        }
-
-        public function setPasswort($passwort)
-        {
-            $this->passwort = $passwort;
-        }
-
-        public function getStatusId()
-        {
-            return $this->statusid;
-        }
-
-        public function setStatusId($statusid)
-        {
-            $this->statusid = $statusid;
+        public function setEncoding() {
+            $sql = "SET NAMES 'utf8'";
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute();
         }
 
         public function toArray($mitId = true)
@@ -121,7 +148,8 @@
                     $this->_insert();
                 }
             } catch (PDOException $e){
-                 return FALSE;
+                echo $e->getMessage();
+                return FALSE;
             }
             return TRUE;
         }
@@ -139,8 +167,8 @@
 
         private function _insert()
         {
-            $sql = 'INSERT INTO user (first_name, last_name, username, email, passwort, status_id) '
-                 . 'VALUES (:firstname, :lastname, :username, :email, :passwort, :statusid)';
+            $sql = 'INSERT INTO users (name, surname, age, sex, rang_id, points, email, password_hash, username) '
+                 . 'VALUES (:name, :surname, :age, :sex, :rangid, :points, :email, :password, :username)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -150,18 +178,19 @@
 
         private function _update()
         {
-            $sql = 'UPDATE user SET first_name=:firstname, last_name=:lastname, username=:username, email=:email, '
-                 . 'passwort=:passwort, status_id=:statusid '
+            $sql = 'UPDATE users SET name=:name, surname=:surname, age=:age, sex =:sex, rang_id = :rangid,'
+            .'points = :points, email=:email, password =:password, username = :username'
                  . 'WHERE id=:id';
             $abfrage = self::$db->prepare($sql);
             $abfrage->execute($this->toArray());
+            
         }
 
         /* ***** Statische Methoden ***** */
 
         public static function search($id)
         {
-            $sql = 'SELECT * FROM user WHERE id=?';
+            $sql = 'SELECT * FROM users WHERE id=?';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute(array($id));
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
@@ -170,24 +199,24 @@
 
         public static function searchAll()
         {
-            $sql = 'SELECT * FROM user';
+            $sql = 'SELECT * FROM users';
             $abfrage = DB::getDB()->query($sql);
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
             return $abfrage->fetchAll();
         }
 
-        public static function findByFirstname($firstname)
+        public static function findByName($name)
         {
-            $sql = 'SELECT * FROM user WHERE first_name=?';
+            $sql = 'SELECT * FROM users WHERE name=?';
             $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($firstname));
+            $abfrage->execute(array($name));
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
             return $abfrage->fetchAll();
         }
         public static function findByEmail($email,$pass)
         {
         
-            $sql = 'SELECT * FROM user WHERE email= ? AND password= ?';
+            $sql = 'SELECT * FROM users WHERE email= ? AND password_hash= ?';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute(array($email,$pass));
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
@@ -195,8 +224,25 @@
             return $abfrage->fetch();
             
         }
+
+
+        public static function einloggen($email,$pass)
+        {
         
-       
+            $sql = 'SELECT * FROM users WHERE (email= :email AND password_hash= :password) OR (username = :email AND password_hash = :password)';
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute(array(":email"=> $email,
+                                    ":password"=> $pass
+            ));
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
+
+            return $abfrage->fetch();
+            
+        }
+
+        public function findTags(){
+            return Tag::findeByUserId($this->getId());
+        }
         
     }
 ?>

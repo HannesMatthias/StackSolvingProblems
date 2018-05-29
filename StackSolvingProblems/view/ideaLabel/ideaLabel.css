@@ -6,15 +6,15 @@ body{
     overflow-y: auto;
     height: 100%;
     width: 100%;
-    background-color: #FAFAFA;
 }
 .ideaLabel{
-    background-color: white;
     color: black;
     height: 3.6rem;
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
     border-style: outset;
+    background-color: white;
+    margin-top: 2px;
 }
 .username{
     border-right: black;
