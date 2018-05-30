@@ -9,32 +9,32 @@
 
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="viewIdea.css">
+    <link rel="stylesheet" type="text/css" href="addIdea.css">
 </head>
-<body>  
+<body>
     <div id="outerfield">
+    <form action="">
     <table>
          <tr><div id="overTitle"><Label>Title:</Label></div></tr>
-         <tr><div id="title"><label></label></div></tr>
+         <tr><div id="title"><input id="title" type="text"></div></tr>
          <tr><div id="overDescription"><Label>Description:</Label></div></tr>
-         <tr><div id="description"><label></label></div></tr>
+         <tr><div id="description"><input id="description" type="text"></div></tr>
          <tr><div id="overConditions"><Label>Conditions & byset2:</Label></div></tr>
     <tr>
         <div id="conditions">
-            <?php for ($i=0; $i<10; $i++){ ?>
-                <tr><div id="innterConditions"></div></tr> 
-            <?php } ?>
+            <tr><div id="innterConditions"> </div></tr>
         </div>
 
-        <div id="byset2"><label></label></div>
+        <div id="byset2"><input id="byset2Text" type="text"></div>
     </tr>
     <tr>
         <form action="">
-                <div id="outerButton"><input id="initButton" type="submit"  value="Join"></div>
+                <div id="outerButton"><input id="initButton" type="submit"  value="Commit"></div>
         </form>
 
     </tr>
     </table>
+    </form>
     </div>
 </body>
 </html>
