@@ -176,6 +176,10 @@
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Question');
             return $abfrage->fetchAll();
         }
+
+        public function findTags(){
+            return Tag::findeByQuestionId($this->getId());
+        }
         
     }
 ?>
