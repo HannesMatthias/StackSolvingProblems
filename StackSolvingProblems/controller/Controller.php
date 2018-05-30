@@ -12,7 +12,55 @@ class Controller {
     public function main() {
         $this->addContext("template", "main/main");
     }
+    public function addQuestion() {   
+       
+        $session = Session::getInstance();
+        if($session->getSession("user") == null ) {
+            header("Location: index.php");
+            exit;
+        }
+        
+        $user = $session->getSession("user");
 
+        $this->addContext("template", "forum_addQuestion/addQuestion");
+        $this->addContext("id", "0");
+        $this->addContext("preview", "");
+        $this->addContext("title", "");
+
+      
+        if(isset($_POST["question"]) && !empty($_POST["question"])) {
+        //    $frage = new Question($_POST);
+            $frage->setSender_id($user->getId());
+           
+            if(isset($_POST["save"]) && $_POST["save"] != null) {
+                if($frage->speichere() ) {
+                    echo "Erfolgreich!";
+                   
+                }else {
+                    echo "Fehler!!";
+                }
+            }
+
+           $this->addContext("title", $_POST["title"]);
+           $this->addContext("preview", $_POST["question"]);
+            if($_POST["id"] != 0) {
+                $this->addContext("id", $_POST["id"]);
+            }
+
+        }else if(isset($_GET["id"]) && $_GET["id"]) {
+          
+         //   $frage = Question::findQuestionWithID($_GET["id"]);
+           
+            if($frage != null) {
+                $this->addContext("id", $frage->getId());
+                $this->addContext("title", $frage->getTitle());
+                $this->addContext("preview", $frage->getQuestion());
+            }
+            
+            
+        }
+
+    }
     public function login() {    
         $session = Session::getInstance();
         if($session->getSession("user") != null ) { //Hier eigentlich sinnlos.
@@ -103,13 +151,22 @@ class Controller {
                 $user = new User($_POST);
             }
         }
+
         $this->addContext("errors", $errors);
         $this->addContext("user", $user);
         $this->addContext("template", "register/register");
     }
 
+    public function questions() {
+        $this->addContext("template", "forum_questions/question");
+        $questions = Question::findAll();
+        $this->addContext("question", $questions);
 
+    }
     public function logout() {}
+    public function forum_intro() {
+        $this->addContext("template", "forum_intro/intro");
+    }
     private function addContext($key, $value){
         $this->context[$key] = $value;
     }

@@ -1,5 +1,7 @@
-
+<header>
+<img id="mobile_logo" src="view/images/logo.png" alt="Logo" /> 
 <nav id="menu">
+    
     <ul>
         <li><a href="index.php"><img id="logo" src="view/menu/logo.png" /></a></li>
         <li>
@@ -9,9 +11,9 @@
 
             </form>
         </li>
+        
         <li><a href="#">Frage stellen</a></li>
         <li><a href="#">Probleme lösen</a> </li>        
-     
         <li>
         <?php 
             $session = Session::getInstance();
@@ -29,8 +31,9 @@
         <?php   exit;
             }else { 
                 $user = $session->getSession("user"); ?>
-                <img src="view/menu/tmpUser.png" alt="ProfilePhoto"/>
-                <a id="profile" href="#"><?php echo $user->getUsername(); ?> </a>
+                <a id="profile" href="#">
+                    <img src="view/menu/tmpUser.png" alt="ProfilePhoto"/>
+                <?php echo $user->getUsername(); ?> </a>
                 <div id="usermenu">
                     <a href="#">
                         <div class="profileIcon"><img src="view/menu/profile.png"/></div>
@@ -55,3 +58,6 @@
         </li>
     </ul>
 </nav>
+
+
+</header>

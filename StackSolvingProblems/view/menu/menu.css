@@ -1,20 +1,13 @@
-
 html, body {
     margin: 0;
     padding: 0;
 }
 
-/*Obere danach löschen*/
+
+
+
 #menu {
-   /* background-color: rgb(42, 42, 43); */
-    background-color: #49a0cc;
-    font-family: 'Open Sans', sans-serif;
-    padding: 10px 0;
-    top:0;
-    left: 0;
-    right: 0;
-    padding-right: 10%;
-    border-bottom: 1px solid black;
+
 
 }
 
@@ -32,8 +25,6 @@ html, body {
     margin-right: 5%;
     border-top: 2px solid transparent;
     border-bottom: 2px solid transparent;
-
-
 }
 
 
@@ -91,12 +82,12 @@ html, body {
     background-color: white;
     position: absolute;
     padding: 15px;
-    right: -10px;
+    right: 1%;
+    /* left: 50%; */
     top: 100%;
     border-radius: 5px;
     border: 1px solid black;
     display: none;
-
 }
 
 .active {
@@ -138,11 +129,13 @@ html, body {
     background-color: white;
     color: black;
     padding: 10px;
-    min-width: 130px;
+    min-width: 170px;
     width: 8%;
     border-radius: 5px;
     display: none;
-
+    top: 100%;
+    box-sizing:  border-box;
+    border-radius: 0px 0px 5px 5px;
 }
 
 #usermenu a{
@@ -159,4 +152,84 @@ html, body {
     margin: 1.2em 0 1.2em 0 !important;
     padding-top: .3em;
     padding-left: 2.5em;
+}
+header {
+    background-color: #49a0cc;
+}
+#mobile_logo {
+    display: none;
+}
+@media (max-width: 1060px) {
+    header {
+        height:8em;
+    }
+    #menu {
+        float: right;
+        /* width: 100%; */
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        /* width: auto; */
+        padding: 0;
+        background: url(
+        menu.png);
+        right: 21%;
+        width: 64px;
+        height: 64px;
+    }
+    #menu:hover ul {
+       display: block;
+    }
+    #menu #btn_menu {
+        position: absolute;
+
+    }
+    #menu ul {
+        position: absolute;
+        display: none;
+        background-color: white;
+        text-align:  center;
+        top: 100%;
+        /* right: 3px; */
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 20px;
+        border-radius: 10px;
+        min-width: 130px;
+        width: 8%;
+        border-radius: 5px 5px 0 0;
+    }
+
+    #menu ul li form {
+        display: none;
+    }
+    #menu ul li a  {
+        color: black;
+    }
+    #menu ul li:first-of-type {
+        display: none;
+    }
+    #menu #einloggen {
+        float: none;
+    }
+
+    #mobile_logo {
+        display: inline-block;
+        position: absolute;
+        left: 2%;
+        height: 124px;
+    }
+    #usermenu {
+        left: 0;
+    }
+    body #profile {
+        width: 64px;
+        margin: 0 auto !important;
+        display: block;
+        float: none;
+    }
+
+
+
+
 }
