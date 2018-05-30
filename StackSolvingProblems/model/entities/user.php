@@ -224,7 +224,19 @@
             return Tag::findeByUserId($this->getId());
         }
         
-       
+        public static function einloggen($email,$pass)
+                {
+                
+                    $sql = 'SELECT * FROM users WHERE (email= :email AND password_hash= :password) OR (username = :email AND password_hash = :password)';
+                    $abfrage = DB::getDB()->prepare($sql);
+                    $abfrage->execute(array(":email"=> $email,
+                                            ":password"=> $pass
+                    ));
+                    $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
+        
+                    return $abfrage->fetch();
+                    
+                }
         
     }
 ?>

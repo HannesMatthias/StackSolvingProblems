@@ -10,21 +10,24 @@
     <body>
     <?php include_once "view/menu/menu.php"; ?>
         <div id="box_extern">
-
+            <?php foreach($questions AS $key => $question) {
+                $tags = $question->findTags(); ?>
             <div class="box">
                 <div class="outer">
-                    <div class="box_title">$question</div>
+                    <div class="box_title"><?php echo $question->getTitle(); ?></div>
                     <div class="box_solved">No</div>
-                    <div class="box_answers">Answers <br />12</div>
+                    <div class="box_answers">Answers <br /><?php echo $question>-> ?></div>
                 </div>  
                 <div class="box_kategorie">
-                    <div class="tags">Programmieren</div>
-                    <div class="tags">Java</div>
-                    <div class="tags">Problem</div>
+                    <?php for($i = 0; $i < 3; $i++) { ?>
+                    <div class="tags"><?php echo $tags[$i]->getTag(); ?></div>
+                    <?php }?>
                 </div>
                 
             </div>
+            <?php }?>
         </div>
+
 
         
       

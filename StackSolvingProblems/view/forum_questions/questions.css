@@ -7,14 +7,14 @@ html, body {
 }
 
 #box_extern {
-    background-color: aliceblue;
+
     width:80%;
     overflow: auto;
     margin: 10% auto;
 }
 
 .box {
-    background-color: red;
+
     margin: 12px auto;
     width: 60%;
     padding: 1.5rem 20px;
@@ -31,14 +31,14 @@ html, body {
 
 }
 .box_answers {
-    background-color: green;
+
     float: right;
     text-align: center;
     line-height: 24px;
 
 }
 .box_solved {
-    background-color: blue;
+
     float: right;
     width: 32px;
     height: 32px;
