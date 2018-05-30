@@ -153,13 +153,12 @@
             return $abfrage->fetchAll();
         }
 
-        public static function findAnswerCount($userid,$questionid)
+        public static function findAnswerCount($questionid)
         {
-            $sql = 'SELECT count(*) FROM answers WHERE user_id=? and question_id= ? ';
+            $sql = 'SELECT count(*) as count FROM answers WHERE question_id= ? ';
             $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($userid,$questionid));
-            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Answer');
-            return $abfrage->fetchAll();
+            $abfrage->execute(array($questionid));
+            return $abfrage->fetch();
         }
     }
 ?>

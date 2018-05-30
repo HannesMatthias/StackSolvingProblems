@@ -181,12 +181,12 @@
             return Tag::findByQuestionId($this->getId());
         }
 
-        public function findAnwers($userid){
-            return Tag::findByUseridAndQuestionid($userid,$this->getId());
+        public function findAnswers($userid){
+            return Answer::findByUseridAndQuestionid($userid,$this->getId());
         }
 
-        public function findAnwerCount($userid){
-            return Tag::findAnswerCount($userid,$this->getId());
+        public function findAnswerCount(){
+            return Answer::findAnswerCount($this->getId());
         }
         
     }

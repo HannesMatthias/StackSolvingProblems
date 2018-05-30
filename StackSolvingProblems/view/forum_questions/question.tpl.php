@@ -11,12 +11,13 @@
     <?php include_once "view/menu/menu.php"; ?>
         <div id="box_extern">
             <?php foreach($questions AS $key => $question) {
-                $tags = $question->findTags(); ?>
+                $tags = $question->findTags(); 
+                var_dump($question->getSolved() );?>
             <div class="box">
                 <div class="outer">
                     <div class="box_title"><?php echo $question->getTitle(); ?></div>
-                    <div class="box_solved">No</div>
-                    <div class="box_answers">Answers <br /><?php echo $question>-> ?></div>
+                    <div class="box_solved"><?php echo $question->getSolved(); ?></div>
+                    <div class="box_answers">Answers <br /><?php echo $question->findAnswerCount()['count']; ?></div>
                 </div>  
                 <div class="box_kategorie">
                     <?php for($i = 0; $i < 3; $i++) { ?>
