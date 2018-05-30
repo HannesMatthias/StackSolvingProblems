@@ -43,7 +43,7 @@
             for($i = 0; $i < 3; $i++) { ?>
             <select>
                 <?php foreach ($tags as $t) { ?>
-                <option value="<?php echo $t ?>"><?php echo $t ?></option>
+                <option value="<?php echo $t->getTag() ?>"><?php echo $t->getTag() ?></option>
                 <?php } ?>
             </select>
             <?php } ?>
