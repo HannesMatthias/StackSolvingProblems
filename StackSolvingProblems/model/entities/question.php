@@ -178,7 +178,15 @@
         }
 
         public function findTags(){
-            return Tag::findeByQuestionId($this->getId());
+            return Tag::findByQuestionId($this->getId());
+        }
+
+        public function findAnswers($userid){
+            return Answer::findByUseridAndQuestionid($userid,$this->getId());
+        }
+
+        public function findAnswerCount(){
+            return Answer::findAnswerCount($this->getId());
         }
         
     }

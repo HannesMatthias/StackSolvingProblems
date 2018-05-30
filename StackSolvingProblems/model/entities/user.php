@@ -183,7 +183,7 @@
 
         /* ***** Statische Methoden ***** */
 
-        public static function search($id)
+        public static function find($id)
         {
             $sql = 'SELECT * FROM users WHERE id=?';
             $abfrage = DB::getDB()->prepare($sql);
@@ -192,7 +192,7 @@
             return $abfrage->fetch();
         }
 
-        public static function searchAll()
+        public static function findAll()
         {
             $sql = 'SELECT * FROM users';
             $abfrage = DB::getDB()->query($sql);
@@ -224,7 +224,19 @@
             return Tag::findeByUserId($this->getId());
         }
         
-       
+        public static function einloggen($email,$pass)
+                {
+                
+                    $sql = 'SELECT * FROM users WHERE (email= :email AND password_hash= :password) OR (username = :email AND password_hash = :password)';
+                    $abfrage = DB::getDB()->prepare($sql);
+                    $abfrage->execute(array(":email"=> $email,
+                                            ":password"=> $pass
+                    ));
+                    $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
+        
+                    return $abfrage->fetch();
+                    
+                }
         
     }
 ?>

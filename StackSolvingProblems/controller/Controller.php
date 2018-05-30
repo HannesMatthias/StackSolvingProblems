@@ -26,6 +26,7 @@ class Controller {
         $this->addContext("id", "0");
         $this->addContext("preview", "");
         $this->addContext("title", "");
+        $this->addContext("tags", Tag::findAll());
 
       
         if(isset($_POST["question"]) && !empty($_POST["question"])) {
@@ -160,7 +161,9 @@ class Controller {
     public function questions() {
         $this->addContext("template", "forum_questions/question");
         $questions = Question::findAll();
-        $this->addContext("question", $questions);
+        $this->addContext("questions", $questions);
+        
+  
 
     }
     public function logout() {}
