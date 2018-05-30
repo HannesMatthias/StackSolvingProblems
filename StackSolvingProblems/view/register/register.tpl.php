@@ -17,7 +17,7 @@
 
             <div id="titleform">Community-Projekte &amp; Forum </div>
 
-            <form class="frameform" method="post"> 
+            <form class="frameform" method="post" action="index.php?action=register"> 
             <?php if(count($errors)) {?>
                     <div id="errorBox">
                         <?php

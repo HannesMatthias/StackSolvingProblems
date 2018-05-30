@@ -1,13 +1,38 @@
 <?php
-    class Tag
-    {
+    class Comment {
+
         private $id = 0;
-<<<<<<< HEAD
-        private $name = '';
-=======
-        private $tag = '';
-        
->>>>>>> 5c6ce6abd311ececec4e2f91b5a4ff0962725a58
+        private $content = '';
+        private $userid = 0;
+        private $answerid = 0; 
+
+        public function getId(){
+            return $this->id;
+        }
+
+        public function getContent(){
+            return $this->content;
+        }
+    
+        public function setContent($content){
+            $this->content = $content;
+        }
+    
+        public function getUserid(){
+            return $this->userid;
+        }
+    
+        public function setUserid($userid){
+            $this->userid = $userid;
+        }
+    
+        public function getAnswerid(){
+            return $this->answerid;
+        }
+    
+        public function setAnswerid($answerid){
+            $this->answerid = $answerid;
+        }
 
         public function __construct($daten = array())
         {
@@ -22,73 +47,14 @@
                     }
                 }
             }
+            $this->setEncoding();
         }
 
         public function  __toString()
         {
-<<<<<<< HEAD
-            return $this->getName . ' ' . $this->getLastname();
-=======
-            return $this->getTag();
->>>>>>> 5c6ce6abd311ececec4e2f91b5a4ff0962725a58
+            return $this->getContent() ;
         }
-
-        /* *** Getter und Setter *** */
-
-<<<<<<< HEAD
-        public function getId()
-        {
-            return $this->id;
-        }
-
-        public function setName($name)
-        {
-            $this->name = $name;
-        }
-
-        public function getName()
-        {
-            return $this->name;
-        }
-
-        public static function findUserTags($id)
-        {
-            $sql = 'SELECT * FROM tags,userhastags WHERE tags.id = userhastags.tag_id and userhastags.user_id = $id';
-            $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($id));
-            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Tag');
-            return $abfrage->fetchAll();
-        }
-=======
-        public function getId(){
-            return $this->id;
-        }
-    
-        public function setId($id){
-            $this->id = $id;
-        }
-    
-        public function getTag(){
-            return $this->tag;
-        }
-    
-        public function setTag($tag){
-            $this->tag = $tag;
-        }
-
-
-        public function toArray($mitId = true)
-        {
-            $attribute = get_object_vars($this);
-            if ($mitId === false) {
-                // wenn $mitId false ist, entferne den Schlüssel id aus dem Ergebnis
-                unset($attribute['id']);
-            }
-            return $attribute;
-        }
-
-        /* *** Persistenz-Methoden *** */
-
+        
         public function save()
         {
             try{
@@ -100,14 +66,15 @@
                     $this->_insert();
                 }
             } catch (PDOException $e){
-                 return FALSE;
+                echo $e;
+                return FALSE;
             }
             return TRUE;
         }
 
         public function delete()
         {
-            $sql = 'DELETE FROM tags WHERE id=?';
+            $sql = 'DELETE FROM comments WHERE id=?';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute( array($this->getId()) );
             // Objekt existiert nicht mehr in der DB, also muss die ID zurückgesetzt werden
@@ -118,7 +85,8 @@
 
         private function _insert()
         {
-            $sql = 'INSERT INTO tags (tag) VALUES (:tag)';
+            $sql = 'INSERT INTO comments (id, content, user_id, answer_id) '
+                 . 'VALUES (:id, :content,  :userid, :answerid)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -128,29 +96,50 @@
 
         private function _update()
         {
-            $sql = 'UPDATE tags SET tag=:tag WHERE id=:id';
+            $sql = 'UPDATE comments  SET content=:content, user_id =:userid, answer_id = :answernid,'
+                 . 'WHERE id=:id';
             $abfrage = self::$db->prepare($sql);
             $abfrage->execute($this->toArray());
+            
         }
 
         /* ***** Statische Methoden ***** */
 
         public static function find($id)
         {
-            $sql = 'SELECT * FROM tags WHERE id=?';
+            $sql = 'SELECT * FROM comments WHERE id=?';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute(array($id));
-            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Tag');
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Comment');
             return $abfrage->fetch();
         }
 
         public static function findAll()
         {
-            $sql = 'SELECT * FROM tags';
+            $sql = 'SELECT * FROM comments';
             $abfrage = DB::getDB()->query($sql);
-            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Tag');
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Comment');
             return $abfrage->fetchAll();
+        }
+
+        public static function findByUserid($userid)
+        {
+            $sql = 'SELECT * FROM comments WHERE user_id=?';
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute(array($userid));
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Comment');
+            return $abfrage->fetchAll();
+        }
+        public static function findByAnswerid($answerid)
+        {
+        
+            $sql = 'SELECT * FROM comments WHERE anser_id = ? ';
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute(array($answerid));
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Comment');
+
+            return $abfrage->fetchAll();
+            
         }
     }
 ?>
->>>>>>> 5c6ce6abd311ececec4e2f91b5a4ff0962725a58
