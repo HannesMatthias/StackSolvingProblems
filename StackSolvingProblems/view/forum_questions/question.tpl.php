@@ -10,10 +10,10 @@
     <body>
     <?php include_once "view/menu/menu.php"; ?>
         <div id="box_extern">
-
+            <?php foreach($questions AS $key => $question) {?>
             <div class="box">
                 <div class="outer">
-                    <div class="box_title">$question</div>
+                    <div class="box_title"><?php echo $question->getTitle(); ?></div>
                     <div class="box_solved">No</div>
                     <div class="box_answers">Answers <br />12</div>
                 </div>  
@@ -24,7 +24,9 @@
                 </div>
                 
             </div>
+            <?php }?>
         </div>
+
 
         
       

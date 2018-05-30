@@ -2,6 +2,7 @@
 
 require_once 'model/entities/user.php';
 require_once 'model/entities/DB.php';
+require_once 'model/entities/question.php';
 require_once 'model/session.php';
 require_once 'controller/Controller.php';
 
