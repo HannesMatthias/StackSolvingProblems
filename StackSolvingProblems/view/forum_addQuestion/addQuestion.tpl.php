@@ -43,14 +43,14 @@
             for($i = 0; $i < 3; $i++) { ?>
             <select>
                 <?php foreach ($tags as $t) { ?>
-                <option name="tag<?php echo $i ?>" value="<?php echo $t->getId() ?>"><?php echo $t->getTag() ?></option>
+                <option name="tag[]" value="<?php echo $t->getId() ?>"><?php echo $t->getTag() ?></option>
                 <?php } ?>
             </select>
             <?php } ?>
             <p>Senden? <input type="checkbox" name="save" value="save"></p>
             <input type="submit" value="Vorschau anzeigen" />
         </form>
-        
+
     </body>
    
 </html>
