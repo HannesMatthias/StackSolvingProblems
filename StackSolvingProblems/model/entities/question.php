@@ -178,15 +178,11 @@
         }
 
         public function findTags(){
-<<<<<<< HEAD
-            return Tag::findQuestionTags($this->getId());
-=======
             return Tag::findByQuestionId($this->getId());
         }
 
         public function findAnwers($userid){
             return Tag::findByUseridAndQuestionid($userid,$this->getId());
->>>>>>> a278e7aeb5fe0841fc093d3b6dcd02477a4fde61
         }
 
         public function findAnwerCount($userid){
