@@ -144,24 +144,13 @@
             return $abfrage->fetchAll();
         }
 
-        public static function findByUserid($userid)
+        public static function findByUseridAndQuestionid($userid,$questionid)
         {
-            $sql = 'SELECT * FROM answers WHERE user_id=?';
+            $sql = 'SELECT * FROM answers WHERE user_id=? and question_id= ? ';
             $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($userid));
+            $abfrage->execute(array($userid,$questionid));
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Answer');
             return $abfrage->fetchAll();
-        }
-        public static function findByQuestionid($questionid)
-        {
-        
-            $sql = 'SELECT * FROM answers WHERE question_id= ? ';
-            $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($questionid));
-            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Answer');
-
-            return $abfrage->fetchAll();
-            
         }
     }
 ?>

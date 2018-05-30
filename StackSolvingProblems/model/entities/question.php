@@ -178,7 +178,11 @@
         }
 
         public function findTags(){
-            return Tag::findeByQuestionId($this->getId());
+            return Tag::findByQuestionId($this->getId());
+        }
+
+        public function findAnwers($userid){
+            return Tag::findByUseridAndQuestionid($userid,$this->getId());
         }
         
     }
