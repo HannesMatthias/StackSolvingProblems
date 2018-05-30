@@ -43,7 +43,7 @@
             for($i = 0; $i < 3; $i++) { ?>
             <select>
                 <?php foreach ($tags as $t) { ?>
-                <option value="<?php echo $t->getTag() ?>"><?php echo $t->getTag() ?></option>
+                <option name="tag<?php echo $i ?>" value="<?php echo $t->getId() ?>"><?php echo $t->getTag() ?></option>
                 <?php } ?>
             </select>
             <?php } ?>
@@ -51,9 +51,6 @@
             <input type="submit" value="Vorschau anzeigen" />
         </form>
         
-        <!--Hier deine Selectboxen programmieren und im Controller festlegen -->
-      
-
     </body>
    
 </html>
