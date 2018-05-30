@@ -184,6 +184,10 @@
         public function findAnwers($userid){
             return Tag::findByUseridAndQuestionid($userid,$this->getId());
         }
+
+        public function findAnwerCount($userid){
+            return Tag::findAnswerCount($userid,$this->getId());
+        }
         
     }
 ?>
