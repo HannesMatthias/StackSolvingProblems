@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+html {
+    background-image: url("view/images/background.png");
+    background-size: cover;  
+}
+
+=======
+>>>>>>> d8434375d0806d2c5be0babb0b5e2d9e0885f66e
 body {
         background: linear-gradient(to right, rgb(4, 55, 143), rgb(42, 42, 43));
         font-family: 'Roboto', sans-serif;
@@ -32,6 +40,12 @@ h1 {
 }
 
 #userdata{
+<<<<<<< HEAD
+    border-right: black;
+    border-right-style: solid;
+    border-width: 0.1rem;
+}
+=======
     
 }
 
@@ -42,3 +56,4 @@ h1 {
 
 
 
+>>>>>>> d8434375d0806d2c5be0babb0b5e2d9e0885f66e
