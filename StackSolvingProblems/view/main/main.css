@@ -1,7 +1,8 @@
 
 body{
     font-size: 100%;
-    background-image: url('images/background.png')
+    background-image: url('images/background.png');
+    background-attachment: fixed;
 }
 
 .menu{

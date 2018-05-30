@@ -11,9 +11,10 @@
 <head>
     <link rel="stylesheet" type="text/css" href="viewIdea.css">
 </head>
-<body>
+<body>  
     <div id="outerfield">
     <table>
+    <tr></tr>
     <tr><div id="title"><label></label></div></tr>
     <tr><div id="description"><label></label></div></tr>
     <tr><div id=""><!-- Kondision label --></div></tr>
