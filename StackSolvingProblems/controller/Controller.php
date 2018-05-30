@@ -26,6 +26,7 @@ class Controller {
         $this->addContext("id", "0");
         $this->addContext("preview", "");
         $this->addContext("title", "");
+        $this->addContext("tags", Tag::findAll());
 
       
         if(isset($_POST["question"]) && !empty($_POST["question"])) {

@@ -58,4 +58,12 @@
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Tag');
             return $abfrage->fetchAll();
         }
+
+        public static function findAll()
+        {
+            $sql = 'SELECT * FROM tags';
+            $abfrage = DB::getDB()->query($sql);
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Tag');
+            return $abfrage->fetchAll();
+        }
     }
