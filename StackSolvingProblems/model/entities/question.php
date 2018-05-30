@@ -188,6 +188,10 @@
             return Tag::findByUseridAndQuestionid($userid,$this->getId());
 >>>>>>> a278e7aeb5fe0841fc093d3b6dcd02477a4fde61
         }
+
+        public function findAnwerCount($userid){
+            return Tag::findAnswerCount($userid,$this->getId());
+        }
         
     }
 ?>
