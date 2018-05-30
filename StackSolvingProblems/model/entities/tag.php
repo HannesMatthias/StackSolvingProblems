@@ -2,7 +2,7 @@
     class Tag
     {
         private $id = 0;
-        private $name = '';
+        private $tag = '';
 
         public function __construct($daten = array())
         {
@@ -31,14 +31,14 @@
             return $this->id;
         }
 
-        public function setName($name)
+        public function setTag($tag)
         {
-            $this->name = $name;
+            $this->tag = $tag;
         }
 
-        public function getName()
+        public function getTag()
         {
-            return $this->name;
+            return $this->tag;
         }
 
         public static function findUserTags($id)
@@ -52,7 +52,7 @@
 
         public static function findQuestionTags($id)
         {
-            $sql = 'SELECT * FROM tags,questionhastags WHERE tags.id = questionhastags.tag_id and questionhastags.question_id = $id';
+            $sql = 'SELECT * FROM tags,questionhastags WHERE tags.id = questionhastags.tag_id and questionhastags.question_id = ' . $id;
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute(array($id));
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Tag');

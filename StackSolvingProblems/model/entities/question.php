@@ -178,7 +178,7 @@
         }
 
         public function findTags(){
-            return Tag::findeByQuestionId($this->getId());
+            return Tag::findQuestionTags($this->getId());
         }
         
     }
