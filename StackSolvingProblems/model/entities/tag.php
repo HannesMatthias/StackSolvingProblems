@@ -50,7 +50,7 @@
             return $abfrage->fetchAll();
         }
 
-        public static function findQuestionTags($id)
+        public static function findByQuestionId($id)
         {
             $sql = 'SELECT * FROM tags,questionhastags WHERE tags.id = questionhastags.tag_id and questionhastags.question_id = ' . $id;
             $abfrage = DB::getDB()->prepare($sql);

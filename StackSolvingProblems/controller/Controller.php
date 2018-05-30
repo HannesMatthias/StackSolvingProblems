@@ -162,6 +162,7 @@ class Controller {
         $this->addContext("template", "forum_questions/question");
         $questions = Question::findAll();
         $this->addContext("questions", $questions);
+        
   
 
     }
