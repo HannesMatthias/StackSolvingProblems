@@ -49,4 +49,13 @@
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Tag');
             return $abfrage->fetchAll();
         }
+
+        public static function findQuestionTags($id)
+        {
+            $sql = 'SELECT * FROM tags,questionhastags WHERE tags.id = questionhastags.tag_id and questionhastags.question_id = $id';
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute(array($id));
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Tag');
+            return $abfrage->fetchAll();
+        }
     }
