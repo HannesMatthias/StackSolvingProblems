@@ -39,6 +39,14 @@
             <input type="text" maxlength="50" id="title" name="title" placeholder="Gib hier deinen Titel ein" value="<?php echo $title; ?>"/>
             <p class="subtitle">Deine Frage</p>
             <textarea class="tinymce" name="question"><?php echo $preview; ?></textarea>
+            <?php
+            for($i = 0; $i < 3; $i++) { ?>
+            <select>
+                <?php foreach ($tags as $t) { ?>
+                <option value="<?php echo $t ?>"><?php echo $t ?></option>
+                <?php } ?>
+            </select>
+            <?php } ?>
             <p>Senden? <input type="checkbox" name="save" value="save"></p>
             <input type="submit" value="Vorschau anzeigen" />
         </form>

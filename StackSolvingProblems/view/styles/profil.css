@@ -1,31 +1,52 @@
+<<<<<<< HEAD
 html {
-    background-image: url("background.png");
+    background-image: url("view/images/background.png");
     background-size: cover;  
 }
 
+=======
+>>>>>>> d8434375d0806d2c5be0babb0b5e2d9e0885f66e
 body {
-    /*background: linear-gradient(to right, rgb(4, 55, 143), rgb(42, 42, 43));*/
-    font-family: 'Roboto', sans-serif;
-    font-size: 100%;
-        
-}
+        background: linear-gradient(to right, rgb(4, 55, 143), rgb(42, 42, 43));
+        font-family: 'Roboto', sans-serif;
+        color:lightgrey;
+        font-size: 100%;
+        font-size: 20px;
+        margin-left:2%;
+    
+     }
 
 
 h1 {
     color:lightgrey;
+    font-size: 3rem;
 }
 
+
+
 #left{
-    border-right: black;
-    border-right-style: solid;
-    border-width: 0.1rem;
-    float: left;
+  
+  float: left;
+  text-align: center;
+  position: fixed;
+  
+}
+#right{
+  /*border-style: solid;
+  border-width: 2px;
+  border-color: lightcoral;*/
+  margin-left:20%;
+  margin-right: 40%;
 }
 
 #userdata{
+<<<<<<< HEAD
     border-right: black;
     border-right-style: solid;
     border-width: 0.1rem;
+}
+=======
+    
 }
 
 
@@ -35,3 +56,4 @@ h1 {
 
 
 
+>>>>>>> d8434375d0806d2c5be0babb0b5e2d9e0885f66e

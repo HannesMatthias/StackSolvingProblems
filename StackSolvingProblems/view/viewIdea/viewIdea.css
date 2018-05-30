@@ -1,0 +1,58 @@
+body{
+    background-image: url('../main/images/background.png')
+}
+
+#outerfield{
+    
+    width: 65%;
+    height: auto;
+    margin: 0 auto;
+}
+
+#title{
+    margin-top: 1rem;
+    width: 100%;
+    height: 4rem;
+    background-color: white;
+}
+
+#description{
+    margin-top: 1rem;
+    width: 100%;
+    height: 20rem;
+    background-color: white;
+}
+
+#conditions{
+    margin-top: 1rem;
+    width: 49%;
+    height: 15rem;
+    background-color: white;
+    float: left;
+}
+#byset2{
+    margin-top: 1rem;
+    width: 49%;
+    height: 15rem;
+    background-color: white;
+    float: right;
+}
+
+#outerButton{
+    margin-top: 1rem;
+    width: 100%;
+    height: auto;
+    
+}
+input[type=submit] {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding:15px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    width: 20%;
+    float: right;
+}
