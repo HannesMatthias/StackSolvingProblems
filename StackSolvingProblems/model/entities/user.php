@@ -183,7 +183,7 @@
 
         /* ***** Statische Methoden ***** */
 
-        public static function search($id)
+        public static function find($id)
         {
             $sql = 'SELECT * FROM users WHERE id=?';
             $abfrage = DB::getDB()->prepare($sql);
@@ -192,7 +192,7 @@
             return $abfrage->fetch();
         }
 
-        public static function searchAll()
+        public static function findAll()
         {
             $sql = 'SELECT * FROM users';
             $abfrage = DB::getDB()->query($sql);
