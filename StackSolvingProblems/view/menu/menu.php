@@ -8,9 +8,15 @@
             <form id="searchOptions">
                 <input type="search" id="searchbar" placeholder="Suche nach Fragen" />
                 <input type="submit" id="searchButton" value="Suchen" />
-
             </form>
         </li>    
+        <li>
+            <a href="index.php?action=addQuestion">Frage stellen</a>
+        </li>
+        <li>
+            <a href="index.php?action=addQuestion">Frage beantworten</a>
+        </li>
+
         <li>
         <?php 
             $session = Session::getInstance();
