@@ -13,14 +13,26 @@
         <link rel="stylesheet" type="text/css" href="view/menu/menu.css">
     </head>
     <body>
+<<<<<<< HEAD
         <?php include_once "view/menu/menu.php"; ?>
         <img id="profilImage" src="view/images/lauch.jpg" alt="username" height="25%" width="25%">
+=======
+        
+        <img id="profileImage" src="view/images/lauch.jpg" alt="Smiley face" height="25%" width="20%">
+     
+>>>>>>> 425196e36bcdf12ac0c49521088fe720e91503eb
         <div id="profil">
-            <div id="username"><?php echo $user->getUsername(); ?></div>
+            <div id="username">Pluto</div>
             <div id="userdata">
+<<<<<<< HEAD
                 Vorname: <div id="firstname"><?php echo $user->getName(); ?></div>
                 Nachname: <div id="surname"><?php echo $user->getSurname(); ?></div>                
                 Email: <div id="email"><?php echo $user->getEmail(); ?></div>
+=======
+                <div id="firstname">Simon</div>
+                <div id="surname">Premstaller</div>
+                <div id="email">test@test.gmail.com</div>
+>>>>>>> 425196e36bcdf12ac0c49521088fe720e91503eb
             </div>
             <div id="userquestions">
                 <?php foreach($user->findQuestions() AS $key => $question) {
