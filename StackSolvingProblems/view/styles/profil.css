@@ -27,11 +27,7 @@ h1 {
   border-style: solid;
 }
 #userimage{
-  border: 5px solid #ccc; 
-  -webkit-border-radius: 53px;
-  -khtml-border-radius: 53px;
-  -moz-border-radius: 53px;
-  border-radius: 53px;
+  border-radius: 50%;
 }
 
 #right {
