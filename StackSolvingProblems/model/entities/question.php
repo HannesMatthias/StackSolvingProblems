@@ -83,7 +83,8 @@
         }
 
         public function getSolved(){
-            return $this->solved;
+
+            return $this->solved ? "Gelöst" : "Noch eine Antwort, bitte!";
         }
     
         public function setSolved($solved){
