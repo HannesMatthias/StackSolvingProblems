@@ -41,9 +41,9 @@
             <textarea class="tinymce" name="question"><?php echo $preview; ?></textarea>
             <?php
             for($i = 0; $i < 3; $i++) { ?>
-            <select>
+            <select name="tag[]">
                 <?php foreach ($tags as $t) { ?>
-                <option name="tag[]" value="<?php echo $t->getId() ?>"><?php echo $t->getTag() ?></option>
+                <option value="<?php echo $t->getId() ?>"><?php echo $t->getTag() ?></option>
                 <?php } ?>
             </select>
             <?php } ?>

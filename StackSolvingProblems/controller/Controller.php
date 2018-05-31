@@ -12,6 +12,11 @@ class Controller {
     public function main() {
         $this->addContext("template", "main/main");
     }
+
+    public function profil() {
+        
+    }
+
     public function addQuestion() {   
        
         $session = Session::getInstance();
@@ -30,11 +35,12 @@ class Controller {
 
       
         if(isset($_POST["question"]) && !empty($_POST["question"])) {
-        //    $frage = new Question($_POST);
-            $frage->setSender_id($user->getId());
+            $_POST['tag'] = array_unique($_POST['tag']);
+            $frage = new Question($_POST);
+            $frage->setUserid($user->getId());
            
             if(isset($_POST["save"]) && $_POST["save"] != null) {
-                if($frage->speichere() ) {
+                if($frage->save() ) {
                     echo "Erfolgreich!";
                    
                 }else {

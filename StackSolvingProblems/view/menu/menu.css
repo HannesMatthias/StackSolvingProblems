@@ -3,6 +3,11 @@ html, body {
     padding: 0;
 }
 
+#menu {
+
+
+}
+
 #menu ul {
     margin: 0;
     padding: 0;
@@ -10,6 +15,8 @@ html, body {
     align-items: center;
     position: relative;
     background-color: #2E2E2E;
+    font-family: 'Open Sans', sans-serif;
+ 
 }
 
 #menu ul li {
@@ -38,18 +45,16 @@ html, body {
 }
 #logo {
     width: 120px;
+
     margin-left: 5%;
     transform: scale(1);
 }
 
 #searchbar {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-radius: 10px;
     color: black;
-    width: 900px;
-    height: 80px;
+    width: 250px;
     padding: 5px 10px;
-    opacity: 0.8;
  
 }
 #searchButton {
@@ -57,10 +62,7 @@ html, body {
     border: none;
     color: color;
     padding: 4px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    height: 80px;
-    opacity: 0.8;
+    border-radius: 10px;
 }
 #einloggen, #profile {
     display: inline-block;
@@ -225,4 +227,8 @@ header {
         display: block;
         float: none;
     }
+
+
+
+
 }

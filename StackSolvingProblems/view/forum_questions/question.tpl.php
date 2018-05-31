@@ -4,6 +4,8 @@
         <meta charset="UTF-8" />
         <title>Frage hinzufügen</title>
         <link href="view/forum_questions/questions.css" rel="stylesheet">
+        <script src="plugins/js/jquery.min.js"></script>
+         <script src="plugins/js/clickmenu.js"></script>
         <link rel="stylesheet" type="text/css" href="view/menu/menu.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
@@ -12,19 +14,20 @@
         <div id="box_extern">
             <?php foreach($questions AS $key => $question) {
                 $tags = $question->findTags(); 
-                var_dump($question->getSolved() );?>
+                ?>
             <div class="box">
                 <div class="outer">
                     <div class="box_title"><?php echo $question->getTitle(); ?></div>
-                    <div class="box_solved"><?php echo $question->getSolved(); ?></div>
-                    <div class="box_answers">Answers <br /><?php echo $question->findAnswerCount()['count']; ?></div>
+                    <div class="box_solved"><span style="font-weight: bold;">Status:</span> <br />
+                    <?php echo $question->getSolved(); ?></div>
+                    <div class="box_answers"><span style="font-weight: bold;">Antworten:</span> <br /><?php echo $question->findAnswerCount()['count']; ?></div>
                 </div>  
                 <div class="box_kategorie">
                     <?php for($i = 0; $i < 3; $i++) { ?>
                     <div class="tags"><?php echo $tags[$i]->getTag(); ?></div>
                     <?php }?>
                 </div>
-                
+                <a class="edit" href="index.php?action=addQuestion"><img src="view/forum_questions/settings.png" alt="Bearbeiten" /></a>
             </div>
             <?php }?>
         </div>

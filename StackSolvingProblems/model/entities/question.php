@@ -4,8 +4,8 @@
         private $id = 0;
         private $title = '';
         private $content = '';
-        private $like = 0;   
-        private $dislike = '';
+        private $likes = 0;   
+        private $dislikes = '';
         private $userid = 0;
         private $solved = false;
         
@@ -83,7 +83,8 @@
         }
 
         public function getSolved(){
-            return $this->solved;
+
+            return $this->solved ? "Gelöst" : "Ungelöst";
         }
     
         public function setSolved($solved){
@@ -114,6 +115,7 @@
                     $this->_insert();
                 }
             } catch (PDOException $e){
+                echo $e->getMessage();
                  return FALSE;
             }
             return TRUE;
@@ -125,20 +127,33 @@
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute( array($this->getId()) );
             // Objekt existiert nicht mehr in der DB, also muss die ID zurückgesetzt werden
-            $this->id = 0;
+            $this->setId(0);
         }
 
         /* ***** Private Methoden ***** */
 
         private function _insert()
-        {
+        {  
             $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved) '
+<<<<<<< HEAD
                  . 'VALUES (:title, :content, :likes, :dislikes, :userid, :solved)';
+=======
+                 . 'VALUES (:title, :content, :likes, :dislikes, :userid, :solved);';
+>>>>>>> 49a318415da59dd25823aaa68bbf07a844df43aa
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
             // setze die ID auf den von der DB generierten Wert
             $this->id = DB::getDB()->lastInsertId();
+
+            $sql = 'INSERT INTO questionhastags (question_id, tag_id) VALUES (:question_id, :tag_id)';
+            $tags['question_id'] = $this->getId();
+            foreach($_POST['tag'] as $t) {
+                $tags['tag_id'] = $t;
+                $abfrage = DB::getDB()->prepare($sql);
+                $abfrage->execute($tags);
+            }
+
         }
 
         private function _update()
