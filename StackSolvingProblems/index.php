@@ -9,7 +9,7 @@ require_once 'model/entities/comment.php';
 require_once 'model/session.php';
 require_once 'controller/Controller.php';
 
-$action = isset($_GET['action']) ? $_GET['action'] : 'main';
+$action = isset($_GET['action']) ? $_GET['action'] : 'questions';
 $controller = new Controller();
 
 if (method_exists($controller, $action)) {
