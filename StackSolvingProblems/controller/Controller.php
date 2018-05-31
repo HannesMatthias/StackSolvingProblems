@@ -167,10 +167,15 @@ class Controller {
         $this->addContext("template", "forum_questions/question");
         $questions = Question::findAll();
         $this->addContext("questions", $questions);
-        
-  
-
     }
+
+    public function fullQuestions() {
+        $this->addContext("template", "forum_questions/fullQuestions");
+        $questions = Question::findAll();
+        $this->addContext("questions", $questions);
+    }
+
+
     public function logout() {}
     public function forum_intro() {
         $this->addContext("template", "forum_intro/intro");
