@@ -5,7 +5,6 @@
         $user = $session->getSession("user");
     }
 ?>
-<?php echo $user->getUsername(); ?>
 <!DOCTYPE html>
 <html lang="de">
     <head>
@@ -14,15 +13,15 @@
         
     </head>
     <body>
-        <div id="profil_image">
-            <img src="view/images/lauch.jpg" alt="Smiley face" height="25%" width="20%">
-        </div>
+        
+        <img id="profileImage" src="view/images/lauch.jpg" alt="Smiley face" height="25%" width="20%">
+     
         <div id="profil">
-            <div id="username"><?php echo $user->getUsername(); ?></div>
+            <div id="username">Pluto</div>
             <div id="userdata">
-                <div id="firstname"><?php echo $user->get; ?></div>
-                <div id="surname"><?php echo $user->getUsername(); ?></div>
-                <div id="email"><?php echo $user->getUsername(); ?></div>
+                <div id="firstname">Simon</div>
+                <div id="surname">Premstaller</div>
+                <div id="email">test@test.gmail.com</div>
             </div>
             <div id="userquestions">
                 <div class="question">
