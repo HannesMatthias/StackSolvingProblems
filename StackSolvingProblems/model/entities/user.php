@@ -243,6 +243,9 @@
 
         }
         
+        public function findQuestions(){
+            return Question::findAnswersByUserId($this->getId());
+        }
         public static function einloggen($email,$pass)
                 {
                 

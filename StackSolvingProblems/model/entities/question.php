@@ -188,6 +188,14 @@
             return $abfrage->fetchAll();
         }
 
+        public static function findQuestionsByUserId($id) {
+            $sql = 'SELECT * FROM questions WHERE user_id=?';
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute(array($id));
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Question');
+            return $abfrage->fetchAll();
+        }
+
         public function findTags(){
             return Tag::findByQuestionId($this->getId());
         }
@@ -199,6 +207,5 @@
         public function findAnswerCount($userid){
             return Tag::findAnswerCount($userid,$this->getId());
         }
-        
     }
 ?>
