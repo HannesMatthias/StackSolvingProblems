@@ -4,8 +4,8 @@
         private $id = 0;
         private $title = '';
         private $content = '';
-        private $like = 0;   
-        private $dislike = '';
+        private $likes = 0;   
+        private $dislikes = '';
         private $userid = 0;
         private $solved = false;
         
@@ -115,6 +115,7 @@
                     $this->_insert();
                 }
             } catch (PDOException $e){
+                echo $e->getMessage();
                  return FALSE;
             }
             return TRUE;
@@ -126,24 +127,29 @@
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute( array($this->getId()) );
             // Objekt existiert nicht mehr in der DB, also muss die ID zurückgesetzt werden
-            $this->id = 0;
+            $this->setId(0);
         }
 
         /* ***** Private Methoden ***** */
 
         private function _insert()
-        {
+        {  
             $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved) '
                  . 'VALUES (:title, :content, :likes, :dislikes, :userid, :solved);';
-/*
-            $tags = $_POST['tag'];
-            foreach($tags as $t) {
-                $sql = $sql . 'INSERT INTO questionhastags (question_id, tag_id) VALUES ()'
-            }*/
+
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
             // setze die ID auf den von der DB generierten Wert
             $this->id = DB::getDB()->lastInsertId();
+
+            $sql = 'INSERT INTO questionhastags (question_id, tag_id) VALUES (:question_id, :tag_id)';
+            $tags['question_id'] = $this->getId();
+            foreach($_POST['tag'] as $t) {
+                $tags['tag_id'] = $t;
+                $abfrage = DB::getDB()->prepare($sql);
+                $abfrage->execute($tags);
+            }
+
         }
 
         private function _update()
@@ -194,12 +200,12 @@
             return Tag::findByQuestionId($this->getId());
         }
 
-        public function findAnswers($userid){
-            return Answer::findByUseridAndQuestionid($userid,$this->getId());
+        public function findAnwers($userid){
+            return Tag::findByUseridAndQuestionid($userid,$this->getId());
         }
 
-        public function findAnswerCount(){
-            return Answer::findAnswerCount($this->getId());
+        public function findAnswerCount($userid){
+            return Tag::findAnswerCount($userid,$this->getId());
         }
     }
 ?>
