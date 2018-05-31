@@ -1,49 +1,82 @@
-html {
-    background-image: url("view/images/background.png");
-    background-size: cover;  
-}
-
 body {
-        
-        font-family: 'Roboto', sans-serif;
-        color:lightgrey;
-        font-size: 100%;
-        font-size: 20px;
-        margin-left:2%;
-        
-    
-     }
+  font-family: 'Roboto', sans-serif;
+  color:white;
+  font-size: 100%;
+  font-size: 20px;
+  margin-left:15%;
+  margin-right:15%;
+}
 
 h1 {
-    color:lightgrey;
-    font-size: 3rem;
+  color:lightgrey;
+  font-size: 3rem;
 }
 
-#left {
+/*#left {
   margin: 0 auto;
   text-align: center;
   border-color: green;
   border-width: 5px;
   border-style: solid;
-}
-#userimage{
-  border: 5px solid #ccc; 
-  -webkit-border-radius: 53px;
-  -khtml-border-radius: 53px;
-  -moz-border-radius: 53px;
-  border-radius: 53px;
+}*/
+
+#profil{
+  
+  background-color: grey;
+  position: relative;
+  margin-top:15%;
+  border-radius: 16px;
+
 }
 
-#right {
+
+
+#profileImage {
+  
+  position: absolute;
+  margin-top:-7%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 13%;
+  border-radius: 50px;
+  z-index: 2;
+  
+
+  
+}
+#username {
+  text-align: center;
+  padding-top: 20%;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+#firstname{
+  margin-left: 1px;
+  margin-bottom: 4px;
+}
+#surname{
+  margin-left: 1px;
+  margin-bottom:4px;
+}
+#email{
+  margin-left: 1px;
+  margin-bottom:4px;
+}
+#userquestions{
+  background-color: grey;
+  border-radius: 16px;
+}
+
+
+
+
+
+
+
+/*#right {
   /*border-style: solid;
   border-width: 2px;
-  border-color: lightcoral;*/
+  border-color: lightcoral;
   margin-left:20%;
   margin-right: 20%;
-}
-
-#userdata {
-    border-right: black;
-    border-right-style: solid;
-    border-width: 0.1rem;
-}
+}*/
