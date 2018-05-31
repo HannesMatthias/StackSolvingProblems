@@ -1,10 +1,11 @@
 body {
-        background: linear-gradient(to right, rgb(4, 55, 143), rgb(42, 42, 43));
+        
         font-family: 'Roboto', sans-serif;
         color:lightgrey;
         font-size: 100%;
         font-size: 20px;
         margin-left:2%;
+        
     
      }
 
@@ -28,7 +29,7 @@ h1 {
   border-width: 2px;
   border-color: lightcoral;*/
   margin-left:20%;
-  margin-right: 40%;
+  margin-right: 20%;
 }
 
 #userdata{
