@@ -156,6 +156,7 @@
                     $this->_insert();
                 }
             } catch (PDOException $e){
+                echo $e->getMessage();
                  return FALSE;
             }
             return TRUE;

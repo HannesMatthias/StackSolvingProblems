@@ -159,11 +159,13 @@ class Controller {
                     $errors[] = $errorList["no_pwd_match"];
                 } else {
                     array_pop($daten);
-                    $user->save();
-                    $this->verification($daten["email"]);
-                    echo "Email: ".$daten["email"];
-                    header("Location: index.php");
-                    exit();
+                    if($user->save()) {
+                        $this->verification($daten["email"]);
+                        echo "Email: ".$daten["email"];
+                        header("Location: index.php");
+                        exit();
+                    }
+
                 }
             }
             else {
