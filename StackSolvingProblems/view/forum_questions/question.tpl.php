@@ -27,7 +27,7 @@
                     <div class="tags"><?php echo $tags[$i]->getTag(); ?></div>
                     <?php }?>
                 </div>
-                
+                <a class="edit" href="index.php?action=addQuestion"><img src="view/forum_questions/settings.png" alt="Bearbeiten" /></a>
             </div>
             <?php }?>
         </div>
