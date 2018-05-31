@@ -12,8 +12,7 @@
                 <img src="view/images/lauch.jpg" alt="Smiley face" height="42" width="42">
             </div>
             <div id="userdata"></div>
-            <div id="userquestions"></div>
-            
+            <div id="userquestions"></div>            
         </div>
     </body>
 </html>
