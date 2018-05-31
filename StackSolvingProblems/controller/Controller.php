@@ -35,11 +35,11 @@ class Controller {
 
       
         if(isset($_POST["question"]) && !empty($_POST["question"])) {
-        //    $frage = new Question($_POST);
-            $frage->setSender_id($user->getId());
+            $frage = new Question($_POST);
+            $frage->setUserid($user->getId());
            
             if(isset($_POST["save"]) && $_POST["save"] != null) {
-                if($frage->speichere() ) {
+                if($frage->save() ) {
                     echo "Erfolgreich!";
                    
                 }else {
