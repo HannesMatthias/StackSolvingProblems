@@ -22,8 +22,16 @@ h1 {
 #left {
   margin: 0 auto;
   text-align: center;
-  
-  
+  border-color: green;
+  border-width: 5px;
+  border-style: solid;
+}
+#userimage{
+  border: 5px solid #ccc; 
+  -webkit-border-radius: 53px;
+  -khtml-border-radius: 53px;
+  -moz-border-radius: 53px;
+  border-radius: 53px;
 }
 
 #right {
