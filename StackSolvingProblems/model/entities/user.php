@@ -219,12 +219,11 @@
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
             return $abfrage->fetchAll();
         }
-        public static function findByEmail($email,$pass)
+        public static function findByEmail($email)
         {
-        
-            $sql = 'SELECT * FROM users WHERE email= ? AND password= ?';
+            $sql = 'SELECT * FROM users WHERE email= ?';
             $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($email,$pass));
+            $abfrage->execute(array($email));
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
 
             return $abfrage->fetch();
@@ -240,9 +239,7 @@
             $sql = 'UPDATE users SET code = ? WHERE users.email = ?;';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute(array($code,$email));
-            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
 
-            return $abfrage->fetch();
         }
         
         public static function einloggen($email,$pass)

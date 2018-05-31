@@ -123,7 +123,7 @@ class Controller {
         //$recipient = $aktuelleMail; meine Email nur zum Testen ;)
         $recipient = "kevin.sorg.el.moumene@gmail.com";
         $subject = "Verification";
-        $mail_body = "Just one more step... ".\r\n.$code;
+        $mail_body = "Just one more step... \r\n".$code;
         try{
             mail($recipient, $subject, $mail_body);
         }catch(Exception $e){
@@ -138,7 +138,7 @@ class Controller {
         $errorList = array(
             "not_filled" => "Bitte füllen Sie alle Felder aus!",
             "no_pwd_match" => "Die Passwörter stimmen nicht überein!",
-            "email_exists" => "Email schon Registerirt!"
+            "email_exists" => "Email schon registriert!"
         );
         $entries = array("name", "surname",  "email", "password", "username", "re_password");
         $user = new User();
@@ -148,16 +148,10 @@ class Controller {
                     $errors[0] = $errorList["not_filled"];
                 } else {
                     $daten[$e] = $_POST[$e];
-                    if($e == "email"){
-                        if($user->findByEmail($daten[$e]) != NULL){
-                            $errors[] = $errorList["email_exists"];
-                        }
-                    } else if($e == "password"){
-                        if ($daten[$e] != $_POST["re_password"]){
-                            $errors[] = $errorList["no_pwd_match"];
-                        }
-                    }
                 }
+            }
+            if($user->findByEmail($daten["email"]) != NULL){
+                $errors[] = $errorList["email_exists"];
             }
             $user = new User($daten);
             if(empty($errors)) {
@@ -166,8 +160,8 @@ class Controller {
                 } else {
                     array_pop($daten);
                     $user->save();
-                    verification($daten["email"]);
-                    echo "Email: " $daten["email"];
+                    $this->verification($daten["email"]);
+                    echo "Email: ".$daten["email"];
                     header("Location: index.php");
                     exit();
                 }
