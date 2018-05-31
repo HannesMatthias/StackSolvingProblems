@@ -1,3 +1,8 @@
+html {
+    background-image: url("view/images/background.png");
+    background-size: cover;  
+}
+
 body {
         
         font-family: 'Roboto', sans-serif;
@@ -9,22 +14,20 @@ body {
     
      }
 
-
 h1 {
     color:lightgrey;
     font-size: 3rem;
 }
 
-
-
-#left{
+#left {
   
   float: left;
   text-align: center;
   position: fixed;
   
 }
-#right{
+
+#right {
   /*border-style: solid;
   border-width: 2px;
   border-color: lightcoral;*/
@@ -32,14 +35,8 @@ h1 {
   margin-right: 20%;
 }
 
-#userdata{
-    
+#userdata {
+    border-right: black;
+    border-right-style: solid;
+    border-width: 0.1rem;
 }
-
-
-
-
-
-
-
-

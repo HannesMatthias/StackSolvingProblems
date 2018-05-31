@@ -11,7 +11,7 @@
             <div id="left">
                 <!-- Profilbild
                 Der Pfad des Bildes muss noch Variabel durch das Backend-Team implementiert werden -->
-                <img src="/images/background.png" alt="Ihre Fresse">
+                <img src="view/images/lauch.jpg" alt="Ihre Fresse" height="500" width="500">
                 <p>
                     <font class="username">Gaiser<!--Benutzername--></font>
                 </p>
@@ -22,7 +22,11 @@
                 <hr/>
                 <p>
                     Projekt
+<<<<<<< HEAD
                     <font class="project"><p>1</p><!--Projekt--></font>
+=======
+                    <font class="project"><!--Projekanzahlt--></font>
+>>>>>>> 12ae3dd74fef69b0e12d9ad66e485392d81b66b9
                 </p>
                 <hr/>
             </div>

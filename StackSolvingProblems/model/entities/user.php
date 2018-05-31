@@ -1,16 +1,19 @@
 <?php
-    class User {
-
+    class User
+    {
         private $id = 0;
         private $name = '';
         private $surname = '';
         private $age = 0;   
         private $sex = '';
         private $points = 0;
-        private $rangid = 1;
+        private $rangid = 0;
         private $email = '';
         private $password = '';
         private $username = '';
+        
+    
+ 
 
         public function __construct($daten = array())
         {
@@ -25,12 +28,11 @@
                     }
                 }
             }
-            $this->setEncoding();
         }
 
         public function  __toString()
         {
-            return $this->getName() . ' ' . $this->getSurname();
+            return $this->getFirstname() . ' ' . $this->getLastname();
         }
 
         /* *** Getter und Setter *** */
@@ -57,7 +59,7 @@
 
         public function getSurname()
         {
-            return $this->surname;
+            return $this->name;
         }
 
         public function setAge($age)
@@ -118,12 +120,7 @@
         {
             return $this->username;
         }
-
-        public function setEncoding() {
-            $sql = "SET NAMES 'utf8'";
-            $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute();
-        }
+        
 
         public function toArray($mitId = true)
         {
@@ -148,8 +145,7 @@
                     $this->_insert();
                 }
             } catch (PDOException $e){
-                echo $e->getMessage();
-                return FALSE;
+                 return FALSE;
             }
             return TRUE;
         }
@@ -167,7 +163,7 @@
 
         private function _insert()
         {
-            $sql = 'INSERT INTO users (name, surname, age, sex, rang_id, points, email, password_hash, username) '
+            $sql = 'INSERT INTO users (name, surname, age, sex, rang_id, points, email, password, username) '
                  . 'VALUES (:name, :surname, :age, :sex, :rangid, :points, :email, :password, :username)';
 
             $abfrage = DB::getDB()->prepare($sql);
@@ -183,12 +179,11 @@
                  . 'WHERE id=:id';
             $abfrage = self::$db->prepare($sql);
             $abfrage->execute($this->toArray());
-            
         }
 
         /* ***** Statische Methoden ***** */
 
-        public static function search($id)
+        public static function find($id)
         {
             $sql = 'SELECT * FROM users WHERE id=?';
             $abfrage = DB::getDB()->prepare($sql);
@@ -197,7 +192,7 @@
             return $abfrage->fetch();
         }
 
-        public static function searchAll()
+        public static function findAll()
         {
             $sql = 'SELECT * FROM users';
             $abfrage = DB::getDB()->query($sql);
@@ -216,24 +211,9 @@
         public static function findByEmail($email,$pass)
         {
         
-            $sql = 'SELECT * FROM users WHERE email= ? AND password_hash= ?';
+            $sql = 'SELECT * FROM users WHERE email= ? AND password= ?';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute(array($email,$pass));
-            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
-
-            return $abfrage->fetch();
-            
-        }
-
-
-        public static function einloggen($email,$pass)
-        {
-        
-            $sql = 'SELECT * FROM users WHERE (email= :email AND password_hash= :password) OR (username = :email AND password_hash = :password)';
-            $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array(":email"=> $email,
-                                    ":password"=> $pass
-            ));
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
 
             return $abfrage->fetch();
@@ -243,6 +223,20 @@
         public function findTags(){
             return Tag::findeByUserId($this->getId());
         }
+        
+        public static function einloggen($email,$pass)
+                {
+                
+                    $sql = 'SELECT * FROM users WHERE (email= :email AND password_hash= :password) OR (username = :email AND password_hash = :password)';
+                    $abfrage = DB::getDB()->prepare($sql);
+                    $abfrage->execute(array(":email"=> $email,
+                                            ":password"=> $pass
+                    ));
+                    $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
+        
+                    return $abfrage->fetch();
+                    
+                }
         
     }
 ?>
