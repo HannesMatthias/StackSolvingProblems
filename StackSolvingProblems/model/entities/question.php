@@ -133,12 +133,8 @@
         private function _insert()
         {
             $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved) '
-                 . 'VALUES (:title, :content, :likes, :dislikes, :userid, :solved);';
-/*
-            $tags = $_POST['tag'];
-            foreach($tags as $t) {
-                $sql = $sql . 'INSERT INTO questionhastags (question_id, tag_id) VALUES ()'
-            }*/
+                 . 'VALUES (:title, :content, :likes, :dislikes, :userid, :solved)';
+
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
             // setze die ID auf den von der DB generierten Wert
@@ -185,12 +181,12 @@
             return Tag::findByQuestionId($this->getId());
         }
 
-        public function findAnswers($userid){
-            return Answer::findByUseridAndQuestionid($userid,$this->getId());
+        public function findAnwers($userid){
+            return Tag::findByUseridAndQuestionid($userid,$this->getId());
         }
 
-        public function findAnswerCount(){
-            return Answer::findAnswerCount($this->getId());
+        public function findAns    b werCount($userid){
+            return Tag::findAnswerCount($userid,$this->getId());
         }
         
     }

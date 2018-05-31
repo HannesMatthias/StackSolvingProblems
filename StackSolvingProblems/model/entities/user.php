@@ -11,6 +11,7 @@
         private $email = '';
         private $password = '';
         private $username = '';
+        private $verification = false;
         
     
  
@@ -45,6 +46,16 @@
         public function setName($name)
         {
             $this->name = $name;
+        }
+        
+        public function getVerification()
+        {
+            return $this->verification;
+        }
+
+        public function setVerification($verification)
+        {
+            $this->verification = $verification;
         }
 
         public function getName()
@@ -222,6 +233,16 @@
 
         public function findTags(){
             return Tag::findeByUserId($this->getId());
+        }
+
+        public static function setCode($email,$code)
+        {
+            $sql = 'UPDATE users SET code = ? WHERE users.email = ?;';
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute(array($code,$email));
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
+
+            return $abfrage->fetch();
         }
         
         public static function einloggen($email,$pass)

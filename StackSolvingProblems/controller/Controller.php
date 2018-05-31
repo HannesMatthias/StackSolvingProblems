@@ -50,7 +50,7 @@ class Controller {
 
         }else if(isset($_GET["id"]) && $_GET["id"]) {
           
-         //   $frage = Question::findQuestionWithID($_GET["id"]);
+            $frage = Question::findQuestionWithID($_GET["id"]);
            
             if($frage != null) {
                 $this->addContext("id", $frage->getId());
@@ -62,6 +62,9 @@ class Controller {
         }
 
     }
+
+
+
     public function login() {    
         $session = Session::getInstance();
         if($session->getSession("user") != null ) { //Hier eigentlich sinnlos.
@@ -109,6 +112,19 @@ class Controller {
        $this->addContext("template", "main/main");
 
     }
+    public function verification($aktuelleMail){
+        $code = rand()."AA".rand()."FF".rand();
+        //$recipient = $aktuelleMail; meine Email nur zum Testen ;)
+        $recipient = "kevin.sorg.el.moumene@gmail.com";
+        $subject = "Verification";
+        $mail_body = "Just one more step... ".\r\n.$code;
+        try{
+            mail($recipient, $subject, $mail_body);
+        }catch(Exception $e){
+            echo $e;
+        }
+        User::setCode($email, $code);
+    }
 
     public function register() {
         $daten = array();
@@ -144,6 +160,8 @@ class Controller {
                 } else {
                     array_pop($daten);
                     $user->save();
+                    verification($daten["email"]);
+                    echo "Email: " $daten["email"];
                     header("Location: index.php");
                     exit();
                 }
