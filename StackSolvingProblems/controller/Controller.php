@@ -14,7 +14,7 @@ class Controller {
     }
 
     public function profil() {
-        
+        $this->addContext("template", "profil");
     }
 
     public function addQuestion() {   
