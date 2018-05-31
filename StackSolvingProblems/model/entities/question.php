@@ -133,8 +133,7 @@
         /* ***** Private Methoden ***** */
 
         private function _insert()
-        {
-            echo serialize($this->toArray(false));   
+        {  
             $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved) '
                  . 'VALUES (:title, :content, :likes, :dislikes, :userid, :solved);';
 
