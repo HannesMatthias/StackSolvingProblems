@@ -35,6 +35,7 @@ class Controller {
 
       
         if(isset($_POST["question"]) && !empty($_POST["question"])) {
+            $_POST['tag'] = array_unique($_POST['tag']);
             $frage = new Question($_POST);
             $frage->setUserid($user->getId());
            
@@ -55,7 +56,7 @@ class Controller {
 
         }else if(isset($_GET["id"]) && $_GET["id"]) {
           
-         //   $frage = Question::findQuestionWithID($_GET["id"]);
+            $frage = Question::findQuestionWithID($_GET["id"]);
            
             if($frage != null) {
                 $this->addContext("id", $frage->getId());
