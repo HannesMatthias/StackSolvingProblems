@@ -12,6 +12,11 @@ class Controller {
     public function main() {
         $this->addContext("template", "main/main");
     }
+
+    public function profil() {
+        
+    }
+
     public function addQuestion() {   
        
         $session = Session::getInstance();
