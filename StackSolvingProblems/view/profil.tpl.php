@@ -16,7 +16,7 @@
         <?php include_once "view/menu/menu.php"; ?>
         <img id="profilImage" src="view/images/lauch.jpg" alt="username" height="25%" width="25%">
         <div id="profil">
-            <div id="username">Pluto</div>
+            <div id="username">Username: <?php echo $user->getUsername(); ?></div>
             <div id="userdata">
                 Vorname: <div id="firstname"><?php echo $user->getName(); ?></div>
                 Nachname: <div id="surname"><?php echo $user->getSurname(); ?></div>                
@@ -25,6 +25,7 @@
             <div id="userquestions">
                 <?php foreach($user->findQuestions() AS $key => $question) {
                 $tags = $question->findTags(); 
+                
                 ?>
                 <div class="box">
                     <div class="outer">

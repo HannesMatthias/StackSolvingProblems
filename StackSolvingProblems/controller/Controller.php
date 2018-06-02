@@ -15,8 +15,9 @@ class Controller {
 
     public function profil() {
         $this->addContext("template", "profil");
-
-        $questions = Question::findQuestionsByUserId();
+        $session = Session::getInstance();
+        $user = $session->getSession("user");
+        $questions = Question::findQuestionsByUserId($user->getId());
         $this->addContext("questions", $questions);
 
 
@@ -98,7 +99,7 @@ class Controller {
                     $errors[] = $errorList["no_right"];
                 }else if($user != null) {
                     $session->setSession("user", $user);
-                    header("Location: index.php?hahah");
+                    header("Location: index.php");
                 }
 
 

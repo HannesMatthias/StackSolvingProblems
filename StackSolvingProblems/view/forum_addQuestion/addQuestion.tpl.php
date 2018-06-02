@@ -5,7 +5,21 @@
         <title>Frage hinzufügen</title>
         <link href="view/forum_addQuestion/addQuestion.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    </head>
+        <script>
+            function handleSelect(myForm){
+                
+                var selBox = document.getElementById('selectTag');
+                var userInput = selBox.options[selBox.selectedIndex].text;
+                var text = document.createTextNode(" " + userInput );
+                var divTags = document.getElementById('tags');
+                var tag = document.getElementById('tag');
+                tag.appendChild(text);
+
+                divTags.appendChild(tag);
+                selBox.remove(selBox.selectedIndex);
+            }
+        </script>
+   </head>
     <body>
         <script type="text/javascript" src="plugins/js/jquery.min.js"> </script>
         <script type="text/javascript" src="plugins/tinymce/tinymce.min.js"></script>
@@ -40,15 +54,18 @@
             <p style="color: white;" class="subtitle">Frag die Community!</p>
             <textarea class="tinymce" name="content"><?php echo $preview; ?></textarea>
             <?php
-            if(!$edit) {
-                for($i = 0; $i < 3; $i++) { ?>
-                <select name="tag[]">
+            if(!$edit) { ?>
+                <select name="tag[]" id="selectTag" onChange=" return handleSelect()" >
+                <option value="default">Select Tag</option>
                 <?php foreach ($tags as $t) { ?>
                     <option value="<?php echo $t->getId() ?>"><?php echo $t->getTag() ?></option>
                 <?php } ?>
                 </select>
-          <?php } ?>
-      <?php } ?>
+            <?php } ?>
+            <div id="tags" style="color:white"> 
+               <span > TAG : </span> 
+               <span id="tag">  </span> 
+            </div>
       <div id=buttons>
             <div id="bnt_vorschau">
                 <input type="submit" value="Vorschau anzeigen" />
