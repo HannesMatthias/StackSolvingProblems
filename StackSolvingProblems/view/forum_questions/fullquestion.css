@@ -1,0 +1,44 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+    font-size: 100%;
+}
+
+#box_outer {
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 70%;
+    padding: 20px;
+    background-color: rgb(46, 46, 46,0.3);
+    position: relative;
+}
+
+#title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#question {
+    margin-top: 5%;
+}
+
+
+#answer {
+    position: absolute;
+    right: 5%;
+    bottom: 5px;
+    background-color: rgb(108, 188, 214);
+    color: white;
+    padding: 10px;
+}
+
+#edit {
+    position: absolute;
+    top: 10px;
+    right: 5%;
+
+}

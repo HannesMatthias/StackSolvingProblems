@@ -176,10 +176,21 @@ class Controller {
         $this->addContext("template", "forum_questions/question");
         $questions = Question::findAll();
         $this->addContext("questions", $questions);
-        
-  
-
     }
+
+    public function fullQuestion() {
+       
+       
+        if(!isset($_GET["id"]) && !$_GET["id"]) {
+            header ("Location: index.php");
+            exit();
+        }
+
+        $question = Question::find($_GET["id"]);
+        $this->addContext("template", "forum_questions/fullquestion");
+        $this->addContext("question", $question);
+    }
+
     public function logout() {}
     public function forum_intro() {
         $this->addContext("template", "forum_intro/intro");
