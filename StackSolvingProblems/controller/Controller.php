@@ -74,6 +74,10 @@ class Controller {
             
         }
 
+        
+
+
+
     }
     public function login() {    
         $session = Session::getInstance();
@@ -183,6 +187,9 @@ class Controller {
 
     public function fullQuestion() {
        
+
+       
+       
        
         if(!isset($_GET["id"]) && !$_GET["id"]) {
             header ("Location: index.php");
@@ -192,6 +199,36 @@ class Controller {
         $question = Question::find($_GET["id"]);
         $this->addContext("template", "forum_questions/fullquestion");
         $this->addContext("question", $question);
+
+        #Voten
+        if(isset($_POST["like"]) ) {
+            $frage = Question::find($_POST["id"]);
+            $frage->setLikes($frage->getLikes()+1);
+            $frage->save();
+        }else if(isset($_POST["dislike"]) ) {
+            $frage = Question::find($_POST["id"]);
+            $frage->setDislikes($frage->getDislikes()+1);
+            $frage->save();
+        }else if(isset($_POST["solved"]) ) {    
+            $frage = Question::find($_POST["id"]);
+            $frage->setSolved(true);
+            $frage->save();
+        }
+        #Antworten
+
+        if(isset($_POST["answer_send"]) ) {
+            $session = Session::getInstance();
+            $user = $session->getSession("user");
+            $answer = new Answer();
+            $answer->setUserid($user->getId());
+            $answer->setQuestionid($_POST["id"]);
+            $answer->setContent($_POST["content"]);
+            $answer->save();
+
+        }
+
+        
+
     }
 
     public function logout() {}

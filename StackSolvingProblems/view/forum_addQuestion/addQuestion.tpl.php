@@ -52,7 +52,7 @@
             <input type="hidden" name="id" value="<?php echo $id; ?>" />
             <input required type="text" maxlength="50" id="title" name="title" placeholder="Gib hier deinen Titel ein" value="<?php echo $title; ?>"/>
             <p style="color: white;" class="subtitle">Frag die Community!</p>
-            <textarea class="tinymce" name="content"><?php echo $preview; ?></textarea>
+            <textarea required class="tinymce" name="content"><?php echo $preview; ?></textarea>
             <?php
             if(!$edit) { ?>
                 <select name="tag[]" id="selectTag" onChange=" return handleSelect()" >

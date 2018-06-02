@@ -88,17 +88,15 @@ background-color: white;
 
 
 #buttons {
-
     height: 28px;
     padding: 10px;
-    width: auto;
-   
+    width: auto; 
 }
 
 
 #bnt_vorschau input[type=submit] {
     border:0 none;
-    padding: px 15px;
+    padding: 10px 15px;
     /* padding-bottom: 5px; */
     background: aliceblue;
     /* border-top-left-radius: 5px; */
@@ -110,9 +108,7 @@ background-color: white;
 }
 
 #bnt_vorschau:hover input {
-
     cursor: pointer;
-
 }
 
 

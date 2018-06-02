@@ -11,6 +11,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="view/styles/profil.css">
         <link rel="stylesheet" type="text/css" href="view/menu/menu.css">
+        <link href="view/forum_questions/questions.css" rel="stylesheet">
     </head>
     <body>
         <?php include_once "view/menu/menu.php"; ?>

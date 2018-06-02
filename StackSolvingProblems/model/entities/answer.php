@@ -69,7 +69,7 @@
                     }
                 }
             }
-            $this->setEncoding();
+         //   $this->setEncoding();
         }
 
         public function  __toString()
@@ -79,18 +79,8 @@
         
         public function save()
         {
-            try{
-                if ( $this->getId() > 0 ) {
-                    // wenn die ID eine Datenbank-ID ist, also größer 0, führe ein UPDATE durch
-                    $this->_update();
-                } else {
-                    // ansonsten einen INSERT
-                    $this->_insert();
-                }
-            } catch (PDOException $e){
-                echo $e;
-                return FALSE;
-            }
+            $this->_insert();
+     
             return TRUE;
         }
 
@@ -107,8 +97,8 @@
 
         private function _insert()
         {
-            $sql = 'INSERT INTO answers (id, content, likes, dislikes, user_id, question_id) '
-                 . 'VALUES (:id, :content, :likes, :dislikes, :userid, :questionid)';
+            $sql = 'INSERT INTO answers (content, likes, dislikes, user_id, question_id) '
+                 . 'VALUES (:content, :likes, :dislikes, :userid, :questionid)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -118,9 +108,9 @@
 
         private function _update()
         {
-            $sql = 'UPDATE answers  SET content=:content, likes=:likes, dislike=:dislike, user_id =:userid, question_id = :questionid,'
+            $sql = 'UPDATE answers SET content=:content, likes=:likes, dislike=:dislike, user_id =:userid, question_id = :questionid,'
                  . 'WHERE id=:id';
-            $abfrage = self::$db->prepare($sql);
+            $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray());
             
         }
@@ -160,5 +150,18 @@
             $abfrage->execute(array($questionid));
             return $abfrage->fetch();
         }
+
+        public function toArray($mitId = true)
+        {
+            $attribute = get_object_vars($this);
+            if ($mitId === false) {
+                // wenn $mitId false ist, entferne den Schlüssel id aus dem Ergebnis
+                unset($attribute['id']);
+            }
+            return $attribute;
+        }
+
     }
+
+
 ?>

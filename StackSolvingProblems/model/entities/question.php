@@ -154,7 +154,7 @@
 
         private function _update()
         { 
-            $sql = "UPDATE questions SET title='" . $this->title .  "' , content= '" . $this->content . "' , likes='" . $this->likes  ."', dislikes='" . $this->dislikes .  "', user_id='" .$this->userid . "', solved ='" . $this->solved . "' WHERE id=" . $this->id . " ";           
+            $sql = "UPDATE questions SET title='" . $this->title .  "' , content= '" . $this->content . "' , likes='" . $this->likes  ."', dislikes='" . $this->dislikes . "', solved ='" . $this->solved . "' WHERE id=" . $this->id . " ";           
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute();
         }
