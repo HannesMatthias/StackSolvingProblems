@@ -153,11 +153,10 @@
         }
 
         private function _update()
-        {
-            $sql = 'UPDATE questions SET title=:title, content=:content, likes=:likes, dislikes =:dislikes, user_id = :userid, solved = :solved'
-                       . 'WHERE id=:id';
-            $abfrage = self::$db->prepare($sql);
-            $abfrage->execute($this->toArray());
+        { 
+            $sql = "UPDATE questions SET title='" . $this->title .  "' , content= '" . $this->content . "' , likes='" . $this->likes  ."', dislikes='" . $this->dislikes .  "', user_id='" .$this->userid . "', solved ='" . $this->solved . "' WHERE id=" . $this->id . " ";           
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute();
         }
 
         /* ***** Statische Methoden ***** */

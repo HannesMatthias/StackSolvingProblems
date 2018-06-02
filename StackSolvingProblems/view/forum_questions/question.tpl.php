@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Frage hinzufügen</title>
+        <title>Fragen anzeigen</title>
         <link href="view/forum_questions/questions.css" rel="stylesheet">
         <script src="plugins/js/jquery.min.js"></script>
          <script src="plugins/js/clickmenu.js"></script>
@@ -29,7 +29,7 @@
                         <div class="tags"><?php echo $tags[$i]->getTag(); ?></div>
                         <?php }?>
                     </div>
-                    <a class="edit" href="index.php?action=addQuestion"><img src="view/forum_questions/settings.png" alt="Bearbeiten" /></a>
+                    <a class="edit" href="index.php?action=addQuestion&amp;id=<?php echo $question->getId();?>"><img src="view/forum_questions/settings.png" alt="Bearbeiten" /></a>
                 </div>
             
            

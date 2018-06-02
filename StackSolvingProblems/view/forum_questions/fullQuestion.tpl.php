@@ -14,7 +14,7 @@
        
             
             <div id="box_outer">
-            <a id="edit" href="index.php?action=addQuestion"><img src="view/forum_questions/settings.png" alt="Bearbeiten" /></a>
+            <a id="edit" href="index.php?action=addQuestion&amp;id=<?php echo $question->getId();?>"> <img src="view/forum_questions/settings.png" alt="Bearbeiten" /></a>
                 <div id="title"><?php echo $question->getTitle(); ?></div>
                 <div id="question"><?php echo $question->getContent(); ?></div>
                 <div id="answer">Antworten</div>

@@ -37,35 +37,37 @@ class Controller {
         $this->addContext("preview", "");
         $this->addContext("title", "");
         $this->addContext("tags", Tag::findAll());
-
+        $this->addContext("edit", false);
       
-        if(isset($_POST["question"]) && !empty($_POST["question"])) {
-        //    $frage = new Question($_POST);
-            $frage->setSender_id($user->getId());
+        if(isset($_POST["content"]) && !empty($_POST["content"])) {
+            $frage = new Question($_POST);
+            $frage->setUserid($user->getId());
            
             if(isset($_POST["save"]) && $_POST["save"] != null) {
-                if($frage->speichere() ) {
-                    echo "Erfolgreich!";
-                   
+                if($frage->save() ) {
+                    echo "Erfolgreich!";      
                 }else {
                     echo "Fehler!!";
                 }
+            }else {
+                $this->addContext("edit", true);
             }
 
            $this->addContext("title", $_POST["title"]);
-           $this->addContext("preview", $_POST["question"]);
+           $this->addContext("preview", $_POST["content"]);
             if($_POST["id"] != 0) {
                 $this->addContext("id", $_POST["id"]);
             }
 
         }else if(isset($_GET["id"]) && $_GET["id"]) {
           
-         //   $frage = Question::findQuestionWithID($_GET["id"]);
+            $frage = Question::find($_GET["id"]);
            
             if($frage != null) {
                 $this->addContext("id", $frage->getId());
                 $this->addContext("title", $frage->getTitle());
-                $this->addContext("preview", $frage->getQuestion());
+                $this->addContext("preview", $frage->getContent());
+                $this->addContext("edit", true);
             }
             
             
