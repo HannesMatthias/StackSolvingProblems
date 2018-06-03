@@ -132,21 +132,24 @@ class Controller {
         $entries = array("name", "surname",  "email", "password", "username", "re_password");
         $user = new User();
         if($_POST) {
+            $filled = true;
             foreach($entries as $e) {
                 if(!isset($_POST[$e]) || empty($_POST[$e])) {
                     $errors[0] = $errorList["not_filled"];
+                    $filled = false;
                 } else {
                     $daten[$e] = $_POST[$e];
                 }
             }
-            if($user->findByEmail($daten["email"]) != NULL){
-                $errors[] = $errorList["email_exists"];
-            }
-            if($daten["password"] != $daten["re_password"]) {
-                $errors[] = $errorList["no_pwd_match"];
-            }
             $user = new User($daten);
-            if(empty($errors)) {
+            if($filled) {
+                if($user->findByEmail($daten["email"]) != NULL){
+                    $errors[] = $errorList["email_exists"];
+                }
+                if($daten["password"] != $daten["re_password"]) {
+                    $errors[] = $errorList["no_pwd_match"];
+                }
+                if(empty($errors)) {
                     array_pop($daten);
                     if($user->save()) {
                         $this->verification($daten["email"]);
@@ -154,6 +157,7 @@ class Controller {
                         header("Location: index.php");
                         exit();
                     }
+                }
             } else {
                 $user = new User($_POST);
             }
