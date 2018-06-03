@@ -67,7 +67,7 @@
 
         public function getSurname()
         {
-            return $this->name;
+            return $this->surname;
         }
 
         public function setAge($age)
@@ -194,9 +194,10 @@
 
         public static function find($id)
         {
-            $sql = 'SELECT * FROM users WHERE id=?';
+            $sql = 'SELECT * FROM users WHERE id=:id';
             $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($id));
+            $abfrage->bindParam(':id', $id);
+            $abfrage->execute();
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
             return $abfrage->fetch();
         }
@@ -211,17 +212,19 @@
 
         public static function findByName($name)
         {
-            $sql = 'SELECT * FROM users WHERE name=?';
+            $sql = 'SELECT * FROM users WHERE name=:name';
             $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($name));
+            $abfrage->bindParam(':name', $name);
+            $abfrage->execute();
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
             return $abfrage->fetchAll();
         }
         public static function findByEmail($email)
         {
-            $sql = 'SELECT * FROM users WHERE email= ?';
+            $sql = 'SELECT * FROM users WHERE email=:email';
             $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($email));
+            $abfrage->bindParam(':email', $email);
+            $abfrage->execute();
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
 
             return $abfrage->fetch();
