@@ -61,11 +61,12 @@
                     <option value="<?php echo $t->getId() ?>"><?php echo $t->getTag() ?></option>
                 <?php } ?>
                 </select>
-            <?php } ?>
-            <div id="tags" style="color:white"> 
+                <div id="tags" style="color:white"> 
                <span > TAG : </span> 
-               <span id="tag">  </span> 
+               <span id="tag"> </span> 
             </div>
+            <?php } ?>
+            
       <div id=buttons>
             <div id="bnt_vorschau">
                 <input type="submit" value="Vorschau anzeigen" />
@@ -73,12 +74,12 @@
             <div id="bnt_save">
                 <label class="container">Speichern ?
                     <input type="checkbox" name="save" value="save"><span class="checkmark"></span> 
-                </lable>
+                </label>
                 
             <div>
         </div>
                     
-        </form>
+    </form>
         
             
             

@@ -29,22 +29,22 @@
                     <button disabled class="vote big"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
                 <?php }  
                 if($questionOwner == true){?>
-                     <?php if($user != null) { ?>
+                    
                         <?php if($solved == true){ ?>
-                            <button style="margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/></button>
-                            <button style="margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button>
+                            <button title="Gelöst" style="margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/></button>
+                            <button title="Noch eine Antwort, bitte!" style="margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button> 
                         <?php } else { ?>
-                            <button style="margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/> </button> 
-                            <button style="margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button>      
+                            <button title="Als gelöst markieren" style="margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/> </button> 
+                            <button title="Als ungelöst markieren" style="margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button>      
                         <?php } ?> 
                     <?php } else { ?>
                         
                         <?php if($solved == true){ ?>
-                            <button style="margin-left:10px;"class="vote"><img src="view/forum_questions/tick.png"/> </button> 
+                            <button title="Gelöst" style="margin-left:10px;"class="vote"><img src="view/forum_questions/tick.png"/> </button> 
                         <?php } else { ?>
-                            <button style="margin-left:10px;"class="vote"><img src="view/forum_questions/x.png"/> </button>
+                            <button title="Noch eine Antwort, bitte!" style="margin-left:10px;"class="vote"><img src="view/forum_questions/x.png"/> </button>
                         <?php } ?> 
-                  <?php } ?>
+                 
 
         <?php } ?>
 
@@ -58,9 +58,12 @@
                 <?php if($user != null) { ?>
                 <button id="btn_answer">Antworten</button>
                 <?php } ?>
+                <div id="box_tags">
                 <?php for($i = 0; $i < 3; $i++) { ?>
+                    
                         <div class="tags"><?php echo $question->findTags()[$i]->getTag(); ?></div>
                 <?php }?>
+                </div>
             </div>
             <div id="box_answer">
                 <form action="index.php?action=fullQuestion&amp;id=<?php echo $question->getId();?>" method="post">
@@ -69,12 +72,14 @@
                     <button id="send" name="answer_send" type="submit">Senden</button> 
                 </form>
             </div> 
-                
-        
-
-
-        
-      
+            <div id="box_answers">
+            <?php foreach($question->findAnwers() AS $answersKey => $answers) { ?>
+                <div class="box_answers_autor"><?php echo $answers->getUserID();?></div>
+                <div class="box_answers_user">
+                    ich bin eine Antwort und habe ich bin eine Antwort und habe ich bin eine Antwort und habe ich bin eine Antwort und habe ich bin eine Antwort und habe
+                </div>
+            <?php } ?>
+            </div>
 
     </body>
    
