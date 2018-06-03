@@ -99,9 +99,10 @@
         {
             $sql = 'INSERT INTO answers (content, likes, dislikes, user_id, question_id) '
                  . 'VALUES (:content, :likes, :dislikes, :userid, :questionid)';
-
+            echo "TEST";
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
+            echo "TEST";
             // setze die ID auf den von der DB generierten Wert
             $this->id = DB::getDB()->lastInsertId();
         }

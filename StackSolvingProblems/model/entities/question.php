@@ -84,7 +84,7 @@
 
         public function getSolved(){
 
-            return $this->solved ? "Gelöst" : "Ungelöst";
+            return $this->solved ;
         }
     
         public function setSolved($solved){
@@ -134,7 +134,7 @@
 
         private function _insert()
         {  
-            $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved) '
+            $sql = 'INSERT INTO questions (title, content, likes, dislikes, userid, solved) '
                  . 'VALUES (:title, :content, :likes, :dislikes, :userid, :solved);';
 
             $abfrage = DB::getDB()->prepare($sql);
@@ -188,7 +188,7 @@
         }
 
         public static function findQuestionsByUserId($id) {
-            $sql = 'SELECT * FROM questions WHERE user_id=?';
+            $sql = 'SELECT * FROM questions WHERE userid=?';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute(array($id));
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Question');
