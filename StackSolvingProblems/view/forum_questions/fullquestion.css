@@ -97,10 +97,19 @@ html, body {
     padding: 20px;
     border-radius: 10px;
 }
+.box_fullanswer {
 
+margin-bottom: 50px;
+}
 .box_answers_autor {
     font-size: 1.3rem;
 }
 .box_answers_user {
     padding: 10px;
 } 
+.line {
+    height: 2px;
+    width:80%;
+    background-color: #e8ecf2;
+    margin:  0 auto;
+}

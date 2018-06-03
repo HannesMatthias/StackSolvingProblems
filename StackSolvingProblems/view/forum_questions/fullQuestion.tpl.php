@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <title>Frage hinzufügen</title>
         <link href="view/forum_questions/fullQuestion.css" rel="stylesheet">
-        
+        <meta charset="UTF-8" />
         <script src="plugins/js/jquery.min.js"></script>
         <script src="plugins/js/clickmenu.js"></script>
         <script src="plugins/js/addAnswer.js"></script>
@@ -72,11 +72,14 @@
                     <button id="send" name="answer_send" type="submit">Senden</button> 
                 </form>
             </div> 
-            <div id="box_answers">
-            <?php foreach($question->findAnwers() AS $answersKey => $answers) { ?>
-                <div class="box_answers_autor"><?php echo $answers->getUserID();?></div>
-                <div class="box_answers_user">
-                    ich bin eine Antwort und habe ich bin eine Antwort und habe ich bin eine Antwort und habe ich bin eine Antwort und habe ich bin eine Antwort und habe
+            <div id="box_answers">         	
+            <?php foreach($question->findAnswers() AS $answersKey => $answers) { ?>
+                <div class="box_fullanswer"> 
+                    <div class="box_answers_autor"><?php echo User::find($answers->getUserID())->getUsername(); ?></div>
+                    <div class="box_answers_user">
+                        <?php echo utf8_encode($answers->getContent()); ?>
+                    </div>
+                    <div class="line"> </div>
                 </div>
             <?php } ?>
             </div>
