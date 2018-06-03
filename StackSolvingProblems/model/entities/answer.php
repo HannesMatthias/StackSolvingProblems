@@ -142,6 +142,14 @@
             return $abfrage->fetchAll();
         }
 
+        public static function findByQuestionid($userid)
+        {
+            $sql = 'SELECT * FROM answers WHERE question_id=?';
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute(array($userid));
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Answer');
+            return $abfrage->fetchAll();
+        }
         public static function findAnswerCount($questionid)
         {
             $sql = 'SELECT count(*) as count FROM answers WHERE question_id= ? ';
