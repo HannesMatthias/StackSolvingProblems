@@ -21,27 +21,27 @@
                     <button class="vote" name="like" type="submit" ><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
                     <button class="vote" name="dislike" type="submit"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button>    
                   <?php } elseif($vote == 1) { ?>
-                    <button disabled class="vote" style="border: 1px solid red;" ><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
+                    <button disabled class="vote big"><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
                     <button disabled class="vote" ><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
                   <?php } else { ?>
-                    <button disabled class="vote"  ><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
-                    <button disabled class="vote" style="border: 1px solid red;"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
+                    <button disabled class="vote"><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
+                    <button disabled class="vote big"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
                 <?php }  
                 if($questionOwner == true){?>
-                        <text> Frage gelöst? </text>
+                      
                         <?php if($solved == true){ ?>
-                            <button style="margin-left:10px; border: 1px solid red;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/> </button>
-                            <button style="margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button> 
+                            <button style="margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/></button>
+                          <!--  <button style="margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button> -->
                         <?php } else { ?>
-                            <button style="margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/> </button>
-                            <button style="margin-left:10px; border: 1px solid red;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button>      
+                            <button style="margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/> </button> 
+                            <button style="margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button>      
                         <?php } ?> 
                     <?php } else { ?>
-                        <text> Frage gelöst? </text>
+                        
                         <?php if($solved == true){ ?>
-                            <button style="margin-left:10px;"class="vote" disabled><img src="view/forum_questions/tick.png"/> </button> 
+                            <button style="margin-left:10px;"class="vote"><img src="view/forum_questions/tick.png"/> </button> 
                         <?php } else { ?>
-                            <button style="margin-left:10px;"class="vote" disabled><img src="view/forum_questions/x.png"/> </button>
+                            <button style="margin-left:10px;"class="vote"><img src="view/forum_questions/x.png"/> </button>
                         <?php } ?> 
                   <?php } ?>
 

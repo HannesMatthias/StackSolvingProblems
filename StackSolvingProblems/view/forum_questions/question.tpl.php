@@ -21,7 +21,11 @@
                     <a class="redirect" href="index.php?action=fullQuestion&amp;id=<?php echo $question->getId();?>"> 
                     <div class="box_title"><?php echo $question->getTitle(); ?></div> </a>
                         <div class="box_solved"><span style="font-weight: bold;">Status:</span> <br />
-                        <?php echo $question->getSolved(); ?></div>
+                        <?php if($question->getSolved() ) { ?>
+                            <img class="solvestate" src="view/forum_questions/like.png"/>
+                        <?php }else { ?>
+                            <img class="solvestate" src="view/forum_questions/x.png"/>
+                      <?php  } ?></div>
                         <div class="box_answers"><span style="font-weight: bold;">Antworten:</span> <br /><?php echo $question->findAnswerCount()['count']; ?></div>
                     </div>  
                     <div class="box_kategorie">

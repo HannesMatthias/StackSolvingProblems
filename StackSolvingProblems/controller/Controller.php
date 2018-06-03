@@ -187,15 +187,14 @@ class Controller {
 
     public function fullQuestion() {
 
-        if(!isset($_GET["id"]) && !$_GET["id"]) {
-            header ("Location: index.php");
-            exit();
-        }
 
         $question = Question::find($_GET["id"]);
         $this->addContext("template", "forum_questions/fullquestion");
         $this->addContext("question", $question);
+        if(!isset($_GET["id"]) && !$_GET["id"]) {
 
+            exit();
+        }
         $session = Session::getInstance();
         $user = $session->getSession("user");
         $v = 0;

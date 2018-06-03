@@ -31,7 +31,7 @@
                 <input id="login" type="submit" name="login" value="Einloggen" />
                 <a href="index.php?action=register">Jetzt registrieren</a>
             </form>
-        <?php   exit;
+        <?php   
             }else { 
                 $user = $session->getSession("user"); ?>
                 <a id="profile" href="#">

@@ -64,7 +64,7 @@ html, body {
 }
 .edit {
     position: absolute;
-    right: 5%;
+    right: 3%;
     bottom: 10px;
     width: 20px;
 }
@@ -74,4 +74,8 @@ html, body {
 .redirect {
     display:inline-block;
     color: black;
+}
+.solvestate {
+    width: 32px;
+    margin-top:15px;
 }

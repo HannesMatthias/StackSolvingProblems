@@ -74,3 +74,6 @@ html, body {
 .vote img {
     width: 100%;
 }
+.big {
+    transform: scale(1.3);
+}
