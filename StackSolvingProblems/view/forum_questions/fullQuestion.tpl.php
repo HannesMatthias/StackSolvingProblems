@@ -59,9 +59,8 @@
                 <button id="btn_answer">Antworten</button>
                 <?php } ?>
                 <div id="box_tags">
-                <?php for($i = 0; $i < 3; $i++) { ?>
-                    
-                        <div class="tags"><?php echo $question->findTags()[$i]->getTag(); ?></div>
+                <?php foreach($tags as $t) { ?>
+                        <div class="tags"><?php echo $t->getTag(); ?></div>
                 <?php }?>
                 </div>
             </div>

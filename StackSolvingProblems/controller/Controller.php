@@ -183,8 +183,10 @@ class Controller {
 
 
         $question = Question::find($_GET["id"]);
+        $tags = $question->findTags();
         $this->addContext("template", "forum_questions/fullquestion");
         $this->addContext("question", $question);
+        $this->addContext("tags", $tags);
         
         $session = Session::getInstance();
         $user = $session->getSession("user");

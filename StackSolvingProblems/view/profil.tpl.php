@@ -36,8 +36,8 @@
                         <div class="box_answers"><span style="font-weight: bold;">Antworten:</span> <br /><?php echo $question->findAnswerCount()['count']; ?></div>
                     </div>  
                     <div class="box_kategorie">
-                        <?php for($i = 0; $i < 3; $i++) { ?>
-                        <div class="tags"><?php echo $tags[$i]->getTag(); ?></div>
+                        <?php foreach($tags as $t) { ?>
+                        <div class="tags"><?php echo $t->getTag(); ?></div>
                         <?php }?>
                     </div>
                     <a class="edit" href="index.php?action=addQuestion"><img src="view/forum_questions/settings.png" alt="Bearbeiten" /></a>
