@@ -199,8 +199,8 @@
             return Tag::findByQuestionId($this->getId());
         }
 
-        public function findAnswers($userid){
-            return Answer::findByUseridAndQuestionid($userid,$this->getId());
+        public function findAnswers(){
+            return Answer::findByQuestionid($this->getId());
         }
 
         public function findAnswerCount(){

@@ -142,11 +142,11 @@
             return $abfrage->fetchAll();
         }
 
-        public static function findByQuestionid($userid)
+        public static function findByQuestionid($id)
         {
             $sql = 'SELECT * FROM answers WHERE question_id=?';
             $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($userid));
+            $abfrage->execute(array($id));
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Answer');
             return $abfrage->fetchAll();
         }
