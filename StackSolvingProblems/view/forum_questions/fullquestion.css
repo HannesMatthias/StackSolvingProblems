@@ -9,8 +9,8 @@ html, body {
 
 #box_outer {
     border-radius: 10px;
-    margin: 0 auto;
-    margin-top: 100px;
+    margin: 100px auto 100px auto;
+   
     width: 70%;
     padding: 20px;
     background-color: white;
@@ -76,4 +76,12 @@ html, body {
 }
 .big {
     transform: scale(1.3);
+}
+.tags {
+    margin-right: 0.5em;
+    clear: right;
+    float:left;
+    border: 1px solid black;
+    padding-left: 5px;
+    padding-right: 5px;
 }

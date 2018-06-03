@@ -16,6 +16,7 @@
        
             
             <div id="box_outer">
+          
                 <form action="index.php?action=fullQuestion&amp;id=<?php echo $question->getId();?>" method="post">
                   <?php if($vote == 0){ ?>
                     <button class="vote" name="like" type="submit" ><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
@@ -28,7 +29,7 @@
                     <button disabled class="vote big"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
                 <?php }  
                 if($questionOwner == true){?>
-                      
+                     <?php if($user != null) { ?>
                         <?php if($solved == true){ ?>
                             <button style="margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/></button>
                           <!--  <button style="margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button> -->
@@ -45,11 +46,21 @@
                         <?php } ?> 
                   <?php } ?>
 
+        <?php } ?>
+
                 </form>
+            <?php if($user != null && $questionOwner) { ?>
             <a id="edit" href="index.php?action=addQuestion&amp;id=<?php echo $question->getId();?>"> <img src="view/forum_questions/settings.png" alt="Bearbeiten" /></a>
+            <?php } ?>
                 <div id="title"><?php echo $question->getTitle(); ?></div>
                 <div id="question"><?php echo $question->getContent(); ?></div>
+                
+                <?php if($user != null) { ?>
                 <button id="btn_answer">Antworten</button>
+                <?php } ?>
+                <?php for($i = 0; $i < 3; $i++) { ?>
+                        <div class="tags"><?php echo $question->findTags()[$i]->getTag(); ?></div>
+                <?php }?>
             </div>
             <div id="box_answer">
                 <form action="index.php?action=fullQuestion&amp;id=<?php echo $question->getId();?>" method="post">
@@ -58,7 +69,7 @@
                     <button id="send" name="answer_send" type="submit">Senden</button> 
                 </form>
             </div> 
-           
+                
         
 
 

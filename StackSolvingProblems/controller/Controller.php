@@ -191,75 +191,80 @@ class Controller {
         $question = Question::find($_GET["id"]);
         $this->addContext("template", "forum_questions/fullquestion");
         $this->addContext("question", $question);
-        if(!isset($_GET["id"]) && !$_GET["id"]) {
-
-            exit();
-        }
+        
         $session = Session::getInstance();
         $user = $session->getSession("user");
         $v = 0;
-        $voteCheck = Vote::findVoteByUseridAndQuestionud($user->getId(),$_GET['id']);
-        if($voteCheck != Null){
-            $v = $voteCheck->getVote();
-        }
 
-        $questionOwner = false;
-        if($v == 0){
-            #Voten
-           if(isset($_POST["like"]) ) {
-                $frage = Question::find($_GET["id"]);
-                $frage->setLikes($frage->getLikes()+1);
-                $frage->save();
-                $vote = new Vote;
-                $vote->setVote(1);
-                $vote->setUserid($user->getId());
-                $vote->setQuestionid($_GET['id']);
-                $vote->save();
-                header("Refresh:0");
-           }else if(isset($_POST["dislike"]) ) {
-                $frage = Question::find($_GET["id"]);
-                $frage->setDislikes($frage->getDislikes()+1);
-                $frage->save();
-                $vote = new Vote;
-                $vote->setVote(-1);
-                $vote->setUserid($user->getId());
-                $vote->setQuestionid($_GET['id']);
-                $vote->save();
-                header("Refresh:0");
-           }
-        }
-        if($question->getUserid() == $user->getId()){
-            if(isset($_POST["solvedTrue"]) ) {    
-                $frage = Question::find($_GET["id"]);
-                $frage->setSolved(true);
-                $frage->save();
-                header("Refresh:0");
+
+        $this->addContext("vote", "");
+        $this->addContext("questionOwner", "");
+        $this->addContext("solved", "");
+        $this->addContext("user", "");
+        if($user != null) {
+            $voteCheck = Vote::findVoteByUseridAndQuestionud($user->getId(),$_GET['id']);
+            if($voteCheck != Null){
+                $v = $voteCheck->getVote();
             }
-            if(isset($_POST["solvedFalse"]) ) {    
-                $frage = Question::find($_GET["id"]);
-                $frage->setSolved(false);
-                $frage->save();
-                header("Refresh:0");
+
+            $questionOwner = false;
+            if($v == 0){
+                #Voten
+            if(isset($_POST["like"]) ) {
+                    $frage = Question::find($_GET["id"]);
+                    $frage->setLikes($frage->getLikes()+1);
+                    $frage->save();
+                    $vote = new Vote;
+                    $vote->setVote(1);
+                    $vote->setUserid($user->getId());
+                    $vote->setQuestionid($_GET['id']);
+                    $vote->save();
+                    header("Refresh:0");
+            }else if(isset($_POST["dislike"]) ) {
+                    $frage = Question::find($_GET["id"]);
+                    $frage->setDislikes($frage->getDislikes()+1);
+                    $frage->save();
+                    $vote = new Vote;
+                    $vote->setVote(-1);
+                    $vote->setUserid($user->getId());
+                    $vote->setQuestionid($_GET['id']);
+                    $vote->save();
+                    header("Refresh:0");
             }
-            $questionOwner = true;
-        }
-        $this->addContext("vote", $v);
-        $this->addContext("questionOwner", $questionOwner);
-        $this->addContext("solved", $question->getSolved());
-        #Antworten
+            }
+            if($question->getUserid() == $user->getId()){
+                if(isset($_POST["solvedTrue"]) ) {    
+                    $frage = Question::find($_GET["id"]);
+                    $frage->setSolved(true);
+                    $frage->save();
+                    header("Refresh:0");
+                }
+                if(isset($_POST["solvedFalse"]) ) {    
+                    $frage = Question::find($_GET["id"]);
+                    $frage->setSolved(false);
+                    $frage->save();
+                    header("Refresh:0");
+                }
+                $questionOwner = true;
+            }
+            $this->addContext("vote", $v);
+            $this->addContext("questionOwner", $questionOwner);
+            $this->addContext("solved", $question->getSolved());
+            $this->addContext("user", $user);
+            #Antworten
 
-        if(isset($_POST["answer_send"]) ) {
-            $session = Session::getInstance();
-            $user = $session->getSession("user");
-            $answer = new Answer();
-            $answer->setUserid($user->getId());
-            $answer->setQuestionid($_POST["id"]);
-            $answer->setContent($_POST["content"]);
-            $answer->save();
-            
-        }
+            if(isset($_POST["answer_send"]) ) {
+                $session = Session::getInstance();
+                $user = $session->getSession("user");
+                $answer = new Answer();
+                $answer->setUserid($user->getId());
+                $answer->setQuestionid($_POST["id"]);
+                $answer->setContent($_POST["content"]);
+                $answer->save();
+                
+            }
 
-        
+    }
 
     }
 
