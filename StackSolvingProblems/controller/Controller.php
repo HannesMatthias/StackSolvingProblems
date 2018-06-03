@@ -70,14 +70,8 @@ class Controller {
                 $this->addContext("preview", $frage->getContent());
                 $this->addContext("edit", true);
             }
-            
-            
+
         }
-
-        
-
-
-
     }
     public function login() {    
         $session = Session::getInstance();
@@ -196,7 +190,7 @@ class Controller {
         $user = $session->getSession("user");
         $v = 0;
 
-
+        
         $this->addContext("vote", "");
         $this->addContext("questionOwner", "");
         $this->addContext("solved", "");
@@ -210,27 +204,27 @@ class Controller {
             $questionOwner = false;
             if($v == 0){
                 #Voten
-            if(isset($_POST["like"]) ) {
-                    $frage = Question::find($_GET["id"]);
-                    $frage->setLikes($frage->getLikes()+1);
-                    $frage->save();
-                    $vote = new Vote;
-                    $vote->setVote(1);
-                    $vote->setUserid($user->getId());
-                    $vote->setQuestionid($_GET['id']);
-                    $vote->save();
-                    header("Refresh:0");
-            }else if(isset($_POST["dislike"]) ) {
-                    $frage = Question::find($_GET["id"]);
-                    $frage->setDislikes($frage->getDislikes()+1);
-                    $frage->save();
-                    $vote = new Vote;
-                    $vote->setVote(-1);
-                    $vote->setUserid($user->getId());
-                    $vote->setQuestionid($_GET['id']);
-                    $vote->save();
-                    header("Refresh:0");
-            }
+                if(isset($_POST["like"]) ) {
+                        $frage = Question::find($_GET["id"]);
+                        $frage->setLikes($frage->getLikes()+1);
+                        $frage->save();
+                        $vote = new Vote;
+                        $vote->setVote(1);
+                        $vote->setUserid($user->getId());
+                        $vote->setQuestionid($_GET['id']);
+                        $vote->save();
+                        header("Refresh:0");
+                }else if(isset($_POST["dislike"]) ) {
+                        $frage = Question::find($_GET["id"]);
+                        $frage->setDislikes($frage->getDislikes()+1);
+                        $frage->save();
+                        $vote = new Vote;
+                        $vote->setVote(-1);
+                        $vote->setUserid($user->getId());
+                        $vote->setQuestionid($_GET['id']);
+                        $vote->save();
+                        header("Refresh:0");
+                }
             }
             if($question->getUserid() == $user->getId()){
                 if(isset($_POST["solvedTrue"]) ) {    
@@ -264,7 +258,7 @@ class Controller {
                 
             }
 
-    }
+        }
 
     }
 
@@ -275,7 +269,6 @@ class Controller {
     private function addContext($key, $value){
         $this->context[$key] = $value;
     }
-    
 
     private function generatePage($template) {
         extract($this->context);

@@ -48,7 +48,7 @@ html, body {
 }
 #box_answer {
     width: 40%;
-    margin: 120px auto 0 auto;
+    margin: 120px auto 100px auto;
     display: none;
 }
 #answer {
@@ -85,3 +85,22 @@ html, body {
     padding-left: 5px;
     padding-right: 5px;
 }
+#box_tags {
+    height:20px;
+    background-color: white;
+}
+
+#box_answers {
+    background-color: white;
+    width: 40%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.box_answers_autor {
+    font-size: 1.3rem;
+}
+.box_answers_user {
+    padding: 10px;
+} 
