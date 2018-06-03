@@ -3,8 +3,8 @@
     {
         private $id = 0;
         private $vote = '';
-        private $userid;
-        private$questionid;
+        private $user_id;
+        private$question_id;
 
         public function __construct($daten = array())
         {
@@ -45,22 +45,22 @@
 
         public function setUserid($id)
         {
-            $this->userid = $id;
+            $this->user_id = $id;
         }
 
         public function getUserid()
         {
-            return $this->userid;
+            return $this->user_id;
         }
 
         public function setQuestionid($id)
         {
-            $this->questionid = $id;
+            $this->question_id = $id;
         }
 
         public function getQuestionid()
         {
-            return $this->questionid;
+            return $this->question_id;
         }
 
         public function toArray($mitId = true)
@@ -106,7 +106,7 @@
         private function _insert()
         {
             $sql = 'INSERT INTO vote (vote, user_id, question_id) '
-                 . 'VALUES (:vote, :userid, :questionid)';
+                 . 'VALUES (:vote, :user_id, :question_id)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));

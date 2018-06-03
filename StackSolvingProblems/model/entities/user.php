@@ -7,7 +7,7 @@
         private $age = 0;   
         private $sex = '';
         private $points = 0;
-        private $rangid = 0;
+        private $rang_id = 0;
         private $email = '';
         private $password = '';
         private $username = '';
@@ -94,12 +94,12 @@
 
         public function setRangid($rangid)
         {
-            $this->rangid = $rangid;
+            $this->rang_id = $rangid;
         }
 
         public function getRangid()
         {
-            return $this->rangid;
+            return $this->rang_id;
         }
 
         public function setEmail($email)
@@ -176,7 +176,7 @@
         private function _insert()
         {
             $sql = 'INSERT INTO users (name, surname, age, sex, rang_id, points, email, password, username) '
-                 . 'VALUES (:name, :surname, :age, :sex, :rangid, :points, :email, :password, :username)';
+                 . 'VALUES (:name, :surname, :age, :sex, :rang_id, :points, :email, :password, :username)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -186,7 +186,7 @@
 
         private function _update()
         {
-            $sql = 'UPDATE users SET name=:name, surname=:surname, age=:age, sex =:sex, rang_id = :rangid,'
+            $sql = 'UPDATE users SET name=:name, surname=:surname, age=:age, sex =:sex, rang_id = :rang_id,'
             .'points = :points, email=:email, password =:password, username = :username'
                  . 'WHERE id=:id';
             $abfrage = self::$db->prepare($sql);

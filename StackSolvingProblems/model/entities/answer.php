@@ -2,11 +2,11 @@
     class Answer {
 
         private $id = 0;
-        private $like = 0;
-        private $dislike = 0;
+        private $likes = 0;
+        private $dislikes = 0;
         private $content = '';
-        private $userid = 0;
-        private $questionid = 0; 
+        private $user_id = 0;
+        private $question_id = 0; 
 
         public function getId(){
             return $this->id;
@@ -16,20 +16,20 @@
             $this->id = $id;
         }
     
-        public function getLike(){
+        public function getLikes(){
             return $this->like;
         }
     
-        public function setLike($like){
-            $this->like = $like;
+        public function setLikes($like){
+            $this->likes = $like;
         }
     
-        public function getDislike(){
-            return $this->dislike;
+        public function getDislikes(){
+            return $this->dislikes;
         }
     
-        public function setDislike($dislike){
-            $this->dislike = $dislike;
+        public function setDislikes($dislike){
+            $this->dislikes = $dislike;
         }
     
         public function getContent(){
@@ -41,19 +41,19 @@
         }
     
         public function getUserid(){
-            return $this->userid;
+            return $this->user_id;
         }
     
         public function setUserid($userid){
-            $this->userid = $userid;
+            $this->user_id = $userid;
         }
     
         public function getQuestionid(){
-            return $this->questionid;
+            return $this->question_id;
         }
     
         public function setQuestionid($questionid){
-            $this->questionid = $questionid;
+            $this->question_id = $questionid;
         }
 
         public function __construct($daten = array())
@@ -98,7 +98,7 @@
         private function _insert()
         {
             $sql = 'INSERT INTO answers (content, likes, dislikes, user_id, question_id) '
-                 . 'VALUES (:content, :likes, :dislikes, :userid, :questionid)';
+                 . 'VALUES (:content, :likes, :dislikes, :user_id, :question_id)';
             echo "TEST";
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -109,7 +109,7 @@
 
         private function _update()
         {
-            $sql = 'UPDATE answers SET content=:content, likes=:likes, dislike=:dislike, user_id =:userid, question_id = :questionid,'
+            $sql = 'UPDATE answers SET content=:content, likes=:likes, dislikes=:dislikes, user_id =:user_id, question_id = :question_id,'
                  . 'WHERE id=:id';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray());

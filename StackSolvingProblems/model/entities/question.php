@@ -6,7 +6,7 @@
         private $content = '';
         private $likes = 0;   
         private $dislikes = '';
-        private $userid = 0;
+        private $user_id = 0;
         private $solved = false;
         
     
@@ -75,11 +75,11 @@
         }
     
         public function getUserid(){
-            return $this->userid;
+            return $this->user_id;
         }
     
         public function setUserid($userid){
-            $this->userid = $userid;
+            $this->user_id = $userid;
         }
 
         public function getSolved(){
@@ -134,8 +134,8 @@
 
         private function _insert()
         {  
-            $sql = 'INSERT INTO questions (title, content, likes, dislikes, userid, solved) '
-                 . 'VALUES (:title, :content, :likes, :dislikes, :userid, :solved);';
+            $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved) '
+                 . 'VALUES (:title, :content, :likes, :dislikes, :user_id, :solved);';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -188,7 +188,7 @@
         }
 
         public static function findQuestionsByUserId($id) {
-            $sql = 'SELECT * FROM questions WHERE userid=?';
+            $sql = 'SELECT * FROM questions WHERE user_id=?';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute(array($id));
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Question');
