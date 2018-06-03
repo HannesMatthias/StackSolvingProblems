@@ -20,9 +20,12 @@
                   <?php if($vote == 0){ ?>
                     <button class="vote" name="like" type="submit" ><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
                     <button class="vote" name="dislike" type="submit"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button>    
+                  <?php } elseif($vote == 1) { ?>
+                    <button disabled class="vote" style="border: 1px solid red;" ><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
+                    <button disabled class="vote" ><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
                   <?php } else { ?>
                     <button disabled class="vote"  ><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
-                    <button disabled class="vote" ><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
+                    <button disabled class="vote" style="border: 1px solid red;"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
                 <?php }  
                 if($questionOwner == true){?>
                         <text> Frage gelöst? </text>
