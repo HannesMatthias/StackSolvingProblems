@@ -14,7 +14,13 @@ class Controller {
     }
 
     public function profil() {
-        
+        $this->addContext("template", "profil");
+        $session = Session::getInstance();
+        $user = $session->getSession("user");
+        $questions = Question::findQuestionsByUserId($user->getId());
+        $this->addContext("questions", $questions);
+
+
     }
 
     public function addQuestion() {   
@@ -32,45 +38,41 @@ class Controller {
         $this->addContext("preview", "");
         $this->addContext("title", "");
         $this->addContext("tags", Tag::findAll());
-
+        $this->addContext("edit", false);
       
-        if(isset($_POST["question"]) && !empty($_POST["question"])) {
-            $_POST['tag'] = array_unique($_POST['tag']);
+        if(isset($_POST["content"]) && !empty($_POST["content"])) {
             $frage = new Question($_POST);
             $frage->setUserid($user->getId());
            
             if(isset($_POST["save"]) && $_POST["save"] != null) {
                 if($frage->save() ) {
-                    echo "Erfolgreich!";
-                   
+                    echo "Erfolgreich!";      
                 }else {
                     echo "Fehler!!";
                 }
+            }else {
+                $this->addContext("edit", true);
             }
 
            $this->addContext("title", $_POST["title"]);
-           $this->addContext("preview", $_POST["question"]);
+           $this->addContext("preview", $_POST["content"]);
             if($_POST["id"] != 0) {
                 $this->addContext("id", $_POST["id"]);
             }
 
         }else if(isset($_GET["id"]) && $_GET["id"]) {
           
-            $frage = Question::findQuestionWithID($_GET["id"]);
+            $frage = Question::find($_GET["id"]);
            
             if($frage != null) {
                 $this->addContext("id", $frage->getId());
                 $this->addContext("title", $frage->getTitle());
-                $this->addContext("preview", $frage->getQuestion());
+                $this->addContext("preview", $frage->getContent());
+                $this->addContext("edit", true);
             }
-            
-            
+
         }
-
     }
-
-
-
     public function login() {    
         $session = Session::getInstance();
         if($session->getSession("user") != null ) { //Hier eigentlich sinnlos.
@@ -95,7 +97,7 @@ class Controller {
                     $errors[] = $errorList["no_right"];
                 }else if($user != null) {
                     $session->setSession("user", $user);
-                    header("Location: index.php?hahah");
+                    header("Location: index.php");
                 }
 
 
@@ -118,19 +120,6 @@ class Controller {
        $this->addContext("template", "main/main");
 
     }
-    public function verification($aktuelleMail){
-        $code = rand()."AA".rand()."FF".rand();
-        //$recipient = $aktuelleMail; meine Email nur zum Testen ;)
-        $recipient = "kevin.sorg.el.moumene@gmail.com";
-        $subject = "Verification";
-        $mail_body = "Just one more step... ".\r\n.$code;
-        try{
-            mail($recipient, $subject, $mail_body);
-        }catch(Exception $e){
-            echo $e;
-        }
-        User::setCode($email, $code);
-    }
 
     public function register() {
         $daten = array();
@@ -138,41 +127,46 @@ class Controller {
         $errorList = array(
             "not_filled" => "Bitte füllen Sie alle Felder aus!",
             "no_pwd_match" => "Die Passwörter stimmen nicht überein!",
-            "email_exists" => "Email schon Registerirt!"
+            "email_exists" => "Email schon Registriert!"
         );
         $entries = array("name", "surname",  "email", "password", "username", "re_password");
         $user = new User();
         if($_POST) {
+            $filled = true;
             foreach($entries as $e) {
                 if(!isset($_POST[$e]) || empty($_POST[$e])) {
                     $errors[0] = $errorList["not_filled"];
+                    $filled = false;
                 } else {
                     $daten[$e] = $_POST[$e];
-                    if($e == "email"){
-                        if($user->findByEmail($daten[$e]) != NULL){
-                            $errors[] = $errorList["email_exists"];
-                        }
-                    } else if($e == "password"){
-                        if ($daten[$e] != $_POST["re_password"]){
-                            $errors[] = $errorList["no_pwd_match"];
-                        }
-                    }
                 }
             }
             $user = new User($daten);
-            if(empty($errors)) {
+            if($filled) {
+                if($user->findByEmail($daten["email"]) != NULL){
+                    $errors[] = $errorList["email_exists"];
+                }
                 if($daten["password"] != $daten["re_password"]) {
                     $errors[] = $errorList["no_pwd_match"];
-                } else {
+                }
+                if(empty($errors)) {
                     array_pop($daten);
+<<<<<<< HEAD
                     $user->save();
                     verification($daten["email"]);
                     echo "Email: ".$daten["email"];
                     header("Location: index.php");
                     exit();
+=======
+                    if($user->save()) {
+                        $this->verification($daten["email"]);
+                        echo "Email: ".$daten["email"];
+                        header("Location: index.php");
+                        exit();
+                    }
+>>>>>>> fe333d52125a5128f71cf9f7bb02fda13f265c04
                 }
-            }
-            else {
+            } else {
                 $user = new User($_POST);
             }
         }
@@ -186,10 +180,93 @@ class Controller {
         $this->addContext("template", "forum_questions/question");
         $questions = Question::findAll();
         $this->addContext("questions", $questions);
+    }
+
+    public function fullQuestion() {
+
+
+        $question = Question::find($_GET["id"]);
+        $tags = $question->findTags();
+        $this->addContext("template", "forum_questions/fullquestion");
+        $this->addContext("question", $question);
+        $this->addContext("tags", $tags);
         
-  
+        $session = Session::getInstance();
+        $user = $session->getSession("user");
+        $v = 0;
+
+        
+        $this->addContext("vote", "");
+        $this->addContext("questionOwner", "");
+        $this->addContext("solved", "");
+        $this->addContext("user", "");
+        if($user != null) {
+            $voteCheck = Vote::findVoteByUseridAndQuestionud($user->getId(),$_GET['id']);
+            if($voteCheck != Null){
+                $v = $voteCheck->getVote();
+            }
+
+            $questionOwner = false;
+            if($v == 0){
+                #Voten
+                if(isset($_POST["like"]) ) {
+                        $frage = Question::find($_GET["id"]);
+                        $frage->setLikes($frage->getLikes()+1);
+                        $frage->save();
+                        $vote = new Vote;
+                        $vote->setVote(1);
+                        $vote->setUserid($user->getId());
+                        $vote->setQuestionid($_GET['id']);
+                        $vote->save();
+                        header("Refresh:0");
+                }else if(isset($_POST["dislike"]) ) {
+                        $frage = Question::find($_GET["id"]);
+                        $frage->setDislikes($frage->getDislikes()+1);
+                        $frage->save();
+                        $vote = new Vote;
+                        $vote->setVote(-1);
+                        $vote->setUserid($user->getId());
+                        $vote->setQuestionid($_GET['id']);
+                        $vote->save();
+                        header("Refresh:0");
+                }
+            }
+            if($question->getUserid() == $user->getId()){
+                if(isset($_POST["solvedTrue"]) ) {    
+                    $frage = Question::find($_GET["id"]);
+                    $frage->setSolved(true);
+                    $frage->save();
+                    header("Refresh:0");
+                }
+                if(isset($_POST["solvedFalse"]) ) {    
+                    $frage = Question::find($_GET["id"]);
+                    $frage->setSolved(false);
+                    $frage->save();
+                    header("Refresh:0");
+                }
+                $questionOwner = true;
+            }
+            $this->addContext("vote", $v);
+            $this->addContext("questionOwner", $questionOwner);
+            $this->addContext("solved", $question->getSolved());
+            $this->addContext("user", $user);
+            #Antworten
+
+            if(isset($_POST["answer_send"]) ) {
+                $session = Session::getInstance();
+                $user = $session->getSession("user");
+                $answer = new Answer();
+                $answer->setUserid($user->getId());
+                $answer->setQuestionid($_POST["id"]);
+                $answer->setContent($_POST["content"]);
+                $answer->save();
+                
+            }
+
+        }
 
     }
+
     public function logout() {}
     public function forum_intro() {
         $this->addContext("template", "forum_intro/intro");
@@ -197,7 +274,6 @@ class Controller {
     private function addContext($key, $value){
         $this->context[$key] = $value;
     }
-    
 
     private function generatePage($template) {
         extract($this->context);

@@ -61,7 +61,7 @@
 
         public static function findAll()
         {
-            $sql = 'SELECT * FROM tags';
+            $sql = 'SELECT * FROM tags ORDER BY tag';
             $abfrage = DB::getDB()->query($sql);
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Tag');
             return $abfrage->fetchAll();

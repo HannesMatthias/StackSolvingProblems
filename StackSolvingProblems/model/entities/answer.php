@@ -2,11 +2,11 @@
     class Answer {
 
         private $id = 0;
-        private $like = 0;
-        private $dislike = 0;
+        private $likes = 0;
+        private $dislikes = 0;
         private $content = '';
-        private $userid = 0;
-        private $questionid = 0; 
+        private $user_id = 0;
+        private $question_id = 0; 
 
         public function getId(){
             return $this->id;
@@ -16,20 +16,20 @@
             $this->id = $id;
         }
     
-        public function getLike(){
+        public function getLikes(){
             return $this->like;
         }
     
-        public function setLike($like){
-            $this->like = $like;
+        public function setLikes($like){
+            $this->likes = $like;
         }
     
-        public function getDislike(){
-            return $this->dislike;
+        public function getDislikes(){
+            return $this->dislikes;
         }
     
-        public function setDislike($dislike){
-            $this->dislike = $dislike;
+        public function setDislikes($dislike){
+            $this->dislikes = $dislike;
         }
     
         public function getContent(){
@@ -41,19 +41,19 @@
         }
     
         public function getUserid(){
-            return $this->userid;
+            return $this->user_id;
         }
     
         public function setUserid($userid){
-            $this->userid = $userid;
+            $this->user_id = $userid;
         }
     
         public function getQuestionid(){
-            return $this->questionid;
+            return $this->question_id;
         }
     
         public function setQuestionid($questionid){
-            $this->questionid = $questionid;
+            $this->question_id = $questionid;
         }
 
         public function __construct($daten = array())
@@ -69,7 +69,7 @@
                     }
                 }
             }
-            $this->setEncoding();
+         //   $this->setEncoding();
         }
 
         public function  __toString()
@@ -79,18 +79,8 @@
         
         public function save()
         {
-            try{
-                if ( $this->getId() > 0 ) {
-                    // wenn die ID eine Datenbank-ID ist, also größer 0, führe ein UPDATE durch
-                    $this->_update();
-                } else {
-                    // ansonsten einen INSERT
-                    $this->_insert();
-                }
-            } catch (PDOException $e){
-                echo $e;
-                return FALSE;
-            }
+            $this->_insert();
+     
             return TRUE;
         }
 
@@ -107,9 +97,8 @@
 
         private function _insert()
         {
-            $sql = 'INSERT INTO answers (id, content, likes, dislikes, user_id, question_id) '
-                 . 'VALUES (:id, :content, :likes, :dislikes, :userid, :questionid)';
-
+            $sql = 'INSERT INTO answers (content, likes, dislikes, user_id, question_id) '
+                 . 'VALUES (:content, :likes, :dislikes, :user_id, :question_id)';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
             // setze die ID auf den von der DB generierten Wert
@@ -118,9 +107,9 @@
 
         private function _update()
         {
-            $sql = 'UPDATE answers  SET content=:content, likes=:likes, dislike=:dislike, user_id =:userid, question_id = :questionid,'
+            $sql = 'UPDATE answers SET content=:content, likes=:likes, dislikes=:dislikes, user_id =:user_id, question_id = :question_id,'
                  . 'WHERE id=:id';
-            $abfrage = self::$db->prepare($sql);
+            $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray());
             
         }
@@ -153,6 +142,14 @@
             return $abfrage->fetchAll();
         }
 
+        public static function findByQuestionid($id)
+        {
+            $sql = 'SELECT * FROM answers WHERE question_id=?';
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute(array($id));
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Answer');
+            return $abfrage->fetchAll();
+        }
         public static function findAnswerCount($questionid)
         {
             $sql = 'SELECT count(*) as count FROM answers WHERE question_id= ? ';
@@ -160,5 +157,18 @@
             $abfrage->execute(array($questionid));
             return $abfrage->fetch();
         }
+
+        public function toArray($mitId = true)
+        {
+            $attribute = get_object_vars($this);
+            if ($mitId === false) {
+                // wenn $mitId false ist, entferne den Schlüssel id aus dem Ergebnis
+                unset($attribute['id']);
+            }
+            return $attribute;
+        }
+
     }
+
+
 ?>
