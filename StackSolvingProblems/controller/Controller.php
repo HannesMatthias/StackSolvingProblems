@@ -185,20 +185,18 @@ class Controller {
         
         $session = Session::getInstance();
         $user = $session->getSession("user");
-        $v = 0;
 
-        
-        $this->addContext("vote", "");
-        $this->addContext("questionOwner", "");
-        $this->addContext("solved", "");
-        $this->addContext("user", "");
+        $questionOwner = false;
+        $v = 10;
         if($user != null) {
             $voteCheck = Vote::findVoteByUseridAndQuestionud($user->getId(),$_GET['id']);
             if($voteCheck != Null){
                 $v = $voteCheck->getVote();
+            } else {
+                $v = 0;
             }
 
-            $questionOwner = false;
+            
             if($v == 0){
                 #Voten
                 if(isset($_POST["like"]) ) {
@@ -238,10 +236,7 @@ class Controller {
                 }
                 $questionOwner = true;
             }
-            $this->addContext("vote", $v);
-            $this->addContext("questionOwner", $questionOwner);
-            $this->addContext("solved", $question->getSolved());
-            $this->addContext("user", $user);
+            
             #Antworten
 
             if(isset($_POST["answer_send"]) ) {
@@ -255,7 +250,11 @@ class Controller {
                 
             }
 
-        }
+        } 
+        $this->addContext("vote", 10);
+        $this->addContext("questionOwner", $questionOwner);
+        $this->addContext("solved", $question->getSolved());
+        $this->addContext("user", $user);
 
     }
 

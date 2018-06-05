@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Frage hinzufügen</title>
+        <title>Frage Anzeigen</title>
         <link href="view/forum_questions/fullQuestion.css" rel="stylesheet">
         <script src="plugins/js/jquery.min.js"></script>
         <script src="plugins/js/clickmenu.js"></script>
@@ -11,21 +11,26 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
     <body>
-    <?php include_once "view/menu/menu.php"; ?>
+    <?php echo "HALLOHASDFASDFASDFASDF " ?>
+    <?php include_once "view/menu/menu.php";     ?>
        
             
             <div id="box_outer">
           
                 <form action="index.php?action=fullQuestion&amp;id=<?php echo $question->getId();?>" method="post">
-                  <?php if($vote == 0){ ?>
+                  <?php  if($vote == 0){ ?>
                     <button class="vote" name="like" type="submit" ><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
                     <button class="vote" name="dislike" type="submit"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button>    
                   <?php } elseif($vote == 1) { ?>
                     <button disabled class="vote big"><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
                     <button disabled class="vote" ><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
-                  <?php } else { ?>
+                  <?php } elseif($vote == -1) { ?>
                     <button disabled class="vote"><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
                     <button disabled class="vote big"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
+                  <?php } else { ?>
+                    <button disabled class="vote"><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
+                    <button disabled class="vote"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
+                  
                 <?php }  
                 if($questionOwner == true){?>
                     
