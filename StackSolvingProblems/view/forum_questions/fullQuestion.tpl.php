@@ -11,7 +11,6 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
     <body>
-    <?php echo "HALLOHASDFASDFASDFASDF " ?>
     <?php include_once "view/menu/menu.php";     ?>
        
             
@@ -41,12 +40,12 @@
                             <button title="Als gelöst markieren" style="margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/> </button> 
                             <button title="Als ungelöst markieren" style="margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button>      
                         <?php } ?> 
-                    <?php } else { ?>
+                    <?php } elseif($vote == 10 || $questionOwner == false ) { ?>
                         
                         <?php if($solved == true){ ?>
-                            <button title="Gelöst" style="margin-left:10px;"class="vote"><img src="view/forum_questions/tick.png"/> </button> 
+                            <button disabled title="Gelöst" style="margin-left:10px;"class="vote"><img src="view/forum_questions/tick.png"/> </button> 
                         <?php } else { ?>
-                            <button title="Noch eine Antwort, bitte!" style="margin-left:10px;"class="vote"><img src="view/forum_questions/x.png"/> </button>
+                            <button disabled title="Noch eine Antwort, bitte!" style="margin-left:10px;"class="vote"><img src="view/forum_questions/x.png"/> </button>
                         <?php } ?> 
                  
 
