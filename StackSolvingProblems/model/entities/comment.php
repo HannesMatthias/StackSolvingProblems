@@ -3,8 +3,8 @@
 
         private $id = 0;
         private $content = '';
-        private $userid = 0;
-        private $answerid = 0; 
+        private $user_id = 0;
+        private $answer_id = 0; 
 
         public function getId(){
             return $this->id;
@@ -19,19 +19,19 @@
         }
     
         public function getUserid(){
-            return $this->userid;
+            return $this->user_id;
         }
     
         public function setUserid($userid){
-            $this->userid = $userid;
+            $this->user_id = $userid;
         }
     
         public function getAnswerid(){
-            return $this->answerid;
+            return $this->answer_id;
         }
     
         public function setAnswerid($answerid){
-            $this->answerid = $answerid;
+            $this->answer_id = $answerid;
         }
 
         public function __construct($daten = array())
@@ -86,7 +86,7 @@
         private function _insert()
         {
             $sql = 'INSERT INTO comments (id, content, user_id, answer_id) '
-                 . 'VALUES (:id, :content,  :userid, :answerid)';
+                 . 'VALUES (:id, :content,  :user_id, :answer_id)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -96,7 +96,7 @@
 
         private function _update()
         {
-            $sql = 'UPDATE comments  SET content=:content, user_id =:userid, answer_id = :answernid,'
+            $sql = 'UPDATE comments  SET content=:content, user_id =:user_id, answer_id = :answer_id,'
                  . 'WHERE id=:id';
             $abfrage = self::$db->prepare($sql);
             $abfrage->execute($this->toArray());

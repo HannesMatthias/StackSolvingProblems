@@ -5,7 +5,21 @@
         <title>Frage hinzufügen</title>
         <link href="view/forum_addQuestion/addQuestion.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    </head>
+        <script>
+            function handleSelect(myForm){
+                
+                var selBox = document.getElementById('selectTag');
+                var userInput = selBox.options[selBox.selectedIndex].text;
+                var text = document.createTextNode(" " + userInput );
+                var divTags = document.getElementById('tags');
+                var tag = document.getElementById('tag');
+                tag.appendChild(text);
+
+                divTags.appendChild(tag);
+                selBox.remove(selBox.selectedIndex);
+            }
+        </script>
+   </head>
     <body>
         <script type="text/javascript" src="plugins/js/jquery.min.js"> </script>
         <script type="text/javascript" src="plugins/tinymce/tinymce.min.js"></script>
@@ -20,12 +34,12 @@
                 if($id==0) {
                     echo "Neue Frage";
                 }else {
-                    echo "Box ID: " . $id;
+                    echo "Frage ID: " . $id;
                 }
                 ?>
             </div>
 
-            <p class="subtitle">Vorschau - Titel </p>
+            <p  class="subtitle">Vorschau - Titel </p>
             <div class="text_center"><?php echo $title; ?></div>
 
             <p class="subtitle">Vorschau - Frage</p><br />
@@ -36,20 +50,39 @@
 
         <form id="sentMessage" method="post">
             <input type="hidden" name="id" value="<?php echo $id; ?>" />
-            <input type="text" maxlength="50" id="title" name="title" placeholder="Gib hier deinen Titel ein" value="<?php echo $title; ?>"/>
-            <p class="subtitle">Deine Frage</p>
-            <textarea class="tinymce" name="question"><?php echo $preview; ?></textarea>
+            <input required type="text" maxlength="50" id="title" name="title" placeholder="Gib hier deinen Titel ein" value="<?php echo $title; ?>"/>
+            <p style="color: white;" class="subtitle">Frag die Community!</p>
+            <textarea required class="tinymce" name="content"><?php echo $preview; ?></textarea>
             <?php
-            for($i = 0; $i < 3; $i++) { ?>
-            <select name="tag[]">
+            if(!$edit) { ?>
+                <select name="tag[]" id="selectTag" onChange=" return handleSelect()" >
+                <option value="default">Select Tag</option>
                 <?php foreach ($tags as $t) { ?>
-                <option value="<?php echo $t->getId() ?>"><?php echo $t->getTag() ?></option>
+                    <option value="<?php echo $t->getId() ?>"><?php echo $t->getTag() ?></option>
                 <?php } ?>
-            </select>
+                </select>
+                <div id="tags" style="color:white"> 
+               <span > TAG : </span> 
+               <span id="tag"> </span> 
+            </div>
             <?php } ?>
-            <p>Senden? <input type="checkbox" name="save" value="save"></p>
-            <input type="submit" value="Vorschau anzeigen" />
-        </form>
+            
+      <div id=buttons>
+            <div id="bnt_vorschau">
+                <input type="submit" value="Vorschau anzeigen" />
+            </div>
+            <div id="bnt_save">
+                <label class="container">Speichern ?
+                    <input type="checkbox" name="save" value="save"><span class="checkmark"></span> 
+                </label>
+                
+            <div>
+        </div>
+                    
+    </form>
+        
+            
+            
 
     </body>
    

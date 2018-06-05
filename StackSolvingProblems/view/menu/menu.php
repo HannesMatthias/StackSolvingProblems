@@ -35,14 +35,14 @@
                 <input id="login" type="submit" name="login" value="Einloggen" />
                 <a href="index.php?action=register">Jetzt registrieren</a>
             </form>
-        <?php   exit;
+        <?php   
             }else { 
                 $user = $session->getSession("user"); ?>
                 <a id="profile" href="#">
                     <img src="view/menu/tmpUser.png" alt="ProfilePhoto"/>
                 <?php echo $user->getUsername(); ?> </a>
                 <div id="usermenu">
-                    <a href="#">
+                    <a href="index.php?action=profil">
                         <div class="profileIcon"><img src="view/menu/profile.png"/></div>
                         <div class="profileText">Profil</div>
                     </a>

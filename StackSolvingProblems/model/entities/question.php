@@ -6,7 +6,7 @@
         private $content = '';
         private $likes = 0;   
         private $dislikes = '';
-        private $userid = 0;
+        private $user_id = 0;
         private $solved = false;
         
     
@@ -75,16 +75,16 @@
         }
     
         public function getUserid(){
-            return $this->userid;
+            return $this->user_id;
         }
     
         public function setUserid($userid){
-            $this->userid = $userid;
+            $this->user_id = $userid;
         }
 
         public function getSolved(){
 
-            return $this->solved ? "Gelöst" : "Ungelöst";
+            return $this->solved ;
         }
     
         public function setSolved($solved){
@@ -135,7 +135,11 @@
         private function _insert()
         {  
             $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved) '
+<<<<<<< HEAD
                  . 'VALUES (:title, :content, :likes, :dislikes, :userid, :solved);';
+=======
+                 . 'VALUES (:title, :content, :likes, :dislikes, :user_id, :solved);';
+>>>>>>> fe333d52125a5128f71cf9f7bb02fda13f265c04
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -153,11 +157,10 @@
         }
 
         private function _update()
-        {
-            $sql = 'UPDATE questions SET title=:title, content=:content, likes=:likes, dislikes =:dislikes, user_id = :userid, solved = :solved'
-                       . 'WHERE id=:id';
-            $abfrage = self::$db->prepare($sql);
-            $abfrage->execute($this->toArray());
+        { 
+            $sql = "UPDATE questions SET title='" . $this->title .  "' , content= '" . $this->content . "' , likes='" . $this->likes  ."', dislikes='" . $this->dislikes . "', solved ='" . $this->solved . "' WHERE id=" . $this->id . " ";           
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute();
         }
 
         /* ***** Statische Methoden ***** */
@@ -188,17 +191,29 @@
             return $abfrage->fetchAll();
         }
 
+        public static function findQuestionsByUserId($id) {
+            $sql = 'SELECT * FROM questions WHERE user_id=?';
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute(array($id));
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Question');
+            return $abfrage->fetchAll();
+        }
+
         public function findTags(){
             return Tag::findByQuestionId($this->getId());
         }
 
-        public function findAnwers($userid){
-            return Tag::findByUseridAndQuestionid($userid,$this->getId());
+        public function findAnswers(){
+            return Answer::findByQuestionid($this->getId());
         }
 
+<<<<<<< HEAD
         public function findAnswerCount($userid){
             return Tag::findAnswerCount($userid,$this->getId());
+=======
+        public function findAnswerCount(){
+            return Answer::findAnswerCount($this->getId());
+>>>>>>> fe333d52125a5128f71cf9f7bb02fda13f265c04
         }
-        
     }
 ?>

@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  color:white;
+  color:lightgrey;
   font-size: 100%;
   font-size: 20px;
   margin-left:15%;
@@ -21,57 +21,33 @@ h1 {
 }*/
 
 #profil{
-  
-  background-color: grey;
-  position: relative;
-  margin-top:15%;
-  border-radius: 16px;
-
-}
-
-
-
-#profileImage {
-  
-  position: absolute;
-  margin-top:-7%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 13%;
-  border-radius: 50px;
-  z-index: 2;
-  
-
-  
-}
-#username {
   text-align: center;
-  padding-top: 20%;
-  font-size: 30px;
-  margin-bottom: 10px;
+  border-color: green;
+  border-width: 5px;
+  border-style: solid;
 }
-#firstname{
-  margin-left: 1px;
-  margin-bottom: 4px;
+
+#profil_image{
+  border-radius: 50%;
+  text-align:center;
+  margin: 0 auto;
+
+
 }
-#surname{
-  margin-left: 1px;
-  margin-bottom:4px;
+#profil_image img {
+  border-radius: 50%;
+
+  
 }
-#email{
-  margin-left: 1px;
-  margin-bottom:4px;
+#userdata{
+  text-align: center;
+  padding-top: 20px;
+  
 }
 #userquestions{
-  background-color: grey;
-  border-radius: 16px;
+text-align:center;
+padding-top: 20px;
 }
-
-
-
-
-
-
 
 /*#right {
   /*border-style: solid;
