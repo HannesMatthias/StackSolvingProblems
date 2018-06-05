@@ -135,7 +135,11 @@
         private function _insert()
         {  
             $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved) '
+<<<<<<< HEAD
+                 . 'VALUES (:title, :content, :likes, :dislikes, :userid, :solved);';
+=======
                  . 'VALUES (:title, :content, :likes, :dislikes, :user_id, :solved);';
+>>>>>>> fe333d52125a5128f71cf9f7bb02fda13f265c04
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -203,8 +207,13 @@
             return Answer::findByQuestionid($this->getId());
         }
 
+<<<<<<< HEAD
+        public function findAnswerCount($userid){
+            return Tag::findAnswerCount($userid,$this->getId());
+=======
         public function findAnswerCount(){
             return Answer::findAnswerCount($this->getId());
+>>>>>>> fe333d52125a5128f71cf9f7bb02fda13f265c04
         }
     }
 ?>

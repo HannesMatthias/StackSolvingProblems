@@ -151,12 +151,20 @@ class Controller {
                 }
                 if(empty($errors)) {
                     array_pop($daten);
+<<<<<<< HEAD
+                    $user->save();
+                    verification($daten["email"]);
+                    echo "Email: ".$daten["email"];
+                    header("Location: index.php");
+                    exit();
+=======
                     if($user->save()) {
                         $this->verification($daten["email"]);
                         echo "Email: ".$daten["email"];
                         header("Location: index.php");
                         exit();
                     }
+>>>>>>> fe333d52125a5128f71cf9f7bb02fda13f265c04
                 }
             } else {
                 $user = new User($_POST);
