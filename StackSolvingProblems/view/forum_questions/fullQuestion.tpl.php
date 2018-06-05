@@ -78,6 +78,12 @@
                     <div class="box_answers_user">
                         <?php echo utf8_encode($answers->getContent()); ?>
                     </div>
+                    <?php if($user != null) { ?>
+                        <div class="box_comments">
+                            <button class="btn_comments">Antworten</button>
+                        </div>
+                        
+                    <?php } ?>
                     <div class="line"> </div>
                 </div>
             <?php } ?>
