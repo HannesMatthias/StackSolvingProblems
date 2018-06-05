@@ -1,8 +1,6 @@
 <?php 
-    $session = Session::getInstance();
-    $user;
-    if($session->getSession("user") != null ) {
-        $user = $session->getSession("user");
+    if (empty($_POST[$questions])) {
+        //return
     }
 ?>
 <!DOCTYPE html>
@@ -15,22 +13,22 @@
     </head>
     <body>
         <?php include_once "view/menu/menu.php"; ?>
-        <img id="profilImage" src="view/images/lauch.jpg" alt="username" height="25%" width="25%">
+        <img id="profilImage" src="view/images/lauch.jpg" alt="username" height="15%" width="15%">
         <div id="profil">
-            <div id="username">Username: <?php echo $user->getUsername(); ?></div>
-            <div id="userdata">
-                Vorname: <div id="firstname"><?php echo $user->getName(); ?></div>
-                Nachname: <div id="surname"><?php echo $user->getSurname(); ?></div>                
-                Email: <div id="email"><?php echo $user->getEmail(); ?></div>
-            </div>
+            <div id="username"><?php echo $user->getUsername(); ?></div>
+            Vorname: <div id="firstname"><?php echo $user->getName(); ?></div>
+            Nachname: <div id="surname"><?php echo $user->getSurname(); ?></div>                
+            Email: <div id="email"><?php echo $user->getEmail(); ?></div>
+            Geschlecht: <div id="sex"><?php echo $user->getSex(); ?></div>
+            Points: <div id="points"><?php echo $user->getPoints(); ?></div>//Currently not implemented
             <div id="userquestions">
                 <?php foreach($user->findQuestions() AS $key => $question) {
-                $tags = $question->findTags(); 
-                
+                $tags = $question->findTags();
                 ?>
                 <div class="box">
                     <div class="outer">
-                        <div class="box_title"><?php echo $question->getTitle(); ?></div>
+                        <div class="box_title">
+                        <a class="redirect" href="index.php?action=fullQuestion&amp;id=<?php echo $question->getId();?>"><?php echo $question->getTitle(); ?></a></div>
                         <div class="box_solved"><span style="font-weight: bold;">Status:</span> <br />
                         <?php echo $question->getSolved(); ?></div>
                         <div class="box_answers"><span style="font-weight: bold;">Antworten:</span> <br /><?php echo $question->findAnswerCount()['count']; ?></div>
