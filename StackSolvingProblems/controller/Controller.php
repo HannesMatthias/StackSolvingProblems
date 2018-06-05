@@ -167,7 +167,7 @@ class Controller {
                     array_pop($daten);
                     $user->save();
                     verification($daten["email"]);
-                    echo "Email: " $daten["email"];
+                    echo "Email: ".$daten["email"];
                     header("Location: index.php");
                     exit();
                 }

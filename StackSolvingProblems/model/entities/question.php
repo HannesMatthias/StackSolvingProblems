@@ -135,11 +135,7 @@
         private function _insert()
         {  
             $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved) '
-<<<<<<< HEAD
-                 . 'VALUES (:title, :content, :likes, :dislikes, :userid, :solved)';
-=======
                  . 'VALUES (:title, :content, :likes, :dislikes, :userid, :solved);';
->>>>>>> 49a318415da59dd25823aaa68bbf07a844df43aa
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -200,7 +196,7 @@
             return Tag::findByUseridAndQuestionid($userid,$this->getId());
         }
 
-        public function findAns    b werCount($userid){
+        public function findAnswerCount($userid){
             return Tag::findAnswerCount($userid,$this->getId());
         }
         
