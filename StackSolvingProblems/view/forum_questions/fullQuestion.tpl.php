@@ -4,7 +4,6 @@
         <meta charset="UTF-8" />
         <title>Frage hinzufügen</title>
         <link href="view/forum_questions/fullQuestion.css" rel="stylesheet">
-        <meta charset="UTF-8" />
         <script src="plugins/js/jquery.min.js"></script>
         <script src="plugins/js/clickmenu.js"></script>
         <script src="plugins/js/addAnswer.js"></script>
@@ -78,6 +77,12 @@
                     <div class="box_answers_user">
                         <?php echo utf8_encode($answers->getContent()); ?>
                     </div>
+                    <?php if($user != null) { ?>
+                        <div class="box_comments">
+                            <button class="btn_comments">Antworten</button>
+                        </div>
+                        
+                    <?php } ?>
                     <div class="line"> </div>
                 </div>
             <?php } ?>

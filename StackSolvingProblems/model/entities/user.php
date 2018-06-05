@@ -4,14 +4,14 @@
         private $id = 0;
         private $name = '';
         private $surname = '';
-        private $age = 0;   
+        private $birthdate = 0;   
         private $sex = '';
         private $points = 0;
-        private $rang_id = 0;
+        private $rang_id = 1;
         private $email = '';
-        private $password = '';
+        private $password_hash = '';
         private $username = '';
-        private $verification = false;
+        private $verified = false;
         
     
  
@@ -45,14 +45,14 @@
             $this->name = $name;
         }
         
-        public function getVerification()
+        public function getVerified()
         {
-            return $this->verification;
+            return $this->verified;
         }
 
-        public function setVerification($verification)
+        public function setVerified($verified)
         {
-            $this->verification = $verification;
+            $this->verified = $verified;
         }
 
         public function getName()
@@ -70,14 +70,14 @@
             return $this->surname;
         }
 
-        public function setAge($age)
+        public function setBirthdate($birthdate)
         {
-            $this->age = $age;
+            $this->birthdate = $birthdate;
         }
 
-        public function getAge()
+        public function getBirthdate()
         {
-            return $this->age;
+            return $this->birthdate;
         }
 
         public function setSex($sex)
@@ -109,14 +109,14 @@
             return $this->email;
         }
 
-        public function setPassword($password)
+        public function setPassword_hash($password_hash)
         {
-            $this->password = $password;
+            $this->password_hash = $password_hash;
         }
 
-        public function getPassword()
+        public function getPassword_hash()
         {
-            return $this->password;
+            return $this->password_hash;
         }
 
         public function setUsername($username)
@@ -127,6 +127,16 @@
         public function getUsername()
         {
             return $this->username;
+        }
+
+        public function setPoints($points)
+        {
+            $this->points = $points;
+        }
+
+        public function getPoints()
+        {
+            return $this->points;
         }
         
 
@@ -172,8 +182,8 @@
 
         private function _insert()
         {
-            $sql = 'INSERT INTO users (name, surname, age, sex, rang_id, points, email, password, username) '
-                 . 'VALUES (:name, :surname, :age, :sex, :rang_id, :points, :email, :password, :username)';
+            $sql = 'INSERT INTO users (name, surname, birthdate, sex, rang_id, points, email, password_hash, username, verified) '
+                 . 'VALUES (:name, :surname, :birthdate, :sex, :rang_id, :points, :email, :password_hash, :username, :verified)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -183,8 +193,8 @@
 
         private function _update()
         {
-            $sql = 'UPDATE users SET name=:name, surname=:surname, age=:age, sex =:sex, rang_id = :rang_id,'
-            .'points = :points, email=:email, password =:password, username = :username'
+            $sql = 'UPDATE users SET name=:name, surname=:surname, birthdate=:birthdate, sex =:sex, rang_id = :rang_id,'
+            .'points = :points, email=:email, password_hash =:password_hash, username = :username, verified=:verified'
                  . 'WHERE id=:id';
             $abfrage = self::$db->prepare($sql);
             $abfrage->execute($this->toArray());
@@ -249,16 +259,30 @@
         public static function einloggen($email,$pass)
                 {
                 
-                    $sql = 'SELECT * FROM users WHERE (email= :email AND password_hash= :password) OR (username = :email AND password_hash = :password)';
+                    $sql = 'SELECT * FROM users WHERE (email= :email AND password_hash= :password_hash) OR (username = :email AND password_hash = :password_hash)';
                     $abfrage = DB::getDB()->prepare($sql);
                     $abfrage->execute(array(":email"=> $email,
-                                            ":password"=> $pass
+                                            ":password_hash"=> $pass
                     ));
                     $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
         
                     return $abfrage->fetch();
                     
                 }
+
+        public function verified($aktuelleMail){
+            $code = rand()."AA".rand()."FF".rand();
+            //$recipient = $aktuelleMail; meine Email nur zum Testen ;)
+            $recipient = "kevin.sorg.el.moumene@gmail.com";
+            $subject = "Verified";
+            $mail_body = "Just one more step... \r\n".$code;
+            try{
+                mail($recipient, $subject, $mail_body);
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
+            $this->setCode($aktuelleMail, $code);
+        }
         
     }
 ?>

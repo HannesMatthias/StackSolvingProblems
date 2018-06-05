@@ -98,8 +98,7 @@ html, body {
     border-radius: 10px;
 }
 .box_fullanswer {
-
-margin-bottom: 50px;
+    margin-bottom: 50px;
 }
 .box_answers_autor {
     font-size: 1.3rem;
@@ -111,5 +110,12 @@ margin-bottom: 50px;
     height: 2px;
     width:80%;
     background-color: #e8ecf2;
-    margin:  0 auto;
+    margin: 20px auto;
+    /* float: right; */
+}
+
+.btn_comments {
+    background-color: rgb(108, 188, 214);
+    color: white;
+    padding: 10px;
 }
