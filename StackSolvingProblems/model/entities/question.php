@@ -134,13 +134,8 @@
 
         private function _insert()
         {  
-<<<<<<< HEAD
-            $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved) '
-                 . 'VALUES (:title, :content, :likes, :dislikes, :user_id, :solved);';
-=======
             $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved, right_answer) '
                  . 'VALUES (:title, :content, :likes, :dislikes, :user_id, :solved, :right_answer);';
->>>>>>> 0799674caa03de21ea0a1c027c7962c891249c53
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
