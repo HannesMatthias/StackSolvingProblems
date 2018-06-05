@@ -92,6 +92,19 @@
             $this->solved = $solved;
         }
         
+
+
+
+
+
+
+
+
+
+
+
+
+        
         public function setRightAnswer($id){
             $this->right_answer = $id;
         }
