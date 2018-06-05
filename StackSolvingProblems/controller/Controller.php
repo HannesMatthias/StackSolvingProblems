@@ -19,8 +19,7 @@ class Controller {
         $user = $session->getSession("user");
         $questions = Question::findQuestionsByUserId($user->getId());
         $this->addContext("questions", $questions);
-
-
+        $this->addContext("user", $user);
     }
 
     public function addQuestion() {   
