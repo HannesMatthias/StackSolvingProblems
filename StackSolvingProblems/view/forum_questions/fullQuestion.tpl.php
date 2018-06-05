@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Frage hinzufügen</title>
+        <title>Frage Anzeigen</title>
         <link href="view/forum_questions/fullQuestion.css" rel="stylesheet">
         <script src="plugins/js/jquery.min.js"></script>
         <script src="plugins/js/clickmenu.js"></script>
@@ -11,21 +11,25 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
     <body>
-    <?php include_once "view/menu/menu.php"; ?>
+    <?php include_once "view/menu/menu.php";     ?>
        
             
             <div id="box_outer">
           
                 <form action="index.php?action=fullQuestion&amp;id=<?php echo $question->getId();?>" method="post">
-                  <?php if($vote == 0){ ?>
+                  <?php  if($vote == 0){ ?>
                     <button class="vote" name="like" type="submit" ><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
                     <button class="vote" name="dislike" type="submit"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button>    
                   <?php } elseif($vote == 1) { ?>
                     <button disabled class="vote big"><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
                     <button disabled class="vote" ><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
-                  <?php } else { ?>
+                  <?php } elseif($vote == -1) { ?>
                     <button disabled class="vote"><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
                     <button disabled class="vote big"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
+                  <?php } else { ?>
+                    <button disabled class="vote"><?php echo $question->getLikes(); ?><img src="view/forum_questions/like.png"/> </button>
+                    <button disabled class="vote"><?php echo $question->getDislikes(); ?><img src="view/forum_questions/dislike.png"/> </button> 
+                  
                 <?php }  
                 if($questionOwner == true){?>
                     
@@ -36,12 +40,12 @@
                             <button title="Als gelöst markieren" style="margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/> </button> 
                             <button title="Als ungelöst markieren" style="margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button>      
                         <?php } ?> 
-                    <?php } else { ?>
+                    <?php } elseif($vote == 10 || $questionOwner == false ) { ?>
                         
                         <?php if($solved == true){ ?>
-                            <button title="Gelöst" style="margin-left:10px;"class="vote"><img src="view/forum_questions/tick.png"/> </button> 
+                            <button disabled title="Gelöst" style="margin-left:10px;"class="vote"><img src="view/forum_questions/tick.png"/> </button> 
                         <?php } else { ?>
-                            <button title="Noch eine Antwort, bitte!" style="margin-left:10px;"class="vote"><img src="view/forum_questions/x.png"/> </button>
+                            <button disabled title="Noch eine Antwort, bitte!" style="margin-left:10px;"class="vote"><img src="view/forum_questions/x.png"/> </button>
                         <?php } ?> 
                  
 
