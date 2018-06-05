@@ -89,8 +89,8 @@ class Controller {
 
         $user = new User();
         if($_POST) {
-            if(isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["password"]) && !empty($_POST["password"]) ) {             
-                $user = User::einloggen($_POST["name"], $_POST["password"]); 
+            if(isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["password_hash"]) && !empty($_POST["password_hash"]) ) {             
+                $user = User::einloggen($_POST["name"], $_POST["password_hash"]); 
                 if ($user == null) {
                     $user = new User($_POST);
                     $errors[] = $errorList["no_right"];
@@ -105,7 +105,7 @@ class Controller {
                     $errors[] = $errorList["no_email"];
                 } 
 
-                if (empty($_POST['password'])) {
+                if (empty($_POST['password_hash'])) {
                     $errors[] = $errorList["no_pw"];
                 }
 
@@ -128,7 +128,7 @@ class Controller {
             "no_pwd_match" => "Die Passwörter stimmen nicht überein!",
             "email_exists" => "Email schon Registriert!"
         );
-        $entries = array("name", "surname",  "email", "password", "username", "re_password");
+        $entries = array("name", "surname",  "email", "password_hash", "username", "re_password_hash");
         $user = new User();
         if($_POST) {
             $filled = true;
@@ -145,13 +145,13 @@ class Controller {
                 if($user->findByEmail($daten["email"]) != NULL){
                     $errors[] = $errorList["email_exists"];
                 }
-                if($daten["password"] != $daten["re_password"]) {
+                if($daten["password_hash"] != $daten["re_password_hash"]) {
                     $errors[] = $errorList["no_pwd_match"];
                 }
                 if(empty($errors)) {
                     array_pop($daten);
                     if($user->save()) {
-                        $this->verification($daten["email"]);
+                        $user->verified($daten["email"]);
                         echo "Email: ".$daten["email"];
                         header("Location: index.php");
                         exit();
@@ -184,20 +184,18 @@ class Controller {
         
         $session = Session::getInstance();
         $user = $session->getSession("user");
-        $v = 0;
 
-        
-        $this->addContext("vote", "");
-        $this->addContext("questionOwner", "");
-        $this->addContext("solved", "");
-        $this->addContext("user", "");
+        $questionOwner = false;
+        $v = 10;
         if($user != null) {
             $voteCheck = Vote::findVoteByUseridAndQuestionud($user->getId(),$_GET['id']);
             if($voteCheck != Null){
                 $v = $voteCheck->getVote();
+            } else {
+                $v = 0;
             }
 
-            $questionOwner = false;
+            
             if($v == 0){
                 #Voten
                 if(isset($_POST["like"]) ) {
@@ -237,10 +235,7 @@ class Controller {
                 }
                 $questionOwner = true;
             }
-            $this->addContext("vote", $v);
-            $this->addContext("questionOwner", $questionOwner);
-            $this->addContext("solved", $question->getSolved());
-            $this->addContext("user", $user);
+            
             #Antworten
 
             if(isset($_POST["answer_send"]) ) {
@@ -254,7 +249,11 @@ class Controller {
                 
             }
 
-        }
+        } 
+        $this->addContext("vote", 10);
+        $this->addContext("questionOwner", $questionOwner);
+        $this->addContext("solved", $question->getSolved());
+        $this->addContext("user", $user);
 
     }
 
