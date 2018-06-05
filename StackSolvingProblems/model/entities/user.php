@@ -128,6 +128,16 @@
         {
             return $this->username;
         }
+
+        public function setPoints($points)
+        {
+            $this->points = $points;
+        }
+
+        public function getPoints()
+        {
+            return $this->points;
+        }
         
 
         public function toArray($mitId = true)
