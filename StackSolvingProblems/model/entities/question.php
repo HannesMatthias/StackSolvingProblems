@@ -92,6 +92,7 @@
             $this->solved = $solved;
         }
         
+        
         public function setRightAnswer($id){
             $this->right_answer = $id;
         }
@@ -147,7 +148,7 @@
         private function _insert()
         {  
             $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved, right_answer) '
-                 . 'VALUES (:title, :content, :likes, :dislikes, :user_id, :solved, :right_answer);';
+                 . 'VALUES (:title, :content, :likes, :dislikes, :user_id, :solved, :right_answer)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -219,10 +220,13 @@
 
         public function findAnswerCount(){
             return Answer::findAnswerCount($this->getId());
+<<<<<<< HEAD
+=======
         }
 
         public function findRightAnswer(){
             return Answer::find($this->getRightAnswer());
+>>>>>>> 4c91c3ccba53e599989e7fe41755ce55c45827fb
         }
     }
 ?>
