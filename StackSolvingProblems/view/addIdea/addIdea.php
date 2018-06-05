@@ -22,7 +22,7 @@
          <tr><div id="overConditions"><Label>Conditions & byset2:</Label></div></tr>
     <tr>
         <div id="conditions">
-            <tr><div id="innterConditions"> </div></tr>
+            <div id="innterConditions"> <input id="innterConditionsText" type="text"> </div>
         </div>
 
         <div id="byset2"><input id="byset2Text" type="text"></div>
