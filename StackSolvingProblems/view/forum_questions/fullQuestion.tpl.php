@@ -4,7 +4,6 @@
         <meta charset="UTF-8" />
         <title>Frage hinzufügen</title>
         <link href="view/forum_questions/fullQuestion.css" rel="stylesheet">
-        <meta charset="UTF-8" />
         <script src="plugins/js/jquery.min.js"></script>
         <script src="plugins/js/clickmenu.js"></script>
         <script src="plugins/js/addAnswer.js"></script>
