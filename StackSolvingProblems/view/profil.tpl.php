@@ -17,10 +17,10 @@
         <?php include_once "view/menu/menu.php"; ?>
         <img id="profilImage" src="view/images/lauch.jpg" alt="username" height="25%" width="25%">
         <div id="profil">
-            <div id="username">Username: <?php echo $user->getUsername(); ?></div>
+            <div id="username">Username: <?php echo utf8_encode($user->getUsername()); ?></div>
             <div id="userdata">
-                Vorname: <div id="firstname"><?php echo $user->getName(); ?></div>
-                Nachname: <div id="surname"><?php echo $user->getSurname(); ?></div>                
+                Vorname: <div id="firstname"><?php echo utf8_encode($user->getName()); ?></div>
+                Nachname: <div id="surname"><?php echo utf8_encode($user->getSurname()); ?></div>                
                 Email: <div id="email"><?php echo $user->getEmail(); ?></div>
             </div>
             <div id="userquestions">
