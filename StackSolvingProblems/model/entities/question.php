@@ -231,13 +231,10 @@
 
         public function findAnswerCount(){
             return Answer::findAnswerCount($this->getId());
-<<<<<<< HEAD
-=======
         }
 
         public function findRightAnswer(){
             return Answer::find($this->getRightAnswer());
->>>>>>> 4c91c3ccba53e599989e7fe41755ce55c45827fb
         }
     }
 ?>
