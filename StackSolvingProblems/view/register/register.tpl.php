@@ -49,12 +49,12 @@
                 <br /> 
                 <br />
                 <label>Passwort</label>
-                <input type="password" name="password">
+                <input type="password" name="password_hash">
                 <br />
                 <br /> 
                 <br />
                 <label>Passwort wiederholen</label>
-                <input type="password" name="re_password"> <br> <br>
+                <input type="password" name="re_password_hash"> <br> <br>
                 <br />
                 <input type="submit" name="send" value="Abschicken">
             </form>

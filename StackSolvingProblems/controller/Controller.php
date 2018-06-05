@@ -90,8 +90,8 @@ class Controller {
 
         $user = new User();
         if($_POST) {
-            if(isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["password"]) && !empty($_POST["password"]) ) {             
-                $user = User::einloggen($_POST["name"], $_POST["password"]); 
+            if(isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["password_hash"]) && !empty($_POST["password_hash"]) ) {             
+                $user = User::einloggen($_POST["name"], $_POST["password_hash"]); 
                 if ($user == null) {
                     $user = new User($_POST);
                     $errors[] = $errorList["no_right"];
@@ -106,7 +106,7 @@ class Controller {
                     $errors[] = $errorList["no_email"];
                 } 
 
-                if (empty($_POST['password'])) {
+                if (empty($_POST['password_hash'])) {
                     $errors[] = $errorList["no_pw"];
                 }
 
@@ -129,7 +129,7 @@ class Controller {
             "no_pwd_match" => "Die Passwörter stimmen nicht überein!",
             "email_exists" => "Email schon Registriert!"
         );
-        $entries = array("name", "surname",  "email", "password", "username", "re_password");
+        $entries = array("name", "surname",  "email", "password_hash", "username", "re_password_hash");
         $user = new User();
         if($_POST) {
             $filled = true;
@@ -146,13 +146,13 @@ class Controller {
                 if($user->findByEmail($daten["email"]) != NULL){
                     $errors[] = $errorList["email_exists"];
                 }
-                if($daten["password"] != $daten["re_password"]) {
+                if($daten["password_hash"] != $daten["re_password_hash"]) {
                     $errors[] = $errorList["no_pwd_match"];
                 }
                 if(empty($errors)) {
                     array_pop($daten);
                     if($user->save()) {
-                        $this->verification($daten["email"]);
+                        $user->verified($daten["email"]);
                         echo "Email: ".$daten["email"];
                         header("Location: index.php");
                         exit();
