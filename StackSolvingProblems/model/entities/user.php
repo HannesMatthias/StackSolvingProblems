@@ -80,11 +80,11 @@
             return $this->age;
         }
 
-        public function setSex($sex)
+        public function setSex($sex)/*vergewaltigung*/
         {
             $this->sex = $sex;
         }
-        public function getSex()
+        public function getSex()/*normaler sex*/
         {
             return $this->sex;
         }
