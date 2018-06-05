@@ -160,7 +160,7 @@
         private function _insert()
         {  
             $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved, right_answer) '
-                 . 'VALUES (:title, :content, :likes, :dislikes, :user_id, :solved, :right_answer)';
+                 . 'VALUES (:title, :content, :likes, :dislikes, :user_id, :solved, :right_answer);';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
