@@ -8,6 +8,7 @@
         private $dislikes = '';
         private $user_id = 0;
         private $solved = false;
+        private $right_answer;
         
     
  
@@ -86,10 +87,34 @@
 
             return $this->solved ;
         }
-    
+
         public function setSolved($solved){
             $this->solved = $solved;
         }
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        public function setRightAnswer($id){
+            $this->right_answer = $id;
+        }
+
+        public function getRightAnswer(){
+
+            return $this->right_answer;
+        }
+    
+        
         
 
         public function toArray($mitId = true)
@@ -134,8 +159,8 @@
 
         private function _insert()
         {  
-            $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved) '
-                 . 'VALUES (:title, :content, :likes, :dislikes, :user_id, :solved);';
+            $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved, right_answer) '
+                 . 'VALUES (:title, :content, :likes, :dislikes, :user_id, :solved, :right_answer)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -154,7 +179,9 @@
 
         private function _update()
         { 
-            $sql = "UPDATE questions SET title='" . $this->title .  "' , content= '" . $this->content . "' , likes='" . $this->likes  ."', dislikes='" . $this->dislikes . "', solved ='" . $this->solved . "' WHERE id=" . $this->id . " ";           
+            $sql = "UPDATE questions SET title='" . $this->getTitle() .  "' , content= '" 
+            . $this->getContent() . "' , likes='" . $this->getLikes()  ."', dislikes='" . $this->getDislikes()
+            . "', solved ='" . $this->getSolved() .  "', right_answer='" . $this->getRightAnswer() . "' WHERE id=" . $this->id . " ";           
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute();
         }
@@ -205,6 +232,10 @@
 
         public function findAnswerCount(){
             return Answer::findAnswerCount($this->getId());
+        }
+
+        public function findRightAnswer(){
+            return Answer::find($this->getRightAnswer());
         }
     }
 ?>
