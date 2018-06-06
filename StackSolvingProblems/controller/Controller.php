@@ -20,8 +20,10 @@ class Controller {
         $session = Session::getInstance();
         $user = $session->getSession("user");
         $questions = Question::findQuestionsByUserId($user->getId());
+        //$projects = Project::fin
         $this->addContext("questions", $questions);
         $this->addContext("user", $user);
+        $this->addContext("projects", $projects);
     }
 
     public function addQuestion() {   
@@ -100,10 +102,9 @@ class Controller {
                     $user = new User($_POST);
                     $errors[] = $errorList["no_right"];
                 }else if($user != null) {
-                    if(!$user->getVerified()) {
-                        echo "Verifizieren!!!";
-                        header("Location: index.php?visible=true&verify=true");
-                        exit;
+                    if(!$user->getVerified()) {  
+                        header("Location: index.php");
+                        //exit;
                     }
                    
                     $session->setSession("user", $user);

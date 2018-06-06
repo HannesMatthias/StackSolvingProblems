@@ -79,11 +79,11 @@
             return $this->birthdate;
         }
 
-        public function setSex($sex)/*vergewaltigung*/
+        public function setSex($sex)
         {
             $this->sex = $sex;
         }
-        public function getSex()/*normaler sex*/
+        public function getSex()
         {
             return $this->sex;
         }
@@ -142,8 +142,8 @@
             $this->icon = $icon;
         }
 
-        public function getIcon($icon) {
-            return $icon;
+        public function getIcon() {
+            return $this->icon;
         }
         
         public function alterVerified(){
