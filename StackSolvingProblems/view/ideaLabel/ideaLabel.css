@@ -2,6 +2,18 @@
 body{
     font-size: 100%;
 }
+
+.ideaLabel{
+    color: black;
+    height: 10em;
+    width: 47%;
+    margin: 0 auto;
+    border-style: none;
+    background-color: white;
+    margin-top: 8px;
+    border-radius: 10px;
+}
+
 .scollView{
     overflow-y: auto;
     height: 100%;
@@ -9,70 +21,72 @@ body{
 }
 
 #container0{
-    width: 100%;
+    padding: 2%;
+    width: 95%;
     margin: auto;
-    border-bottom-width: 2px;
-    border-style: solid;
-    height: 5rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    font-style: normal;
+    border-bottom: 3px;
+    border-color: black;
+    border-bottom-style: inset;
 }
 #container1{
     width: 100%;
-    margin-top: 10%;
+    font-size: 1.3rem;
+    margin: auto;
+    margin-top: 3%;
 }
 
-.ideaLabel{
-    color: black;
-    height: 8em;
-    width: 47%;
-    margin: 0 auto;
-    border-style: none;
-    background-color: white;
-    margin-top: 8px;
-}
 /* ------------------------------------------------------ */
 .profile{
     float: left;
     width: 25%;
-    background-color: gray;
+    height: 100%;
 }
 
 .title{
     width: 50%;
     float:left;
-    background-color: gray;
+    height: 100%;
+    font-weight: bold;
 }
 
 .status{
     float: left;
     width: 25%;
-    background-color: gray;
+    height: 100%;
 }
 
 /* ------------------------------------------------------ */
 .username{
     border-width: 0.1rem;
     float: left;
+    width: 25%;
 }
 .description{   
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 2em;
-    padding-right: 2em;
-    float: center;
+    float: left;
+    width: 50%;
+}
+.likesAndDislikes{
+    float: right;
+    width: 25%;
+}
+#bts{
+    width: 40%;
 }
 
 .buttonUp{
     background:transparent;
     border-style: none;
+    margin: auto;
     float: left;
+    
 }
 
 .buttonDown{
     background:transparent;
     border-style: none;
-    float: right;
+    margin: auto;
 }
 
-.likesAndDislikes{
-    float: right;
-}

@@ -13,8 +13,10 @@
             <div class="username"><label><?php echo $user->getUsername(); ?></label></div>
             <div class="description" ><label><?php echo $i->getDescription(); ?></label></div>
             <div class="likesAndDislikes">
+                <div id="bts">
                     <div button type="button" class="buttonUp"><img src="view/images/like.png" width="25"></button></div>
                     <div button type="button" class="buttonDown"><img src="view/images/dislike.png" width="25"></button></div>
+                </div>
             </div>
         </div>
     </div> 
