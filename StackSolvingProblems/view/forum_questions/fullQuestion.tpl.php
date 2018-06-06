@@ -12,12 +12,16 @@
 
         <script>
             function comment(id){
-                
+                if ($('#box_comments' + id).hasClass('checkActive')){
+                    $("#box_answer").toggleClass("active");
+                    $('#box_comments' + id).toggleClass('checkActive');
+                } else {
+                    document.getElementById('box_comments' + id).classList.add("checkActive");
+                    document.getElementById('box_answer').classList.add("active");
+                }
                 var box = document.getElementById('box_answer');
-                $("#box_answer").toggleClass("active");
+               
                 var selBox = document.getElementById('box_comments' + id);
-                //var form = document.getElementById('answerForm');
-                //form.action = "index.php?action=fullQuestion&amp;id="+id;
                 var hiddenForm = document.getElementById('hiddenForm');
                 hiddenForm.value = ""+id;
                 var sendForm = document.getElementById('send');
@@ -26,11 +30,15 @@
             }
 
             function answer(id){
-                
+                if ($('answerPosition').hasClass('checkActive')){
+                    $("#box_answer").toggleClass("active");
+                    $('answerPosition').toggleClass('checkActive');
+                } else {
+                    document.getElementById('answerPosition').classList.add("checkActive");
+                    document.getElementById('box_answer').classList.add("active");
+                }
                 var box = document.getElementById('box_answer');
                 var selBox = document.getElementById('answerPosition');
-                //var form = document.getElementById('answerForm');
-                //form.action = "index.php?action=fullQuestion&amp;id="+id;
                 var hiddenForm = document.getElementById('hiddenForm');
                 hiddenForm.value = ""+id;
                 var sendForm = document.getElementById('send');
@@ -42,7 +50,7 @@
         </script>
     </head>
     <body>
-    <?php include_once "view/menu/menu.php";     ?>
+    <?php include_once "view/menu/menu.php";    ?>
        
             
             <div id="box_outer">
@@ -118,13 +126,6 @@
                     <?php if($user != null) { ?>
                         <div id="box_comments<?php echo utf8_encode($answers->getId()); ?>">
                             <button onclick="comment(<?php echo utf8_encode($answers->getId()); ?>)" class="btn_comments">Antworten</button>
-                        <!--    <div id="box_answer1">
-                                <form action="index.php?action=fullQuestion&amp;id=<?php echo $answers->getId();?>" method="post">
-                                    <textarea name="content" id="answer">Ich bin hier um zu helfen :)</textarea>
-                                    <input type="hidden" name="id" value="<?php echo $question->getId(); ?>"/>
-                                    <button id="send" name="answer_send" type="submit">Senden</button> 
-                                </form>
-                            </div> -->
                         </div>
                         
                     <?php } ?>

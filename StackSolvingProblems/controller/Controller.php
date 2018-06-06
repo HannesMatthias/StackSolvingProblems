@@ -260,6 +260,7 @@ class Controller {
 
 
         $question = Question::find($_GET["id"]);
+        //var_dump($question);
         $tags = $question->findTags();
         $this->addContext("template", "forum_questions/fullquestion");
         $this->addContext("question", $question);
@@ -282,9 +283,8 @@ class Controller {
             if($v == 0){
                 #Voten
                 if(isset($_POST["like"]) ) {
-                        $frage = Question::find($_GET["id"]);
-                        $frage->setLikes($frage->getLikes()+1);
-                        $frage->save();
+                        $question->setLikes($question->getLikes()+1);
+                        $question->save();
                         $vote = new Vote;
                         $vote->setVote(1);
                         $vote->setUserid($user->getId());
@@ -292,9 +292,8 @@ class Controller {
                         $vote->save();
                         header("Refresh:0");
                 }else if(isset($_POST["dislike"]) ) {
-                        $frage = Question::find($_GET["id"]);
-                        $frage->setDislikes($frage->getDislikes()+1);
-                        $frage->save();
+                        $question->setDislikes($question->getDislikes()+1);
+                        $question->save();
                         $vote = new Vote;
                         $vote->setVote(-1);
                         $vote->setUserid($user->getId());
@@ -305,15 +304,13 @@ class Controller {
             }
             if($question->getUserid() == $user->getId()){
                 if(isset($_POST["solvedTrue"]) ) {    
-                    $frage = Question::find($_GET["id"]);
-                    $frage->setSolved(true);
-                    $frage->save();
+                    $question->setSolved(true);
+                    $question->save();
                     header("Refresh:0");
                 }
                 if(isset($_POST["solvedFalse"]) ) {    
-                    $frage = Question::find($_GET["id"]);
-                    $frage->setSolved(false);
-                    $frage->save();
+                    $question->setSolved(false);
+                    $question->save();
                     header("Refresh:0");
                 }
                 $questionOwner = true;
@@ -348,7 +345,6 @@ class Controller {
         $this->addContext("questionOwner", $questionOwner);
         $this->addContext("solved", $question->getSolved());
         $this->addContext("user", $user);
-
     }
 
     public function ideaInterface() {

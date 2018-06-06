@@ -72,8 +72,8 @@
 
     <datalist id="searchQuestions">
         <?php $questions = Question::findAll();
-            foreach($questions AS $key => $question) { ?>
-                <option value="<?php echo $question->getTitle(); ?>">
+            foreach($questions AS $key => $q) { ?>
+                <option value="<?php echo $q->getTitle(); ?>">
            <?php } ?>  
     </datalist>
 </header>
