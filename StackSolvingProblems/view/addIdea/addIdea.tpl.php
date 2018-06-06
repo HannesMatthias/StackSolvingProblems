@@ -9,7 +9,7 @@
 
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="addIdea.css">
+    <link rel="stylesheet" type="text/css" href="view/addIdea/addIdea.css">
 </head>
 <body>
     <div id="outerfield">

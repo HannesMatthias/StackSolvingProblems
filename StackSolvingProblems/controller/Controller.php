@@ -99,6 +99,18 @@ class Controller {
 
         }
     }
+
+    public function addIdea() {
+        $session = Session::getInstance();
+        if($session->getSession("user") == null ) {
+            header("Location: index.php");
+            exit;
+        }
+        
+        $user = $session->getSession("user");
+
+        $this->addContext("template", "addIdea/addIdea");
+    }
     public function login() {    
      
         $this->addContext("code", "");
@@ -302,8 +314,10 @@ class Controller {
 
     public function ideaInterface() {
         $idea = Project::find($_GET["id"]);
+        $user = Project::findUser($idea->getUser_id());
         $this->addContext("template", "ideaInterface/ideaInterface");
         $this->addContext("idea", $idea);
+        $this->addContext("user", $user);
         
         $session = Session::getInstance();
         $user = $session->getSession("user");
