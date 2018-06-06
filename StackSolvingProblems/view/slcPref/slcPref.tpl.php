@@ -14,6 +14,7 @@
     <div id="newsbox">          
         <?php echo $info; ?>     
     </div>
+    
     <?php } ?>
     <div id="container">
         
