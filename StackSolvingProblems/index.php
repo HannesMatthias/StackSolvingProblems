@@ -11,7 +11,7 @@ require_once 'model/entities/vote.php';
 require_once 'model/session.php';
 require_once 'controller/Controller.php';
 
-$action = isset($_GET['action']) ? $_GET['action'] : 'questions';
+$action = isset($_GET['action']) ? $_GET['action'] : 'slcPref';
 $controller = new Controller();
 
 if (method_exists($controller, $action)) {
