@@ -47,7 +47,7 @@
                     }
                 }
             }
-            $this->setEncoding();
+            //$this->setEncoding();
         }
 
         public function  __toString()
@@ -81,12 +81,22 @@
             $this->id = 0;
         }
 
+        public function toArray($mitId = true)
+        {
+            $attribute = get_object_vars($this);
+            if ($mitId === false) {
+                // wenn $mitId false ist, entferne den Schlüssel id aus dem Ergebnis
+                unset($attribute['id']);
+            }
+            return $attribute;
+        }
+
         /* ***** Private Methoden ***** */
 
         private function _insert()
         {
-            $sql = 'INSERT INTO comments (id, content, user_id, answer_id) '
-                 . 'VALUES (:id, :content,  :user_id, :answer_id)';
+            $sql = 'INSERT INTO comments (content, user_id, answer_id) '
+                 . 'VALUES (:content,  :user_id, :answer_id)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));

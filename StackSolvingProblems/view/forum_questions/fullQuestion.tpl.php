@@ -11,13 +11,33 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
         <script>
+            function comment(id){
+                
+                var box = document.getElementById('box_answer');
+                $("#box_answer").toggleClass("active");
+                var selBox = document.getElementById('box_comments' + id);
+                //var form = document.getElementById('answerForm');
+                //form.action = "index.php?action=fullQuestion&amp;id="+id;
+                var hiddenForm = document.getElementById('hiddenForm');
+                hiddenForm.value = ""+id;
+                var sendForm = document.getElementById('send');
+                sendForm.name = "comment_send";
+                selBox.append(box);
+            }
+
             function answer(id){
                 
                 var box = document.getElementById('box_answer');
-
-                var selBox = document.getElementById('box_comments' + id);
+                var selBox = document.getElementById('answerPosition');
+                //var form = document.getElementById('answerForm');
+                //form.action = "index.php?action=fullQuestion&amp;id="+id;
+                var hiddenForm = document.getElementById('hiddenForm');
+                hiddenForm.value = ""+id;
+                var sendForm = document.getElementById('send');
+                sendForm.name = "answer_send";
                 selBox.append(box);
             }
+            
 
         </script>
     </head>
@@ -70,7 +90,7 @@
                 <div id="question"><?php echo $question->getContent(); ?></div>
                 
                 <?php if($user != null) { ?>
-                <button id="btn_answer">Antworten</button>
+                <button id="btn_answer" onclick="answer(<?php echo $question->getId(); ?>)">Antworten</button>
                 <?php } ?>
                 <div id="box_tags">
                 <?php foreach($tags as $t) { ?>
@@ -78,13 +98,15 @@
                 <?php }?>
                 </div>
             </div>
+            <div id="answerPosition">
             <div id="box_answer">
-                <form action="index.php?action=fullQuestion&amp;id=<?php echo $question->getId();?>" method="post">
+                <form id="answerForm" action="index.php?action=fullQuestion&amp;id=<?php echo $question->getId();?>" method="post">
                     <textarea name="content" id="answer">Ich bin hier um zu helfen :)</textarea>
-                    <input type="hidden" name="id" value="<?php echo $question->getId(); ?>"/>
+                    <input id ="hiddenForm" type="hidden" name="id" value="<?php echo $question->getId(); ?>"/>
                     <button id="send" name="answer_send" type="submit">Senden</button> 
                 </form>
             </div> 
+            </div>
             <div id="box_answers">         	
             <?php $i = 0;
             foreach($question->findAnswers() AS $answersKey => $answers) { ?>
@@ -95,14 +117,8 @@
                     </div>
                     <?php if($user != null) { ?>
                         <div id="box_comments<?php echo utf8_encode($answers->getId()); ?>">
-                            <button onclick="answer(<?php echo utf8_encode($answers->getId()); ?>)" class="btn_comments">Antworten</button>
-                            <!--<div id="box_answer">
-                                <form action="index.php?action=fullQuestion&amp;id=<?php echo $answers->getId();?>" method="post">
-                                    <textarea name="content" id="answer">Ich bin hier um zu helfen :)</textarea>
-                                    <input type="hidden" name="id" value="<?php echo $question->getId(); ?>"/>
-                                    <button id="send" name="answer_send" type="submit">Senden</button> 
-                                </form>
-                            </div> -->
+                            <button onclick="comment(<?php echo utf8_encode($answers->getId()); ?>)" class="btn_comments">Antworten</button>
+                       
                         </div>
                         
                     <?php } ?>

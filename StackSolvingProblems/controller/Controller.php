@@ -166,8 +166,10 @@ class Controller {
                         if(!$user->getVerified()) {  
                             $this->addContext("code", $user->getCode());
                             $this->addContext("info", "Oops!, Du hast dich noch nicht verifiziert! Schau in dein Email Postfach");
-                        }  
-                        $session->setSession("user", $user);
+                        }else {
+                            $session->setSession("user", $user);
+                        } 
+                        
                     }
                 } else {
                     $user = new User($_POST);
@@ -332,6 +334,17 @@ class Controller {
                 
             }
 
+            if(isset($_POST["comment_send"]) ) {
+                $session = Session::getInstance();
+                $user = $session->getSession("user");
+                $comment = new Comment();
+                $comment->setUserid($user->getId());
+                $comment->setAnswerid($_POST["id"]);
+                $comment->setContent($_POST["content"]);
+                $comment->save();
+                
+            }
+
         } 
         $this->addContext("vote", 10);
         $this->addContext("questionOwner", $questionOwner);
@@ -371,8 +384,13 @@ class Controller {
         if(isset($_GET["verify"]) && $_GET["verify"]) {
            $user= User::findByCode($_GET["verify"]);
            if($user != null) {
-               $user->setVerified(true);
-               $user->save();
+               if(!$user->getVerified() ) {
+                    $user->setVerified(true);
+                    $this->addContext("success", "green");
+                    $this->addContext("info", "Glückwunsch du bist nun verifiziert und es kann losgehen!");
+                    $user->save();
+               }
+              
            }
         }
         $this->addContext("template", "slcPref/slcPref");
@@ -385,6 +403,7 @@ class Controller {
         extract($this->context);
         require_once 'view/' . $template . ".tpl.php";
     }
+
 }
 
 ?>
