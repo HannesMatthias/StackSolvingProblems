@@ -11,7 +11,7 @@ class Controller {
 
     public function main() {
         $this->addContext("template", "main/main");
-        $ideas = Project::findAll();
+        $as = Project::findAll();
         $this->addContext("ideas", $ideas);
     }
 
