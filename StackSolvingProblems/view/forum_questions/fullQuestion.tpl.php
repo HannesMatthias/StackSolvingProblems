@@ -118,13 +118,7 @@
                     <?php if($user != null) { ?>
                         <div id="box_comments<?php echo utf8_encode($answers->getId()); ?>">
                             <button onclick="comment(<?php echo utf8_encode($answers->getId()); ?>)" class="btn_comments">Antworten</button>
-                        <!--    <div id="box_answer1">
-                                <form action="index.php?action=fullQuestion&amp;id=<?php echo $answers->getId();?>" method="post">
-                                    <textarea name="content" id="answer">Ich bin hier um zu helfen :)</textarea>
-                                    <input type="hidden" name="id" value="<?php echo $question->getId(); ?>"/>
-                                    <button id="send" name="answer_send" type="submit">Senden</button> 
-                                </form>
-                            </div> -->
+                       
                         </div>
                         
                     <?php } ?>

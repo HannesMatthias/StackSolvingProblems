@@ -11,19 +11,17 @@
 <body>
 <?php include_once "view/menu/menu.php"; ?>
     <?php if(!empty($info) ) {
-            if(isset($success) && empty($success) ) { ?>
-            <div id="newsbox" style="background-color: red;">          
+            if(!isset($success) && empty($success) ) { ?>
+            <div id="newsbox">          
                     <?php echo $info; ?>     
             </div>
       <?php }else { ?>
-            <div id="newsbox" style="background-color: green;">          
+            <div id="newsbox" style="background-color: rgba(0, 255, 0, 0.7);">          
                 <?php echo $info; ?>     
             </div> 
      <?php  }
         } ?>
-    
 
-    <?php } ?>
     <div id="container">
         
         <a href="index.php?action=questions">
