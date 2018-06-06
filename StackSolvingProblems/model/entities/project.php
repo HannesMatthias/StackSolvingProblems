@@ -83,6 +83,11 @@
             $this->user_id = $user_id;
         }
 
+        public function findUsername() {
+            $p_user = User::find($this->getUser_id());
+            return $p_user->getUsername();
+        }
+
         public function toArray($mitId = true)
         {
             $attribute = get_object_vars($this);

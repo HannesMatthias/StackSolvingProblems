@@ -9,7 +9,7 @@
             <th class="status"><label><?php echo  $i->getStatus(); ?></label></th>
         </tr>
             <tr>     
-            <th class="username"><label>username</label></th>     
+            <th class="username"><label><?php echo $i->findUsername(); ?></label></th>     
             <th class="description" ><label><?php echo  $i->getDescription(); ?></label></th>
             
             
