@@ -1,15 +1,16 @@
 <div class="scollView">
-<?php foreach($ideas as $i) { ?>
+<?php foreach($ideas as $i) {
+    $user = Project::findUser($i->getUser_id()); ?>
     <div class="ideaLabel" align="center">
         <table>
         <tr>
             <tr>
-            <th class="profile"><label>profile</label></th>
+            <th class="profile"><label><img src="<?php $user->getProfile() ?>" alt="<? $user->getUsername() ?>_ProfilePic" height="42" width="42"></label></th>
             <th class="title"><label><?php echo $i->getTitle(); ?></label></th> 
             <th class="status"><label><?php echo  $i->getStatus(); ?></label></th>
         </tr>
             <tr>     
-            <th class="username"><label><?php echo $i->findUsername(); ?></label></th>     
+            <th class="username"><label><?php echo $user->getUsername(); ?></label></th>     
             <th class="description" ><label><?php echo  $i->getDescription(); ?></label></th>
             
             
