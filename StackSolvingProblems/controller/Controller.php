@@ -271,18 +271,13 @@ class Controller {
 
     }
 
-    public function viewIdea() {
+    public function ideaInterface() {
         $idea = Project::find($_GET["id"]);
-        $this->addContext("template", "viewIdea/viewIdea");
+        $this->addContext("template", "ideaInterface/ideaInterface");
         $this->addContext("idea", $idea);
         
         $session = Session::getInstance();
         $user = $session->getSession("user");
-    }
-
-    public function ideaInterface() {
-        $idea = Project::find($_get["id"]);
-        
     }
 
     public function logout() {}
