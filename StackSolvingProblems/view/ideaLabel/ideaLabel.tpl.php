@@ -5,7 +5,6 @@
         <table>
         <tr>
             <tr>
-            <?php echo $user->getIcon(); ?> 
             <td class="profile"><label><img src="<?php echo $user->getIcon(); ?>" alt="<?php echo $user->getUsername(); ?>_ProfilePic" height="42" width="42"></label></td>
             <td class="title"><label><?php echo $i->getTitle(); ?></label></td> 
             <td class="status"><label><?php echo $i->getStatus(); ?></label></td>
