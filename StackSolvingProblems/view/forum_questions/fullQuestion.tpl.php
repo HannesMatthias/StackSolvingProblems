@@ -14,11 +14,9 @@
             function answer(id){
                 
                 var box = document.getElementById('box_answer');
-                var text = document.createTextNode(" HASDLLFASLDFLAF " );
-                
-                var parent = $(event.target).parentElement
-                parent.append(text);
-                alert(id);
+
+                var selBox = document.getElementById('box_comments' + id);
+                selBox.append(box);
             }
 
         </script>
@@ -88,15 +86,23 @@
                 </form>
             </div> 
             <div id="box_answers">         	
-            <?php foreach($question->findAnswers() AS $answersKey => $answers) { ?>
+            <?php $i = 0;
+            foreach($question->findAnswers() AS $answersKey => $answers) { ?>
                 <div class="box_fullanswer"> 
                     <div class="box_answers_autor"><?php echo User::find($answers->getUserID())->getUsername(); ?></div>
                     <div class="box_answers_user">
                         <?php echo utf8_encode($answers->getContent()); ?>
                     </div>
                     <?php if($user != null) { ?>
-                        <div class="box_comments">
+                        <div id="box_comments<?php echo utf8_encode($answers->getId()); ?>">
                             <button onclick="answer(<?php echo utf8_encode($answers->getId()); ?>)" class="btn_comments">Antworten</button>
+                            <!--<div id="box_answer">
+                                <form action="index.php?action=fullQuestion&amp;id=<?php echo $answers->getId();?>" method="post">
+                                    <textarea name="content" id="answer">Ich bin hier um zu helfen :)</textarea>
+                                    <input type="hidden" name="id" value="<?php echo $question->getId(); ?>"/>
+                                    <button id="send" name="answer_send" type="submit">Senden</button> 
+                                </form>
+                            </div> -->
                         </div>
                         
                     <?php } ?>
