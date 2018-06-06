@@ -254,6 +254,17 @@
             return $abfrage->fetch();
             
         }
+        public static function findByCode($code)
+        {
+            $sql = "SELECT * FROM users WHERE code='" . $code . "' ";
+            $abfrage = DB::getDB()->prepare($sql);
+            
+            $abfrage->execute();
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
+
+            return $abfrage->fetch();
+            
+        }
 
         public function findTags(){
             return Tag::findeByUserId($this->getId());
