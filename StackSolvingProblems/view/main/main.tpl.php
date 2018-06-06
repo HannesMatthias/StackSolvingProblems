@@ -8,7 +8,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <script src="plugins/js/jquery.min.js"></script>
     <script src="plugins/js/clickmenu.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

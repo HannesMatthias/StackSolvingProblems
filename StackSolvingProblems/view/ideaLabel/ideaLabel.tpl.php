@@ -5,11 +5,11 @@
         <tr>
             <tr>
             <th class="profile"><label>profile</label></th>
-            <th class="username"><label>username</label></th> 
+            <th class="title"><label>title</label></th> 
             <th class="status"><label>status</label></th>
         </tr>
             <tr>     
-            <th class="likesAndDislikesText"><label>like</label></th>     
+            <th class="username"><label>username</label></th>     
             <th class="description" ><label>description</label></th>
             
             
