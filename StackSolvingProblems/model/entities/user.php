@@ -13,7 +13,7 @@
         private $username = '';
         private $code = '';
         private $verified = false;
-        
+        private $icon = '';
     
  
 
@@ -147,6 +147,14 @@
         public function getPoints()
         {
             return $this->points;
+        }
+
+        public function setIcon($icon) {
+            $this->icon = $icon;
+        }
+
+        public function getIcon() {
+            return $this->icon;
         }
         
         public function alterVerified(){
