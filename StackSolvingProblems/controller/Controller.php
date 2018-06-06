@@ -102,10 +102,9 @@ class Controller {
                     $user = new User($_POST);
                     $errors[] = $errorList["no_right"];
                 }else if($user != null) {
-                    if(!$user->getVerified()) {
-                
-                        header("Location: index.php?visible=true&verify=true");
-                        exit;
+                    if(!$user->getVerified()) {  
+                        header("Location: index.php");
+                        //exit;
                     }
                    
                     $session->setSession("user", $user);
