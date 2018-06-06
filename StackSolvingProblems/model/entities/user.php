@@ -12,8 +12,7 @@
         private $password_hash = '';
         private $username = '';
         private $verified = false;
-        
-    
+        private $icon = '';
  
 
         public function __construct($daten = array())
@@ -138,7 +137,19 @@
         {
             return $this->points;
         }
+
+        public function setIcon($icon) {
+            $this->icon = $icon;
+        }
+
+        public function getIcon($icon) {
+            return $icon;
+        }
         
+        public function alterVerified(){
+            $wert = getVerified();
+            setVerified(!$wert);
+        }
 
         public function toArray($mitId = true)
         {
@@ -182,8 +193,8 @@
 
         private function _insert()
         {
-            $sql = 'INSERT INTO users (name, surname, birthdate, sex, rang_id, points, email, password_hash, username, verified) '
-                 . 'VALUES (:name, :surname, :birthdate, :sex, :rang_id, :points, :email, :password_hash, :username, :verified)';
+            $sql = 'INSERT INTO users (name, surname, birthdate, sex, rang_id, points, email, password_hash, username, verified, icon) '
+                 . 'VALUES (:name, :surname, :birthdate, :sex, :rang_id, :points, :email, :password_hash, :username, :verified, :icon)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -194,7 +205,7 @@
         private function _update()
         {
             $sql = 'UPDATE users SET name=:name, surname=:surname, birthdate=:birthdate, sex =:sex, rang_id = :rang_id,'
-            .'points = :points, email=:email, password_hash =:password_hash, username = :username, verified=:verified'
+            .'points = :points, email=:email, password_hash =:password_hash, username = :username, verified=:verified, icon=:icon'
                  . 'WHERE id=:id';
             $abfrage = self::$db->prepare($sql);
             $abfrage->execute($this->toArray());
@@ -257,7 +268,7 @@
             return Question::findQuestionsByUserId($this->getId());
         }
         public static function einloggen($email,$pass)
-                {
+            {
                 
                     $sql = 'SELECT * FROM users WHERE (email= :email AND password_hash= :password_hash) OR (username = :email AND password_hash = :password_hash)';
                     $abfrage = DB::getDB()->prepare($sql);
@@ -268,12 +279,11 @@
         
                     return $abfrage->fetch();
                     
-                }
+            }
 
         public function verified($aktuelleMail){
-            $code = rand()."AA".rand()."FF".rand();
-            //$recipient = $aktuelleMail; meine Email nur zum Testen ;)
-            $recipient = "kevin.sorg.el.moumene@gmail.com";
+            $code = rand()."AA".rand()."FF";
+            $recipient = $aktuelleMail;
             $subject = "Verified";
             $mail_body = "Just one more step... \r\n".$code;
             try{

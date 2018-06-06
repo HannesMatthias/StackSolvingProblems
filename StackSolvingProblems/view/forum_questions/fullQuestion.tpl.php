@@ -9,6 +9,17 @@
         <script src="plugins/js/addAnswer.js"></script>
         <link rel="stylesheet" type="text/css" href="view/menu/menu.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+        <script>
+            function answer(myButton){
+                
+                var box = document.getElementById('box_answers');
+                var text = document.createTextNode(" HASDLLFASLDFLAF " );
+                
+                $(event.target).append(text);
+            }
+
+        </script>
     </head>
     <body>
     <?php include_once "view/menu/menu.php";     ?>
@@ -83,7 +94,7 @@
                     </div>
                     <?php if($user != null) { ?>
                         <div class="box_comments">
-                            <button class="btn_comments">Antworten</button>
+                            <button onclick="answer(this)" class="btn_comments">Antworten</button>
                         </div>
                         
                     <?php } ?>

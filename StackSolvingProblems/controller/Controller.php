@@ -11,6 +11,8 @@ class Controller {
 
     public function main() {
         $this->addContext("template", "main/main");
+        $ideas = Project::findAll();
+        $this->addContext("ideas", $ideas);
     }
 
     public function profil() {
@@ -98,6 +100,12 @@ class Controller {
                     $user = new User($_POST);
                     $errors[] = $errorList["no_right"];
                 }else if($user != null) {
+                    if(!$user->getVerified()) {
+                        echo "Verifizieren!!!";
+                        header("Location: index.php?visible=true&verify=true");
+                        exit;
+                    }
+                   
                     $session->setSession("user", $user);
                     header("Location: index.php");
                 }
@@ -261,6 +269,9 @@ class Controller {
     }
 
     public function logout() {}
+    public function slcPref() {
+        $this->addContext("template", "slcPref/slcPref");
+    }
     public function forum_intro() {
         $this->addContext("template", "forum_intro/intro");
     }
