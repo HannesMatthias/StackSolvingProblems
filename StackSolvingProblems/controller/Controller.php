@@ -341,14 +341,21 @@ class Controller {
     }
 
     public function ideaInterface() {
-        $idea = Project::find($_GET["id"]);
-        $user = Project::findUser($idea->getUser_id());
-        $this->addContext("template", "ideaInterface/ideaInterface");
-        $this->addContext("idea", $idea);
-        $this->addContext("user", $user);
-        
         $session = Session::getInstance();
         $user = $session->getSession("user");
+
+        $idea = Project::find($_GET["id"]);
+        $user_p = Project::findUser($idea->getUser_id());
+        $rights = false;
+        if($user != null && $idea->getUser_id() == $user->getId()) {
+            $rights = true;
+        }
+        $this->addContext("template", "ideaInterface/ideaInterface");
+        $this->addContext("idea", $idea);
+        $this->addContext("user_p", $user_p);
+        $this->addContext("rights", $rights);
+        
+
     }
 
     public function logout() {}
