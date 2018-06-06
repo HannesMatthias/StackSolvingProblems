@@ -90,20 +90,7 @@
         public function setSolved($solved){
             $this->solved = $solved;
         }
-        
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-        
+                
         public function setRightAnswer($id){
             $this->right_answer = $id;
         }
@@ -116,8 +103,6 @@
         
         
 
-=======
->>>>>>> d837a0d56788a1bd1ba8e9513beb49b5036e1f90
         public function toArray($mitId = true)
         {
             $attribute = get_object_vars($this);
@@ -231,13 +216,10 @@
 
         public function findAnswerCount(){
             return Answer::findAnswerCount($this->getId());
-<<<<<<< HEAD
         }
 
         public function findRightAnswer(){
             return Answer::find($this->getRightAnswer());
-=======
->>>>>>> d837a0d56788a1bd1ba8e9513beb49b5036e1f90
         }
     }
 ?>
