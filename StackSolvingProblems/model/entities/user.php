@@ -11,6 +11,7 @@
         private $email = '';
         private $password_hash = '';
         private $username = '';
+        private $code = '';
         private $verified = false;
         
     
@@ -53,6 +54,14 @@
         public function setVerified($verified)
         {
             $this->verified = $verified;
+        }
+
+        public function getCode() {
+            return $this->code;
+        }
+
+        public function setCode($code) {
+            $this->code = $code;
         }
 
         public function getName()
@@ -102,6 +111,7 @@
         public function setEmail($email)
         {
             $this->email = $email;
+            $this->verified();
         }
 
         public function getEmail()
@@ -186,8 +196,13 @@
 
         private function _insert()
         {
+<<<<<<< HEAD
             $sql = 'INSERT INTO users (name, surname, birthdate, sex, rang_id, points, email, password_hash, username, verified) '
                  . 'VALUES (:name, :surname, :birthdate, :sex, :rang_id, :points, :email, :password_hash, :username, :verified)';
+=======
+            $sql = 'INSERT INTO users (name, surname, birthdate, sex, rang_id, points, email, password_hash, username, verified, code, icon) '
+                 . 'VALUES (:name, :surname, :birthdate, :sex, :rang_id, :points, :email, :password_hash, :username, :verified, :code, :icon)';
+>>>>>>> 8e31ae62d332731bbc217af591f76c89e3214d77
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -198,7 +213,11 @@
         private function _update()
         {
             $sql = 'UPDATE users SET name=:name, surname=:surname, birthdate=:birthdate, sex =:sex, rang_id = :rang_id,'
+<<<<<<< HEAD
             .'points = :points, email=:email, password_hash =:password_hash, username = :username, verified=:verified'
+=======
+            .'points = :points, email=:email, password_hash =:password_hash, username = :username, verified=:verified, code=:code, icon=:icon'
+>>>>>>> 8e31ae62d332731bbc217af591f76c89e3214d77
                  . 'WHERE id=:id';
             $abfrage = self::$db->prepare($sql);
             $abfrage->execute($this->toArray());
@@ -248,14 +267,6 @@
         public function findTags(){
             return Tag::findeByUserId($this->getId());
         }
-
-        public static function setCode($email,$code)
-        {
-            $sql = 'UPDATE users SET code = ? WHERE users.email = ?;';
-            $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($code,$email));
-
-        }
         
         public function findQuestions(){
             return Question::findQuestionsByUserId($this->getId());
@@ -274,9 +285,9 @@
                     
                 }
 
-        public function verified($aktuelleMail){
+        public function verified(){
             $code = rand()."AA".rand()."FF";
-            $recipient = $aktuelleMail;
+            $recipient = $this->getEmail();
             $subject = "Verified";
             $mail_body = "Just one more step... \r\n".$code;
             try{
@@ -284,7 +295,7 @@
             }catch(Exception $e){
                 echo $e->getMessage();
             }
-            $this->setCode($aktuelleMail, $code);
+            $this->setCode($code);
         }
         
     }
