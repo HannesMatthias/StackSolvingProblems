@@ -202,7 +202,8 @@ class Controller {
         $errorList = array(
             "not_filled" => "Bitte füllen Sie alle Felder aus!",
             "no_pwd_match" => "Die Passwörter stimmen nicht überein!",
-            "email_exists" => "Email schon Registriert!"
+            "email_exists" => "Email bereits registriert!",
+            "username_exists" => "Username bereits registriert!"
         );
         $entries = array("name", "surname",  "email", "password_hash", "username", "re_password_hash");
         $user = new User();
@@ -222,7 +223,9 @@ class Controller {
                 if($user->findByEmail($daten["email"]) != NULL){
                     $errors[] = $errorList["email_exists"];
                 }
-
+                if($user->findByUsername($daten["username"]) != NULL) {
+                    $errors[] = $errorList["username_exists"];
+                }
                 if($daten["password_hash"] != $daten["re_password_hash"]) {
                     $errors[] = $errorList["no_pwd_match"];
                 }
@@ -343,14 +346,21 @@ class Controller {
     }
 
     public function ideaInterface() {
-        $idea = Project::find($_GET["id"]);
-        $user = Project::findUser($idea->getUser_id());
-        $this->addContext("template", "ideaInterface/ideaInterface");
-        $this->addContext("idea", $idea);
-        $this->addContext("user", $user);
-        
         $session = Session::getInstance();
         $user = $session->getSession("user");
+
+        $idea = Project::find($_GET["id"]);
+        $user_p = Project::findUser($idea->getUser_id());
+        $rights = false;
+        if($user != null && $idea->getUser_id() == $user->getId()) {
+            $rights = true;
+        }
+        $this->addContext("template", "ideaInterface/ideaInterface");
+        $this->addContext("idea", $idea);
+        $this->addContext("user_p", $user_p);
+        $this->addContext("rights", $rights);
+        
+
     }
 
     public function logout() {}

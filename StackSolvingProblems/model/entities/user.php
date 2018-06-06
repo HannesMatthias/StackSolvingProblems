@@ -242,14 +242,14 @@
             return $abfrage->fetchAll();
         }
 
-        public static function findByName($name)
+        public static function findByUsername($username)
         {
-            $sql = 'SELECT * FROM users WHERE name=:name';
+            $sql = 'SELECT * FROM users WHERE username=:username';
             $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->bindParam(':name', $name);
+            $abfrage->bindParam(':username', $username);
             $abfrage->execute();
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
-            return $abfrage->fetchAll();
+            return $abfrage->fetch();
         }
         public static function findByEmail($email)
         {
