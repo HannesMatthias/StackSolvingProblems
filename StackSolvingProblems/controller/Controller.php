@@ -114,7 +114,7 @@ class Controller {
             $idea->setUser_id($user->getId());
             if($idea->save()) {
                 echo "Erfolgreich!";
-                header("Location: index.php?action=ideaInterface");
+                header("Location: index.php?action=main");
                 exit();
             }else {
                 echo "Fehler!!";
