@@ -93,7 +93,9 @@ html, body {
 .active {
     display: block !important;
 }
-
+.hidden {
+    display: none !important;
+}
 #loginBox input{
     background-color: rgb(243, 243, 243); 
     padding: 5px;
@@ -233,3 +235,4 @@ header {
 
 
 }
+
