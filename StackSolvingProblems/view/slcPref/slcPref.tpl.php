@@ -9,9 +9,16 @@
         <script src="plugins/js/addAnswer.js"></script>
 </head>
 <body>
-   
-    <div id="container">
+<?php include_once "view/menu/menu.php"; ?>
 
+    <div id="newsbox">
+                Oops!, Du hast dich noch nicht verifiziert! Schau in dein Email Postfach
+                <?php
+                    //echo $info;
+                ?>     
+    </div>
+    <div id="container">
+        
         <a href="index.php?action=questions">
             <div class="box">
                 <div class="imgholder"> 
