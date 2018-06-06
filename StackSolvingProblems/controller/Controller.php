@@ -160,20 +160,19 @@ class Controller {
         $user = new User();
         if($_POST) {
             if(isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["password_hash"]) && !empty($_POST["password_hash"]) ) {             
-                $user = User::einloggen($_POST["name"], $_POST["password_hash"]); 
-                if ($user == null) {
+                $user = User::einloggen($_POST["name"]); 
+                if ($user != null) {
+                    if(password_verify($_POST["password_hash"], $user->getPassword_hash())) {
+                        if(!$user->getVerified()) {  
+                            $this->addContext("code", $user->getCode());
+                            $this->addContext("info", "Oops!, Du hast dich noch nicht verifiziert! Schau in dein Email Postfach");
+                        }  
+                        $session->setSession("user", $user);
+                    }
+                } else {
                     $user = new User($_POST);
                     $errors[] = $errorList["no_right"];
-                }else if($user != null) {
-                    if(!$user->getVerified()) {  
-                        $this->addContext("code", $user->getCode());
-                        $this->addContext("info", "Oops!, Du hast dich noch nicht verifiziert! Schau in dein Email Postfach");
-                        
-                    }  
-                    $session->setSession("user", $user);
-                 
                 }
-
 
             }else {
                 if (empty($_POST['name'])) {
@@ -215,19 +214,22 @@ class Controller {
                     $daten[$e] = $_POST[$e];
                 }
             }
+
             $user = new User($daten);
             if($filled) {
                 if($user->findByEmail($daten["email"]) != NULL){
                     $errors[] = $errorList["email_exists"];
                 }
+
                 if($daten["password_hash"] != $daten["re_password_hash"]) {
                     $errors[] = $errorList["no_pwd_match"];
                 }
                 if(empty($errors)) {
                     array_pop($daten);
-                    if($user->save()) {
-                        $user->verified($daten["email"]);
-                        echo "Email: ".$daten["email"];
+                    if($user->save() ) {
+                        echo "Email: " . $daten["email"];
+                        $user->verified();
+                        $user->save();
                         header("Location: index.php");
                         exit();
                     }
@@ -373,10 +375,11 @@ class Controller {
         if(isset($_GET["verify"]) && $_GET["verify"]) {
            $user= User::findByCode($_GET["verify"]);
            if($user != null) {
-               $user->setVerified("1");
+               $user->setVerified(true);
+               $user->save();
            }
         }
-        $this->addContext("template", "");
+        $this->addContext("template", "slcPref/slcPref");
     }
     private function addContext($key, $value){
         $this->context[$key] = $value;
