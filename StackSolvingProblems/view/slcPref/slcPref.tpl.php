@@ -9,9 +9,9 @@
         <script src="plugins/js/addAnswer.js"></script>
 </head>
 <body>
-   
+<?php include_once "view/menu/menu.php"; ?>
     <div id="container">
-
+        <div id="newsbox"> </div>
         <a href="index.php?action=questions">
             <div class="box">
                 <div class="imgholder"> 
