@@ -261,7 +261,7 @@
             return Question::findQuestionsByUserId($this->getId());
         }
         public static function einloggen($email,$pass)
-                {
+            {
                 
                     $sql = 'SELECT * FROM users WHERE (email= :email AND password_hash= :password_hash) OR (username = :email AND password_hash = :password_hash)';
                     $abfrage = DB::getDB()->prepare($sql);
@@ -272,7 +272,7 @@
         
                     return $abfrage->fetch();
                     
-                }
+            }
 
         public function verified($aktuelleMail){
             $code = rand()."AA".rand()."FF";
