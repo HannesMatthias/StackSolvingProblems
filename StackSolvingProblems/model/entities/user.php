@@ -111,7 +111,6 @@
         public function setEmail($email)
         {
             $this->email = $email;
-            $this->verified();
         }
 
         public function getEmail()
@@ -181,8 +180,7 @@
                     // wenn die ID eine Datenbank-ID ist, also größer 0, führe ein UPDATE durch
                     $this->_update();
                 } else {
-                    // ansonsten einen INSERT
-                    $this->_insert();
+                    $this->_insert();        
                 }
             } catch (PDOException $e){
                 echo $e->getMessage();
@@ -208,15 +206,17 @@
                  . 'VALUES (:name, :surname, :birthdate, :sex, :rang_id, :points, :email, :password_hash, :username, :verified, :code, :icon)';
 
             $abfrage = DB::getDB()->prepare($sql);
+           
             $abfrage->execute($this->toArray(false));
-            // setze die ID auf den von der DB generierten Wert
+          
+
             $this->id = DB::getDB()->lastInsertId();
         }
 
         private function _update()
         {
             $sql = 'UPDATE users SET name=:name, surname=:surname, birthdate=:birthdate, sex =:sex, rang_id = :rang_id,'
-            .'points = :points, email=:email, password_hash =:password_hash, username = :username, verified=:verified, code=:code, icon=:icon'
+            .'points = :points, email=:email, password_hash =:password_hash, username = :username, verified=:verified, code=:code, icon=:icon '
                  . 'WHERE id=:id';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray());
@@ -298,14 +298,15 @@
         public function verified(){
             $code = rand()."AA".rand()."FF";
             $recipient = $this->getEmail();
-            $subject = "Hallo " . $this->username;
-            $mail_body = "Hey" . $this->surname . " " . $this->name  . "! \n Hier ist dein Bestätigungscode: www.mhteam.bz.it/pim/?verify=".$code;
+            $this->setCode($code);
+            $subject = "Hallo " .  $this->surname . " " . $this->name;
+            $mail_body = "Hey" . $this->surname . " " . $this->name  . "! \n Hier ist dein Bestätigungscode: www.mhteam.bz.it/pim/?action=verify&verify=".$code;
             try{
                 mail($recipient, $subject, $mail_body);
             }catch(Exception $e){
                 echo $e->getMessage();
             }
-            $this->setCode($code);
+  
         }
         
     }

@@ -215,19 +215,22 @@ class Controller {
                     $daten[$e] = $_POST[$e];
                 }
             }
+
             $user = new User($daten);
             if($filled) {
                 if($user->findByEmail($daten["email"]) != NULL){
                     $errors[] = $errorList["email_exists"];
                 }
+
                 if($daten["password_hash"] != $daten["re_password_hash"]) {
                     $errors[] = $errorList["no_pwd_match"];
                 }
                 if(empty($errors)) {
                     array_pop($daten);
-                    if($user->save()) {
-                        $user->verified($daten["email"]);
-                        echo "Email: ".$daten["email"];
+                    if($user->save() ) {
+                        echo "Email: " . $daten["email"];
+                        $user->verified();
+                        $user->save();
                         header("Location: index.php");
                         exit();
                     }
@@ -362,10 +365,11 @@ class Controller {
         if(isset($_GET["verify"]) && $_GET["verify"]) {
            $user= User::findByCode($_GET["verify"]);
            if($user != null) {
-               $user->setVerified("1");
+               $user->setVerified(true);
+               $user->save();
            }
         }
-        $this->addContext("template", "");
+        $this->addContext("template", "slcPref/slcPref");
     }
     private function addContext($key, $value){
         $this->context[$key] = $value;
