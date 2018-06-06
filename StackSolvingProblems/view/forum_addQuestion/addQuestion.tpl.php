@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <script>
             var tagCount = 0;
-            function handleSelect(myForm){
+            function handleSelect(){
                 if (tagCount < 5) {
                     var selBox = document.getElementById('selectTag');
                     var userInput = selBox.options[selBox.selectedIndex].text;
@@ -54,14 +54,14 @@
 
         </div>
 
-        <form id="sentMessage" method="post">
+        <form id="sentMessage" method="post" action="index.php?action=addQuestion">
             <input type="hidden" name="id" value="<?php echo $id; ?>" />
-            <input required type="text" maxlength="50" id="title" name="title" placeholder="Gib hier deinen Titel ein" value="<?php echo $title; ?>"/>
+            <input type="text" maxlength="50" id="title" name="title" placeholder="Gib hier deinen Titel ein" value="<?php echo $title; ?>"/>
             <p style="color: white;" class="subtitle">Frag die Community!</p>
-            <textarea required class="tinymce" name="content"><?php echo $preview; ?></textarea>
+            <textarea class="tinymce" name="content"><?php echo $preview; ?></textarea>
             <?php
             if(!$edit) { ?>
-                <select name="tag[]" id="selectTag" onChange=" return handleSelect()" >
+                <select name="tag[]" id="selectTag" onChange="return handleSelect()" >
                 <option value="default">Select Tag</option>
                 <?php foreach ($tags as $t) { ?>
                     <option value="<?php echo $t->getId() ?>"><?php echo $t->getTag() ?></option>

@@ -334,23 +334,12 @@ class Controller {
                 
             }
 
-            if(isset($_POST["comment_send"]) ) {
-                $session = Session::getInstance();
-                $user = $session->getSession("user");
-                $comment = new Comment();
-                $comment->setUserid($user->getId());
-                $comment->setAnswerid($_POST["id"]);
-                $comment->setContent($_POST["content"]);
-                $comment->save();
-                
-            }
-
         } 
         $this->addContext("vote", 10);
         $this->addContext("questionOwner", $questionOwner);
         $this->addContext("solved", $question->getSolved());
         $this->addContext("user", $user);
-
+        
     }
 
     public function ideaInterface() {
