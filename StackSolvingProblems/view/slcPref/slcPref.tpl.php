@@ -10,8 +10,13 @@
 </head>
 <body>
 <?php include_once "view/menu/menu.php"; ?>
+    <?php if(!empty($info) ) { ?>
+    <div id="newsbox">          
+        <?php echo $info; ?>     
+    </div>
+    <?php } ?>
     <div id="container">
-        <div id="newsbox"> </div>
+        
         <a href="index.php?action=questions">
             <div class="box">
                 <div class="imgholder"> 
