@@ -1,8 +1,3 @@
-<?php 
-    if (empty($_POST[$questions])) {
-        //<link href="index.html" rel="stylesheet">
-    }
-?>
 <!DOCTYPE html>
 <html lang="de">
     <head>
@@ -16,27 +11,19 @@
         <div id="profil">
             <img id="profilImage" src="view/images/lauch.jpg" alt="username" height="15%" width="15%">
             <div id="username"><?php echo $user->getUsername(); ?></div>
-            <div id="info">
             <div id="userdata">
                 <table>
-                <tr>
-                    <td> <div id="firstname">Vorname:<?php echo $user->getName(); ?></div></td>
-                    <td> <div id="surname">Nachname:<?php echo $user->getSurname(); ?></div></td>
-                </tr>
-                <tr>
-                <div id="userdata2">
-                    <td id="email">Email:<?php echo $user->getEmail(); ?></td>
-                    <td id="points">Punkte:<?php echo $user->getPoints(); ?></td>
-</div>
-                </tr>
+                    <tr>
+                        <td>Vorname: <div id="firstname"><?php echo $user->getName(); ?></div></td>
+                        <td>Nachname: <div id="surname"><?php echo $user->getSurname(); ?></div></td>
+                    </tr>
+                    <tr>
+                        <td>Email: <div id="email"><?php echo $user->getEmail(); ?></div></td>
+                        <td>Points: <div id="points"><?php echo $user->getPoints(); ?></div></td>
+                    </tr>
                 </table>
-                <!--Vorname: <div id="firstname"><?php /*echo $user->getName(); ?></div>
-                Nachname: <div id="surname"><?php echo $user->getSurname(); ?></div>                
-                Email: <div id="email"><?php echo $user->getEmail(); ?></div>
-                Points: <div id="points"><?php echo $user->getPoints(); */ ?></div>-->
             </div>
             <a id="edit" href="index.php?action=editProfil"><img src="view/forum_questions/settings.png" alt="Bearbeiten" width="20" height="20" /></a>
-            </div>
             <div id="userquestions">
                 <h2>Ihre Fragen</h2>
                 <?php 
@@ -77,7 +64,15 @@
                     }
                 ?>
                 
-            </div>            
+            </div>   
+            <!--<div id=userprojects>
+                <h2>Ihre Projekte</h2>
+                <?php /* 
+                    foreach ($variable as $key => $value) {
+                        # code...
+                    }*/
+                ?>
+            </div>   -->      
         </div>
     </body>
 </html>
