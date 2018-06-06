@@ -13,7 +13,8 @@
         private $username = '';
         private $code = '';
         private $verified = false;
-        private $icon = '';
+        
+    
  
 
         public function __construct($daten = array())
@@ -88,11 +89,11 @@
             return $this->birthdate;
         }
 
-        public function setSex($sex)
+        public function setSex($sex)/*vergewaltigung*/
         {
             $this->sex = $sex;
         }
-        public function getSex()
+        public function getSex()/*normaler sex*/
         {
             return $this->sex;
         }
@@ -146,14 +147,6 @@
         public function getPoints()
         {
             return $this->points;
-        }
-
-        public function setIcon($icon) {
-            $this->icon = $icon;
-        }
-
-        public function getIcon() {
-            return $this->icon;
         }
         
         public function alterVerified(){
@@ -270,7 +263,7 @@
             return Question::findQuestionsByUserId($this->getId());
         }
         public static function einloggen($email,$pass)
-            {
+                {
                 
                     $sql = 'SELECT * FROM users WHERE (email= :email AND password_hash= :password_hash) OR (username = :email AND password_hash = :password_hash)';
                     $abfrage = DB::getDB()->prepare($sql);
@@ -281,7 +274,7 @@
         
                     return $abfrage->fetch();
                     
-            }
+                }
 
         public function verified(){
             $code = rand()."AA".rand()."FF";

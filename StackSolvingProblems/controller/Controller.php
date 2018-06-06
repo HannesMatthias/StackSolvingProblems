@@ -271,6 +271,15 @@ class Controller {
 
     }
 
+    public function ideaInterface() {
+        $idea = Project::find($_GET["id"]);
+        $this->addContext("template", "ideaInterface/ideaInterface");
+        $this->addContext("idea", $idea);
+        
+        $session = Session::getInstance();
+        $user = $session->getSession("user");
+    }
+
     public function logout() {}
     public function slcPref() {
         $this->addContext("code", "");
