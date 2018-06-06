@@ -103,7 +103,7 @@ class Controller {
                     $errors[] = $errorList["no_right"];
                 }else if($user != null) {
                     if(!$user->getVerified()) {
-                        echo "Verifizieren!!!";
+                
                         header("Location: index.php?visible=true&verify=true");
                         exit;
                     }
