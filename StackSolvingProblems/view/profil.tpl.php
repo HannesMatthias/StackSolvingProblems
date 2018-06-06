@@ -1,6 +1,6 @@
 <?php 
     if (empty($_POST[$questions])) {
-        //return
+        //<link href="index.html" rel="stylesheet">
     }
 ?>
 <!DOCTYPE html>
@@ -13,14 +13,16 @@
     </head>
     <body>
         <?php include_once "view/menu/menu.php"; ?>
-        <img id="profilImage" src="view/images/lauch.jpg" alt="username" height="15%" width="15%">
         <div id="profil">
+            <img id="profilImage" src="view/images/lauch.jpg" alt="username" height="15%" width="15%">
             <div id="username"><?php echo $user->getUsername(); ?></div>
-            Vorname: <div id="firstname"><?php echo $user->getName(); ?></div>
-            Nachname: <div id="surname"><?php echo $user->getSurname(); ?></div>                
-            Email: <div id="email"><?php echo $user->getEmail(); ?></div>
-            Geschlecht: <div id="sex"><?php echo $user->getSex(); ?></div>
-            Points: <div id="points"><?php echo $user->getPoints(); ?></div>//Currently not implemented
+            <div id="userdata">
+                Vorname: <div id="firstname"><?php echo $user->getName(); ?></div>
+                Nachname: <div id="surname"><?php echo $user->getSurname(); ?></div>                
+                Email: <div id="email"><?php echo $user->getEmail(); ?></div>
+                Points: <div id="points"><?php echo $user->getPoints(); ?></div>
+            </div>
+            <a href="index.php?action=editProfil"><img src="view/forum_questions/settings.png" alt="Bearbeiten" width="16" height="16" />Bearbeiten</a>
             <div id="userquestions">
                 <?php foreach($user->findQuestions() AS $key => $question) {
                 $tags = $question->findTags();

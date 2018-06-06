@@ -9,7 +9,7 @@
         </li>
         <li>
             <form id="searchOptions">
-                <input type="search" id="searchbar" placeholder="Suche nach Fragen" />
+                <input type="search" list="searchQuestions" id="searchbar" placeholder="Suche nach Fragen" />
                 <input type="submit" id="searchButton" value="Suchen" />
             </form>
         </li>    
@@ -65,4 +65,14 @@
         </li>
     </ul>
 </nav>
+<?php require_once 'model/entities/question.php'; ?>
+
+    <datalist id="searchQuestions">
+        <?php $questions = Question::findAll();
+            foreach($questions AS $key => $question) { ?>
+                <option value="<?php echo $question->getTitle(); ?>">
+           <?php } ?>  
+    </datalist>
 </header>
+
+

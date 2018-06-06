@@ -90,6 +90,17 @@
         public function setSolved($solved){
             $this->solved = $solved;
         }
+                
+        public function setRightAnswer($id){
+            $this->right_answer = $id;
+        }
+
+        public function getRightAnswer(){
+
+            return $this->right_answer;
+        }
+    
+        
         
 
         public function toArray($mitId = true)
@@ -205,6 +216,10 @@
 
         public function findAnswerCount(){
             return Answer::findAnswerCount($this->getId());
+        }
+
+        public function findRightAnswer(){
+            return Answer::find($this->getRightAnswer());
         }
     }
 ?>

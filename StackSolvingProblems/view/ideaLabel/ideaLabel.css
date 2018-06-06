@@ -12,11 +12,11 @@ body{
     height: 8em;
     width: 47%;
     margin: 0 auto;
-    border-style: outset;
+    border-style: none;
     background-color: white;
     margin-top: 8px;
 }
-.username{
+.title{
     border-right: black;
     border-bottom-style: solid;
     border-width: 0.1rem;
@@ -42,7 +42,7 @@ body{
     padding-left: 2em;
     padding-right: 2em;
 }
-.likesAndDislikes{
+.username{
     border-width: 0.1rem;
 }
 .description{   
