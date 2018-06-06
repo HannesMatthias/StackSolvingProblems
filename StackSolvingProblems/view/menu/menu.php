@@ -11,9 +11,9 @@
             <a href="index.php?action=main">Projekte</a>
         </li>
         <li>
-            <form id="searchOptions">
-                <input type="search" list="searchQuestions" id="searchbar" placeholder="Suche nach Fragen" />
-                <input type="submit" id="searchButton" value="Suchen" />
+            <form id="searchOptions" action="index.php?action=search" method = "POST">
+                <input type="search" name="search" list="searchQuestions" id="searchbar" placeholder="Suche nach Fragen" />
+                <input type="submit"  id="searchButton" value="Suchen" />
             </form>
         </li>    
         

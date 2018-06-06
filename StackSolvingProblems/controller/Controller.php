@@ -181,7 +181,13 @@ class Controller {
     public function questions() {
         $this->addContext("template", "forum_questions/question");
         $questions = Question::findAll();
-        $this->addContext("questions", $questions);
+        $this->addContext("questions1", $questions);
+    }
+
+    public function search() {
+        $this->addContext("template", "forum_questions/question");
+        $questions = Question::findByTitle($_POST['search']);
+        $this->addContext("questions1", $questions);
     }
 
     public function fullQuestion() {
