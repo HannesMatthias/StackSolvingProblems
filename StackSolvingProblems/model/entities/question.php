@@ -165,9 +165,10 @@
 
         private function _update()
         { 
-            $sql = "UPDATE questions SET title='" . $this->title .  "' , content= '" . $this->content . "' , likes='" . $this->likes  ."', dislikes='" . $this->dislikes . "', solved ='" . $this->solved . "' WHERE id=" . $this->id . " ";           
+            $sql = 'UPDATE questions SET title=:title, content=:content, likes=:likes, dislikes=:dislikes, '
+                .'user_id=:user_id, solved=:solved, right_answer=:right_answer WHERE id=:id;';
             $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute();
+            $abfrage->execute($this->toArray());
         }
 
         /* ***** Statische Methoden ***** */

@@ -25,9 +25,9 @@
             }
         }
 
-        public function  __toString() //TODO: bearbeiten
+        public function  __toString()
         {
-            return $this->getTitle().'  '.$this->getContent();
+            return $this->getTitle().'  '.$this->getDescription();
         }
 
         /* *** Getter und Setter *** */
@@ -128,7 +128,7 @@
 
         /* ***** Private Methoden ***** */
 
-        private function _insert()  //TODO: vervollständigen
+        private function _insert()
         {  
             $sql = 'INSERT INTO project (likes, dislikes, status, description, title, user_id) '
                  . 'VALUES (:likes, :dislikes, :status, :description, :title, :user_id);';
@@ -139,12 +139,12 @@
             $this->id = DB::getDB()->lastInsertId();
         }
 
-        private function _update() //TODO: vervollständigen  
+        private function _update()
         { 
-            $sql = "UPDATE project SET likes=:likes, dislikes=:dislikes, status=:status, description =:description, '
-            . 'title = :title, user_id = :user_id' WHERE id=:id';";     
+            $sql = 'UPDATE project SET likes=:likes, dislikes=:dislikes, status=:status, description =:description, '
+            . 'title = :title, user_id = :user_id WHERE id=:id;';     
             $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute();
+            $abfrage->execute($this->toArray());
         }
 
         /* ***** Statische Methoden ***** */
