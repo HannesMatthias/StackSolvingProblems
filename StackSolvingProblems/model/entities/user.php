@@ -120,7 +120,7 @@
 
         public function setPassword_hash($password_hash)
         {
-            $this->password_hash = $password_hash;
+            $this->password_hash = password_hash($password_hash, PASSWORD_DEFAULT);
         }
 
         public function getPassword_hash()
@@ -281,19 +281,15 @@
         public function findQuestions(){
             return Question::findQuestionsByUserId($this->getId());
         }
-        public static function einloggen($email,$pass)
-                {
-                
-                    $sql = 'SELECT * FROM users WHERE (email= :email AND password_hash= :password_hash) OR (username = :email AND password_hash = :password_hash)';
-                    $abfrage = DB::getDB()->prepare($sql);
-                    $abfrage->execute(array(":email"=> $email,
-                                            ":password_hash"=> $pass
-                    ));
-                    $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
+        public static function einloggen($email)
+        {
         
-                    return $abfrage->fetch();
-                    
-                }
+            $sql = 'SELECT * FROM users WHERE (email= :email) OR (username = :email)';
+            $abfrage = DB::getDB()->prepare($sql);
+            $abfrage->execute(array(":email"=> $email));
+            $abfrage->setFetchMode(PDO::FETCH_CLASS, 'User');
+            return $abfrage->fetch();
+        }
 
         public function verified(){
             $code = rand()."AA".rand()."FF";

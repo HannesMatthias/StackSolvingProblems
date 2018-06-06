@@ -160,20 +160,19 @@ class Controller {
         $user = new User();
         if($_POST) {
             if(isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["password_hash"]) && !empty($_POST["password_hash"]) ) {             
-                $user = User::einloggen($_POST["name"], $_POST["password_hash"]); 
-                if ($user == null) {
+                $user = User::einloggen($_POST["name"]); 
+                if ($user != null) {
+                    if(password_verify($_POST["password_hash"], $user->getPassword_hash())) {
+                        if(!$user->getVerified()) {  
+                            $this->addContext("code", $user->getCode());
+                            $this->addContext("info", "Oops!, Du hast dich noch nicht verifiziert! Schau in dein Email Postfach");
+                        }  
+                        $session->setSession("user", $user);
+                    }
+                } else {
                     $user = new User($_POST);
                     $errors[] = $errorList["no_right"];
-                }else if($user != null) {
-                    if(!$user->getVerified()) {  
-                        $this->addContext("code", $user->getCode());
-                        $this->addContext("info", "Oops!, Du hast dich noch nicht verifiziert! Schau in dein Email Postfach");
-                        
-                    }  
-                    $session->setSession("user", $user);
-                 
                 }
-
 
             }else {
                 if (empty($_POST['name'])) {

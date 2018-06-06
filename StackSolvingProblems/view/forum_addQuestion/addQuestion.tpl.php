@@ -6,17 +6,23 @@
         <link href="view/forum_addQuestion/addQuestion.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <script>
+            var tagCount = 0;
             function handleSelect(myForm){
-                
-                var selBox = document.getElementById('selectTag');
-                var userInput = selBox.options[selBox.selectedIndex].text;
-                var text = document.createTextNode(" " + userInput );
-                var divTags = document.getElementById('tags');
-                var tag = document.getElementById('tag');
-                tag.appendChild(text);
+                if (tagCount < 5) {
+                    var selBox = document.getElementById('selectTag');
+                    var userInput = selBox.options[selBox.selectedIndex].text;
+                    var text = document.createTextNode(" " + userInput );
+                    var divTags = document.getElementById('tags');
+                    var tag = document.getElementById('tag');
+                    tag.appendChild(text);
 
-                divTags.appendChild(tag);
-                selBox.remove(selBox.selectedIndex);
+                    divTags.appendChild(tag);
+                    selBox.remove(selBox.selectedIndex);
+                    tagCount++;
+                } else {
+                    var infoDiv = document.getElementById('infoDiv');
+                    infoDiv.innerHTML = 'max. 5 Tags erlaubt';
+                }
             }
         </script>
    </head>
@@ -65,6 +71,7 @@
                <span > TAG : </span> 
                <span id="tag"> </span> 
             </div>
+            <div id="infoDiv" style="color:red"></div>
             <?php } ?>
             
       <div id=buttons>
