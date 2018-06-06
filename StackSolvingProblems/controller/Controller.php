@@ -166,8 +166,10 @@ class Controller {
                         if(!$user->getVerified()) {  
                             $this->addContext("code", $user->getCode());
                             $this->addContext("info", "Oops!, Du hast dich noch nicht verifiziert! Schau in dein Email Postfach");
-                        }  
-                        $session->setSession("user", $user);
+                        }else {
+                            $session->setSession("user", $user);
+                        } 
+                        
                     }
                 } else {
                     $user = new User($_POST);
@@ -200,7 +202,8 @@ class Controller {
         $errorList = array(
             "not_filled" => "Bitte füllen Sie alle Felder aus!",
             "no_pwd_match" => "Die Passwörter stimmen nicht überein!",
-            "email_exists" => "Email schon Registriert!"
+            "email_exists" => "Email bereits registriert!",
+            "username_exists" => "Username bereits registriert!"
         );
         $entries = array("name", "surname",  "email", "password_hash", "username", "re_password_hash");
         $user = new User();
@@ -220,7 +223,9 @@ class Controller {
                 if($user->findByEmail($daten["email"]) != NULL){
                     $errors[] = $errorList["email_exists"];
                 }
-
+                if($user->findByUsername($daten["username"]) != NULL) {
+                    $errors[] = $errorList["username_exists"];
+                }
                 if($daten["password_hash"] != $daten["re_password_hash"]) {
                     $errors[] = $errorList["no_pwd_match"];
                 }
@@ -329,33 +334,33 @@ class Controller {
                 
             }
 
-            if(isset($_POST["comment_send"]) ) {
-                $session = Session::getInstance();
-                $user = $session->getSession("user");
-                $comment = new Comment();
-                $comment->setUserid($user->getId());
-                $comment->setAnswerid($_POST["id"]);
-                $comment->setContent($_POST["content"]);
-                $comment->save();
-                
-            }
-
         } 
         $this->addContext("vote", 10);
         $this->addContext("questionOwner", $questionOwner);
         $this->addContext("solved", $question->getSolved());
         $this->addContext("user", $user);
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 1e1650b2a6f5facbea39774cb09f211aafa644ff
     }
 
     public function ideaInterface() {
-        $idea = Project::find($_GET["id"]);
-        $user = Project::findUser($idea->getUser_id());
-        $this->addContext("template", "ideaInterface/ideaInterface");
-        $this->addContext("idea", $idea);
-        $this->addContext("user", $user);
-        
         $session = Session::getInstance();
         $user = $session->getSession("user");
+
+        $idea = Project::find($_GET["id"]);
+        $user_p = Project::findUser($idea->getUser_id());
+        $rights = false;
+        if($user != null && $idea->getUser_id() == $user->getId()) {
+            $rights = true;
+        }
+        $this->addContext("template", "ideaInterface/ideaInterface");
+        $this->addContext("idea", $idea);
+        $this->addContext("user_p", $user_p);
+        $this->addContext("rights", $rights);
+        
+
     }
 
     public function logout() {}
@@ -371,8 +376,13 @@ class Controller {
         if(isset($_GET["verify"]) && $_GET["verify"]) {
            $user= User::findByCode($_GET["verify"]);
            if($user != null) {
-               $user->setVerified(true);
-               $user->save();
+               if(!$user->getVerified() ) {
+                    $user->setVerified(true);
+                    $this->addContext("success", "green");
+                    $this->addContext("info", "Glückwunsch du bist nun verifiziert und es kann losgehen!");
+                    $user->save();
+               }
+              
            }
         }
         $this->addContext("template", "slcPref/slcPref");
@@ -385,6 +395,7 @@ class Controller {
         extract($this->context);
         require_once 'view/' . $template . ".tpl.php";
     }
+
 }
 
 ?>

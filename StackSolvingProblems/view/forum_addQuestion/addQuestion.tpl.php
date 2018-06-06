@@ -34,15 +34,19 @@
 
         <div id="tilte">Frage hinzufügen</div>
 
-        <form id="sentMessage" method="post">
+        <form id="sentMessage" method="post" action="index.php?action=addQuestion">
             <input type="hidden" name="id" value="<?php echo $id; ?>" />
+<<<<<<< HEAD
             <p style="color: white;" class="subtitle">Title</p>
             <input required type="text" maxlength="50" id="title" name="title" placeholder="Gib hier deinen Titel ein" value="<?php echo $title; ?>"/>
+=======
+            <input type="text" maxlength="50" id="title" name="title" placeholder="Gib hier deinen Titel ein" value="<?php echo $title; ?>"/>
+>>>>>>> 1e1650b2a6f5facbea39774cb09f211aafa644ff
             <p style="color: white;" class="subtitle">Frag die Community!</p>
-            <textarea required class="tinymce" name="content"><?php echo $preview; ?></textarea>
+            <textarea class="tinymce" name="content"><?php echo $preview; ?></textarea>
             <?php
             if(!$edit) { ?>
-                <select name="tag[]" id="selectTag" onChange=" return handleSelect()" >
+                <select name="tag[]" id="selectTag" onChange="return handleSelect()" >
                 <option value="default">Select Tag</option>
                 <?php foreach ($tags as $t) { ?>
                     <option value="<?php echo $t->getId() ?>"><?php echo $t->getTag() ?></option>

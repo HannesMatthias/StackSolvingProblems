@@ -94,13 +94,12 @@ body{
     border-color: black;
     border-bottom-style: inset;
 }
-#container1{
+#container1, #container2{
     width: 100%;
     font-size: 1.3rem;
     margin: auto;
     margin-top: 3%;
 }
-
 /* ------------------------------------------------------ */
 .profile{
     float: left;

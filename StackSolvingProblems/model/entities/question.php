@@ -8,6 +8,7 @@
         private $dislikes = '';
         private $user_id = 0;
         private $solved = false;
+        private $right_answer = "sdsd";
         
     
  

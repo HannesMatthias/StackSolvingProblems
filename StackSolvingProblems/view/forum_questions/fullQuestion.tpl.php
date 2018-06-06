@@ -126,6 +126,10 @@
                     <?php if($user != null) { ?>
                         <div id="box_comments<?php echo utf8_encode($answers->getId()); ?>">
                             <button onclick="comment(<?php echo utf8_encode($answers->getId()); ?>)" class="btn_comments">Antworten</button>
+<<<<<<< HEAD
+=======
+                       
+>>>>>>> 1e1650b2a6f5facbea39774cb09f211aafa644ff
                         </div>
                         
                     <?php } ?>

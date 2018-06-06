@@ -10,12 +10,18 @@
 </head>
 <body>
 <?php include_once "view/menu/menu.php"; ?>
-    <?php if(!empty($info) ) { ?>
-    <div id="newsbox">          
-        <?php echo $info; ?>     
-    </div>
-    
-    <?php } ?>
+    <?php if(!empty($info) ) {
+            if(!isset($success) && empty($success) ) { ?>
+            <div id="newsbox">          
+                    <?php echo $info; ?>     
+            </div>
+      <?php }else { ?>
+            <div id="newsbox" style="background-color: rgba(0, 255, 0, 0.7);">          
+                <?php echo $info; ?>     
+            </div> 
+     <?php  }
+        } ?>
+
     <div id="container">
         
         <a href="index.php?action=questions">
@@ -28,6 +34,7 @@
                 </div>
             </div>
         </a>
+
         <a href="index.php?action=main">
             <div class="box">
                 <div class="imgholder"> 
