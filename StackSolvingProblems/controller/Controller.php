@@ -106,10 +106,35 @@ class Controller {
             header("Location: index.php");
             exit;
         }
-        
         $user = $session->getSession("user");
+        $idea = new Project();
+      
+        if(isset($_POST["description"]) && !empty($_POST["description"]) && isset($_POST["title"]) && !empty($_POST["title"])) {
+            $idea = new Project($_POST);
+            $idea->setUser_id($user->getId());
+            if($idea->save()) {
+                echo "Erfolgreich!";
+                header("Location: index.php?action=ideaInterface");
+                exit();
+            }else {
+                echo "Fehler!!";
+            }
+
+           $this->addContext("idea", $idea);
+
+        }else if(isset($_GET["id"]) && $_GET["id"]) {
+            $idea = Project::find($_GET["id"]);
+           
+            if($idea != null) {
+                $this->addContext("idea", $idea);
+            }
+
+        } else {
+            $idea = new Project($_POST);
+        }
 
         $this->addContext("template", "addIdea/addIdea");
+        $this->addContext("idea", $idea);
     }
     public function login() {    
      
