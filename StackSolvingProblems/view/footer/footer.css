@@ -1,3 +1,18 @@
+body{
+    background-color: aliceblue;
+}
+
 #footer{
-    background-color: black;
+    background-color:#2E2E2E;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    height: 10%;
+}
+
+#copyright{
+    float: left;
 }

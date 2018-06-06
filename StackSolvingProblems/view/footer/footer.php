@@ -4,9 +4,10 @@
     <link rel="stylesheet" type="text/css" href="footer.css">
 </head>
 <body>
-    <footer id="footer">
+<div id="footer">
+  <p id="copyright">Copyright © 2018 PIM. All Rights Reserved </p>
 
-        
-    </footer>    
+
+</div>   
 </body>
 </html>
