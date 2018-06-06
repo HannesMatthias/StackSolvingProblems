@@ -11,7 +11,7 @@ class Controller {
 
     public function main() {
         $this->addContext("template", "main/main");
-        $as = Project::findAll();
+        $ideas = Project::findAll();
         $this->addContext("ideas", $ideas);
     }
 
@@ -278,6 +278,11 @@ class Controller {
         
         $session = Session::getInstance();
         $user = $session->getSession("user");
+    }
+
+    public function ideaInterface() {
+        $idea = Project::find($_get["id"]);
+        
     }
 
     public function logout() {}
