@@ -20,8 +20,10 @@ class Controller {
         $session = Session::getInstance();
         $user = $session->getSession("user");
         $questions = Question::findQuestionsByUserId($user->getId());
+        //$projects = Project::fin
         $this->addContext("questions", $questions);
         $this->addContext("user", $user);
+        $this->addContext("projects", $projects);
     }
 
     public function addQuestion() {   
