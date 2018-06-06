@@ -31,7 +31,7 @@
                 <label>E-Mail oder Benutzername</label>
                 <input type="text" name="name" placeholder="Benutzername"/> 
                 <label>Passwort</label>
-                <input type="password" name="password" /> 
+                <input type="password" name="password_hash" /> 
                 <input id="login" type="submit" name="login" value="Einloggen" />
                 <a href="index.php?action=register">Jetzt registrieren</a>
             </form>

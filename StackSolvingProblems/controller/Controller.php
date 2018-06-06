@@ -11,6 +11,8 @@ class Controller {
 
     public function main() {
         $this->addContext("template", "main/main");
+        $ideas = Project::findAll();
+        $this->addContext("ideas", $ideas);
     }
 
     public function profil() {
@@ -73,10 +75,13 @@ class Controller {
         }
     }
     public function login() {    
+     
+        
+
         $session = Session::getInstance();
         if($session->getSession("user") != null ) { //Hier eigentlich sinnlos.
             header("Location: index.php");
-            exit;
+            exit();
         }
 
 
@@ -115,7 +120,7 @@ class Controller {
         }
         $this->addContext("errors", $errors);
         $this->addContext("user", $user);
-
+        $this->addContext("template", "forum_questions/question");
 
 
     }
