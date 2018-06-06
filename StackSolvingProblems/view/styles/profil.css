@@ -20,14 +20,12 @@ body {
 #profil{
   color:black;;
   padding: 75px;
-  
   border-width: 5px;
-  
   margin-left: 10%;
   margin-right: 10%;
   position: relative;
   background: rgb(211, 219, 221);
-  margin-top: 10%;
+  margin-top: 8%;
 
   
 }
@@ -45,13 +43,19 @@ body {
   height: auto;
 }
 #userdata{ 
-  padding-top: 20px;
-  display: inline;
-}
-#userdata2{ 
-  float:right;
+  padding-top: 10px;
+  position: relative;
+  padding-bottom: 10px;
 
-
+  background-color: white;
+  margin: 12px auto;
+  width: 65%;
+  padding: 1.5rem 20px;
+  overflow: auto;
+  vertical-align: baseline;
+  /* overflow: auto; */
+  position: relative;
+  
 }
 #userquestions{
 text-align:center;
@@ -69,20 +73,42 @@ padding-top: 20px;
   font-weight: bold;
   padding-bottom: 1%;
 }
-table{
-  width: 125%;
+
+#edit{
+ float: right;
+ line-height: 15px;
 }
-#bearbeiten{
+
+#email{
+ float: right;
+ line-height: 15px;
+ 
+}
+#firstname{
   float: right;
+  
 }
-#info{
-  background-color: white;
+#lastname{
+  float: right;
+  
+}
+
+#points{
+  break-after: always;
+  float: right;
+  text-align:left;
+  line-height: 15px;
+  
+ }
+/*#info{
+  padding-top: 100px;
+  background-color: blue;
   margin: 12px auto;
   width: 65%;
-  padding: 1.5rem 20px;
+
   vertical-align: baseline;
-  /* overflow: auto; */
-  position: relative;
+
+ 
 }
 
 

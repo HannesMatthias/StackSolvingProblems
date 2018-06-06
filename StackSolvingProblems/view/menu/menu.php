@@ -8,12 +8,12 @@
     <ul>
         <li><a href="index.php"><img id="logo" src="view/menu/logo.png" /></a></li>
         <li>
-            <a href="index.php?action=main">Projekte</a>
+            <a href="index.php">Startseite</a>
         </li>
         <li>
-            <form id="searchOptions">
-                <input type="search" list="searchQuestions" id="searchbar" placeholder="Suche nach Fragen" />
-                <input type="submit" id="searchButton" value="Suchen" />
+            <form id="searchOptions" action="index.php?action=search" method = "POST">
+                <input type="search" name="search" list="searchQuestions" id="searchbar" placeholder="Suche nach Fragen" />
+                <input type="submit"  id="searchButton" value="Suchen" />
             </form>
         </li>    
         

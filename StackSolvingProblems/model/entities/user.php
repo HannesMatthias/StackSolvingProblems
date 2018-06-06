@@ -11,8 +11,10 @@
         private $email = '';
         private $password_hash = '';
         private $username = '';
+        private $code = '';
         private $verified = false;
-        private $icon = '';
+        
+    
  
 
         public function __construct($daten = array())
@@ -54,6 +56,14 @@
             $this->verified = $verified;
         }
 
+        public function getCode() {
+            return $this->code;
+        }
+
+        public function setCode($code) {
+            $this->code = $code;
+        }
+
         public function getName()
         {
             return $this->name;
@@ -79,11 +89,11 @@
             return $this->birthdate;
         }
 
-        public function setSex($sex)
+        public function setSex($sex)/*vergewaltigung*/
         {
             $this->sex = $sex;
         }
-        public function getSex()
+        public function getSex()/*normaler sex*/
         {
             return $this->sex;
         }
@@ -101,6 +111,7 @@
         public function setEmail($email)
         {
             $this->email = $email;
+            $this->verified();
         }
 
         public function getEmail()
@@ -136,14 +147,6 @@
         public function getPoints()
         {
             return $this->points;
-        }
-
-        public function setIcon($icon) {
-            $this->icon = $icon;
-        }
-
-        public function getIcon() {
-            return $this->icon;
         }
         
         public function alterVerified(){
@@ -193,8 +196,8 @@
 
         private function _insert()
         {
-            $sql = 'INSERT INTO users (name, surname, birthdate, sex, rang_id, points, email, password_hash, username, verified, icon) '
-                 . 'VALUES (:name, :surname, :birthdate, :sex, :rang_id, :points, :email, :password_hash, :username, :verified, :icon)';
+            $sql = 'INSERT INTO users (name, surname, birthdate, sex, rang_id, points, email, password_hash, username, verified, code, icon) '
+                 . 'VALUES (:name, :surname, :birthdate, :sex, :rang_id, :points, :email, :password_hash, :username, :verified, :code, :icon)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
@@ -205,7 +208,7 @@
         private function _update()
         {
             $sql = 'UPDATE users SET name=:name, surname=:surname, birthdate=:birthdate, sex =:sex, rang_id = :rang_id,'
-            .'points = :points, email=:email, password_hash =:password_hash, username = :username, verified=:verified, icon=:icon'
+            .'points = :points, email=:email, password_hash =:password_hash, username = :username, verified=:verified, code=:code, icon=:icon'
                  . 'WHERE id=:id';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray());
@@ -255,20 +258,12 @@
         public function findTags(){
             return Tag::findeByUserId($this->getId());
         }
-
-        public static function setCode($email,$code)
-        {
-            $sql = 'UPDATE users SET code = ? WHERE users.email = ?;';
-            $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($code,$email));
-
-        }
         
         public function findQuestions(){
             return Question::findQuestionsByUserId($this->getId());
         }
         public static function einloggen($email,$pass)
-            {
+                {
                 
                     $sql = 'SELECT * FROM users WHERE (email= :email AND password_hash= :password_hash) OR (username = :email AND password_hash = :password_hash)';
                     $abfrage = DB::getDB()->prepare($sql);
@@ -279,19 +274,19 @@
         
                     return $abfrage->fetch();
                     
-            }
+                }
 
-        public function verified($aktuelleMail){
+        public function verified(){
             $code = rand()."AA".rand()."FF";
-            $recipient = $aktuelleMail;
-            $subject = "Verified";
-            $mail_body = "Just one more step... \r\n".$code;
+            $recipient = $this->getEmail();
+            $subject = "Hallo " . $this->username;
+            $mail_body = "Hey" . $this->surname . " " . $this->name  . "! \n Hier ist dein Bestätigungscode: www.mhteam.bz.it/pim/?verify=".$code;
             try{
                 mail($recipient, $subject, $mail_body);
             }catch(Exception $e){
                 echo $e->getMessage();
             }
-            $this->setCode($aktuelleMail, $code);
+            $this->setCode($code);
         }
         
     }

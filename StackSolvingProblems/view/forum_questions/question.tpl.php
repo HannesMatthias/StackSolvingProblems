@@ -12,7 +12,7 @@
     <body>
     <?php include_once "view/menu/menu.php"; ?>
         <div id="box_extern">
-            <?php foreach($questions AS $key => $question) {
+            <?php foreach($questions1 AS $key => $question) {
                 $tags = $question->findTags(); 
                 ?>
             

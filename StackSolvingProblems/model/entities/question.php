@@ -192,9 +192,9 @@
 
         public static function findByTitle($title)
         {
-            $sql = 'SELECT * FROM questions WHERE title=?';
+            $sql = 'SELECT * FROM questions WHERE title LIKE "%'.$title.'%"  ';
             $abfrage = DB::getDB()->prepare($sql);
-            $abfrage->execute(array($title));
+            $abfrage->execute();
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Question');
             return $abfrage->fetchAll();
         }

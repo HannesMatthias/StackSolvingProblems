@@ -101,15 +101,17 @@ class Controller {
     }
     public function login() {    
      
-        
+        $this->addContext("code", "");
+        $this->addContext("info", "");
+        $this->addContext("template", "slcPref/slcPref");
 
         $session = Session::getInstance();
         if($session->getSession("user") != null ) { //Hier eigentlich sinnlos.
-            header("Location: index.php");
-            exit();
+            //header("Location: index.php");
+            exit;
         }
 
-
+        
         $errors = array();
         $errorList = array(
             "no_pw" => "Bitte geben Sie ein Passwort ein!",
@@ -126,12 +128,12 @@ class Controller {
                     $errors[] = $errorList["no_right"];
                 }else if($user != null) {
                     if(!$user->getVerified()) {  
-                        header("Location: index.php");
-                        //exit;
-                    }
-                   
+                        $this->addContext("code", $user->getCode());
+                        $this->addContext("info", "Oops!, Du hast dich noch nicht verifiziert! Schau in dein Email Postfach");
+                        
+                    }  
                     $session->setSession("user", $user);
-                    header("Location: index.php");
+                 
                 }
 
 
@@ -150,7 +152,7 @@ class Controller {
         }
         $this->addContext("errors", $errors);
         $this->addContext("user", $user);
-        $this->addContext("template", "forum_questions/question");
+       // $this->addContext("template", "forum_questions/question");
 
 
     }
@@ -205,7 +207,13 @@ class Controller {
     public function questions() {
         $this->addContext("template", "forum_questions/question");
         $questions = Question::findAll();
-        $this->addContext("questions", $questions);
+        $this->addContext("questions1", $questions);
+    }
+
+    public function search() {
+        $this->addContext("template", "forum_questions/question");
+        $questions = Question::findByTitle($_POST['search']);
+        $this->addContext("questions1", $questions);
     }
 
     public function fullQuestion() {
@@ -292,8 +300,19 @@ class Controller {
 
     }
 
+    public function ideaInterface() {
+        $idea = Project::find($_GET["id"]);
+        $this->addContext("template", "ideaInterface/ideaInterface");
+        $this->addContext("idea", $idea);
+        
+        $session = Session::getInstance();
+        $user = $session->getSession("user");
+    }
+
     public function logout() {}
     public function slcPref() {
+        $this->addContext("code", "");
+        $this->addContext("info", "");
         $this->addContext("template", "slcPref/slcPref");
     }
     public function forum_intro() {
