@@ -13,16 +13,29 @@
             <div id="username"><?php echo $user->getUsername(); ?></div>
             <div id="info">
             <div id="userdata">
-                <table>
-                    <tr>
-                        <td>Vorname: <div id="firstname"><?php echo $user->getName(); ?></div></td>
-                        <td>Nachname: <div id="surname"><?php echo $user->getSurname(); ?></div></td>
-                    </tr>
-                    <tr>
-                        <td>Email: <div id="email"><?php echo $user->getEmail(); ?></div></td>
-                        <td>Points: <div id="points"><?php echo $user->getPoints(); ?></div></td>
-                    </tr>
-                </table>
+                <div class="outer_left">
+                        <div class="inner_left">
+                            Vorname:
+                            Geburtsdatum:
+                            Email:
+                        </div>
+                        <div class="inner_right">
+                            <div id="name"><?php echo $user->getName(); ?></div>
+                            <div id="birthdate"><?php echo $user->getBirthdate(); ?></div>
+                            <div id="email"><?php echo $user->getEmail(); ?></div>
+                        </div>
+                    </div>
+                    <div class="outer_right">
+                        <div class="inner_left">
+                            Nachname:
+                            Geschlecht:
+                        </div>
+                        <div class="inner_right">
+                            <div id="surname"><?php echo $user->getSurname(); ?></div>
+                            <div id="sex"><?php echo $user->getSex(); ?></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <a id="edit" href="index.php?action=editProfil"><img src="view/forum_questions/settings.png" alt="Bearbeiten" width="20" height="20" /></a>
             <div id="userquestions">
@@ -64,7 +77,6 @@
                         }
                     }
                 ?>
-                
             </div>
         </div>
     </body>

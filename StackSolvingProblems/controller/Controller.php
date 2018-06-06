@@ -23,7 +23,30 @@ class Controller {
         //$projects = Project::fin
         $this->addContext("questions", $questions);
         $this->addContext("user", $user);
-        $this->addContext("projects", $projects);
+        //$this->addContext("projects", $projects);
+    }
+
+    public function editProfil() {
+        $this->addContext("template", "editProfil");
+        $session = Session::getInstance();
+        $user = $session->getSession("user");
+        $this->addContext("user", $user);
+    }
+
+    public function saveProfil() {
+        $this->addContext("template", "profil");
+        $session = Session::getInstance();
+        $user = $session->getSession("user");
+        $user->setName($_POST['name']);
+        $user->setSurname($_POST['surname']);
+        $user->setBirthdate($_POST['birthdate']);
+        $user->setEmail($_POST['email']);
+        $user->save();
+        $session->setSession("user", $user);
+        $questions = Question::findQuestionsByUserId($user->getId());
+        $this->addContext("questions", $questions);
+        $this->addContext("user", $user);
+        //$this->addContext("projects", $projects);
     }
 
     public function addQuestion() {   
@@ -184,7 +207,13 @@ class Controller {
     public function questions() {
         $this->addContext("template", "forum_questions/question");
         $questions = Question::findAll();
-        $this->addContext("questions", $questions);
+        $this->addContext("questions1", $questions);
+    }
+
+    public function search() {
+        $this->addContext("template", "forum_questions/question");
+        $questions = Question::findByTitle($_POST['search']);
+        $this->addContext("questions1", $questions);
     }
 
     public function fullQuestion() {

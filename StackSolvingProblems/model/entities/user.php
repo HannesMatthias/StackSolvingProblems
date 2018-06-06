@@ -210,7 +210,7 @@
             $sql = 'UPDATE users SET name=:name, surname=:surname, birthdate=:birthdate, sex =:sex, rang_id = :rang_id,'
             .'points = :points, email=:email, password_hash =:password_hash, username = :username, verified=:verified, code=:code, icon=:icon'
                  . 'WHERE id=:id';
-            $abfrage = self::$db->prepare($sql);
+            $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray());
         }
 
