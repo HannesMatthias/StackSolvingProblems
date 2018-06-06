@@ -1,5 +1,5 @@
 <?php 
-    if (empty($_POST[$questions])) {
+    if (empty($questions])) {
         //<link href="index.html" rel="stylesheet">
     }
 ?>
