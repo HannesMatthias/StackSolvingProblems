@@ -1,26 +1,32 @@
 body{
     background-color: aliceblue;
+    font-family: 'Open Sans', sans-serif;
 }
 
 
 
-#container{
-    width: 80%;
+#container{  
     margin: 20% auto 0 auto;
     text-align: center;
 }
 
 .box {
-    width:40%;
+    width: 25%;
     display: inline-block;
     border: 1px solid black;
+    transition: 1s all;
 }
-.box img {
+
+.imgholder img {
     width: 100%;
 }
 .imgholder {
-
+    width: 30%;
+    transition: 1s all;
+    margin: 0 auto;
 }
-.title {
 
+.box:hover .imgholder {
+    transform: scale(1.2) rotate(10deg);
+   
 }

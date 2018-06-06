@@ -8,7 +8,7 @@
     <ul>
         <li><a href="index.php"><img id="logo" src="view/menu/logo.png" /></a></li>
         <li>
-            <a href="index.php?action=main">Projekte</a>
+            <a href="index.php">Startseite</a>
         </li>
         <li>
             <form id="searchOptions">
