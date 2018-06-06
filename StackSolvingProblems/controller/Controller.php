@@ -86,7 +86,8 @@ class Controller {
             exit();
         }
 
-
+        $this->addContext("code", "");
+        $this->addContext("info", "");
         $errors = array();
         $errorList = array(
             "no_pw" => "Bitte geben Sie ein Passwort ein!",
@@ -103,12 +104,13 @@ class Controller {
                     $errors[] = $errorList["no_right"];
                 }else if($user != null) {
                     if(!$user->getVerified()) {  
-                        header("Location: index.php");
-                        //exit;
-                    }
-                   
+                        $this->addContext("code", $user->getCode());
+
+                        $this->addContext("info", "Oops!, Du hast dich noch nicht verifiziert! Schau in dein Email Postfach");
+                        
+                    }  
                     $session->setSession("user", $user);
-                    header("Location: index.php");
+                 
                 }
 
 
@@ -127,7 +129,7 @@ class Controller {
         }
         $this->addContext("errors", $errors);
         $this->addContext("user", $user);
-        $this->addContext("template", "forum_questions/question");
+       // $this->addContext("template", "forum_questions/question");
 
 
     }
@@ -267,6 +269,15 @@ class Controller {
         $this->addContext("solved", $question->getSolved());
         $this->addContext("user", $user);
 
+    }
+
+    public function ideaInterface() {
+        $idea = Project::find($_GET["id"]);
+        $this->addContext("template", "ideaInterface/ideaInterface");
+        $this->addContext("idea", $idea);
+        
+        $session = Session::getInstance();
+        $user = $session->getSession("user");
     }
 
     public function logout() {}

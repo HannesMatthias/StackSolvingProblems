@@ -5,9 +5,7 @@
 </head>
 <body>
 <div id="footer">
-  <p id="copyright">Copyright © 2018 PIM. All Rights Reserved </p>
-
-
+  <div id="copyright"> Copyright © 2018 PIM. All Rights Reserved </div>
 </div>   
 </body>
 </html>
