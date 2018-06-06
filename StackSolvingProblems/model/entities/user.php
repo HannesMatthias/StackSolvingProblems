@@ -139,6 +139,10 @@
             return $this->points;
         }
         
+        public function alterVerified(){
+            $wert = getVerified();
+            setVerified(!$wert);
+        }
 
         public function toArray($mitId = true)
         {
@@ -271,9 +275,8 @@
                 }
 
         public function verified($aktuelleMail){
-            $code = rand()."AA".rand()."FF".rand();
-            //$recipient = $aktuelleMail; meine Email nur zum Testen ;)
-            $recipient = "kevin.sorg.el.moumene@gmail.com";
+            $code = rand()."AA".rand()."FF";
+            $recipient = $aktuelleMail;
             $subject = "Verified";
             $mail_body = "Just one more step... \r\n".$code;
             try{
