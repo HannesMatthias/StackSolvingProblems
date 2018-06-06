@@ -335,14 +335,11 @@ class Controller {
             }
 
         } 
-        $this->addContext("vote", 10);
+        $this->addContext("vote", $v);
         $this->addContext("questionOwner", $questionOwner);
         $this->addContext("solved", $question->getSolved());
         $this->addContext("user", $user);
-<<<<<<< HEAD
-=======
         
->>>>>>> 1e1650b2a6f5facbea39774cb09f211aafa644ff
     }
 
     public function ideaInterface() {
