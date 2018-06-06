@@ -4,8 +4,9 @@
 </head>
 <body>
     <div id="outerfield">
-    <form id="sendIdea" method="post" action="index.php?action=addIdea">
+    <form id="sendIdea" method="post">
     <table>
+        <input type="hidden" name="id" value="<?php echo $idea->getId(); ?>" />
          <tr><div id="overTitle"><Label>Title:</Label></div></tr>
          <tr><div id="title"><input id="title" name="title" type="text" value="<?php echo $idea->getTitle(); ?>"></div></tr>
          <tr><div id="overDescription"><Label>Description:</Label></div></tr>

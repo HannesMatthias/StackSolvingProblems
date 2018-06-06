@@ -108,7 +108,6 @@ class Controller {
         }
         $user = $session->getSession("user");
         $idea = new Project();
-      
         if(isset($_POST["description"]) && !empty($_POST["description"]) && isset($_POST["title"]) && !empty($_POST["title"])) {
             $idea = new Project($_POST);
             $idea->setUser_id($user->getId());
@@ -122,11 +121,13 @@ class Controller {
 
            $this->addContext("idea", $idea);
 
-        }else if(isset($_GET["id"]) && $_GET["id"]) {
+        } else if(isset($_GET["id"]) && !empty($_GET["id"])) {
             $idea = Project::find($_GET["id"]);
-           
-            if($idea != null) {
+            if($idea != null && $user->getId() == $idea->getUser_id()) {
                 $this->addContext("idea", $idea);
+            } else {
+                header("Location: index.php?action=main");
+                exit();
             }
 
         } else {
