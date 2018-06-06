@@ -35,8 +35,6 @@
                 <input type="text" name="name" placeholder="Benutzername"/> 
                 <label>Passwort</label>
                 <input type="password" name="password_hash" /> 
-                <label class="hidden">Bestätigungscode</label>
-                <input class="hidden" type="text" name="verify" /> 
                 <input id="login" type="submit" name="login" value="Einloggen" />
                 <a href="index.php?action=register">Jetzt registrieren</a>
             </form>
