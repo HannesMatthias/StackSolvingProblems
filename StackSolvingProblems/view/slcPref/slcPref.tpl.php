@@ -8,10 +8,15 @@
         <script src="plugins/js/addAnswer.js"></script>
 </head>
 <body>
-    <?php include_once "view/menu/menu.php";     ?>
+   
     <div id="container">
-        <div id="forum"><button type="button" id="forumButton"><img src="view/images/forumIntro.png" width="400"></button></div>
-        <div id="projects"><button type="button" id="forumButton"><img src="view/images/ideaIntro.png" width="400"></button></div>
+        <div class="box">
+            <div class="imgholder"> 
+                <img src="view/images/forumIntro.png">
+            </div>
+            <div class="title">
+                <span>Forum</span> Frag die Community!
+            </div>
     </div>
 </body>
 </html>
