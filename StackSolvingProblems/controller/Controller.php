@@ -318,6 +318,15 @@ class Controller {
     public function forum_intro() {
         $this->addContext("template", "forum_intro/intro");
     }
+    public function verify() {
+        if(isset($_GET["verify"] && $_GET["verify"]) ) {
+           $user= User::findByCode($_GET["verify"]);
+           if($user != null) {
+               $user->setVerified("1");
+           }
+        }
+        $this->addContext("template", "");
+    }
     private function addContext($key, $value){
         $this->context[$key] = $value;
     }
