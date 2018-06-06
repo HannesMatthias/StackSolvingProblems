@@ -1,0 +1,34 @@
+body{
+    background-color: aliceblue;
+}
+
+
+
+#container{
+    width: 80%;
+    margin: auto;
+    height: 30rem;
+}
+
+#forum{
+    width: 49.5%;
+    height: 30rem;
+    background-color: white;
+    float: left;
+    transition: all 1s;
+}
+#projects{
+    width: 49.5%;
+    height: 30rem;
+    background-color: white;
+    float: right;
+    transition: all 1s;
+    
+}
+
+#forumButton{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border: none;
+}

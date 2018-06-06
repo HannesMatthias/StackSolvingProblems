@@ -33,3 +33,6 @@ html, body {
     right: 2%;
     background-color: rgb(62, 177, 232);
 }
+.active {
+    display: block;
+}
