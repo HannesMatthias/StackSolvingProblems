@@ -142,7 +142,7 @@
             $this->icon = $icon;
         }
 
-        public function getIcon($icon) {
+        public function getIcon() {
             return $icon;
         }
         
