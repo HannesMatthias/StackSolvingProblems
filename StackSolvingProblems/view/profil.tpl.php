@@ -11,6 +11,7 @@
         <div id="profil">
             <img id="profilImage" src="view/images/lauch.jpg" alt="username" height="15%" width="15%">
             <div id="username"><?php echo $user->getUsername(); ?></div>
+            <div id="info">
             <div id="userdata">
                 <table>
                     <tr>
@@ -64,15 +65,7 @@
                     }
                 ?>
                 
-            </div>   
-            <!--<div id=userprojects>
-                <h2>Ihre Projekte</h2>
-                <?php /* 
-                    foreach ($variable as $key => $value) {
-                        # code...
-                    }*/
-                ?>
-            </div>   -->      
+            </div>
         </div>
     </body>
 </html>
