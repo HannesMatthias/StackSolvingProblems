@@ -26,7 +26,7 @@ body {
   margin-left: 10%;
   margin-right: 10%;
   position: relative;
-  background: lightgray;
+  background: rgb(211, 219, 221);
   margin-top: 10%;
 
   
@@ -44,10 +44,14 @@ body {
   width: 120px;
   height: auto;
 }
-#userdata{
-  
+#userdata{ 
   padding-top: 20px;
-  
+  display: inline;
+}
+#userdata2{ 
+  float:right;
+
+
 }
 #userquestions{
 text-align:center;
@@ -64,6 +68,21 @@ padding-top: 20px;
 #info{
   font-weight: bold;
   padding-bottom: 1%;
+}
+table{
+  width: 125%;
+}
+#bearbeiten{
+  float: right;
+}
+#info{
+  background-color: white;
+  margin: 12px auto;
+  width: 65%;
+  padding: 1.5rem 20px;
+  vertical-align: baseline;
+  /* overflow: auto; */
+  position: relative;
 }
 
 

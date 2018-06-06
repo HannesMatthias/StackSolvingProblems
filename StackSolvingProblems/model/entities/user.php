@@ -194,7 +194,7 @@
         private function _insert()
         {
             $sql = 'INSERT INTO users (name, surname, birthdate, sex, rang_id, points, email, password_hash, username, verified, icon) '
-                 . 'VALUES (:name, :surname, :birthdate, :sex, :rang_id, :points, :email, :password_hash, :username, :verified, icon)';
+                 . 'VALUES (:name, :surname, :birthdate, :sex, :rang_id, :points, :email, :password_hash, :username, :verified, :icon)';
 
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute($this->toArray(false));
