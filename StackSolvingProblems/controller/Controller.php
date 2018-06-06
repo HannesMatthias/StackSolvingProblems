@@ -78,16 +78,17 @@ class Controller {
     }
     public function login() {    
      
-        
+        $this->addContext("code", "");
+        $this->addContext("info", "");
+        $this->addContext("template", "slcPref/slcPref");
 
         $session = Session::getInstance();
         if($session->getSession("user") != null ) { //Hier eigentlich sinnlos.
-            header("Location: index.php");
-            exit();
+            //header("Location: index.php");
+            exit;
         }
 
-        $this->addContext("code", "");
-        $this->addContext("info", "");
+        
         $errors = array();
         $errorList = array(
             "no_pw" => "Bitte geben Sie ein Passwort ein!",
@@ -105,7 +106,6 @@ class Controller {
                 }else if($user != null) {
                     if(!$user->getVerified()) {  
                         $this->addContext("code", $user->getCode());
-
                         $this->addContext("info", "Oops!, Du hast dich noch nicht verifiziert! Schau in dein Email Postfach");
                         
                     }  
@@ -273,6 +273,8 @@ class Controller {
 
     public function logout() {}
     public function slcPref() {
+        $this->addContext("code", "");
+        $this->addContext("info", "");
         $this->addContext("template", "slcPref/slcPref");
     }
     public function forum_intro() {

@@ -286,8 +286,8 @@
         public function verified(){
             $code = rand()."AA".rand()."FF";
             $recipient = $this->getEmail();
-            $subject = "Verified";
-            $mail_body = "Just one more step... \r\n".$code;
+            $subject = "Hallo " . $this->username;
+            $mail_body = "Hey" . $this->surname . " " . $this->name  . "! \n Hier ist dein Bestätigungscode: www.mhteam.bz.it/pim/?verify=".$code;
             try{
                 mail($recipient, $subject, $mail_body);
             }catch(Exception $e){

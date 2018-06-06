@@ -10,13 +10,11 @@
 </head>
 <body>
 <?php include_once "view/menu/menu.php"; ?>
-
-    <div id="newsbox">
-                Oops!, Du hast dich noch nicht verifiziert! Schau in dein Email Postfach
-                <?php
-                    //echo $info;
-                ?>     
+    <?php if(!empty($info) ) { ?>
+    <div id="newsbox">          
+        <?php echo $info; ?>     
     </div>
+    <?php } ?>
     <div id="container">
         
         <a href="index.php?action=questions">
