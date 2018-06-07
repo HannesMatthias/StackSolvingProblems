@@ -62,7 +62,7 @@
       <div id=buttons>
             <div id="bnt_save">
                 <label class="container">Speichern ?
-                    <input type="checkbox" name="save" value="save"><span class="checkmark"></span> 
+                    <input type="submit" name="save" value="save"><span class="checkmark"></span> 
                 </label>
                 
             <div>

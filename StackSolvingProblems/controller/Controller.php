@@ -251,8 +251,19 @@ class Controller {
 
     public function questions() {
         $this->addContext("template", "forum_questions/question");
+        $this->addContext("user", "");
         $questions = Question::findAll();
+
+        $session = Session::getInstance();
+        $user = -1;
+      
+        if($session->getSession("user") != null ) {
+            $user = $session->getSession("user");
+        }
+        
+        $this->addContext("user", $user);
         $this->addContext("questions1", $questions);
+        
     }
 
     public function search() {

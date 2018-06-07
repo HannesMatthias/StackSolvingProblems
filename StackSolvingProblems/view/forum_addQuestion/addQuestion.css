@@ -7,18 +7,14 @@ html, body {
 }
 
 #tilte {
+/*
+    color: white;
 
-color: white;
-
-text-align: center;
-
-font-size: 2em;
-
-margin-top: 30px;
-
-margin-bottom: 30px;
-
-text-shadow: 1px 1px 1px white;
+    text-align: center;
+    font-size: 2em;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 1px white;*/
 }
 
 #box_info {
@@ -64,7 +60,7 @@ background-color: white;
 #title {
     margin: 60px auto 0 auto;
     display: block;
-    width: 22em;
+    width: 50%;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
