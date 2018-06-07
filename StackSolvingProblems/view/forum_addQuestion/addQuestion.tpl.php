@@ -8,7 +8,7 @@
         <script>
             var tagCount = 0;
             function handleSelect(){
-                if (tagCount < 5) {
+                
                     var selBox = document.getElementById('selectTag');
                     var userInput = selBox.options[selBox.selectedIndex].text;
                     var text = document.createTextNode(" " + userInput );
@@ -19,9 +19,13 @@
                     divTags.appendChild(tag);
                     selBox.remove(selBox.selectedIndex);
                     tagCount = tagCount + 1;
+
+                if(tagCount < 3) {
+                    var infoDiv = document.getElementById('infoDiv');
+                    infoDiv.innerHTML = 'min. 3 Tags benötigt';
                 } else {
                     var infoDiv = document.getElementById('infoDiv');
-                    infoDiv.innerHTML = 'max. 5 Tags erlaubt';
+                    infoDiv.innerHTML = '';
                 }
             }
         </script>
