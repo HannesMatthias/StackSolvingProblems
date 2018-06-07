@@ -28,6 +28,7 @@
         </div>
         
     </div> 
+    <!-- Nur der Besitzer darf einsehen -->
     <div id="container2">
             <button id="cancelButton"><img src="view/images/cancel.png" width="20"></button>
             <button id="cancelButton"><img src="view/images/settings.png" width="20"></button>
