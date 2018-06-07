@@ -39,19 +39,80 @@ class Controller {
     }
 
     public function saveProfil() {
-        $this->addContext("template", "profil");
+        $message="Sie haben ihr Profil erfolgREICH aktualisiert!";
         $session = Session::getInstance();
         $user = $session->getSession("user");
         $user->setName($_POST['name']);
         $user->setSurname($_POST['surname']);
         $user->setBirthdate($_POST['birthdate']);
         $user->setEmail($_POST['email']);
+        $sex="m";
+        if ($_POST['sex'] == 'w') {
+            $sex="w";
+        }
+
+        //upload profil-image
+        $target_dir = "users/";//Ordner zum Speichern der Bilder
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        //check if its an image
+        if(isset($_POST["submit"])) {
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if($check !== false) {
+                //echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                //echo "File is not an image.";
+                $message="Die angegebene Datei ist kein Bild!";
+                $uploadOk = 0;
+            }
+        }
+        // Check if file already exists
+        /*if (file_exists($target_file)) {
+            //echo "Sorry, file already exists.";
+            $uploadOk = 0;
+        }*/
+        // Check file size
+        if ($_FILES["fileToUpload"]["size"] > 500000000) {//5MByte maximal größe
+            //echo "Sorry, your file is too large.";
+            $message="Die Datei überschreitet die maximale Bildgröße!";
+            $uploadOk = 0;
+        }
+        // Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" ) {
+            //echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $message="Es werden nur Dateien des Typs: JPG, JPEG, PNG & GIF akzeptiert!";
+            $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        $imagepath=$target_file . "/" . $user->getUsername() . "/profil." . $imageFileType;
+        if ($uploadOk == 0) {
+            //$message="Es gab einen Fehler beim Hochladen des Bildes!";
+        // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imagepath)) {
+                //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            } else {
+                //echo "Sorry, there was an error uploading your file.";
+                $message="Es gab einen Fehler beim Hochladen des Bildes!";
+            }
+        }
+
+        $user->setSex($sex);
+        $user->setIcon($imagepath);
         $user->save();
         $session->setSession("user", $user);
         $questions = Question::findQuestionsByUserId($user->getId());
-        $this->addContext("questions", $questions);
-        $this->addContext("user", $user);
-        //$this->addContext("projects", $projects);
+        if ($message !== "Sie haben ihr Profil erfolgREICH aktualisiert!") {    
+            $this->addContext("template", "profil");
+            $this->addContext("questions", $questions);
+            $this->addContext("user", $user);
+            //$this->addContext("projects", $projects);
+        } else {
+            alert($message);
+        }
     }
 
     public function addQuestion() {   
