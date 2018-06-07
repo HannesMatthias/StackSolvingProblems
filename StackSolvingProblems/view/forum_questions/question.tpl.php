@@ -33,7 +33,9 @@
                         <div class="tags"><?php echo $t->getTag(); ?></div>
                         <?php }?>
                     </div>
+                    <?php if($question->getUserId() == $user->getId()) { ?>
                     <a class="edit" href="index.php?action=addQuestion&amp;id=<?php echo $question->getId();?>"><img src="view/forum_questions/settings.png" alt="Bearbeiten" /></a>
+                    <?php } ?>
                 </div>
             
            

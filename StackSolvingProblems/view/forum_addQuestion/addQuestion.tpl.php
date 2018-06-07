@@ -15,7 +15,12 @@
                     var divTags = document.getElementById('tags');
                     var tag = document.getElementById('tag');
                     tag.appendChild(text);
-
+                    var hidden = document.getElementById('tagPost');
+                    if( tagCount == 0){
+                     hidden.value +=userInput;
+                    } else {
+                        hidden.value +=" " + userInput;
+                    }
                     divTags.appendChild(tag);
                     selBox.remove(selBox.selectedIndex);
                     tagCount = tagCount + 1;
@@ -55,6 +60,7 @@
                 <div id="tags" style="color:white"> 
                <span > TAG : </span> 
                <span id="tag"> </span> 
+               <input id="tagPost" type="hidden" name="tagPost" value="" />
             </div>
             <div id="infoDiv" style="color:red"></div>
             <?php } ?>
@@ -62,7 +68,7 @@
       <div id=buttons>
             <div id="bnt_save">
                 <label class="container">Speichern ?
-                    <input type="checkbox" name="save" value="save"><span class="checkmark"></span> 
+                    <input type="submit" name="save" value="save"><span class="checkmark"></span> 
                 </label>
                 
             <div>
