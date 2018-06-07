@@ -21,7 +21,7 @@
             <a href="index.php?action=addQuestion">Frage stellen</a>
         </li>
         <li>
-            <a href="index.php?action=addQuestion">Frage beantworten</a>
+            <a href="index.php?action=questions">Frage beantworten</a>
         </li>
 
         <li>

@@ -124,7 +124,9 @@
                     $this->_update();
                 } else {
                     // ansonsten einen INSERT
-                    $this->_insert();
+                    if(!$this->_insert()) {
+                        return false;
+                    }
                 }
             } catch (PDOException $e){
                 echo $e->getMessage();
@@ -153,15 +155,23 @@
             $abfrage->execute($this->toArray(false));
             // setze die ID auf den von der DB generierten Wert
             $this->id = DB::getDB()->lastInsertId();
-
-            $sql = 'INSERT INTO questionhastags (question_id, tag_id) VALUES (:question_id, :tag_id)';
-            $tags['question_id'] = $this->getId();
-            foreach($_POST['tag'] as $t) {
-                $tags['tag_id'] = $t;
-                $abfrage = DB::getDB()->prepare($sql);
-                $abfrage->execute($tags);
+            $tagsPost = explode(" ", $_POST['tagPost']);
+            if (count($tagsPost) < 3){
+                return false;
             }
-
+            $tags = $this->getAllTags();
+            foreach($tagsPost as $t) {
+                $sql = 'INSERT INTO questionhastags (question_id, tag_id) VALUES (?, ?)';
+                $abfrage = DB::getDB()->prepare($sql);
+                foreach($tags as $tag){
+                    if( $tag->getTag() == $t){
+                        $abfrage->execute(array($this->getId(),$tag->getId()) );
+                        break;
+                    }
+                }
+                
+            }
+            return true;
         }
 
         private function _update()
@@ -206,6 +216,10 @@
             $abfrage->execute(array($id));
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Question');
             return $abfrage->fetchAll();
+        }
+
+        public function getAllTags(){
+            return Tag::findAll();
         }
 
         public function findTags(){
