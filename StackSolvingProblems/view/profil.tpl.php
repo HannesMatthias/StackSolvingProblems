@@ -9,15 +9,15 @@
     <body>
         <?php include_once "view/menu/menu.php"; ?>
         <div id="profil">
-            <img id="profilImage" src="view/images/lauch.jpg" alt="username" height="15%" width="15%">
+            <img id="profilImage" src="<?php echo $user->getIcon() ?>" alt="username" height="15%" width="15%">
             <div id="username"><?php echo $user->getUsername(); ?></div>
             <div id="info">
             <div id="userdata">
                 <div class="outer_left">
                         <div class="inner_left">
-                            Vorname:
-                            Geburtsdatum:
-                            Email:
+                            <div class="tag">Vorname:</div>
+                            <div class="tag">Geburtsdatum:</div>
+                            <div class="tag">Email:</div>
                         </div>
                         <div class="inner_right">
                             <div id="name"><?php echo $user->getName(); ?></div>
@@ -27,8 +27,8 @@
                     </div>
                     <div class="outer_right">
                         <div class="inner_left">
-                            Nachname:
-                            Geschlecht:
+                            <div class="tag">Nachname:</div>
+                            <div class="tag">Geschlecht:</div>
                         </div>
                         <div class="inner_right">
                             <div id="surname"><?php echo $user->getSurname(); ?></div>
