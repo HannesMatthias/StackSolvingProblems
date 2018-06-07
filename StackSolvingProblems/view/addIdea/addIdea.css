@@ -1,5 +1,5 @@
 body{
-    background-image: url('../main/images/background.png');
+    background-color: aliceblue;
     background-attachment: fixed;
 }
 
@@ -14,8 +14,9 @@ body{
     width: auto;
     background-color: white;
     margin-top: 1rem;
-    border-bottom: black;
-    border-bottom: solid;
+    border-bottom-color: black;
+    border-bottom-style: inset;
+
     font-size: 1.2rem;
     font-weight: bold;
 }
@@ -25,14 +26,16 @@ body{
     height: 4rem;
     background-color: white;
     opacity: 0.9;
+    border: 0;
+    
 }
 
 #overDescription{
     width: auto;
     background-color: white;
     margin-top: 1rem;
-    border-bottom: black;
-    border-bottom: solid;
+    border-bottom-color: black;
+    border-bottom-style: inset;
     font-size: 1.2rem;
     font-weight: bold;
 }
@@ -42,6 +45,8 @@ body{
     height: 20rem;
     background-color: white;
     opacity: 0.9;
+    outline: none;
+    border: 0;
 }
 
 #overConditions{

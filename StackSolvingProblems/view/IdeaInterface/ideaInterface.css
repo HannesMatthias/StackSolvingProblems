@@ -5,20 +5,25 @@ body{
 
 #overDescription{
     margin: auto;
-    width: 47%;
+    width: 45%;
     background-color: white;
     margin-top: 1%;
     font-size: 1.2rem;
     font-weight: bold;
+    padding: 1% 1% 1% 1%;
+    border-bottom-style: inset;
+    border-bottom-color: black;
 }
 
 #description{
     border-width: 1px;
     margin: auto;
-    width: 47%;
+    width: 45%;
     height: 20rem;
     background-color: white;
     opacity: 0.9;
+    padding: 1% 1% 1% 1%;
+    
 }
 
 #container{
@@ -30,11 +35,12 @@ body{
 
     border-width: 1px;
     margin: auto;
-    width: 49.5%;
+    width: 47.5%;
     height: 10rem;
     background-color: white;
     opacity: 0.9;
     float: left;
+    padding: 1% 1% 1% 1%;
 }
 
 #overConditions{
@@ -44,7 +50,10 @@ body{
     font-size: 1.2rem;
     font-weight: bold;
     float: left;
-    width: 49.5%;
+    width: 47.5%;
+    padding: 1% 1% 1% 1%;
+    border-bottom-style: inset;
+    border-bottom-color: black;
 }
 
 #overUsers{
@@ -53,17 +62,21 @@ body{
     font-size: 1.2rem;
     font-weight: bold;
     float: right;
-    width: 49.5%;
+    width: 47.5%;
+    padding: 1% 1% 1% 1%;
+    border-bottom-style: inset;
+    border-bottom-color: black;
 }
 
 #condisions{
     border-width: 1px;
     margin: auto;
-    width: 49.5%;
+    width: 47.5%;
     height: 10rem;
     background-color: white;
     opacity: 0.9;
     float: right;
+    padding: 1% 1% 1% 1%;
 }
 
 .ideaLabel{

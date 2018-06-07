@@ -10,9 +10,12 @@ class Controller {
     }
 
     public function main() {
-        $this->addContext("template", "main/main");
         $ideas = Project::findAll();
+        $session = Session::getInstance();
+        $user = $session->getSession("user");
+        $this->addContext("template", "main/main");
         $this->addContext("ideas", $ideas);
+        $this->addContext("user", $user);
     }
 
     public function profil() {
@@ -312,8 +315,19 @@ class Controller {
 
     public function questions() {
         $this->addContext("template", "forum_questions/question");
+        $this->addContext("user", "");
         $questions = Question::findAll();
+
+        $session = Session::getInstance();
+        $user = -1;
+      
+        if($session->getSession("user") != null ) {
+            $user = $session->getSession("user");
+        }
+        
+        $this->addContext("user", $user);
         $this->addContext("questions1", $questions);
+        
     }
 
     public function search() {

@@ -9,6 +9,12 @@
         <script src="plugins/js/addAnswer.js"></script>
 </head>
 <body>
+
+    <video autoplay muted loop id="myVideo">
+        <source src="view/images/backcode.mp4" type="video/mp4">
+    </video>
+
+
 <?php include_once "view/menu/menu.php"; ?>
     <?php if(!empty($info) ) {
             if(!isset($success) && empty($success) ) { ?>
@@ -23,7 +29,6 @@
         } ?>
 
     <div id="container">
-        
         <a href="index.php?action=questions">
             <div class="box">
                 <div class="imgholder"> 
@@ -46,5 +51,11 @@
             </div>  
         </a>
     </div>
+
+
+    
+
+    
+
 </body>
 </html>

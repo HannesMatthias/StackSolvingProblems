@@ -30,9 +30,9 @@
             }
 
             function answer(id){
-                if ($('answerPosition').hasClass('checkActive')){
+                if ($('#answerPosition').hasClass('checkActive')){
                     $("#box_answer").toggleClass("active");
-                    $('answerPosition').toggleClass('checkActive');
+                    $('#answerPosition').toggleClass('checkActive');
                 } else {
                     document.getElementById('answerPosition').classList.add("checkActive");
                     document.getElementById('box_answer').classList.add("active");
@@ -114,6 +114,7 @@
                     <button id="send" name="answer_send" type="submit">Senden</button> 
                 </form>
             </div> 
+            
             </div>
             <div id="box_answers">         	
             <?php $i = 0;
@@ -121,11 +122,11 @@
                 <div class="box_fullanswer"> 
                     <div class="box_answers_autor"><?php echo User::find($answers->getUserID())->getUsername(); ?></div>
                     <div class="box_answers_user">
-                        <?php echo utf8_encode($answers->getContent()); ?>
+                        <?php echo $answers->getContent(); ?>
                     </div>
                     <?php if($user != null) { ?>
                         <div id="box_comments<?php echo utf8_encode($answers->getId()); ?>">
-                            <button onclick="comment(<?php echo utf8_encode($answers->getId()); ?>)" class="btn_comments">Antworten</button>
+                            <button onclick="comment(<?php echo $answers->getId(); ?>)" class="btn_comments">Antworten</button>
                         </div>
                         
                     <?php } ?>

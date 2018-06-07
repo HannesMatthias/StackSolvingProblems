@@ -27,7 +27,7 @@
             </div>
             <?php } ?>
     </div> 
-
+    
         <!-- beschreibung -->
         <div id="overDescription"><Label>Description:</Label></div>
         <div id="description"><label id="description" for=""><?php echo $idea->getDescription(); ?></label></div>
