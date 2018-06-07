@@ -1,4 +1,11 @@
 <div class="scollView">
+    <div id="addContentContainer">
+        <div id="addContent">
+            <button id="addContentButton">
+            <img src="view/images/addContent.png" width="40">
+            </button>
+        </div>
+     </div>
 <?php foreach($ideas as $i) {
     $user = Project::findUser($i->getUser_id()); ?>
     <div class="ideaLabel" align="center">
@@ -19,6 +26,11 @@
                 </div>
             </div>
         </div>
+        
     </div> 
+    <div id="container2">
+            <button id="cancelButton"><img src="view/images/cancel.png" width="20"></button>
+            <button id="cancelButton"><img src="view/images/settings.png" width="20"></button>
+    </div>
     <?php } ?>
 </div>   

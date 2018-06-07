@@ -10,9 +10,12 @@ class Controller {
     }
 
     public function main() {
-        $this->addContext("template", "main/main");
         $ideas = Project::findAll();
+        $session = Session::getInstance();
+        $user = $session->getSession("user");
+        $this->addContext("template", "main/main");
         $this->addContext("ideas", $ideas);
+        $this->addContext("user", $user);
     }
 
     public function profil() {
