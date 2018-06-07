@@ -3,6 +3,7 @@ body{
     font-size: 100%;
 }
 
+
 #addContentContainer{
     width: 47%;
     height: 3rem;
@@ -30,7 +31,7 @@ body{
 
 .ideaLabel{
     color: black;
-    height: 10em;
+    height: 10rem;
     width: 47%;
     margin: 0 auto;
     border-style: none;
@@ -115,3 +116,23 @@ body{
     margin: auto;
 }
 
+#container2{
+    width: 45%;
+    height: 1rem;
+    background-color: white;
+    margin: auto;
+    border-color: lightgray;
+    border-top-style: solid;
+    border-radius: 10px;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+   
+}
+
+#cancelButton{
+    background: transparent;
+    border: none;
+    float: right;
+}
