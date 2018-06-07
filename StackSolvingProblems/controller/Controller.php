@@ -6,7 +6,9 @@ class Controller {
 
     public function run($action) {
         $this->$action();
-        $this->generatePage($action);
+        if(substr($action, 0, 3) !== "ng_") {
+            $this->generatePage($action);
+        }
     }
 
     public function main() {
