@@ -318,10 +318,10 @@ class Controller {
     public function questions() {
         $this->addContext("template", "forum_questions/question");
         $this->addContext("user", "");
-        $questions = Question::findAll();
+        $questions = Question::findAll("DESC");
 
         $session = Session::getInstance();
-        $user = -1;
+        $user = new User();;
       
         if($session->getSession("user") != null ) {
             $user = $session->getSession("user");

@@ -27,7 +27,7 @@
 
                 if(tagCount < 3) {
                     var infoDiv = document.getElementById('infoDiv');
-                    infoDiv.innerHTML = 'min. 3 Tags benötigt';
+                    infoDiv.innerHTML = 'min. 1 Tag wird benötigt';
                 } else {
                     var infoDiv = document.getElementById('infoDiv');
                     infoDiv.innerHTML = '';

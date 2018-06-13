@@ -34,9 +34,7 @@ html, body {
     position: relative;
 }
 
-#menu ul li a:hover  {
-    text-decoration: underline;
-}
+
 
 #menu ul li:first-of-type  {
     margin-right: auto;
@@ -51,25 +49,42 @@ html, body {
 }
 
 #searchbar {
-    border-radius: 10px;
-    color: black;
-    width: 250px;
-    padding: 5px 10px;
- 
+    width: 85%;
+    height: 30px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: none;
+    font-size: 1.1rem;
+    font-style: italic;
+    background-color: white;
+    float: left;
+    padding-left: 10px;
 }
 #searchButton {
-    background-color: white;;
     border: none;
-    color: color;
-    padding: 4px;
-    border-radius: 10px;
+    background: none;
+    height: 30px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
+#searchButton img {
+    height: 100%;
+}
+
+
 #einloggen, #profile {
     display: inline-block;
     position: relative;
     float: right;
     margin-top: 0.5em !important;
     margin-left: 0.5em !important;
+}
+#profile img {
+    width: 32px;
+    height: auto;
 }
 
 .profile_img {
@@ -157,14 +172,38 @@ html, body {
     padding-left: 2.5em;
 }
 header {
-    background-color: #49a0cc;
+    background-color: #2E2E2E;
 }
 #mobile_logo {
     display: none;
 }
+
+#menu ul li a::before {
+	content: '';
+    display: block;
+    position: absolute;
+	bottom: -15px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+	background-color: white;
+	transform: scale(0);
+	transition: transform 0.5s;
+
+}
+#menu ul li a:not(#alogo):hover::before {
+	transform-origin: top left;
+	transform: scale(1,1);
+}
+
+@media (max-width: 1300px) {
+    ul li:nth-of-type(2) {
+        display: none;
+    }
+}
 @media (max-width: 1060px) {
     header {
-        height:8em;
+        height: 7em;
     }
     #menu {
         float: right;
@@ -195,14 +234,18 @@ header {
         top: 100%;
         /* right: 3px; */
         left: 50%;
+        line-height: 1.8em;
         transform: translateX(-50%);
         padding: 20px;
-        border-radius: 10px;
+
+        border-bottom: 2px solid black;
         min-width: 130px;
         width: 8%;
         border-radius: 5px 5px 0 0;
     }
-
+    #menu ul li:nth-of-type(3) {
+        display: none;
+    }
     #menu ul li form {
         display: none;
     }
@@ -220,7 +263,9 @@ header {
         display: inline-block;
         position: absolute;
         left: 2%;
-        height: 124px;
+        top: 6px;
+        /* height: 5em; */
+        height: 102px;
     }
     #usermenu {
         left: 0;
@@ -230,8 +275,11 @@ header {
         margin: 0 auto !important;
         display: block;
         float: none;
+        font-weight: bold;
     }
-
+    #menu ul li a::before {
+        display: none;
+    }
 
 
 

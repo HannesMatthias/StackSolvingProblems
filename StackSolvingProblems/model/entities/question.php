@@ -156,7 +156,7 @@
             // setze die ID auf den von der DB generierten Wert
             $this->id = DB::getDB()->lastInsertId();
             $tagsPost = explode(" ", $_POST['tagPost']);
-            if (count($tagsPost) < 3){
+            if (count($tagsPost) < 1){
                 return false;
             }
             $tags = $this->getAllTags();
@@ -193,9 +193,9 @@
             return $abfrage->fetch();
         }
 
-        public static function findAll()
+        public static function findAll($sort)
         {
-            $sql = 'SELECT * FROM questions';
+            $sql = 'SELECT * FROM questions ORDER BY solved ASC , id ' . $sort;
             $abfrage = DB::getDB()->query($sql);
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Question');
             return $abfrage->fetchAll();
