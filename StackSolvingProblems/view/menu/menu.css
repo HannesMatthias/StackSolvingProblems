@@ -87,7 +87,7 @@ html, body {
     border-radius: 5px;
     border: 1px solid black;
     display: none;
-    
+    z-index: 1;
 }
 
 .active {
@@ -138,6 +138,7 @@ html, body {
     top: 100%;
     box-sizing:  border-box;
     border-radius: 0px 0px 5px 5px;
+    z-index: 1;
 }
 
 #usermenu a{

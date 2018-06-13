@@ -21,7 +21,7 @@
             <a href="index.php?action=addQuestion">Frage stellen</a>
         </li>
         <li>
-            <a href="index.php?action=addQuestion">Frage beantworten</a>
+            <a href="index.php?action=questions">Frage beantworten</a>
         </li>
 
         <li>
@@ -72,8 +72,8 @@
 
     <datalist id="searchQuestions">
         <?php $questions = Question::findAll();
-            foreach($questions AS $key => $question) { ?>
-                <option value="<?php echo $question->getTitle(); ?>">
+            foreach($questions AS $key => $q) { ?>
+                <option value="<?php echo $q->getTitle(); ?>">
            <?php } ?>  
     </datalist>
 </header>

@@ -8,20 +8,29 @@
         <script>
             var tagCount = 0;
             function handleSelect(){
-                if (tagCount < 5) {
+                
                     var selBox = document.getElementById('selectTag');
                     var userInput = selBox.options[selBox.selectedIndex].text;
                     var text = document.createTextNode(" " + userInput );
                     var divTags = document.getElementById('tags');
                     var tag = document.getElementById('tag');
                     tag.appendChild(text);
-
+                    var hidden = document.getElementById('tagPost');
+                    if( tagCount == 0){
+                     hidden.value +=userInput;
+                    } else {
+                        hidden.value +=" " + userInput;
+                    }
                     divTags.appendChild(tag);
                     selBox.remove(selBox.selectedIndex);
-                    tagCount++;
+                    tagCount = tagCount + 1;
+
+                if(tagCount < 3) {
+                    var infoDiv = document.getElementById('infoDiv');
+                    infoDiv.innerHTML = 'min. 3 Tags benötigt';
                 } else {
                     var infoDiv = document.getElementById('infoDiv');
-                    infoDiv.innerHTML = 'max. 5 Tags erlaubt';
+                    infoDiv.innerHTML = '';
                 }
             }
         </script>
@@ -33,30 +42,11 @@
         <script type="text/javascript" src="plugins/tinymce/getdata.js"> </script>
 
         <div id="tilte">Frage hinzufügen</div>
-        <div id="box">
-           
-            <div id="box_info">
-                <?php 
-                if($id==0) {
-                    echo "Neue Frage";
-                }else {
-                    echo "Frage ID: " . $id;
-                }
-                ?>
-            </div>
-
-            <p  class="subtitle">Vorschau - Titel </p>
-            <div class="text_center"><?php echo $title; ?></div>
-
-            <p class="subtitle">Vorschau - Frage</p><br />
-            <div id="question"><?php echo $preview; ?></div>
-
-
-        </div>
 
         <form id="sentMessage" method="post" action="index.php?action=addQuestion">
             <input type="hidden" name="id" value="<?php echo $id; ?>" />
-            <input type="text" maxlength="50" id="title" name="title" placeholder="Gib hier deinen Titel ein" value="<?php echo $title; ?>"/>
+            <p style="color: white;" class="subtitle">Title</p>
+            <input required type="text" maxlength="50" id="title" name="title" placeholder="Gib hier deinen Titel ein" value="<?php echo $title; ?>"/>
             <p style="color: white;" class="subtitle">Frag die Community!</p>
             <textarea class="tinymce" name="content"><?php echo $preview; ?></textarea>
             <?php
@@ -70,17 +60,15 @@
                 <div id="tags" style="color:white"> 
                <span > TAG : </span> 
                <span id="tag"> </span> 
+               <input id="tagPost" type="hidden" name="tagPost" value="" />
             </div>
             <div id="infoDiv" style="color:red"></div>
             <?php } ?>
             
       <div id=buttons>
-            <div id="bnt_vorschau">
-                <input type="submit" value="Vorschau anzeigen" />
-            </div>
             <div id="bnt_save">
                 <label class="container">Speichern ?
-                    <input type="checkbox" name="save" value="save"><span class="checkmark"></span> 
+                    <input type="submit" name="save" value="save"><span class="checkmark"></span> 
                 </label>
                 
             <div>
