@@ -9,7 +9,7 @@
     <body>
         <?php include_once "view/menu/menu.php"; ?>
         <div id="profil">
-            <img id="profilImage" src="view/images/lauch.jpg" alt="username" height="15%" width="15%">
+            <img id="profilImage" src="<?php echo $user->getIcon() ?>" alt="username" height="15%" width="15%">
             <div id="username"><?php echo $user->getUsername(); ?></div>
             <div id="userdata">
                 <form action="index.php?action=saveProfil" method="POST" enctype="multipart/form-data">
