@@ -71,8 +71,8 @@
                 if($questionOwner == true){?>
                     
                         <?php if($solved == true){ ?>
-                            <button title="Gelöst" style="transform:scale(1.2); margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/></button>
-                            <button title="Noch eine Antwort, bitte!" style="margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button> 
+                            <button title="Gelöst" style="transform:scale(1.3); margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/></button>
+                            <button title="Noch eine Antwort, bitte!" style=" transform:scale(0.8);margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button> 
                         <?php } else { ?>
                             <button title="Als gelöst markieren" style="margin-left:10px;"class="vote" name="solvedTrue" type="submit"><img src="view/forum_questions/tick.png"/> </button> 
                             <button title="Als ungelöst markieren" style="margin-left:10px;"class="vote" name="solvedFalse" type="submit"><img src="view/forum_questions/x.png"/> </button>      
@@ -136,6 +136,14 @@
                         
                     <?php } ?>
                     <div class="line"> </div>
+                    <?php foreach($answers->findComments() AS $comment) { ?>
+                    <div class="comment">
+                        <?php 
+                         ?> <span style="font-weight: bold; display: block;"><?php echo User::find($comment->getUserid())->getUsername(); ?> </span>
+                         <?php echo $comment->getContent();
+                         ?>
+                    </div>
+                    <?php } ?>
                 </div>
             <?php } ?>
             </div>

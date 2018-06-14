@@ -73,8 +73,7 @@ html, body {
 }
 
 .vote img {
-    width: 32px;
-    height: auto;
+    width: 100%;
 }
 .big {
     transform: scale(1.3);
@@ -119,5 +118,11 @@ html, body {
 .btn_comments {
     background-color: rgb(108, 188, 214);
     color: white;
+    padding: 10px;
+}
+
+.comment {
+    background-color: rgb(235, 235, 235);
+    margin: 25px;
     padding: 10px;
 }
