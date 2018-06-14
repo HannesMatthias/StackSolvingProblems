@@ -196,7 +196,7 @@
 
         public static function findAll($sort)
         {
-            $sql = 'SELECT * FROM questions ORDER BY solved ASC , id ' . $sort;
+            $sql = 'SELECT * FROM questions ORDER BY solved ASC , id ' . $sort . " LIMIT 20";
             $abfrage = DB::getDB()->query($sql);
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Question');
             return $abfrage->fetchAll();

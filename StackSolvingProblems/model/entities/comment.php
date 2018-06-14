@@ -143,7 +143,7 @@
         public static function findByAnswerid($answerid)
         {
         
-            $sql = 'SELECT * FROM comments WHERE anser_id = ? ';
+            $sql = 'SELECT * FROM comments WHERE answer_id = ? ';
             $abfrage = DB::getDB()->prepare($sql);
             $abfrage->execute(array($answerid));
             $abfrage->setFetchMode(PDO::FETCH_CLASS, 'Comment');

@@ -158,6 +158,10 @@
             return $abfrage->fetch();
         }
 
+        public function findComments(){
+            return Comment::findByAnswerid($this->getId());
+        }
+
         public function toArray($mitId = true)
         {
             $attribute = get_object_vars($this);
