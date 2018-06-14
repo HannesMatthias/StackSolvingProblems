@@ -74,7 +74,7 @@
 <?php require_once 'model/entities/question.php'; ?>
 
     <datalist id="searchQuestions">
-        <?php $questions = Question::findAll();
+        <?php $questions = Question::findAll("DESC");
             foreach($questions AS $key => $q) { ?>
                 <option value="<?php echo $q->getTitle(); ?>">
            <?php } ?>  
