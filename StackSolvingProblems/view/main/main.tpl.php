@@ -21,9 +21,6 @@
 <div class="ideaLabels">
     <?php include_once "view/ideaLabel/ideaLabel.tpl.php"; ?>
 </div>
-<div class="infoboxes">
-    <?php include_once "view/infoboxes/infoboxes.php"; ?>
-</div>
 
 </body>
 </html>
