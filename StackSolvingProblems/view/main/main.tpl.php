@@ -20,7 +20,7 @@
 <?php include_once "view/menu/menu.php"; ?>
 <div class="ideaLabels">
     <?php include_once "view/ideaLabel/ideaLabel.tpl.php"; ?>
-</div>
+</div>>
 
 </body>
 </html>
