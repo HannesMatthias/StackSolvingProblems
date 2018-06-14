@@ -2,9 +2,7 @@
 <?php if ($user != NULL) { ?>
     <div id="addContentContainer">
         <div id="addContent">
-            <button id="addContentButton">
-            <img src="view/images/addContent.png" width="40">
-            </button>
+            <a id="addContentButton" href="index.php?action=addIdea"><img src="view/images/addContent.png" width="40" alt="Add" /></a>
         </div>
      </div>
 <?php }
@@ -34,7 +32,10 @@ foreach($ideas as $i) {
         if($user != NULL && $i->getUser_id() == $user->getId()); {
     ?>
     <div id="container2">
-            <a class="alterButton" href="index.php?action=main&amp;delete=<?php echo $i->getId();?>"><img src="view/images/cancel.png" alt="Bearbeiten" width="20"></a>
+            <form action="index.php?action=main" method="POST" >
+                <input type="hidden" name="deleteId" value="<?php echo $i->getId();?>" />
+                <input type="image" class="alterButton" src="view/images/cancel.png" alt="löschen" width="20" />
+            </form>
             <a class="alterButton" href="index.php?action=addIdea&amp;id=<?php echo $i->getId();?>"><img src="view/forum_questions/settings.png" alt="Bearbeiten" width="20"/></a>
            
     </div>
