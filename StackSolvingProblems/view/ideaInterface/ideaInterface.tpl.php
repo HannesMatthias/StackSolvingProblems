@@ -38,5 +38,19 @@
         <div id="users"><label id="description" for=""></label></div>
         <div id="condisions"><label id="description" for=""><?php echo $user_p->getUsername(); ?></label></div>
     </div>
+
+
+
+     <div id="writeComment">
+             <form action="">
+                    <input type="text" name="" id="wtext"> </br>
+                    <input type="submit" name="submit" id="sub">
+                </form>
+      </div>
+
+    <!-- Foreach schleife -->
+    <div id="showComment">
+            <label id="comment" for="">JOIFADJUOKÖGFDOJÖSAFDNK</label>
+    </div>
 </body>
 </html>

@@ -71,8 +71,10 @@ html, body {
     width: 32px;
     float: left;
 }
+
 .vote img {
-    width: 100%;
+    width: 32px;
+    height: auto;
 }
 .big {
     transform: scale(1.3);

@@ -148,6 +148,10 @@
 
         private function _insert()
         {  
+            $tagsPost = explode(" ", $_POST['tagPost']);
+            if (count($tagsPost) <= 1){
+                return false;
+            }
             $sql = 'INSERT INTO questions (title, content, likes, dislikes, user_id, solved, right_answer) '
                  . 'VALUES (:title, :content, :likes, :dislikes, :user_id, :solved, :right_answer);';
 
@@ -155,10 +159,7 @@
             $abfrage->execute($this->toArray(false));
             // setze die ID auf den von der DB generierten Wert
             $this->id = DB::getDB()->lastInsertId();
-            $tagsPost = explode(" ", $_POST['tagPost']);
-            if (count($tagsPost) <= 1){
-                return false;
-            }
+            
             $tags = $this->getAllTags();
             foreach($tagsPost as $t) {
                 $sql = 'INSERT INTO questionhastags (question_id, tag_id) VALUES (?, ?)';
