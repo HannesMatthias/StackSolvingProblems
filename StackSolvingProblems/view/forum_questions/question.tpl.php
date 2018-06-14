@@ -4,8 +4,6 @@
         <meta charset="UTF-8" />
         <title>Fragen anzeigen</title>
         <link href="view/forum_questions/questions.css" rel="stylesheet">
-        <script src="plugins/js/jquery.min.js"></script>
-         <script src="plugins/js/clickmenu.js"></script>
         <link rel="stylesheet" type="text/css" href="view/menu/menu.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
@@ -33,7 +31,7 @@
                         <div class="tags"><?php echo $t->getTag(); ?></div>
                         <?php }?>
                     </div>
-                    <?php if($question->getUserId() == $user->getId() ) { ?>
+                    <?php if($question->getUserId() == $user->getId()) { ?>
                     <a class="edit" href="index.php?action=addQuestion&amp;id=<?php echo $question->getId();?>"><img src="view/forum_questions/settings.png" alt="Bearbeiten" /></a>
                     <?php } ?>
                 </div>

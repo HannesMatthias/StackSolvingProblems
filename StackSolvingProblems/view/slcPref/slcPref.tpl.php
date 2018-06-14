@@ -4,9 +4,7 @@
     <link rel="stylesheet" type="text/css" href="view/slcPref/slcPref.css">
     <link rel="stylesheet" type="text/css" href="view/menu/menu.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <script src="plugins/js/jquery.min.js"></script>
-        <script src="plugins/js/clickmenu.js"></script>
-        <script src="plugins/js/addAnswer.js"></script>
+
 </head>
 <body>
 

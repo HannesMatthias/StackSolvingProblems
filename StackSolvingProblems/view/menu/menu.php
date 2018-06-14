@@ -1,7 +1,8 @@
 <header>
 
 
-
+<script src="plugins/js/jquery.min.js"></script>
+<script src="plugins/js/clickmenu.js"></script>
 <img id="mobile_logo" src="view/images/logo.png" alt="Logo" /> 
 <nav id="menu">
     
@@ -10,7 +11,7 @@
         <li>
             <a href="index.php">Startseite</a>
         </li>
-        <li id="li_search">
+        <li>
             <form id="searchOptions" action="index.php?action=search" method = "POST">
                 <input type="search" name="search" list="searchQuestions" id="searchbar" placeholder="Suche nach Fragen" />
                <!-- <input type="submit"  id="searchButton" value="Suchen" />   -->
@@ -74,7 +75,7 @@
 <?php require_once 'model/entities/question.php'; ?>
 
     <datalist id="searchQuestions">
-        <?php $questions = Question::findAll("DESC");
+        <?php $questions = Question::findAll();
             foreach($questions AS $key => $q) { ?>
                 <option value="<?php echo $q->getTitle(); ?>">
            <?php } ?>  

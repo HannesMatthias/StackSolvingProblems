@@ -2,7 +2,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
-    background-color: #2E2E2E;
+    background-color: aliceblue;
     font-size: 100%;
 }
 
@@ -73,7 +73,7 @@ background-color: white;
     font-weight: bold;
     margin: 40px 0px;
     color: black;
-    text-shadow: 1px 1px 1px white;
+    text-shadow: 1px 1px 1px #2E2E2E;
 }
 
 .text_center {
@@ -121,15 +121,16 @@ background-color: white;
     padding-right: 5px;
     padding-left: 35px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 17px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: aliceblue;
+    background-color: #2E2E2E;
     height: 25px;
     width: auto;
     border-top-right-radius: 5px;
+    color: white;
     border-bottom-right-radius: 5px;
 }
 
@@ -183,4 +184,11 @@ background-color: white;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+#newsbox {
+    text-align: center;
+    padding: 23px 7px;
+    background-color: rgba(255, 0, 0, 0.6);
+    margin: 0 0 25px 0;
 }

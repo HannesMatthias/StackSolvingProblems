@@ -200,6 +200,12 @@
 
         /* ***** Private Methoden ***** */
 
+        private function createProfile() {
+            if (!file_exists("users/" . $this->username . "/profil")) {
+                mkdir('users/' . $this->username . "/profil", 0777, true);
+            }
+        }
+
         private function _insert()
         {
             $sql = 'INSERT INTO users (name, surname, birthdate, sex, rang_id, points, email, password_hash, username, verified, code, icon) '
@@ -211,6 +217,7 @@
           
 
             $this->id = DB::getDB()->lastInsertId();
+           $this->createProfile();
         }
 
         private function _update()
@@ -291,7 +298,7 @@
             return $abfrage->fetch();
         }
 
-        public function verified(){
+        public function verified() {
             $code = rand()."AA".rand()."FF";
             $recipient = $this->getEmail();
             $this->setCode($code);

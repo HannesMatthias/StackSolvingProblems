@@ -64,7 +64,7 @@ html, body {
     border: none;
     background: none;
     height: 30px;
-    padding: 10px;
+    padding: 7px;
     box-sizing: border-box;
     background-color: white;
     border-top-right-radius: 10px;
@@ -132,7 +132,7 @@ html, body {
     background-color: #49a0cc;
     padding:10px;
     border: none;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 5px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 #loginBox a {
     color: black !important;

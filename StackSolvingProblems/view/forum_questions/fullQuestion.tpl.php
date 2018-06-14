@@ -4,8 +4,6 @@
         <meta charset="UTF-8" />
         <title>Frage Anzeigen</title>
         <link href="view/forum_questions/fullQuestion.css" rel="stylesheet">
-        <script src="plugins/js/jquery.min.js"></script>
-        <script src="plugins/js/clickmenu.js"></script>
         <script src="plugins/js/addAnswer.js"></script>
         <link rel="stylesheet" type="text/css" href="view/menu/menu.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -107,6 +105,7 @@
                 </div>
             </div>
             <div id="answerPosition">
+           
             <div id="box_answer">
                 <form id="answerForm" action="index.php?action=fullQuestion&amp;id=<?php echo $question->getId();?>" method="post">
                     <textarea name="content" id="answer" placeholder="Schreibe hier deine Antwort..."></textarea>
@@ -114,7 +113,14 @@
                     <button id="send" name="answer_send" type="submit">Senden</button> 
                 </form>
             </div> 
+            
             </div>
+            <?php
+        
+                if($question->findAnswerCount($question->getId())["count"]== "0") {
+                    exit;
+                }
+            ?>
             <div id="box_answers">         	
             <?php $i = 0;
             foreach($question->findAnswers() AS $answersKey => $answers) { ?>
@@ -124,7 +130,7 @@
                         <?php echo $answers->getContent(); ?>
                     </div>
                     <?php if($user != null) { ?>
-                        <div id="box_comments<?php echo $answers->getId(); ?>">
+                        <div id="box_comments<?php echo utf8_encode($answers->getId()); ?>">
                             <button onclick="comment(<?php echo $answers->getId(); ?>)" class="btn_comments">Antworten</button>
                         </div>
                         

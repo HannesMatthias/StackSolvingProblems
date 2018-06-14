@@ -8,7 +8,7 @@
         private $dislikes = '';
         private $user_id = 0;
         private $solved = false;
-        private $right_answer = "";
+        private $right_answer = null;
         
     
  
@@ -156,7 +156,7 @@
             // setze die ID auf den von der DB generierten Wert
             $this->id = DB::getDB()->lastInsertId();
             $tagsPost = explode(" ", $_POST['tagPost']);
-            if (count($tagsPost) < 1){
+            if (count($tagsPost) <= 1){
                 return false;
             }
             $tags = $this->getAllTags();

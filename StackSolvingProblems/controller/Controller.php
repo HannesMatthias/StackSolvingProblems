@@ -53,7 +53,7 @@ class Controller {
 
         //upload profil-image
         $target_dir = "users/";//Ordner zum Speichern der Bilder
-        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $target_file = basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         //check if its an image
@@ -87,7 +87,7 @@ class Controller {
             $uploadOk = 0;
         }
         // Check if $uploadOk is set to 0 by an error
-        $imagepath=$target_file . "/" . $user->getUsername() . "/profil." . $imageFileType;
+        $imagepath= $target_dir . $user->getUsername() . "/profil/profil." . $imageFileType;
         if ($uploadOk == 0) {
             //$message="Es gab einen Fehler beim Hochladen des Bildes!";
         // if everything is ok, try to upload file
@@ -105,13 +105,13 @@ class Controller {
         $user->save();
         $session->setSession("user", $user);
         $questions = Question::findQuestionsByUserId($user->getId());
-        if ($message !== "Sie haben ihr Profil erfolgREICH aktualisiert!") {    
+        if ($message !== "Sie haben ihr Profil erfolgreich aktualisiert!") {    
             $this->addContext("template", "profil");
             $this->addContext("questions", $questions);
             $this->addContext("user", $user);
             //$this->addContext("projects", $projects);
         } else {
-            alert($message);
+            //alert($message);
         }
     }
 
@@ -124,23 +124,30 @@ class Controller {
         }
         
         $user = $session->getSession("user");
-
+        $this->addContext("success", false);
         $this->addContext("template", "forum_addQuestion/addQuestion");
         $this->addContext("id", "0");
         $this->addContext("preview", "");
         $this->addContext("title", "");
         $this->addContext("tags", Tag::findAll());
         $this->addContext("edit", false);
-      
+
+        $status= "";
+        $success="";
         if(isset($_POST["content"]) && !empty($_POST["content"])) {
             $frage = new Question($_POST);
             $frage->setUserid($user->getId());
            
             if(isset($_POST["save"]) && $_POST["save"] != null) {
                 if($frage->save() ) {
-                    echo "Erfolgreich!";      
+                    $status= "Die Frage wurde erfolgreich versandt.";
+                    $success=true;
+                    ?>
+                    <meta http-equiv="refresh" content="3; URL=index.php?action=questions">
+                <?php
                 }else {
-                    echo "Fehler!!";
+                    $status= "Es gab einen Fehler!";
+                    $success=false;
                 }
             }else {
                 $this->addContext("edit", true);
@@ -148,6 +155,7 @@ class Controller {
 
            $this->addContext("title", $_POST["title"]);
            $this->addContext("preview", $_POST["content"]);
+           
             if($_POST["id"] != 0) {
                 $this->addContext("id", $_POST["id"]);
             }
@@ -161,9 +169,13 @@ class Controller {
                 $this->addContext("title", $frage->getTitle());
                 $this->addContext("preview", $frage->getContent());
                 $this->addContext("edit", true);
+
             }
 
         }
+        $this->addContext("status", $status);
+        $this->addContext("success", $success);
+        
     }
 
     public function addIdea() {
@@ -180,7 +192,7 @@ class Controller {
             if($idea->save()) {
                 echo "Erfolgreich!";
                 header("Location: index.php?action=main");
-                exit();
+                exit;
             }else {
                 echo "Fehler!!";
             }
@@ -193,7 +205,7 @@ class Controller {
                 $this->addContext("idea", $idea);
             } else {
                 header("Location: index.php?action=main");
-                exit();
+                exit;
             }
 
         } else {
@@ -208,7 +220,7 @@ class Controller {
         $this->addContext("code", "");
         $this->addContext("info", "");
         $this->addContext("template", "slcPref/slcPref");
-
+        $user = new User();
         $session = Session::getInstance();
         if($session->getSession("user") != null ) { //Hier eigentlich sinnlos.
             //header("Location: index.php");
@@ -223,7 +235,7 @@ class Controller {
             "no_right" => "E-Mail oder Passwort falsch!"
         );
 
-        $user = new User();
+        
         if($_POST) {
             if(isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["password_hash"]) && !empty($_POST["password_hash"]) ) {             
                 $user = User::einloggen($_POST["name"]); 
@@ -255,10 +267,9 @@ class Controller {
         }else {
             $user = new User();
         }
+
         $this->addContext("errors", $errors);
         $this->addContext("user", $user);
-       // $this->addContext("template", "forum_questions/question");
-
 
     }
 
@@ -295,6 +306,7 @@ class Controller {
                 if($daten["password_hash"] != $daten["re_password_hash"]) {
                     $errors[] = $errorList["no_pwd_match"];
                 }
+
                 if(empty($errors)) {
                     array_pop($daten);
                     if($user->save() ) {
@@ -318,6 +330,7 @@ class Controller {
     public function questions() {
         $this->addContext("template", "forum_questions/question");
         $this->addContext("user", "");
+       
         $questions = Question::findAll("DESC");
 
         $session = Session::getInstance();
@@ -335,6 +348,8 @@ class Controller {
     public function search() {
         $this->addContext("template", "forum_questions/question");
         $questions = Question::findByTitle($_POST['search']);
+        $user = new User();
+        $this->addContext("user", $user);
         $this->addContext("questions1", $questions);
     }
 
