@@ -13,7 +13,7 @@
         private $username = '';
         private $code = '';
         private $verified = false;
-        private $icon = 'view/images/lauch.png';
+        private $icon = 'view/images/lauch.jpg';
     
  
 
