@@ -139,7 +139,7 @@ body{
    
 }
 
-#cancelButton{
+.alterButton{
     background: transparent;
     border: none;
     float: right;
