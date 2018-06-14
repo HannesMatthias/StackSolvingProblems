@@ -43,7 +43,8 @@
      <div id="writeComment">
      <div id="overWriteComment"><Label>Write a comment:</Label></div>
              <form action="index.php?action=ideaInterface&amp;id=<?php echo $idea->getId(); ?>"   method ="POST">
-                    <input type="text" name="content" id="wtext"> </br>
+                   <!-- <input type="text" name="content" id="wtext"  multiline > </br> -->
+                    <textarea id="wtext" name="content" ></textarea>
                     <input type="submit"  id="sub" value="Send">
                 </form>
       </div>

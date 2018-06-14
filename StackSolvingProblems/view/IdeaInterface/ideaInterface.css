@@ -172,6 +172,7 @@ body{
 
 #wtext{
     width: 100%;
+    max-width: 100%;
     height: 10rem;
     background-color: white;
     opacity: 0.9;
