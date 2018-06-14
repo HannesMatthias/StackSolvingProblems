@@ -80,7 +80,7 @@
         public function save()
         {
             $this->_insert();
-     
+            
             return TRUE;
         }
 
@@ -103,6 +103,9 @@
             $abfrage->execute($this->toArray(false));
             // setze die ID auf den von der DB generierten Wert
             $this->id = DB::getDB()->lastInsertId();
+
+
+            $this->sendEmailToQuestionOwner();
         }
 
         private function _update()
@@ -166,6 +169,27 @@
                 unset($attribute['id']);
             }
             return $attribute;
+        }
+
+
+        public function sendEmailToQuestionOwner(){
+
+            $question = Question::find($this->getQuestionid());
+            $user = User::find($question->getUserid());
+            $recipient = $user->getEmail();
+            var_dump($question);
+            var_dump($user);
+            var_dump($user->getEmail() );
+            $subject = "Hey " . $user->getName() . "! Du hast eine neue Antwort erhalten.";
+            $mail_body = "Du hast eine neue Antwort zur Frage " . $question->getTitle() . " erhalten. \n
+            www.mhteam.bz.it/pim/?action=fullquestion&id=". $question->getId();
+           
+            try{
+                mail($recipient, $subject, $mail_body);
+            }catch(Exception $e){
+                echo $e->getMessage();
+            }
+  
         }
 
     }

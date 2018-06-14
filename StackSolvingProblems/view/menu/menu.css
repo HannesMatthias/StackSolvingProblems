@@ -156,14 +156,14 @@ html, body {
     padding-left: 2.5em;
 }
 header {
-    background-color: #49a0cc;
+    background-color: #2E2E2E;
 }
 #mobile_logo {
     display: none;
 }
 @media (max-width: 1060px) {
     header {
-        height:8em;
+        height:7.5em;
     }
     #menu {
         float: right;
@@ -231,7 +231,9 @@ header {
         float: none;
     }
 
-
+    #li_search {
+        border-bottom: none;
+    }
 
 
 }

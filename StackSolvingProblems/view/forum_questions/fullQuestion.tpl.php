@@ -114,7 +114,6 @@
                     <button id="send" name="answer_send" type="submit">Senden</button> 
                 </form>
             </div> 
-            
             </div>
             <div id="box_answers">         	
             <?php $i = 0;
@@ -125,7 +124,7 @@
                         <?php echo $answers->getContent(); ?>
                     </div>
                     <?php if($user != null) { ?>
-                        <div id="box_comments<?php echo utf8_encode($answers->getId()); ?>">
+                        <div id="box_comments<?php echo $answers->getId(); ?>">
                             <button onclick="comment(<?php echo $answers->getId(); ?>)" class="btn_comments">Antworten</button>
                         </div>
                         
