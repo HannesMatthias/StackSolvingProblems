@@ -4,7 +4,7 @@
         private $id = 0;
         private $name = '';
         private $surname = '';
-        private $birthdate = 0;   
+        private $birthdate = '0000-00-00';   
         private $sex = '';
         private $points = 0;
         private $rang_id = 1;
