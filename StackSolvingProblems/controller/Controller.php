@@ -15,6 +15,11 @@ class Controller {
         $ideas = Project::findAll();
         $session = Session::getInstance();
         $user = $session->getSession("user");
+
+        if (isset($_POST['DeleteId']) && !empty($_POST['DeleteId'])) {
+            $delQuestion = find($_POST['DeleteId']);
+            $delQuestion->delete();
+        }
         $this->addContext("template", "main/main");
         $this->addContext("ideas", $ideas);
         $this->addContext("user", $user);
