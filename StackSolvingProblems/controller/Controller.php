@@ -477,6 +477,7 @@ class Controller {
         $this->addContext("template", "ideaInterface/ideaInterface");
         $this->addContext("idea", $idea);
         $this->addContext("user_p", $user_p);
+        $this->addContext("user", $user);
         $this->addContext("rights", $rights);
         
     }
