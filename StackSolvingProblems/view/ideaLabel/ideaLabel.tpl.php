@@ -29,18 +29,14 @@ foreach($ideas as $i) {
             </div>
         </div>
         
-<<<<<<< HEAD
-    </div> 
-    <!-- Nur der Besitzer darf einsehen -->
-=======
     </div>
     <?php 
         if($user != NULL && $i->getUser_id() == $user->getId()) {
     ?>
->>>>>>> b93b81ac325e1254af7ca6338a35bc012d4cff6e
     <div id="container2">
-            <button id="cancelButton"><img src="view/images/cancel.png" width="20"></button>
-            <button id="cancelButton"><img src="view/images/settings.png" width="20"></button>
+            <button id="cancelButton" type="submit"><img src="view/images/cancel.png" width="20"></button>
+            <a id="cancelButton" href="index.php?action=addIdea&amp;id=<?php echo $i->getId();?>"><img src="view/forum_questions/settings.png" alt="Bearbeiten" width="20"/></a>
+           
     </div>
     <?php 
         }

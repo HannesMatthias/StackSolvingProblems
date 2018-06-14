@@ -12,17 +12,19 @@
             <img id="profilImage" src="view/images/lauch.jpg" alt="username" height="15%" width="15%">
             <div id="username"><?php echo $user->getUsername(); ?></div>
             <div id="userdata">
-                <form action="index.php?action=saveProfil" method="POST">
+                <form action="index.php?action=saveProfil" method="POST" enctype="multipart/form-data">
                     <div class="outer_left">
                         <div class="inner_left">
                             Vorname:
                             Geburtsdatum:
                             Email:
+                            Profilbild:
                         </div>
                         <div class="inner_right">
                             <input type="text" name="name" value="<?php echo $user->getName(); ?>">
-                            <input type="text" name="birthdate" value="<?php echo $user->getBirthdate(); ?>">
-                            <input type="text" name="email" value="<?php echo $user->getEmail(); ?>">
+                            <input type="date" name="birthdate" max="<?php echo date("Y-m-d") ?>" value="<?php echo $user->getBirthdate(); ?>">
+                            <input type="email" name="email" value="<?php echo $user->getEmail(); ?>">
+                            <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
                         </div>
                     </div>
                     <div class="outer_right">
@@ -32,7 +34,8 @@
                         </div>
                         <div class="inner_right">
                             <input type="text" name="surname" value="<?php echo $user->getSurname(); ?>">
-                            <input type="range" min="-5" max="5" step="1.0" id="sex_range" name="sex">
+                            <input type="radio" name="sex" value="m" checked> Männlich
+                            <input type="radio" name="sex" value="w"> Weiblich
                         </div>
                     </div>
                     <input type="submit" name="submit" value="Ändern">

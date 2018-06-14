@@ -109,7 +109,7 @@
             <div id="answerPosition">
             <div id="box_answer">
                 <form id="answerForm" action="index.php?action=fullQuestion&amp;id=<?php echo $question->getId();?>" method="post">
-                    <textarea name="content" id="answer">Ich bin hier um zu helfen :)</textarea>
+                    <textarea name="content" id="answer" placeholder="Schreibe hier deine Antwort..."></textarea>
                     <input id ="hiddenForm" type="hidden" name="id" value="<?php echo $question->getId(); ?>"/>
                     <button id="send" name="answer_send" type="submit">Senden</button> 
                 </form>
