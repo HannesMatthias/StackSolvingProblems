@@ -39,18 +39,18 @@
         <div id="condisions"><label id="description" for=""><?php echo $user_p->getUsername(); ?></label></div>
     </div>
 
-
-
+    
      <div id="writeComment">
+     <div id="overWriteComment"><Label>Write a comment:</Label></div>
              <form action="">
                     <input type="text" name="" id="wtext"> </br>
-                    <input type="submit" name="submit" id="sub">
+                    <input type="submit" name="submit" id="sub" value="Send">
                 </form>
       </div>
 
     <!-- Foreach schleife -->
     <div id="showComment">
-            <label id="comment" for="">JOIFADJUOKÖGFDOJÖSAFDNK</label>
+            <label id="comment" for=""></label>
     </div>
 </body>
 </html>
