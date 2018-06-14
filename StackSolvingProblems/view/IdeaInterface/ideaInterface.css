@@ -192,12 +192,18 @@ body{
     margin: auto;
     width: 47%;
     padding: 1% 1% 1% 1%;
+    margin-top: 2%;
 }
 
-#comment{
-    height: 10rem;
-    width: 100%;
-    background-color: gray;
+#autor{
+    background-color: white;
+    padding: 1% 1% 1% 1%;
+    margin-bottom: 0%;
+}
+#in{
+    margin-top: 0%;
+    padding: 1% 1% 1% 1%;
+    background-color: white;
 }
 
 #overWriteComment{

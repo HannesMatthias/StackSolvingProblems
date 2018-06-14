@@ -42,15 +42,20 @@
     
      <div id="writeComment">
      <div id="overWriteComment"><Label>Write a comment:</Label></div>
-             <form action="">
-                    <input type="text" name="" id="wtext"> </br>
-                    <input type="submit" name="submit" id="sub" value="Send">
+             <form action="index.php?action=ideaInterface&amp;id=<?php echo $idea->getId(); ?>"   method ="POST">
+                    <input type="text" name="content" id="wtext"> </br>
+                    <input type="submit"  id="sub" value="Send">
                 </form>
       </div>
 
     <!-- Foreach schleife -->
     <div id="showComment">
-            <label id="comment" for=""></label>
+            <label for="">
+                <?php foreach(Commentar::findByProjectid($idea->getId()) AS $comment) { ?>
+                    <p id="autor">Autor: <?php echo User::find($comment->getUserid())->getUsername(); ?>
+                    <p id="in">Inahlt: <?php echo $comment->getContent(); ?>
+                <?php } ?>
+            </label>
     </div>
 </body>
 </html>

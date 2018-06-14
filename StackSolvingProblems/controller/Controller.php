@@ -462,12 +462,24 @@ class Controller {
         if($user != null && $idea->getUser_id() == $user->getId()) {
             $rights = true;
         }
+
+        if(isset($_POST['content']) && $_POST['content'] != ""  && $session->getSession("user") == null ){
+            $session = Session::getInstance();
+            $user = $session->getSession("user");
+            $commentar = new Commentar();
+            $commentar->setContent($_POST['content']);
+            //$commentar->setUserid($user->getId());
+            $commentar->setUserid(9);
+            $commentar->setProjectid($idea->getId());
+            $commentar->save();
+            
+        }
+
         $this->addContext("template", "ideaInterface/ideaInterface");
         $this->addContext("idea", $idea);
         $this->addContext("user_p", $user_p);
         $this->addContext("rights", $rights);
         
-
     }
 
     public function logout() {}
