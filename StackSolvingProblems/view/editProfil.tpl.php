@@ -34,8 +34,8 @@
                         </div>
                         <div class="inner_right">
                             <input type="text" name="surname" value="<?php echo $user->getSurname(); ?>">
-                            <input type="radio" name="sex" value="m" checked> Männlich
-                            <input type="radio" name="sex" value="w"> Weiblich
+                            <input type="radio" name="sex" value="m" <?php if ($user->getSex() == "m") echo "checked";?>> Männlich
+                            <input type="radio" name="sex" value="w" <?php if ($user->getSex() == "w") echo "checked";?>> Weiblich
                         </div>
                     </div>
                     <input type="submit" name="submit" value="Ändern">
