@@ -7,16 +7,6 @@ body {
   margin-right:15%;
 }
 
-
-
-/*#left {
-  margin: 0 auto;
-  text-align: center;
-  border-color: green;
-  border-width: 5px;
-  border-style: solid;
-}*/
-
 #profil{
   color:black;;
   padding: 75px;
@@ -26,11 +16,9 @@ body {
   position: relative;
   background: rgb(211, 219, 221);
   margin-top: 8%;
-  
 }
 
 #profilImage  {
-  /*! border-radius: 50%; */
   position: absolute;
   top:-60px;
   left:50%;
@@ -52,7 +40,7 @@ body {
 
   background-color: white;
   margin: 12px auto;
-  width: 65%;
+  width: 90%;
   padding: 1.5rem 20px;
   overflow: auto;
   vertical-align: baseline;
@@ -60,10 +48,12 @@ body {
   position: relative;
   
 }
+
 #userquestions{
-text-align:center;
-padding-top: 20px;
+  text-align:center;
+  padding-top: 20px;
 }
+
 #username{
   font-weight: bold;
   font-size: 30px;
@@ -78,22 +68,21 @@ padding-top: 20px;
 }
 
 #edit{
- float: right;
- line-height: 15px;
+  float: right;
+  line-height: 15px;
 }
 
 #email{
- float: right;
- line-height: 15px;
- 
+  float: right;
+  line-height: 15px;
 }
+
 #firstname{
   float: right;
-  
 }
+
 #lastname{
   float: right;
-  
 }
 
 #points{
@@ -101,8 +90,7 @@ padding-top: 20px;
   float: right;
   text-align:left;
   line-height: 15px;
-  
- }
+}
 
 .outer_left {
   float: left;
@@ -120,4 +108,9 @@ padding-top: 20px;
 
 .inner_right {
   float: right;
+}
+
+#submit {
+  float: none;
+  clear: both;
 }
