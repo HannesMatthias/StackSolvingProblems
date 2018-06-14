@@ -463,13 +463,12 @@ class Controller {
             $rights = true;
         }
 
-        if(isset($_POST['content']) && $_POST['content'] != ""  && $session->getSession("user") == null ){
+        if(isset($_POST['content']) && $_POST['content'] != ""  && $session->getSession("user") != null ){
             $session = Session::getInstance();
             $user = $session->getSession("user");
             $commentar = new Commentar();
             $commentar->setContent($_POST['content']);
-            //$commentar->setUserid($user->getId());
-            $commentar->setUserid(9);
+            $commentar->setUserid($user->getId());
             $commentar->setProjectid($idea->getId());
             $commentar->save();
             
